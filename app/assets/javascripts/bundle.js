@@ -363,33 +363,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
  // import Root from './components/root';
-//test functions--TO DELETE!!
-
- // import * as APIUtil from './util/session_api_util';
-
-var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-window.getState = store.getState;
-window.dispatch = store.dispatch;
-window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"];
-window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
-window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
 
 document.addEventListener('DOMContentLoaded', function () {
-  var root = document.getElementById('root'); // let preloadedState = undefined;
-  // if (window.currentUser) {
-  //     preloadedState = {
-  //         session: {
-  //             currentUser: window.currentUser
-  //         }
-  //     };
-  // }
-  // const store = createStore(preloadedState);
-  // const store = createStore();
+  var store;
 
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hi"), root);
+  if (window.currentUser) {
+    var preloadedState = {
+      entities: {
+        users: _defineProperty({}, Object.values(window.currentUser)[0].id, Object.values(window.currentUser)[0])
+      },
+      session: {
+        id: Object.values(window.currentUser)[0].id
+      }
+    };
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])(preloadedState);
+  } else {
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  }
+
+  var root = document.getElementById('root');
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "hi"), root); //test functions--TO DELETE!!
+
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"];
+  window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
+  window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
 });
 
 /***/ }),
