@@ -5,3 +5,14 @@
 .User-Info{
     // display: flex;
 }
+
+.SignIn-SignUp{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    height: 500px;
+    border: solid black 1px;
+}

@@ -13,15 +13,17 @@ class SessionForm extends React.Component {
         this.handleGuest = this.handleGuest.bind(this);
     }
 
-    handleSubmit(e) {
+    handleSubmit(e) { 
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(() => {
+            this.props.history.push('/projects');
+        });
+        
         this.setState({
             username: "",
             password: "",
         });
-        this.props.history.push('/projects');
     }
     
     handleGuest(e){
@@ -42,7 +44,9 @@ class SessionForm extends React.Component {
     render() {
         const display = (this.props.formType === 'Sign In') ? (
             <div>
-                <Link className="btn" to='/signup'>Sign Up</Link>
+                <label>Don't have an account?  
+                    <Link className="btn" to='/signup'>Sign Up</Link>
+                </label>
                 <br/>
                 <a href="*" onClick={this.handleGuest}>Guest Sign In</a>
             </div>
@@ -75,6 +79,7 @@ class SessionForm extends React.Component {
                             onChange={this.handleInput('username')}
                         />
                     </label>
+                    <br/>
                     <label>Password:
                         <input
                             type="password"
@@ -84,11 +89,11 @@ class SessionForm extends React.Component {
                         />
                     </label>
                     <button>{this.props.formType}</button>
-                </form>
-                <div>
+                <div className="Signupbox">
                     {display}
                     {errors}
                 </div>
+                </form>
             </div>
         );
     }
