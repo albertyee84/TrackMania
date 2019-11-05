@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default ({ currentUser, logout }) => {
 
     const display = currentUser ? (
-        <div>
+        <div className="User-Info">
             <h3> Welcome {currentUser.username}
             </h3>
             <button onClick={logout}>Log Out</button>

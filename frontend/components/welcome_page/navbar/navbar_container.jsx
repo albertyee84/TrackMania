@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import Welcome from './welcome';
+import { logout } from '../../../actions/session_actions';
+import navbar from './navbar';
 
 const mapStateToProps = state => ({
     currentUser: state.entities.users[state.session.id],
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
     });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
+export default connect(mapStateToProps, mapDispatchToProps)(navbar);
