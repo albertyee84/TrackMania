@@ -11,7 +11,7 @@ const App = () => {
         <div>
             <header className="nav-bar-header">
                 TrackMania
-                <AuthRoute exact path="/" component={Welcome} />
+                <Route path="/" component={Welcome} />
             </header>
             <div>
                 <AuthRoute path="/login" component={LoginFormContainer} />

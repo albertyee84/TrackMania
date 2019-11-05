@@ -183,8 +183,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar-header"
-  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
-    exact: true,
+  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _welcome_page_welcome_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
@@ -297,6 +296,7 @@ function (_React$Component) {
   _createClass(SessionForm, [{
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      debugger;
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
@@ -317,6 +317,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       var display = this.props.formType === 'Log In' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn",
         to: "/signup"
@@ -324,9 +325,9 @@ function (_React$Component) {
         className: "btn",
         to: "/login"
       }, "Log In"));
-      var errors = this.props.errors ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error) {
+      var errors = !this.props.errors || Object.values(this.props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
-      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -439,7 +440,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   // debugger;
   var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Welcome ", currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: logout
-  }, "Log Out")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Log Out")) : "";
+  var display2 = !currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "SignIn-LogIn"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "SignIn"
@@ -451,13 +453,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn",
     to: "/login"
-  }, "Sign In")));
+  }, "Sign In"))) : "";
   console.log(_typeof(display));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header-name"
-  }, display));
+  }, display, display2));
 });
 
 /***/ }),
@@ -588,9 +590,7 @@ __webpack_require__.r(__webpack_exports__);
       });
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return {
-        errors: {}
-      };
+      return [];
 
     default:
       return state;

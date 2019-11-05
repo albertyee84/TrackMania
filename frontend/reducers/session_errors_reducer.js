@@ -6,7 +6,7 @@ export default (state = {}, action) => {
         case RECEIVE_ERRORS:
             return Object.assign({}, state, {errors: action.errors});
         case RECEIVE_CURRENT_USER:
-            return {errors: {}};
+            return [];
         default:
             return state;
     }
