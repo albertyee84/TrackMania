@@ -6,6 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
+.DS_Store
+.AppleDouble
+.LSOverride
 
 # Ignore all logfiles and tempfiles.
 /log/*

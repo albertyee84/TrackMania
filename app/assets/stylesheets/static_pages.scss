@@ -5,7 +5,15 @@
 .User-Info{
     // display: flex;
 }
-
+h1, h2 {
+    font-weight: bold;
+}
+h1{
+    font-size: 25px;
+}
+h2{
+    font-size: 20px;
+}
 .SignIn-SignUp{
     display: flex; 
     justify-content: center;
@@ -15,4 +23,33 @@
     width: 70%;
     height: 500px;
     border: solid black 1px;
+}
+.splash-img1{
+    background-image: image-url("img2.svg");
+    height: 388px;
+    width: 70%;
+    float: left;
+
+}
+.splash-img2{
+    background-image: image-url("img3.svg");
+    height: 388px;
+    width: 60%;
+    float: left;
+
+}
+.img1{
+    display: flex;
+}
+.splash{
+    margin: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;;
+}
+.img-elements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
 }
