@@ -377,6 +377,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Login/sign_up_form_container */ "./frontend/components/Login/sign_up_form_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _welcome_page_welcome_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcome_page/welcome_container */ "./frontend/components/welcome_page/welcome_container.jsx");
+/* harmony import */ var _welcome_page_splash_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./welcome_page/splash_container */ "./frontend/components/welcome_page/splash_container.jsx");
+
+
 
 
 
@@ -385,9 +388,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
+  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar-header"
-  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/"
+  }, "TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _welcome_page_welcome_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
@@ -396,6 +402,10 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/signup",
     component: _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
+    exact: true,
+    path: "/",
+    component: _welcome_page_splash_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   })));
 };
 
@@ -430,6 +440,148 @@ var Root = function Root(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
+
+/***/ }),
+
+/***/ "./frontend/components/welcome_page/splash.jsx":
+/*!*****************************************************!*\
+  !*** ./frontend/components/welcome_page/splash.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _splash_contents__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./splash_contents */ "./frontend/components/welcome_page/splash_contents.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Splash =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Splash, _React$Component);
+
+  function Splash() {
+    _classCallCheck(this, Splash);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Splash).apply(this, arguments));
+  }
+
+  _createClass(Splash, [{
+    key: "render",
+    value: function render() {
+      var display = !this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_splash_contents__WEBPACK_IMPORTED_MODULE_1__["default"], null) : "";
+      return display;
+    }
+  }]);
+
+  return Splash;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Splash);
+
+/***/ }),
+
+/***/ "./frontend/components/welcome_page/splash_container.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/welcome_page/splash_container.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./splash */ "./frontend/components/welcome_page/splash.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(_splash__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/welcome_page/splash_contents.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/welcome_page/splash_contents.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var SplashContents =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SplashContents, _React$Component);
+
+  function SplashContents() {
+    _classCallCheck(this, SplashContents);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SplashContents).apply(this, arguments));
+  }
+
+  _createClass(SplashContents, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "TrackMania is changing how teams build software-one story at a time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Proven project management for successful teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "With a shared view of team priorities, a process that fosters collaboration, and dynamic tools to analyze progress, your team will deliver more frequently and consistently."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Keep your team on the rails. Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get more work done, more often. Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "A better way to develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change."));
+    }
+  }]);
+
+  return SplashContents;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SplashContents);
 
 /***/ }),
 
