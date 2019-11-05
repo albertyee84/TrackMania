@@ -741,7 +741,17 @@ function (_React$Component) {
         className: "splash-img2"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-elements"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get more work done, more often. Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "A better way to develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change."));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get more work done, more often. Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-elements"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "splash-img3"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "A better way to develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change."))));
     }
   }]);
 

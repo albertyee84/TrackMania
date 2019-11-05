@@ -25,10 +25,22 @@ class SplashContents extends React.Component{
                         <p>Get more work done, more often. Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering.</p>
                     </div>
                 </div>
-                <h2>Team transparency at a glance</h2>
-                <p>No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.</p>
-                <h2>A better way to develop</h2>
-                <p>Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change.</p>
+
+                <div className='img1'>
+                    <div className="img-elements">
+                        <h2>Team transparency at a glance</h2>
+                        <br/>
+                        <p>No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.</p>
+                    </div>
+                    <h1 className='splash-img3'></h1>
+                </div>
+                <div className="img2">
+                    <div className="splash-text">
+                        <h2>A better way to develop</h2>
+                        <br/>
+                        <p>Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change.</p>
+                    </div>
+                </div>
             </div>
         );
     }
