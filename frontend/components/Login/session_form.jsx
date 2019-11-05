@@ -21,6 +21,7 @@ class SessionForm extends React.Component {
             username: "",
             password: "",
         });
+        this.props.history.push('/projects');
     }
     
     handleGuest(e){

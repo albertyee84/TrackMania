@@ -262,6 +262,7 @@ function (_React$Component) {
         username: "",
         password: ""
       });
+      this.props.history.push('/projects');
     }
   }, {
     key: "handleGuest",
@@ -379,7 +380,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _welcome_page_splash_page_splash_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcome_page/splash_page/splash_container */ "./frontend/components/welcome_page/splash_page/splash_container.jsx");
 /* harmony import */ var _Login_login_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Login/login_form_container */ "./frontend/components/Login/login_form_container.jsx");
 /* harmony import */ var _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Login/sign_up_form_container */ "./frontend/components/Login/sign_up_form_container.jsx");
-/* harmony import */ var _dashboard_dashboard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/dashboard */ "./frontend/components/dashboard/dashboard.jsx");
+/* harmony import */ var _projects_projects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./projects/projects */ "./frontend/components/projects/projects.jsx");
 
 
 
@@ -409,9 +410,9 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _welcome_page_splash_page_splash_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_protected_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
-    path: "/dashboard",
-    component: _dashboard_dashboard__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/projects",
+    component: _projects_projects__WEBPACK_IMPORTED_MODULE_8__["default"]
   })));
 };
 
@@ -419,10 +420,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/dashboard/dashboard.jsx":
-/*!*****************************************************!*\
-  !*** ./frontend/components/dashboard/dashboard.jsx ***!
-  \*****************************************************/
+/***/ "./frontend/components/projects/projects.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/projects/projects.jsx ***!
+  \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
