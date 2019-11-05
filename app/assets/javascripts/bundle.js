@@ -294,18 +294,25 @@ function (_React$Component) {
       }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "*",
         onClick: this.handleGuest
-      }, "Guest Sign In")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Guest Sign In")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Have an account?", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn",
         to: "/login"
-      }, "Sign In"));
+      }, "Sign In")));
       var errors = !this.props.errors || Object.values(this.props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, error);
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formspacing"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
+        className: "logo"
+      }, "TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "SignIn-SignUp"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formspacing"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Sign in to continue to TrackerMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Enter Username",
         value: this.state.username,
@@ -315,9 +322,11 @@ function (_React$Component) {
         placeholder: "Enter Password",
         value: this.state.password,
         onChange: this.handleInput('password')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn"
+      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Signupbox"
-      }, display, errors)));
+      }, display, errors))));
     }
   }]);
 
@@ -401,7 +410,8 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/"
+    to: "/",
+    className: "Project-Name"
   }, "TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/",
     component: _welcome_page_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -727,31 +737,52 @@ function (_React$Component) {
   _createClass(SplashContents, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "head-element"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "title"
+      }, "TrackMania is changing how teams build software-one story at a time"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "TrackMania is changing how teams build software-one story at a time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Proven project management for successful teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "With a shared view of team priorities, a process that fosters collaboration, and dynamic tools to analyze progress, your team will deliver more frequently and consistently."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "statement"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Proven project management for successful teams"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "special-statement"
+      }, "With a shared view of team priorities, a process that fosters collaboration, and dynamic tools to analyze progress, your team will deliver more frequently and consistently.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "img-elements"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Keep your team on the rails. Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "img-statements"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "regular-statement"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "splash-img1"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "splash-img2"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "img-elements"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Get more work done, more often. Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-statements"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "regular-statement"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Get more work done, more often."), " Tracker's guided iteration planning helps you break down and prioritize projects into manageable chunks so the team can keep the momentum toward delivering."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "img-elements"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "No more surprises. With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "img-statements"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "regular-statement"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "No more surprises."), " With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "splash-img3"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash-text"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "A better way to develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change."))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "A better way to develop"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "lala"
+      }, "Succeeding in an evolving tech landscape requires a time-tested process and a tool your team can rely on. Tracker's modern workflow helps your team keep the pace and adapt when needs change."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Ready to get your team on track? Try us free for 30 days."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/signup",
+        className: "Get-Started"
+      }, "Get Started!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "img-bot"
+      })));
     }
   }]);
 

@@ -17,9 +17,23 @@
     padding-right: 11px;
 }
 
-.SignIn-SignUp{
-    // display: flex;
-}
 form > h2{
-    font-size: 50px;
+    font-size: 40px;
+}
+
+.SignIn-SignUp{
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    width: 25%;
+    height: 500px;
+    border: solid black 1px;
+}
+
+.formspacing{
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

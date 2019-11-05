@@ -53,7 +53,9 @@ class SessionForm extends React.Component {
         ) :
             (
                 <div>
-                    <Link className="btn" to='/login'>Sign In</Link>
+                    <label>Have an account?
+                        <Link className="btn" to='/login'>Sign In</Link>
+                    </label>
                     
                 </div>
             );
@@ -68,32 +70,41 @@ class SessionForm extends React.Component {
             </div>;
 
         return (
-            <div className="SignIn-SignUp">
-                <form onSubmit={this.handleSubmit}>
-                    <h2>{this.props.formType}</h2>
-                    <label>Username:
-                        <input
-                            type="text"
-                            placeholder="Enter Username"
-                            value={this.state.username}
-                            onChange={this.handleInput('username')}
-                        />
-                    </label>
-                    <br/>
-                    <label>Password:
-                        <input
-                            type="password"
-                            placeholder="Enter Password"
-                            value={this.state.password}
-                            onChange={this.handleInput('password')}
-                        />
-                    </label>
-                    <button>{this.props.formType}</button>
-                <div className="Signupbox">
-                    {display}
-                    {errors}
+            <div className="formspacing">
+                <Link to='/' className="logo">TrackMania</Link>
+                <div className="SignIn-SignUp">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="formspacing">
+                        </div>
+                            <h2>{this.props.formType}</h2>
+                            <br />
+                            <div>Sign in to continue to TrackerMania</div>
+                            <br />
+
+                        <label>Username:
+                            <input
+                                type="text"
+                                placeholder="Enter Username"
+                                value={this.state.username}
+                                onChange={this.handleInput('username')}
+                            />
+                        </label>
+                        <br/>
+                        <label>Password:
+                            <input
+                                type="password"
+                                placeholder="Enter Password"
+                                value={this.state.password}
+                                onChange={this.handleInput('password')}
+                            />
+                        </label>
+                        <button className="btn">{this.props.formType}</button>
+                    <div className="Signupbox">
+                        {display}
+                        {errors}
+                    </div>
+                    </form>
                 </div>
-                </form>
             </div>
         );
     }

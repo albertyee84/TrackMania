@@ -5,28 +5,25 @@
 .User-Info{
     // display: flex;
 }
-h1, h2 {
+h1, h2, b {
     font-weight: bold;
 }
 
 h1{
-    font-size: 25px;
+    font-size: 35px;
 }
 
 h2{
-    font-size: 20px;
+    font-size: 28px;
 }
 
-.SignIn-SignUp{
-    display: flex; 
-    justify-content: center;
+.nav-bar-header{
+    display: flex;
     align-items: center;
-    flex-direction: column;
-    margin: auto;
-    width: 70%;
-    height: 500px;
-    border: solid black 1px;
+    background-color: rgb(144, 205, 255);
 }
+
+
 
 .splash-img1{
     background-image: image-url("img2.svg");
@@ -61,7 +58,7 @@ h2{
     flex-direction: column;;
 }
 
-.img-elements{
+.img-statements{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,6 +75,123 @@ h2{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: auto;
+    width: auto;
     width: 70%;
     margin: auto;
 }
+
+.head-element{
+    height: 525px;
+    background-image: image-url("img6.png");
+    display: flex;
+    align-items: center;
+}
+
+.title{
+    margin: auto;
+    width: 40%;
+}
+
+.Project-Name{
+    font-size: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.statement{
+    display: flex;
+    align-items: center;
+    flex-direction: column;   
+}
+
+.special-statement{
+    font-size: 25px;
+    max-width: 580px;
+}
+
+.regular-statement{
+    font-size: 18px;
+}
+
+.lala{
+    font-size: 24px;
+}
+
+.img-bot{
+    background-image: image-url("img1.png");
+    height: 375px;
+}
+
+.btn{
+    text-decoration: none;
+    background-color: rgb(117, 165, 238);
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.btn:hover{
+    text-decoration: none;
+    background-color: rgb(70, 136, 236);
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.Get-Started{
+    text-decoration: none;
+    background-color: rgb(231, 124, 23);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.Get-Started:hover{
+    text-decoration: none;
+    background-color: rgb(189, 96, 9);
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.title{
+    background-color: white;
+}
+
+.logo{
+    padding-bottom: 50px;
+    font-size: 50px;
+    // background-image: image-url("logo.png");
+    background-size: cover;
+    color: inherit;
+    text-decoration: none;
+}
+

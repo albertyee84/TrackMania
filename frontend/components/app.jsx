@@ -17,7 +17,7 @@ const App = () => {
     return (
         <div>
             <header className="nav-bar-header">
-                <Link to='/'>TrackMania</Link>
+                <Link to='/' className="Project-Name">TrackMania</Link>
                 <Route path="/" component={Navbar} />
             </header>
             <div>
