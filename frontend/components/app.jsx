@@ -9,12 +9,15 @@ import Welcome from './welcome_page/welcome_container';
 const App = () => {
     return (
         <div>
-            <header>
+            <header className="nav-bar-header">
                 TrackMania
-                <Welcome />
+                <AuthRoute exact path="/" component={Welcome} />
             </header>
-            <AuthRoute path="/login" component={LoginFormContainer} />
-            <AuthRoute path="/signup" component={SignupFormContainer} />
+            <div>
+                <AuthRoute path="/login" component={LoginFormContainer} />
+                <AuthRoute path="/signup" component={SignupFormContainer} />
+
+            </div>
         </div>
     );
 };

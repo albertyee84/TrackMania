@@ -181,13 +181,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_welcome_page_welcome_container__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+    className: "nav-bar-header"
+  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
+    exact: true,
+    path: "/",
+    component: _welcome_page_welcome_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/login",
     component: _Login_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["AuthRoute"], {
     path: "/signup",
     component: _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }));
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -433,17 +439,25 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   // debugger;
   var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " Welcome ", currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: logout
-  }, "Log Out")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Log Out")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "SignIn-LogIn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "SignIn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn",
     to: "/signup"
-  }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+  }, "Sign Up")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "LogIn"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "btn",
     to: "/login"
-  }, "Log In"));
+  }, "Sign In")));
   console.log(_typeof(display));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-name"
+  }, display));
 });
 
 /***/ }),

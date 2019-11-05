@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
     // debugger;
+
+
     const display = currentUser ? (
         <div>
             <h3> Welcome {currentUser.username}
@@ -11,16 +13,19 @@ export default ({ currentUser, logout }) => {
         </div>
     ) :
         (
-            <div>
-                <Link className="btn" to='/signup'>Sign Up</Link>
-                <br />
-                <Link className="btn" to='/login'>Log In</Link>
+            <div className="SignIn-LogIn">
+                <div className='SignIn'>
+                    <Link className="btn" to='/signup'>Sign Up</Link>
+                    </div>
+                <div className='LogIn'>
+                    <Link className="btn" to='/login'>Sign In</Link>
+                </div>
             </div>
         );
     console.log(typeof display);
     return (
         <header className="nav-bar">
-            <div>
+            <div className="header-name">
                 {display}
             </div>
         </header>
