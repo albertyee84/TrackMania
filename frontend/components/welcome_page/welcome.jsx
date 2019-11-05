@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
-    // debugger;
-
 
     const display = currentUser ? (
         <div>
@@ -23,8 +21,7 @@ export default ({ currentUser, logout }) => {
             </div>
         </div>
     ) : "";
-    
-    console.log(typeof display);
+
     return (
         <header className="nav-bar">
             <div className="header-name">

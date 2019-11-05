@@ -10,10 +10,10 @@ class SessionForm extends React.Component {
         };
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGuest = this.handleGuest.bind(this);
     }
 
     handleSubmit(e) {
-        debugger;
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processForm(user);
@@ -21,6 +21,15 @@ class SessionForm extends React.Component {
             username: "",
             password: "",
         });
+    }
+    
+    handleGuest(e){
+        e.preventDefault();
+        this.setState({
+            username: "guest",
+            password: "password"
+        });
+        
     }
 
     handleInput(type) {
@@ -30,16 +39,17 @@ class SessionForm extends React.Component {
     }
 
     render() {
-
-        debugger;
-        const display = (this.props.formType === 'Log In') ? (
+        const display = (this.props.formType === 'Sign In') ? (
             <div>
                 <Link className="btn" to='/signup'>Sign Up</Link>
+                <br/>
+                <a href="*" onClick={this.handleGuest}>Guest Sign In</a>
             </div>
         ) :
             (
                 <div>
-                    <Link className="btn" to='/login'>Log In</Link>
+                    <Link className="btn" to='/login'>Sign In</Link>
+                    
                 </div>
             );
         const errors = !this.props.errors || Object.values(this.props.errors) === 0 ? (
@@ -53,12 +63,13 @@ class SessionForm extends React.Component {
             </div>;
 
         return (
-            <div>
+            <div className="SignIn-SignUp">
                 <form onSubmit={this.handleSubmit}>
                     <h2>{this.props.formType}</h2>
                     <label>Username:
                         <input
                             type="text"
+                            placeholder="Enter Username"
                             value={this.state.username}
                             onChange={this.handleInput('username')}
                         />
@@ -66,6 +77,7 @@ class SessionForm extends React.Component {
                     <label>Password:
                         <input
                             type="password"
+                            placeholder="Enter Password"
                             value={this.state.password}
                             onChange={this.handleInput('password')}
                         />

@@ -5,7 +5,7 @@ import { login } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     errors: state.errors.session.errors,
-    formType: 'Log In',
+    formType: 'Sign In',
     currentUser: state.entities.users[state.session.id]
 });
 
