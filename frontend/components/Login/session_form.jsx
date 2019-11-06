@@ -43,16 +43,15 @@ class SessionForm extends React.Component {
 
     render() {
         const display = (this.props.formType === 'Sign In') ? (
-            <div>
+            <div className="Signupbox">
+                <a href="*" className="btn" id="guest-btn" onClick={this.handleGuest}>Guest Sign In</a>
                 <label>Don't have an account?  
                     <Link className="btn" to='/signup'>Sign Up</Link>
                 </label>
-                <br/>
-                <a href="*" onClick={this.handleGuest}>Guest Sign In</a>
             </div>
         ) :
             (
-                <div>
+                <div className="Signupbox">
                     <label>Have an account?
                         <Link className="btn" to='/login'>Sign In</Link>
                     </label>
@@ -76,13 +75,16 @@ class SessionForm extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="formspacing">
                         </div>
-                            <h2>{this.props.formType}</h2>
+                            <div className="formtype">
+                                <h2>{this.props.formType}</h2>
+                            </div>
                             <br />
                             <div>Sign in to continue to TrackerMania</div>
                             <br />
 
-                        <label>Username:
+                        <label>
                             <input
+                                className="user-pw"
                                 type="text"
                                 placeholder="Enter Username"
                                 value={this.state.username}
@@ -90,16 +92,18 @@ class SessionForm extends React.Component {
                             />
                         </label>
                         <br/>
-                        <label>Password:
+                        <label> 
                             <input
+                                className="user-pw"
                                 type="password"
                                 placeholder="Enter Password"
                                 value={this.state.password}
                                 onChange={this.handleInput('password')}
                             />
                         </label>
-                        <button className="btn">{this.props.formType}</button>
-                    <div className="Signupbox">
+                        <br/>
+                        <button className="btn" id="sign-btn">{this.props.formType}</button>
+                    <div>
                         {display}
                         {errors}
                     </div>

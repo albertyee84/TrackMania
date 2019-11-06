@@ -27,13 +27,33 @@ form > h2{
     flex-direction: column;
     margin: auto;
     width: 25%;
-    height: 500px;
-    border: solid black 1px;
+    height: 390px;
+    animation-duration: 1s;
+    animation-name: slidein;
+    // border: solid black 1px;
 }
 
 .formspacing{
-    padding: 60px;
+    padding: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: auto;
+}
+
+.formtype{
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }

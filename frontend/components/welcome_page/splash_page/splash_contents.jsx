@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class SplashContents extends React.Component{
 
@@ -55,7 +57,7 @@ class SplashContents extends React.Component{
                             </h1>
                             <br/>
                             <br/>
-                            <a href="/signup" className="Get-Started">Get Started!</a>
+                            <Link to="/signup" className="Get-Started">Get Started!</Link>
                             <br/>
                             <br/>
                         </div>               

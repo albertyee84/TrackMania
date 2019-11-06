@@ -82,7 +82,7 @@ h2{
 }
 
 .head-element{
-    height: 525px;
+    height: 380px;
     background-image: image-url("img6.png");
     display: flex;
     align-items: center;
@@ -102,7 +102,8 @@ h2{
 .statement{
     display: flex;
     align-items: center;
-    flex-direction: column;   
+    flex-direction: column;
+    margin-top: 30px;   
 }
 
 .special-statement{
@@ -135,7 +136,7 @@ h2{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 20px;
 }
 .btn:hover{
     text-decoration: none;
@@ -149,7 +150,7 @@ h2{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 20px;
 }
 
 .Get-Started{
@@ -195,3 +196,28 @@ h2{
     text-decoration: none;
 }
 
+#sign-btn{
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px
+}
+
+.user-pw{
+    width: 98%;
+    border-radius: 70px;
+}
+
+.Signupbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+// body{
+//     background-color: darken($color: #93e9e2, $amount: 0);
+// }
+
+#guest-btn{
+    width: 95%
+}
