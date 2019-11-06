@@ -26,17 +26,19 @@ form > h2{
     align-items: center;
     flex-direction: column;
     margin: auto;
-    height: 390px;
-    animation-duration: 1s;
-    animation-name: slidein;
+    height: 220px;
+    // animation-duration: 1s;
+    // animation-name: slidein;
+
 }
 
 .formspacing{
-    padding: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: auto;
+    background-color: cadetblue;
+    width: 110%;
 }
 
 .formtype{
@@ -44,14 +46,14 @@ form > h2{
     justify-content: center;
 }
 
-@keyframes slidein {
-  from {
-    margin-left: 100%;
-    width: 300%; 
-  }
+// @keyframes slidein {
+//   from {
+//     margin-left: 100%;
+//     width: 300%; 
+//   }
 
-  to {
-    margin-left: 0%;
-    width: 100%;
-  }
-}
+//   to {
+//     margin-left: 0%;
+//     width: 100%;
+//   }
+// }

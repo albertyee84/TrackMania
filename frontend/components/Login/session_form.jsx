@@ -72,6 +72,7 @@ class SessionForm extends React.Component {
 
         return (
             <div className="formspacing">
+                <div onClick={this.props.closeModal} className="close-x">X</div>
                 <Link to='/' className="logo">TrackMania</Link>
                 <div className="SignIn-SignUp">
                     <form onSubmit={this.handleSubmit}>
@@ -80,7 +81,6 @@ class SessionForm extends React.Component {
                             <div className="formtype">
                                 <h2>{this.props.formType}</h2>
                             </div>
-                            <div onClick={this.props.closeModal} className="close-x"></div>
                         <label>
                             <input
                                 className="user-pw"

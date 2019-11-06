@@ -363,7 +363,10 @@ function (_React$Component) {
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formspacing"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.props.closeModal,
+        className: "close-x"
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "logo"
       }, "TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -374,10 +377,7 @@ function (_React$Component) {
         className: "formspacing"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formtype"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this.props.closeModal,
-        className: "close-x"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "user-pw",
         type: "text",
         placeholder: "Enter Username",
@@ -1306,7 +1306,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/login"
+        to: "/"
       });
     }
   });
