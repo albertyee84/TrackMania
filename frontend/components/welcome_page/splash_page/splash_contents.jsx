@@ -4,8 +4,9 @@ import SocialMedia from '../../social_media/social_media';
 
 
 class SplashContents extends React.Component{
-
+    
     render(){
+        const openModal = this.props.openModal;
         return(
             <div>
                     <div className="head-element">
@@ -56,7 +57,8 @@ class SplashContents extends React.Component{
                             </h1>
                             <br/>
                             <br/>
-                            <Link to="/signup" className="Get-Started">Get Started!</Link>
+                            {/* <Link to="/signup" className="Get-Started">Get Started!</Link> */}
+                            <button className="Get-Started" onClick={() => openModal('signup')}>Get Started!</button>
                             <br/>
                             <br/>
                         </div>               

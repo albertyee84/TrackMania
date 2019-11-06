@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 class Splash extends React.Component{
 
     render(){
-        const display = !this.props.currentUser ? ( <SplashContents /> ) : (<Redirect to='/projects'/>);
+        const display = !this.props.currentUser ? ( <SplashContents openModal={this.props.openModal}/> ) : (<Redirect to='/projects'/>);
 
         return(
             display
