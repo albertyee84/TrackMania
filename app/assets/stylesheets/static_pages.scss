@@ -100,7 +100,8 @@ h2{
     font-size: 20px;
     text-decoration: none;
     color: inherit;
-    font-family: 'Supermercado One', cursive;
+    font-family: 'Noto Sans', sans-serif;
+    display: flex;
 }
 
 .statement{
@@ -113,6 +114,7 @@ h2{
 .special-statement{
     font-size: 25px;
     max-width: 580px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .regular-statement{
@@ -230,3 +232,10 @@ h2{
     margin-left: auto;
     cursor: pointer;
 }
+
+ .projectname-beg{
+     color: rgb(31, 189, 201);
+ }
+ .projectname-end{
+     color: blue;
+ }

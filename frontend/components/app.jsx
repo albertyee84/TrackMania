@@ -19,7 +19,7 @@ const App = () => {
         <div>
             <Modal />
             <header className="nav-bar-header">
-                <Link to='/' className="Project-Name">TrackMania</Link>
+                <Link to='/' className="Project-Name"><div className="projectname-beg">Track</div><div className="projectname-end">Mania</div></Link>
                 <Route path="/" component={Navbar} />
             </header>
             <div>
