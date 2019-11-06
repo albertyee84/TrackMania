@@ -159,9 +159,9 @@ var receiveErrors = function receiveErrors(errors) {
 var login = function login(formUser) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](formUser).then(function (user) {
-      return dispatch(receiveCurrentUser(user), function (errors) {
-        return dispatch(receiveErrors(errors));
-      });
+      return dispatch(receiveCurrentUser(user));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors));
     });
   };
 };

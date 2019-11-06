@@ -18,7 +18,6 @@ class Api::SessionsController < ApplicationController
     if logged_in?
       logout
       render json: {}
-    # { message: 'Logout Successful!' }
     else
       render json: ['Invalid username or password'], status: 404
     end
