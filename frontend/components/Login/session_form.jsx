@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialMedia from '../social_media/social_media';
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -62,8 +63,8 @@ class SessionForm extends React.Component {
             ""
         ) : <div>
                 <ul>
-                    {this.props.errors.map(error => {
-                        return (<li>{error}</li>);
+                    {this.props.errors.map((error, i) => {
+                        return (<li key={i}>{error}</li>);
                     })}
                 </ul>
             </div>;
@@ -109,6 +110,7 @@ class SessionForm extends React.Component {
                     </div>
                     </form>
                 </div>
+                <SocialMedia />
             </div>
         );
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SocialMedia from '../../social_media/social_media';
 
 
 class SplashContents extends React.Component{
@@ -64,6 +65,7 @@ class SplashContents extends React.Component{
                     </div>
  
                     <div className="img-bot"></div>
+                    <SocialMedia />
                 </div>
             </div>
         );
