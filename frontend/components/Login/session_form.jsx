@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import SocialMedia from '../social_media/social_media';
 
 class SessionForm extends React.Component {
@@ -13,14 +13,21 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuest = this.handleGuest.bind(this);
     }
+    
+    handleInput(type) {
+        return (e) => {
+            this.setState({ [type]: e.target.value });
+        };
+    }
 
     handleSubmit(e) { 
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => {
+        this.props.processForm(user)
+        .then(this.props.closeModal)
+        .then(() => {
             this.props.history.push('/projects');
         });
-        
         this.setState({
             username: "",
             password: "",
@@ -36,25 +43,19 @@ class SessionForm extends React.Component {
         
     }
 
-    handleInput(type) {
-        return (e) => {
-            this.setState({ [type]: e.target.value });
-        };
-    }
-
     render() {
         const display = (this.props.formType === 'Sign In') ? (
             <div className="Signupbox">
                 <a href="*" className="btn" id="guest-btn" onClick={this.handleGuest}>Guest Sign In</a>
                 <label>Don't have an account?  
-                    <Link className="btn" to='/signup'>Sign Up</Link>
+                    {this.props.otherForm}
                 </label>
             </div>
         ) :
             (
                 <div className="Signupbox">
                     <label>Have an account?
-                        <Link className="btn" to='/login'>Sign In</Link>
+                            {this.props.otherForm}
                     </label>
                     
                 </div>
@@ -79,10 +80,7 @@ class SessionForm extends React.Component {
                             <div className="formtype">
                                 <h2>{this.props.formType}</h2>
                             </div>
-                            <br />
-                            <div>Sign in to continue to TrackerMania</div>
-                            <br />
-
+                            <div onClick={this.props.closeModal} className="close-x"></div>
                         <label>
                             <input
                                 className="user-pw"
@@ -117,4 +115,4 @@ class SessionForm extends React.Component {
 
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

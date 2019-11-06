@@ -35,25 +35,29 @@ export const logout = () => dispatch => APIUtil.logout()
         errors => dispatch(receiveErrors(errors)))
     );
 
-export const signup = formUser => {
-    return (
-        dispatch =>
-            APIUtil.signUp(formUser)
-                .then(user => {
+    export const signup = formUser => dispatch => APIUtil.signUp(formUser)
+        .then(user => dispatch(receiveCurrentUser(user)),
+        errors => dispatch(receiveErrors(errors)));
 
-                    return (
-                        dispatch(receiveCurrentUser(user)));
-                }
-                    ,
-                    errors => {
+// export const signup = formUser => {
+//     return (
+//         dispatch =>
+//             APIUtil.signUp(formUser)
+//                 .then(user => {
 
-                        return (
-                            dispatch(receiveErrors(errors))
+//                     return (
+//                         dispatch(receiveCurrentUser(user)));
+//                 }
+//                     ,
+//                     errors => {
 
-                        );
-                    }
+//                         return (
+//                             dispatch(receiveErrors(errors))
 
-                ))
+//                         );
+//                     }
 
-        ;
-};
+//                 ))
+
+//         ;
+// };
