@@ -785,9 +785,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "head-element"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "title"
-      }, "TrackMania is changing how teams build software-one story at a time"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "TrackMania is changing how teams build software-one story at a time")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "statement"

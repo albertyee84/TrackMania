@@ -9,9 +9,7 @@ class SplashContents extends React.Component{
         return(
             <div>
                     <div className="head-element">
-                        <div>
                             <h1 className="title">TrackMania is changing how teams build software-one story at a time</h1>
-                        </div>
                     </div>
                 <div className="splash">
                     <div className="statement">

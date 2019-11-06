@@ -84,12 +84,15 @@ h2{
 .head-element{
     height: 380px;
     background-image: image-url("img6.png");
+    // z-index: -2;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .title{
     margin: auto;
+    text-shadow: 10px 10px 8px #888888;
     width: 40%;
 }
 
@@ -184,7 +187,7 @@ h2{
 }
 
 .title{
-    background-color: white;
+    // background-color: white;
 }
 
 .logo{
@@ -226,4 +229,7 @@ h2{
     display: flex;
     justify-content: center;
     padding: 10px
+}
+.getstartedbox{
+
 }
