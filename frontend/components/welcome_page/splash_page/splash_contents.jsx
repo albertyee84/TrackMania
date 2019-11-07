@@ -27,7 +27,8 @@ class SplashContents extends React.Component{
                             <br/>
                             <p className="regular-statement"><b>Keep your team on the rails.</b> Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.</p>
                         </div>
-                        <img src="/assets/img2.svg" alt=""/>
+                        <div className="imga"></div>
+                        {/* <img src="/assets/img2.svg" alt=""/> */}
                         <h1 className='splash-img1'></h1>
                     </div>
                     <div className='img1'>
