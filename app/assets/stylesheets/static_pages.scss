@@ -63,20 +63,24 @@ h2{
 .banner{
     margin-left: 10px;
     position: absolute;
-    width: 695px;
-    height: 380px;
+    width: 987px;   
+    height: 421px;
     overflow: hidden;
+    z-index: -1;
+      clip: rect(0px,3000px,437px,350px);
+
+}
+
+.modalbg{
+    height: 500px;
+    width: 1000px;
 }
 
 .head-element{
-    height: 380px;
-    // background-image: image-url("img6.png");
-    // z-index: -2;
+    height: 422px;
     display: flex;
     align-items: flex-end;
     flex-direction: column-reverse;
-    background-color: #e9e9eb;
-    background-image: linear-gradient(to right, #bbb0, #e8e8ea);
 }
 
 .title{
@@ -84,7 +88,6 @@ h2{
     text-shadow: 10px 10px 8px #888888;
     width: 40%;
     margin-left: 70px;
-
 }
 
 .Project-Name{

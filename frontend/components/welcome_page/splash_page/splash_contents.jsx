@@ -11,7 +11,7 @@ class SplashContents extends React.Component{
             <div>
                     <div className="head-element">
                         <h1 className="title">TrackMania is changing how teams build software-one story at a time</h1>
-                        <img className="banner" src="/assets/banner6.png" alt="" />
+                        <img className="banner" src="/assets/login2.jpg" alt="" />
                     </div>
                 <div className="splash">
                     <div className="statement">

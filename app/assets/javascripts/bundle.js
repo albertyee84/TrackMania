@@ -381,7 +381,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modalcontents"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/login.png",
+        src: "/assets/banner6.png",
+        className: "modalbg",
         alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formspacing"
@@ -972,7 +973,7 @@ function (_React$Component) {
         className: "title"
       }, "TrackMania is changing how teams build software-one story at a time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "banner",
-        src: "/assets/banner6.png",
+        src: "/assets/login2.jpg",
         alt: ""
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash"

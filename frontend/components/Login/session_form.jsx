@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
 
         return (
             <div className="modalcontents">
-                <img src="/assets/login.png" alt="" />
+                <img src="/assets/banner6.png" className="modalbg" alt="" />
                 <div className="formspacing">
                     <div onClick={this.props.closeModal} className="close-x"></div>
                     <Link to='/' className="logo">TrackMania</Link>

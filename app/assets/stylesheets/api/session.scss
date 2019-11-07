@@ -37,7 +37,7 @@ form > h2{
     flex-direction: column;
     align-items: center;
     height: auto;
-    background-color: white;
+    // background-color: white;
     height: 101%;
     width: 53%;
     position: fixed;
@@ -65,5 +65,4 @@ form > h2{
 .modalcontents{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
