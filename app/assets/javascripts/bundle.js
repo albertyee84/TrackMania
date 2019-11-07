@@ -987,8 +987,11 @@ function (_React$Component) {
         className: "img-statements"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "regular-statement"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "imga"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/img2.svg",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "splash-img1"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

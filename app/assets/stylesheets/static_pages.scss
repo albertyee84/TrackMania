@@ -33,7 +33,7 @@ h2{
 
 .splash{
     margin: auto;
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-direction: column;;
 }
@@ -60,16 +60,7 @@ h2{
     width: 70%;
     margin: auto;
 }
-.banner{
-    margin-left: 10px;
-    position: absolute;
-    width: 987px;   
-    height: 421px;
-    overflow: hidden;
-    z-index: -1;
-      clip: rect(0px,3000px,437px,350px);
 
-}
 
 .modalbg{
     height: 500px;
@@ -240,11 +231,13 @@ h2{
   display: inline-block;
   font-size: 200px;
 }
+.banner{
+    margin-left: 10px;
+    position: absolute;
+    width: 987px;   
+    height: 421px;
+    overflow: hidden;
+    z-index: -1;
+      clip: rect(0px,3000px,437px,350px);
 
-.imga {
-    // background-image: url(/assets/img1-ca29217….png);
-    background-image: image-url('img2.svg');
-    background-repeat: no-repeat;
-    width: 200%;
-    height: 500px;
 }
