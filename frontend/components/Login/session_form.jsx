@@ -52,17 +52,14 @@ class SessionForm extends React.Component {
         const display = (this.props.formType === 'Sign In') ? (
             <div className="Signupbox">
                 <a href="*" className="btn" id="guest-btn" onClick={this.handleGuest}>Guest Sign In</a>
-                <label>Don't have an account?  
-                    {this.props.otherForm}
-                </label>
+                <label className="cond">Don't have an account?  </label>
+                {this.props.otherForm}
             </div>
         ) :
             (
                 <div className="Signupbox">
-                    <label>Have an account?
-                            {this.props.otherForm}
-                    </label>
-                    
+                    <label className="cond">Have an account?</label>
+                    {this.props.otherForm}
                 </div>
             );
         const errors = !this.props.errors || Object.values(this.props.errors) === 0 ? (
@@ -77,26 +74,21 @@ class SessionForm extends React.Component {
 
         return (
             <div className="modalcontents">
-                <img src="/assets/banner6.png" className="modalbg" alt="" />
+                <div className="modalbg"></div>
                 <div className="formspacing">
                     <div onClick={this.props.closeModal} className="close-x"></div>
-                    <Link to='/' className="logo">TrackMania</Link>
-                    <div className="SignIn-SignUp">
-                        <form onSubmit={this.handleSubmit}>
-                                <div className="formtype">
-                                    <h2 className="Form-Title">{this.props.formType}</h2>
-                                </div>
-                            <label>
+                        <form onSubmit={this.handleSubmit} className="formsss">
+                            <h2 className="Form-Title">{this.props.formType} to continue to TrackMania</h2>
+                            <br/>
+                            <label>Enter Username
                                 <input
                                     className="user-pw"
                                     type="text"
-                                    placeholder="Enter Username"
                                     value={this.state.username}
                                     onChange={this.handleInput('username')}
                                 />
                             </label>
-                            <br/>
-                            <label> 
+                            <label>Enter Password
                                 <input
                                     className="user-pw"
                                     type="password"
@@ -105,16 +97,14 @@ class SessionForm extends React.Component {
                                     onChange={this.handleInput('password')}
                                 />
                             </label>
-                            <br/>
                             <button className="btn" id="sign-btn">{this.props.formType}</button>
-                        <div>
-                            {display}
-                            {errors}
-                        </div>
+                            <div>
+                                {display}
+                                {errors}
+                            </div>
+                            <SocialMedia />
                         </form>
                     </div>
-                    <SocialMedia />
-                </div>
             </div>
         );
     }

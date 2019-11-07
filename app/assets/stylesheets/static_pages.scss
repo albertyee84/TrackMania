@@ -67,8 +67,16 @@ h2{
 
 
 .modalbg{
-    height: 500px;
-    width: 1000px;
+    background-image: url('splash.png');
+    background-position: center;
+    height: 650px;
+    width: 1122px;
+    background-color: white;
+}
+.modalbg1{
+    height: 650px;
+    width: 1122px;
+    background-color: #f3f4f4;
 }
 
 .head-element{
@@ -81,8 +89,9 @@ h2{
 
 .title{
     margin: auto;
-    width: 40%;
-    margin-left: 225px;
+    width: 42%;
+    margin-top: 174px;
+    margin-left: 432px;
 }
 
 .Project-Name{
@@ -116,12 +125,13 @@ h2{
 
 .img-bot{
     background-image: image-url("img1.png");
+    background-repeat: no-repeat;
     height: 375px;
 }
 
 .btn{
     text-decoration: none;
-    background-color: rgb(117, 165, 238);
+    background-color: #5384AE;
     border: none;
     color: white;
     padding: 6px;
@@ -131,11 +141,11 @@ h2{
     font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 .btn:hover{
     text-decoration: none;
-    background-color: rgb(70, 136, 236);
+    background-color: rgb(70, 123, 168);
     border: none;
     color: white;
     padding: 6px;
@@ -145,7 +155,35 @@ h2{
     font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 2px;
+}
+.btn1{
+    text-decoration: none;
+    background-color: #f39e40;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.btn1:hover{
+    text-decoration: none;
+    background-color: #c27e31;
+    border: none;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: px;
 }
 
 .Get-Started{
@@ -180,26 +218,27 @@ h2{
 
 
 .logo{
-    font-size: 45px;
+    font-size: 26px;
     background-size: cover;
     color: inherit;
     text-decoration: none;
     padding-bottom: 16px;
-    padding-top: 16px;
+    padding-top: 4px;
 }
 
 #sign-btn{
-    width: 210px;
+    width: 100%;
     margin: 0;
     // margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 20px
+    margin-bottom: 15px;
+    border-radius: 2px
 }
 
 .user-pw{
     width: 98%;
-    border-radius: 70px;
-    margin-bottom: 10px;
+    border-radius: 2px;
+    margin-bottom: 25px;
+    height: 35px;
 }
 
 .Signupbox{
@@ -210,9 +249,10 @@ h2{
 
 
 #guest-btn{
-    width: 95%;
-    border-radius: 20px;
+    width: 96%;
+    border-radius: 2px;
     margin: 4px 0px;
+    margin-bottom: 15px;
 }
 
 .close-x{
@@ -224,7 +264,7 @@ h2{
 }
 
  .projectname-beg{
-     color: red;
+     color: #f39e40;
  }
  .projectname-end{
      color: blue;
@@ -239,13 +279,9 @@ h2{
   font-size: 200px;
 }
 .banner{
-    margin-left: 10px;
     position: absolute;
-    width: 1440px;   
-    height: 629px;
+    width: 100%;
+    height: 422px;
     overflow: hidden;
     z-index: -1;
-    clip: rect(0px,3000px,437px,420px);
-    margin-top: 207px;
-
 }

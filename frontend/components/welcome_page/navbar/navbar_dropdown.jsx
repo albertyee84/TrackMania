@@ -4,12 +4,12 @@ export default() => {
 return(
     <div className="Navbar-dropdown">
         <div className="dropdown">Product <i className="down"></i>
-        <ul className="dropdown-content">
-            <p className="dropDownItem">Features</p>
-            <p className="dropDownItem">Pricing</p>
-            <p className="dropDownItem">Integration</p>
-            <p className="dropDownItem">Enterprise</p>
-        </ul>
+            <ul className="dropdown-content">
+                <p className="dropDownItem">Features</p>
+                <p className="dropDownItem">Pricing</p>
+                <p className="dropDownItem">Integration</p>
+                <p className="dropDownItem">Enterprise</p>
+            </ul>
         </div>
         <div className="dropdown">Community <i className="down"></i>
             <ul className="dropdown-content">

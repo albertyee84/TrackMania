@@ -5,8 +5,7 @@ export default ({ currentUser, logout, openModal }) => {
 
     const display = currentUser ? (
         <div className="User-Info">
-            <h3> Welcome {currentUser.username}
-            </h3>
+            <h3> Welcome {currentUser.username}</h3>
             <button className="btn" onClick={logout}>Log Out</button>
         </div>
     ) : "";
@@ -14,7 +13,7 @@ export default ({ currentUser, logout, openModal }) => {
     const display2 = !currentUser ? (
         <div className="SignIn-LogIn">
             <div className='SignIn'>
-                <button className="btn" onClick={() => openModal('signup')}>Signup</button>
+                <button className="btn1" onClick={() => openModal('signup')}>Signup</button>
             </div>
             <div className='LogIn'>
                 <button className="btn" onClick={() => openModal('login')}>Sign In</button>

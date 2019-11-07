@@ -13,15 +13,14 @@
 }
 
 form > h2{
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .SignIn-SignUp{
     display: flex; 
     align-items: center;
     flex-direction: column;
-    margin: auto;
-    height: 220px;
+    height: 363px;
     // animation-duration: 1s;
     // animation-name: slidein;
 
@@ -31,11 +30,13 @@ form > h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    height: 101%;
-    width: 43%;
+    height: 400px;
+    width: 400px;
     position: fixed;
-    border-radius: 11px;
+    padding: 30px;
+    border: 1px solid #DDD;
+    border-radius: 2px;
+    background-color: white;
 }
 
 .formtype{
@@ -59,8 +60,27 @@ form > h2{
 .modalcontents{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid #cef2fb;
 }
 
 .Form-Title{
     margin-bottom: 10p;
+    color: #444444;
+    margin-bottom: 25px;
+    align-self: center;
+}
+
+.formsss{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.cond{
+    margin-bottom: 20px;
+    color: #4f83af;
 }
