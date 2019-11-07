@@ -1,5 +1,5 @@
 import React from 'react';
-// import Nav
+import Navbardrowndown from './navbar_dropdown';
 
 export default ({ currentUser, logout, openModal }) => {
 
@@ -26,6 +26,7 @@ export default ({ currentUser, logout, openModal }) => {
         <header className="nav-bar">
             <div className="header-name">
                 {display}
+                <Navbardrowndown />
                 {display2}
             </div>
         </header>

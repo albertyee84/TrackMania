@@ -2,12 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.nav-bar-header{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: solid black 1px;
-    padding: 10px;
-}
+
 
 .SignIn-LogIn{
     display: flex;   
@@ -37,9 +32,8 @@ form > h2{
     flex-direction: column;
     align-items: center;
     height: auto;
-    // background-color: white;
     height: 101%;
-    width: 53%;
+    width: 43%;
     position: fixed;
     border-radius: 11px;
 }
@@ -65,4 +59,8 @@ form > h2{
 .modalcontents{
     display: flex;
     flex-direction: column;
+}
+
+.Form-Title{
+    margin-bottom: 10p;
 }

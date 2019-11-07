@@ -10,7 +10,7 @@ h1, h2, b {
 }
 
 h1{
-    font-size: 35px;
+    font-size: 42px;
 }
 
 h2{
@@ -22,7 +22,11 @@ h2{
     display: flex;
     align-items: center;
     background-color: white;
-    border-bottom: 1px solid #c3d4e5
+    // border-bottom: 1px solid #c3d4e5;
+    justify-content: space-between;
+    padding: 10px;
+    width: 75%;
+    margin: auto;
 }
 
 
@@ -33,7 +37,7 @@ h2{
 
 .splash{
     margin: auto;
-    width: 70%;
+    width: 74%;
     display: flex;
     flex-direction: column;;
 }
@@ -72,13 +76,13 @@ h2{
     display: flex;
     align-items: flex-end;
     flex-direction: column-reverse;
+    border-top: 1px solid #c3d4e5;
 }
 
 .title{
     margin: auto;
-    text-shadow: 10px 10px 8px #888888;
     width: 40%;
-    margin-left: 70px;
+    margin-left: 225px;
 }
 
 .Project-Name{
@@ -176,17 +180,18 @@ h2{
 
 
 .logo{
-    font-size: 50px;
+    font-size: 45px;
     background-size: cover;
     color: inherit;
     text-decoration: none;
-    padding-bottom: 16px;;
+    padding-bottom: 16px;
+    padding-top: 16px;
 }
 
 #sign-btn{
-    width: 100%;
+    width: 210px;
     margin: 0;
-    margin-top: 10px;
+    // margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 20px
 }
@@ -194,6 +199,7 @@ h2{
 .user-pw{
     width: 98%;
     border-radius: 70px;
+    margin-bottom: 10px;
 }
 
 .Signupbox{
@@ -206,6 +212,7 @@ h2{
 #guest-btn{
     width: 95%;
     border-radius: 20px;
+    margin: 4px 0px;
 }
 
 .close-x{
@@ -234,10 +241,11 @@ h2{
 .banner{
     margin-left: 10px;
     position: absolute;
-    width: 987px;   
-    height: 421px;
+    width: 1440px;   
+    height: 629px;
     overflow: hidden;
     z-index: -1;
-      clip: rect(0px,3000px,437px,350px);
+    clip: rect(0px,3000px,437px,420px);
+    margin-top: 207px;
 
 }

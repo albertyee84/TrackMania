@@ -398,7 +398,9 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formtype"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "Form-Title"
+      }, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "user-pw",
         type: "text",
         placeholder: "Enter Username",
@@ -651,7 +653,9 @@ function (_React$Component) {
   _createClass(Dashboard, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is your dashboard"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is your dashboard"));
     }
   }]);
 
@@ -735,7 +739,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
- // import Nav
+/* harmony import */ var _navbar_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar_dropdown */ "./frontend/components/welcome_page/navbar/navbar_dropdown.jsx");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
@@ -768,7 +773,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "nav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header-name"
-  }, display, display2));
+  }, display, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_dropdown__WEBPACK_IMPORTED_MODULE_1__["default"], null), display2));
 });
 
 /***/ }),
@@ -812,6 +817,54 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_navbar__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/welcome_page/navbar/navbar_dropdown.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/welcome_page/navbar/navbar_dropdown.jsx ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Navbar-dropdown"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown"
+  }, "Product ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "down"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Integration"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Enterprise"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dropdown"
+  }, "Community ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "down"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "BuildTV"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Customer Stories"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dropDownItem"
+  }, "Consultancy Directory"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Blog"));
+});
 
 /***/ }),
 

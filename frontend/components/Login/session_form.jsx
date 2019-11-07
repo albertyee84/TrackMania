@@ -84,7 +84,7 @@ class SessionForm extends React.Component {
                     <div className="SignIn-SignUp">
                         <form onSubmit={this.handleSubmit}>
                                 <div className="formtype">
-                                    <h2>{this.props.formType}</h2>
+                                    <h2 className="Form-Title">{this.props.formType}</h2>
                                 </div>
                             <label>
                                 <input
