@@ -242,7 +242,9 @@ h2{
 }
 
 .imga {
-    background-image: url('img2.svg');
+    // background-image: url(/assets/img1-ca29217….png);
+    background-image: image-url('img2.svg');
     background-repeat: no-repeat;
-    width: 500px
+    width: 200%;
+    height: 500px;
 }

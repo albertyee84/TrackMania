@@ -29,7 +29,6 @@ class SplashContents extends React.Component{
                         </div>
                         <div className="imga"></div>
                         {/* <img src="/assets/img2.svg" alt=""/> */}
-                        <h1 className='splash-img1'></h1>
                     </div>
                     <div className='img1'>
                         <img src="/assets/img4.svg" alt="" />
