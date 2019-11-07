@@ -13,6 +13,11 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuest = this.handleGuest.bind(this);
     }
+
+    componentDidMount(){
+
+        this.props.clearErrors();
+    }
     
     handleInput(type) {
         return (e) => {
@@ -71,44 +76,45 @@ class SessionForm extends React.Component {
             </div>;
 
         return (
-            <div className="formspacing">
-                <div onClick={this.props.closeModal} className="close-x">X</div>
-                <Link to='/' className="logo">TrackMania</Link>
-                <div className="SignIn-SignUp">
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="formspacing">
+            <div className="modalcontents">
+                <img src="/assets/login.png" alt="" />
+                <div className="formspacing">
+                    <div onClick={this.props.closeModal} className="close-x"></div>
+                    <Link to='/' className="logo">TrackMania</Link>
+                    <div className="SignIn-SignUp">
+                        <form onSubmit={this.handleSubmit}>
+                                <div className="formtype">
+                                    <h2>{this.props.formType}</h2>
+                                </div>
+                            <label>
+                                <input
+                                    className="user-pw"
+                                    type="text"
+                                    placeholder="Enter Username"
+                                    value={this.state.username}
+                                    onChange={this.handleInput('username')}
+                                />
+                            </label>
+                            <br/>
+                            <label> 
+                                <input
+                                    className="user-pw"
+                                    type="password"
+                                    placeholder="Enter Password"
+                                    value={this.state.password}
+                                    onChange={this.handleInput('password')}
+                                />
+                            </label>
+                            <br/>
+                            <button className="btn" id="sign-btn">{this.props.formType}</button>
+                        <div>
+                            {display}
+                            {errors}
                         </div>
-                            <div className="formtype">
-                                <h2>{this.props.formType}</h2>
-                            </div>
-                        <label>
-                            <input
-                                className="user-pw"
-                                type="text"
-                                placeholder="Enter Username"
-                                value={this.state.username}
-                                onChange={this.handleInput('username')}
-                            />
-                        </label>
-                        <br/>
-                        <label> 
-                            <input
-                                className="user-pw"
-                                type="password"
-                                placeholder="Enter Password"
-                                value={this.state.password}
-                                onChange={this.handleInput('password')}
-                            />
-                        </label>
-                        <br/>
-                        <button className="btn" id="sign-btn">{this.props.formType}</button>
-                    <div>
-                        {display}
-                        {errors}
+                        </form>
                     </div>
-                    </form>
+                    <SocialMedia />
                 </div>
-                <SocialMedia />
             </div>
         );
     }

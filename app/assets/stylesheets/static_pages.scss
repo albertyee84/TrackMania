@@ -18,34 +18,14 @@ h2{
 }
 
 .nav-bar-header{
+    height: 45px;
     display: flex;
     align-items: center;
-    background-color: rgb(144, 205, 255);
+    background-color: white;
+    border-bottom: 1px solid #c3d4e5
 }
 
 
-
-.splash-img1{
-    background-image: image-url("img2.svg");
-    height: 388px;
-    width: 70%;
-    float: left;
-
-}
-
-.splash-img2{
-    background-image: image-url("img3.svg");
-    height: 388px;
-    width: 60%;
-    float: left;
-}
-
-.splash-img3{
-    background-image: image-url("img4.svg");
-    height: 388px;
-    width: 60%;
-    float: left;
-}
 
 .img1{
     display: flex;
@@ -80,20 +60,31 @@ h2{
     width: 70%;
     margin: auto;
 }
+.banner{
+    margin-left: 10px;
+    position: absolute;
+    width: 695px;
+    height: 380px;
+    overflow: hidden;
+}
 
 .head-element{
     height: 380px;
-    background-image: image-url("img6.png");
+    // background-image: image-url("img6.png");
     // z-index: -2;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    background-color: #e9e9eb;
+    background-image: linear-gradient(to right, #bbb0, #e8e8ea);
 }
 
 .title{
     margin: auto;
     text-shadow: 10px 10px 8px #888888;
     width: 40%;
+    margin-left: 70px;
+
 }
 
 .Project-Name{
@@ -139,10 +130,10 @@ h2{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 .btn:hover{
     text-decoration: none;
@@ -153,10 +144,10 @@ h2{
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 
 .Get-Started{
@@ -189,9 +180,6 @@ h2{
     border-radius: 2px;
 }
 
-.title{
-    // background-color: white;
-}
 
 .logo{
     font-size: 50px;
@@ -222,7 +210,8 @@ h2{
 
 
 #guest-btn{
-    width: 95%
+    width: 95%;
+    border-radius: 20px;
 }
 
 .close-x{
@@ -239,3 +228,12 @@ h2{
  .projectname-end{
      color: blue;
  }
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 200px;
+}

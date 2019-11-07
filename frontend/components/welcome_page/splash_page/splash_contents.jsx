@@ -10,7 +10,8 @@ class SplashContents extends React.Component{
         return(
             <div>
                     <div className="head-element">
-                            <h1 className="title">TrackMania is changing how teams build software-one story at a time</h1>
+                        <h1 className="title">TrackMania is changing how teams build software-one story at a time</h1>
+                        <img className="banner" src="/assets/banner6.png" alt="" />
                     </div>
                 <div className="splash">
                     <div className="statement">
@@ -26,10 +27,11 @@ class SplashContents extends React.Component{
                             <br/>
                             <p className="regular-statement"><b>Keep your team on the rails.</b> Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.</p>
                         </div>
+                        <img src="/assets/img2.svg" alt=""/>
                         <h1 className='splash-img1'></h1>
                     </div>
                     <div className='img1'>
-                        <h1 className='splash-img2'></h1>
+                        <img src="/assets/img4.svg" alt="" />
                         <div className="img-statements">
                             <h2>Tools to help you adapt and evolve</h2>
                             <br/>
@@ -43,7 +45,7 @@ class SplashContents extends React.Component{
                             <br/>
                             <p className="regular-statement"><b>No more surprises.</b> With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.</p>
                         </div>
-                        <h1 className='splash-img3'></h1>
+                        <img src="/assets/img3.svg" alt="" />
                     </div>
                     <div className="img2">
                         <div className="splash-text">

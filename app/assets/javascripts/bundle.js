@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, receiveCurrentUser, login, logout, signup */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS, receiveCurrentUser, clearErrors, login, logout, signup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -127,7 +127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
@@ -136,6 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -156,6 +159,11 @@ var receiveErrors = function receiveErrors(errors) {
   };
 };
 
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
 var login = function login(formUser) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](formUser).then(function (user) {
@@ -223,6 +231,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors.session.errors,
@@ -244,6 +253,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     }, "Signup"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -311,6 +323,11 @@ function (_React$Component) {
   }
 
   _createClass(SessionForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearErrors();
+    }
+  }, {
     key: "handleInput",
     value: function handleInput(type) {
       var _this2 = this;
@@ -362,11 +379,16 @@ function (_React$Component) {
         }, error);
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modalcontents"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/login.png",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formspacing"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-x"
-      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/",
         className: "logo"
       }, "TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -374,8 +396,6 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "formspacing"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formtype"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "user-pw",
@@ -392,7 +412,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn",
         id: "sign-btn"
-      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -424,6 +444,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     errors: state.errors.session.errors,
@@ -445,6 +466,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     }, "Login"),
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["clearErrors"])());
     }
   };
 };
@@ -469,12 +493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_protected_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/protected_util */ "./frontend/util/protected_util.jsx");
 /* harmony import */ var _welcome_page_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./welcome_page/navbar/navbar_container */ "./frontend/components/welcome_page/navbar/navbar_container.jsx");
 /* harmony import */ var _welcome_page_splash_page_splash_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./welcome_page/splash_page/splash_container */ "./frontend/components/welcome_page/splash_page/splash_container.jsx");
-/* harmony import */ var _Login_login_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Login/login_form_container */ "./frontend/components/Login/login_form_container.jsx");
-/* harmony import */ var _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Login/sign_up_form_container */ "./frontend/components/Login/sign_up_form_container.jsx");
-/* harmony import */ var _projects_projects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./projects/projects */ "./frontend/components/projects/projects.jsx");
-/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
-
-
+/* harmony import */ var _projects_projects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./projects/projects */ "./frontend/components/projects/projects.jsx");
+/* harmony import */ var _modal_modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modal/modal */ "./frontend/components/modal/modal.jsx");
 
 
 
@@ -486,7 +506,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_7__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "nav-bar-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
@@ -504,7 +524,7 @@ var App = function App() {
     component: _welcome_page_splash_page_splash_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_protected_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/projects",
-    component: _projects_projects__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _projects_projects__WEBPACK_IMPORTED_MODULE_6__["default"]
   })));
 };
 
@@ -688,12 +708,15 @@ __webpack_require__.r(__webpack_exports__);
     className: "socialmedia"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "https://www.linkedin.com/in/albert-yee",
+    target: "_blank",
     className: "fa fa-linkedin"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://www.facebook.com/albert-yee",
-    className: "fa fa-facebook"
+    href: "https://github.com/albertyee84",
+    target: "_blank",
+    className: "fa fa-github"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "mailto:albertyee84@gmail.com",
+    target: "_blank",
     className: "fa fa-google"
   }));
 });
@@ -711,8 +734,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
+ // import Nav
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
@@ -948,7 +970,11 @@ function (_React$Component) {
         className: "head-element"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "title"
-      }, "TrackMania is changing how teams build software-one story at a time")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "TrackMania is changing how teams build software-one story at a time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "banner",
+        src: "/assets/banner6.png",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "statement"
@@ -960,12 +986,16 @@ function (_React$Component) {
         className: "img-statements"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "regular-statement"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/img2.svg",
+        alt: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "splash-img1"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "splash-img2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/img4.svg",
+        alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-statements"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tools to help you adapt and evolve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -976,8 +1006,9 @@ function (_React$Component) {
         className: "img-statements"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "regular-statement"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "No more surprises."), " With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "splash-img3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "No more surprises."), " With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/img3.svg",
+        alt: ""
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1125,6 +1156,11 @@ __webpack_require__.r(__webpack_exports__);
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      var priorState = Object.assign({}, state);
+      delete priorState.errors;
+      return {};
 
     default:
       return state;

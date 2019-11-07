@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import Nav
 
 export default ({ currentUser, logout, openModal }) => {
 
@@ -14,13 +14,9 @@ export default ({ currentUser, logout, openModal }) => {
     const display2 = !currentUser ? (
         <div className="SignIn-LogIn">
             <div className='SignIn'>
-                {/* <Link className="btn" to='/signup'>Sign Up</Link>
-             */}
                 <button className="btn" onClick={() => openModal('signup')}>Signup</button>
             </div>
             <div className='LogIn'>
-                {/* <Link className="btn" to='/login'>Sign In</Link>
-             */}
                 <button className="btn" onClick={() => openModal('login')}>Sign In</button>
             </div>
         </div>
