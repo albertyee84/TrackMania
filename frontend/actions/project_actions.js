@@ -22,4 +22,4 @@ export const requestAllUsersProjects = userId => dispatch =>
 
 export const createAProject = (project) => dispatch => 
     APIUtilProjects.createProject(project)
-    .then(payload => dispatch(payload));
+        .then(payload => dispatch(receiveProject(payload)));

@@ -156,7 +156,7 @@ var requestAllUsersProjects = function requestAllUsersProjects(userId) {
 var createAProject = function createAProject(project) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["createProject"](project).then(function (payload) {
-      return dispatch(payload);
+      return dispatch(receiveProject(payload));
     });
   };
 };
@@ -652,6 +652,96 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/projects/project_form.jsx":
+/*!*******************************************************!*\
+  !*** ./frontend/components/projects/project_form.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ProjectFormCreation =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectFormCreation, _React$Component);
+
+  function ProjectFormCreation(props) {
+    var _this;
+
+    _classCallCheck(this, ProjectFormCreation);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectFormCreation).call(this, props));
+    _this.state = {
+      project_name: "",
+      user_id: props.userId
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ProjectFormCreation, [{
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState({
+        project_name: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      debugger;
+      this.props.createAProject(this.state);
+      this.setState({
+        project_name: ""
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Create Project"
+      })));
+    }
+  }]);
+
+  return ProjectFormCreation;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ProjectFormCreation);
+
+/***/ }),
+
 /***/ "./frontend/components/projects/project_list_Item.jsx":
 /*!************************************************************!*\
   !*** ./frontend/components/projects/project_list_Item.jsx ***!
@@ -697,8 +787,9 @@ function (_React$Component) {
   _createClass(ProjectListItem, [{
     key: "render",
     value: function render() {
-      debugger;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.projectName);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: this.props.key
+      }, this.props.projectName);
     }
   }]);
 
@@ -721,6 +812,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
+/* harmony import */ var _project_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_form */ "./frontend/components/projects/project_form.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -738,6 +830,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -765,16 +858,21 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "This is your dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
-          projectName: project.project_name
+          projectName: project.project_name,
+          userId: _this2.props.userId
         });
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        userId: this.props.userId,
+        createAProject: this.props.createAProject
+      }));
     }
   }]);
 
