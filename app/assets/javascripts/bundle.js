@@ -452,7 +452,6 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "user-pw",
         type: "password",
-        placeholder: "Enter Password",
         value: this.state.password,
         onChange: this.handleInput('password')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -724,7 +723,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "createformbox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -733,7 +734,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Create Project"
-      })));
+      }))));
     }
   }]);
 
@@ -1048,13 +1049,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/dropdownclick_util */ "./frontend/util/dropdownclick_util.js");
+/* harmony import */ var _projects_project_list_Item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../projects/project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
-      logout = _ref.logout;
+      logout = _ref.logout,
+      openModal = _ref.openModal,
+      projects = _ref.projects,
+      userId = _ref.userId;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
@@ -1069,13 +1075,21 @@ __webpack_require__.r(__webpack_exports__);
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-content-logged-in",
     id: "clickDropDown"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dd-list-item"
-  }, "list one"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dd-list-item"
-  }, "list two"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dd-list-item"
-  }, "list three"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "colorchange"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "Create-Project-btn",
+    onClick: function onClick() {
+      return openModal('createproject');
+    }
+  }, "Create Project"), Object.values(projects).map(function (project) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      project: project,
+      key: project.id,
+      projectName: project.project_name,
+      userId: userId
+    });
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "dropdown",
     onClick: function onClick() {
       return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown2");
@@ -1110,6 +1124,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _loggedinNavbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loggedinNavbar */ "./frontend/components/welcome_page/navbar/loggedinNavbar.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../actions/project_actions */ "./frontend/actions/project_actions.js");
+
 
 
 
@@ -1118,7 +1134,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    projects: state.entities.projects,
+    userId: state.session.id
   };
 };
 

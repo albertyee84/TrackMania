@@ -92,7 +92,6 @@ class SessionForm extends React.Component {
                                 <input
                                     className="user-pw"
                                     type="password"
-                                    placeholder="Enter Password"
                                     value={this.state.password}
                                     onChange={this.handleInput('password')}
                                 />

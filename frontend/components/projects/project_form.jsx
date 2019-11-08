@@ -27,12 +27,14 @@ class ProjectForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Project Name
-                    <input type="text" onChange={this.handleChange}value={this.state.project_name}/>
-                    <input type="submit" value="Create Project"/>
-                </label>
-            </form>
+            <div className="createformbox">
+                <form onSubmit={this.handleSubmit}>
+                    <label>Project Name
+                        <input type="text" onChange={this.handleChange}value={this.state.project_name}/>
+                        <input type="submit" value="Create Project"/>
+                    </label>
+                </form>
+            </div>
         );
     }
 }

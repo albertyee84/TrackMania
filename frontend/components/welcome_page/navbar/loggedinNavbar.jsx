@@ -2,9 +2,10 @@ import React from 'react';
 import { AuthRoute } from '../../../util/route_util';
 import { Link } from 'react-router-dom';
 import clickDropDown  from '../../../util/dropdownclick_util';
+import ProjectListItem from '../../projects/project_list_Item';
 
-export default ({ currentUser, logout }) => {
 
+export default ({ currentUser, logout, openModal, projects, userId }) => {
     return (
 
         <header className="loggedinnav-bar">
@@ -13,9 +14,18 @@ export default ({ currentUser, logout }) => {
                     TrackMania<div class="arrow-down"></div>
                 </div>
                 <ul className="dropdown-content-logged-in" id="clickDropDown">
-                    <p className="dd-list-item">list one</p>
-                    <p className="dd-list-item">list two</p>
-                    <p className="dd-list-item">list three</p>
+                    <div className="colorchange">
+                        <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
+                        {
+                            Object.values(projects).map(project => <ProjectListItem
+                                project={project}
+                                key={project.id}
+                                projectName={project.project_name}
+                                userId={userId}
+                            />)
+                        }
+
+                    </div>
                 </ul>
             </h3>
             <h3 className="dropdown" onClick={() => clickDropDown("clickDropDown2")}>
