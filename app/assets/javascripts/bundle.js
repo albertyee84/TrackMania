@@ -1344,7 +1344,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/project_util */ "./frontend/util/project_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1375,10 +1377,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.createProject = _util_project_util__WEBPACK_IMPORTED_MODULE_5__["createProject"];
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"];
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
 });
+
+/***/ }),
+
+/***/ "./frontend/util/project_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/project_util.js ***!
+  \***************************************/
+/*! exports provided: getProjects, createProject */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjects", function() { return getProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
+var getProjects = function getProjects(userId) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/users/".concat(userId, "/projects")
+  });
+};
+var createProject = function createProject(project) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/users/".concat(project.user_id, "/projects"),
+    data: {
+      project: project
+    }
+  });
+};
 
 /***/ }),
 

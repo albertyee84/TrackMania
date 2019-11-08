@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import { login, logout, signup } from './actions/session_actions';
 import Root from './components/root';
 
+import * as APIUtilProj from './util/project_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //test functions--TO DELETE!!
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-
+    window.createProject = APIUtilProj.createProject;
     window.logout = logout;
     window.login = login;
     window.signup = signup;
