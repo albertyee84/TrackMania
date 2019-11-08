@@ -8,7 +8,7 @@ import {ProtectedRoute} from '../util/protected_util';
 
 import Navbar from './welcome_page/navbar/navbar_container';
 import SplashContainer from './welcome_page/splash_page/splash_container';
-import Projects from './projects/projects';
+import ProjectsContainer from './projects/projects_container';
 import Modal from './modal/modal';
 
 
@@ -18,11 +18,11 @@ const App = () => {
             <Modal />
             <header className="nav-bar-header">
                 <Link to='/' className="Project-Name"><div className="projectname-beg">Track</div><div className="projectname-end">Mania</div></Link>
-                <Route path="/" component={Navbar} />
+                <Route exact path="/" component={Navbar} />
             </header>
             <div>
                 <AuthRoute exact path="/" component={SplashContainer} />
-                <ProtectedRoute path='/projects' component={Projects} />
+                <ProtectedRoute path='/projects' component={ProjectsContainer} />
             </div>
         </div>
     );
