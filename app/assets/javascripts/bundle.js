@@ -1052,18 +1052,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var currentUser = _ref.currentUser,
-      logout = _ref.logout,
-      openModal = _ref.openModal;
-  var display = currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "User-Info"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn",
-    onClick: logout
-  }, "Log Out")) : "";
+      logout = _ref.logout;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "loggedinlogo-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
     to: "/projects",
     className: "loggedinProject-Name"
@@ -1071,9 +1062,14 @@ __webpack_require__.r(__webpack_exports__);
     className: "projectname-beg"
   }, "Track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "projectname-end"
-  }, "Mania"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "loggedinheader-name"
-  }, display));
+  }, "Mania")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "dropdown"
+  }, currentUser.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "dropDownItem",
+    onClick: logout
+  }, "Log Out"))));
 });
 
 /***/ }),
