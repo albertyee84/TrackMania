@@ -714,9 +714,12 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
-      debugger;
-      this.props.createAProject(this.state);
+      this.props.createAProject(this.state).then(function () {
+        return _this2.props.closeModal();
+      });
       this.setState({
         project_name: ""
       });
@@ -724,7 +727,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "createformbox"
@@ -762,7 +765,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancelbutton",
         onClick: function onClick() {
-          return _this2.props.closeModal();
+          return _this3.props.closeModal();
         }
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "createformbtn",

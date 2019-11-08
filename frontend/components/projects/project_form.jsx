@@ -19,11 +19,11 @@ class ProjectForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        debugger;
-        this.props.createAProject(this.state);
-                this.setState({
-                    project_name: "",
-                });
+        this.props.createAProject(this.state)
+        .then(()=>this.props.closeModal());
+        this.setState({
+            project_name: "",
+        });
     }
 
     render() {
