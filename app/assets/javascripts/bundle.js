@@ -900,19 +900,19 @@ function (_React$Component) {
       var openModal = this.props.openModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "Create-Project-btn",
+        onClick: function onClick() {
+          return openModal('createproject');
+        }
+      }, "Create Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
           projectName: project.project_name,
           userId: _this2.props.userId
         });
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "Get-Started",
-        onClick: function onClick() {
-          return openModal('createproject');
-        }
-      }, "Get Started!"));
+      })));
     }
   }]);
 
@@ -1047,6 +1047,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/dropdownclick_util */ "./frontend/util/dropdownclick_util.js");
+
 
 
 
@@ -1055,17 +1057,36 @@ __webpack_require__.r(__webpack_exports__);
       logout = _ref.logout;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "/projects",
-    className: "loggedinProject-Name"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "dropdown",
+    onClick: function onClick() {
+      return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown");
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "projectname-beg"
-  }, "Track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "projectname-end"
-  }, "Mania")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown"
-  }, currentUser.username, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content"
+    className: "logo-logged-in"
+  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "arrow-down"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-content-logged-in",
+    id: "clickDropDown"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-list-item"
+  }, "list one"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-list-item"
+  }, "list two"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-list-item"
+  }, "list three"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "dropdown",
+    onClick: function onClick() {
+      return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown2");
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "logo-logged-in"
+  }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    "class": "arrow-down"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dropdown-content-logged-in",
+    id: "clickDropDown2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "dropDownItem",
     onClick: logout
@@ -1825,6 +1846,29 @@ document.addEventListener('DOMContentLoaded', function () {
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
 });
+
+/***/ }),
+
+/***/ "./frontend/util/dropdownclick_util.js":
+/*!*********************************************!*\
+  !*** ./frontend/util/dropdownclick_util.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function clickDropDown(id) {
+  var x = document.getElementById(id);
+
+  if (x.className.indexOf("-show") === -1) {
+    x.className += "-show";
+  } else {
+    x.className = x.className.replace("-show", "");
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (clickDropDown);
 
 /***/ }),
 

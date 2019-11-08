@@ -5,3 +5,57 @@
     bottom: 0;
     left: 0;
 }
+
+.loggedinnav-bar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #256188;
+    height: 35px;
+    color: white;
+}
+
+.loggedinProject-Name{
+    display: flex;
+}
+
+.dropdown-content-logged-in{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content-logged-in-show{
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dd-list-item{
+    color: black;
+    cursor: pointer;
+    background-color: white;
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 3px solid #f00;
+  border-color: rgba(255, 255, 255, 0.4) transparent transparent transparent;
+  margin-left: 10px;
+}
+
+.logo-logged-in{
+ display: flex;
+ align-items: center;   
+}

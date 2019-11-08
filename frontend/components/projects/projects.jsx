@@ -14,6 +14,7 @@ class Projects extends React.Component {
         const openModal = this.props.openModal;
         return (
             <div className="dashboard">
+                <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
                 <ul>
                     {
                         Object.values(this.props.projects).map(project => <ProjectListItem 
@@ -24,7 +25,6 @@ class Projects extends React.Component {
                             />)
                         }
                 </ul>
-                <button className="Get-Started" onClick={() => openModal('createproject')}>Get Started!</button>
             </div>
         );
     }
