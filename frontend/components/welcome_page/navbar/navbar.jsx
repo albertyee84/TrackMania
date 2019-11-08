@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbardrowndown from './navbar_dropdown';
+import { AuthRoute } from '../../../util/route_util';
+import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout, openModal }) => {
 
@@ -22,10 +24,14 @@ export default ({ currentUser, logout, openModal }) => {
     ) : "";
 
     return (
+        
         <header className="nav-bar">
+            <div className="logo-header">
+                <Link to='/' className="Project-Name"><div className="projectname-beg">Track</div><div className="projectname-end">Mania</div></Link>
+            </div>
             <div className="header-name">
                 {display}
-                <Navbardrowndown />
+                <AuthRoute exact path ='/' component={Navbardrowndown} />
                 {display2}
             </div>
         </header>

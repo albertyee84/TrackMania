@@ -17,17 +17,27 @@ h2{
     font-size: 28px;
 }
 
-.nav-bar-header{
-    height: 45px;
+.nav-bar{
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: white;
-    // border-bottom: 1px solid #c3d4e5;
     justify-content: space-between;
-    padding: 10px;
+    height: 45px;
     width: 75%;
     margin: auto;
 }
+
+// .nav-bar-header{
+//     height: 45px;
+//     display: flex;
+//     align-items: center;
+//     background-color: white;
+//     // border-bottom: 1px solid #c3d4e5;
+//     justify-content: space-between;
+//     padding: 10px;
+//     width: 75%;
+//     margin: auto;
+// }
 
 
 

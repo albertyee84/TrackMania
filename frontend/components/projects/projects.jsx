@@ -1,8 +1,7 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
-import ProjectFormCreation from './project_form';
 
-class ProjectForm extends React.Component {
+class Projects extends React.Component {
     constructor(props){
         super(props);
         this.state = {};
@@ -12,9 +11,9 @@ class ProjectForm extends React.Component {
     }
 
     render() {
+        const openModal = this.props.openModal;
         return (
             <div className="dashboard">
-                <p>This is your dashboard</p>
                 <ul>
                     {
                         Object.values(this.props.projects).map(project => <ProjectListItem 
@@ -25,12 +24,10 @@ class ProjectForm extends React.Component {
                             />)
                         }
                 </ul>
-                <ProjectFormCreation 
-                    userId={this.props.userId}
-                    createAProject={this.props.createAProject}/>
+                <button className="Get-Started" onClick={() => openModal('createproject')}>Get Started!</button>
             </div>
         );
     }
 }
 
-export default ProjectForm;
+export default Projects;

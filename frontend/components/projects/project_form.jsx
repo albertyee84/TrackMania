@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ProjectFormCreation extends React.Component {
+class ProjectForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -29,7 +29,7 @@ class ProjectFormCreation extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>Project Name
-                    <input type="text" onChange={this.handleChange}/>
+                    <input type="text" onChange={this.handleChange}value={this.state.project_name}/>
                     <input type="submit" value="Create Project"/>
                 </label>
             </form>
@@ -37,4 +37,4 @@ class ProjectFormCreation extends React.Component {
     }
 }
 
-export default ProjectFormCreation;
+export default ProjectForm;
