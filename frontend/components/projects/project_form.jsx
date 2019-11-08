@@ -3,6 +3,7 @@ import React from 'react';
 class ProjectForm extends React.Component {
     constructor(props){
         super(props);
+        debugger;
         this.state = {
             project_name: "",
             user_id: props.userId
@@ -28,11 +29,35 @@ class ProjectForm extends React.Component {
     render() {
         return (
             <div className="createformbox">
-                <form onSubmit={this.handleSubmit}>
-                    <label>Project Name
-                        <input type="text" onChange={this.handleChange}value={this.state.project_name}/>
-                        <input type="submit" value="Create Project"/>
-                    </label>
+                <div className='newprojectformheader'>
+                    Create a new project
+                </div>
+                <form className="newprojectform" onSubmit={this.handleSubmit}>
+                    <div className="newprojectformbody">
+                        <div className="projectnameinput">
+                            <label className="projectnamelabel">Project Name</label>
+                            <input 
+                                className="newprojectforminput" type="text" 
+                                onChange={this.handleChange}
+                                value={this.state.project_name}
+                                placeholder="Enter a neame for your project"
+                            />
+                        </div>
+                        <div className="accountchooser">
+                            <label className="projectnamelabel">Account</label>
+                            <input 
+                                className="newprojectforminput" 
+                                list="users" 
+                                onChange={this.handleChange}
+                                value={this.state.project_name}
+                                placeholder="Select an account"
+                            />
+                        </div>
+                    </div>
+                    <div className="newprojectformfooter">
+                        <button className="cancelbutton" onClick={()=> this.props.closeModal()}>Cancel</button>
+                        <input className="createformbtn" type="submit" value="Create"/>
+                    </div>
                 </form>
             </div>
         );

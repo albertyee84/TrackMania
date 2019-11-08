@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => {
     return ({
         projects: state.entities.projects,
         userId: state.session.id,
-        
 });
 };
 

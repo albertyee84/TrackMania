@@ -694,6 +694,7 @@ function (_React$Component) {
     _classCallCheck(this, ProjectForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
+    debugger;
     _this.state = {
       project_name: "",
       user_id: props.userId
@@ -723,17 +724,48 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "createformbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newprojectformheader"
+      }, "Create a new project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "newprojectform",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Project Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newprojectformbody"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "projectnameinput"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "projectnamelabel"
+      }, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "newprojectforminput",
         type: "text",
         onChange: this.handleChange,
-        value: this.state.project_name
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.state.project_name,
+        placeholder: "Enter a neame for your project"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "accountchooser"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "projectnamelabel"
+      }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "newprojectforminput",
+        list: "users",
+        onChange: this.handleChange,
+        value: this.state.project_name,
+        placeholder: "Select an account"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newprojectformfooter"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "cancelbutton",
+        onClick: function onClick() {
+          return _this2.props.closeModal();
+        }
+      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "createformbtn",
         type: "submit",
-        value: "Create Project"
+        value: "Create"
       }))));
     }
   }]);
@@ -759,6 +791,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _project_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_form */ "./frontend/components/projects/project_form.jsx");
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -766,7 +800,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    userId: state.session.id
+    userId: state.session.id,
+    currentUser: state.entities.users[state.session.id].username
   };
 };
 
@@ -774,6 +809,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     createAProject: function createAProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["createAProject"])(project));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
     }
   };
 };
