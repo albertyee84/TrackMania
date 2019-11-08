@@ -1,14 +1,15 @@
 class Api::ProjectsController < ApplicationController
 
     def index
-        debugger
+
         @projects = Project.where(user_id: params[:user_id])
         
     end
 
     def create
-        @project = Project.new(project.project_params)
-        @project.user_id = current_user.id
+        debugger
+        @project = Project.new(project_params)
+        # @project.user_id = current_user.id
         if @project.save
             render :show
         else
@@ -17,6 +18,6 @@ class Api::ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:project_name)
+        params.require(:project).permit(:project_name, :user_id)
     end
 end
