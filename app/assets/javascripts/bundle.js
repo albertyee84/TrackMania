@@ -752,10 +752,12 @@ function (_React$Component) {
       }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "newprojectforminput",
         list: "users",
-        onChange: this.handleChange,
-        value: this.state.project_name,
         placeholder: "Select an account"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("datalist", {
+        id: "users"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: this.props.currentUser
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newprojectformfooter"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancelbutton",
@@ -1508,7 +1510,7 @@ function (_React$Component) {
         className: "title"
       }, "TrackMania is changing how teams build software one story at a time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "banner",
-        src: "/assets/splash.png",
+        src: "/splash.png",
         alt: ""
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash"

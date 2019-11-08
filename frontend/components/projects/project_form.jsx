@@ -48,10 +48,11 @@ class ProjectForm extends React.Component {
                             <input 
                                 className="newprojectforminput" 
                                 list="users" 
-                                onChange={this.handleChange}
-                                value={this.state.project_name}
                                 placeholder="Select an account"
                             />
+                            <datalist id="users">
+                                <option value={this.props.currentUser} />
+                            </datalist>
                         </div>
                     </div>
                     <div className="newprojectformfooter">
