@@ -1525,14 +1525,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Better organization to get focused"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "regular-statement"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Keep your team on the rails."), " Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/img2.svg",
+        src: "/img2.svg",
         alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "splash-img1"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/img4.svg",
+        src: "/img4.svg",
         alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img-statements"
@@ -1545,7 +1545,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Team transparency at a glance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "regular-statement"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "No more surprises."), " With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/img3.svg",
+        src: "/img3.svg",
         alt: ""
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "img2"
@@ -1558,8 +1558,10 @@ function (_React$Component) {
         onClick: function onClick() {
           return openModal('signup');
         }
-      }, "Get Started!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "img-bot"
+      }, "Get Started!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "img-bot",
+        src: "/img1.png",
+        alt: ""
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);

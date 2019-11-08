@@ -27,11 +27,11 @@ class SplashContents extends React.Component{
                             <br/>
                             <p className="regular-statement"><b>Keep your team on the rails.</b> Tracker's shared backlog makes priorities clear so the team can stay organized. Easily visualize scope, focus your teamwork, and stay nimble when circumstances change.</p>
                         </div>
-                        <img src="/assets/img2.svg" alt=""/>
+                        <img src="/img2.svg" alt=""/>
                         <h1 className='splash-img1'></h1>
                     </div>
                     <div className='img1'>
-                        <img src="/assets/img4.svg" alt="" />
+                        <img src="/img4.svg" alt="" />
                         <div className="img-statements">
                             <h2>Tools to help you adapt and evolve</h2>
                             <br/>
@@ -45,7 +45,7 @@ class SplashContents extends React.Component{
                             <br/>
                             <p className="regular-statement"><b>No more surprises.</b> With a shared, clear view of your team's work, everyone has a real-time, single source of truth. A quick scan explains your team's status, who's responsible for what, and what's coming next.</p>
                         </div>
-                        <img src="/assets/img3.svg" alt="" />
+                        <img src="/img3.svg" alt="" />
                     </div>
                     <div className="img2">
                         <div className="splash-text">
@@ -65,8 +65,7 @@ class SplashContents extends React.Component{
                             <br/>
                         </div>               
                     </div>
- 
-                    <div className="img-bot"></div>
+                    <img className="img-bot" src="/img1.png" alt="" />
                     <SocialMedia />
                 </div>
             </div>
