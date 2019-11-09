@@ -805,7 +805,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  debugger;
   return {
     userId: state.session.id,
     currentUser: state.entities.users[state.session.id].username
@@ -1124,7 +1123,6 @@ __webpack_require__.r(__webpack_exports__);
       openModal = _ref.openModal,
       projects = _ref.projects,
       userId = _ref.userId;
-  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {

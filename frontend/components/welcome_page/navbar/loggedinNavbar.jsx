@@ -6,7 +6,6 @@ import ProjectListItem from '../../projects/project_list_Item';
 
 
 export default ({ currentUser, logout, openModal, projects, userId }) => {
-    debugger;
     return (
 
         <header className="loggedinnav-bar">

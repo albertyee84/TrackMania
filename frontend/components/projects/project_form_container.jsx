@@ -5,7 +5,6 @@ import { requestAllUsersProjects, createAProject } from '../../actions/project_a
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-    debugger;
     return ({
         userId: state.session.id,
         currentUser: state.entities.users[state.session.id].username,

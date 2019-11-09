@@ -14,6 +14,11 @@ class Api::ProjectsController < ApplicationController
         end
     end
 
+    def search
+        @searchedprojects = Project.where("user_id = ? and project_name like ?", params[:user_id], "%" + params[:search] + "%")
+        render :search
+    end
+
     def project_params
         params.require(:project).permit(:project_name, :user_id)
     end
