@@ -32,7 +32,7 @@ export default ({ currentUser, logout, openModal, projects, userId }) => {
                 <div className="logo-logged-in">
                     {currentUser.username.toUpperCase()}<div class="arrow-down"></div>
                 </div>
-                <ul className="dropdown-content-logged-in" id="clickDropDown2">
+                <ul className="dropdown-content1-logged-in" id="clickDropDown2">
                     <button className="dropDownItem" onClick={logout}>Log Out</button>
 
                 </ul>

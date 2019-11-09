@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     end
     resource :session, only: [ :create, :destroy ]
   end
+  get '/api/users/:user_id/projects', to: 'api/projects#search'
 
 end

@@ -947,21 +947,35 @@ function (_React$Component) {
         className: "buttonrow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buttoncontainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardtabcontainer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardtab"
+      }, "Projects")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "Create-Project-btn",
         onClick: function onClick() {
           return openModal('createproject');
         }
       }, "Create Project"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchbar"
+      }, "Placeholder for search bar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "projectpanelbody"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "projectpanelheader"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fa fa-bars"
+      }), "My Projects ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "projectpanelseparator"
+      }, "|"), " ", Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
           projectName: project.project_name,
           userId: _this2.props.userId
         });
-      }))));
+      }))))));
     }
   }]);
 
@@ -1147,7 +1161,7 @@ __webpack_require__.r(__webpack_exports__);
   }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     "class": "arrow-down"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content-logged-in",
+    className: "dropdown-content1-logged-in",
     id: "clickDropDown2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "dropDownItem",
