@@ -4,7 +4,7 @@ class ProjectListItem extends React.Component{
 
     render() {
         return(
-            <li >{this.props.projectName}</li>
+            <li key={this.props.project.id} >{this.props.projectName}</li>
         );
     }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute } from '../../../util/route_util';
 import { Link } from 'react-router-dom';
 import clickDropDown  from '../../../util/dropdownclick_util';
-import ProjectListItem from '../../projects/project_list_Item';
+import ProjectListItemnavbar from '../../projects/project_list_Item_navbar';
 
 
 export default ({ currentUser, logout, openModal, projects, userId }) => {
@@ -17,9 +17,9 @@ export default ({ currentUser, logout, openModal, projects, userId }) => {
                     <div className="colorchange">
                         <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
                         {
-                            Object.values(projects).map(project => <ProjectListItem
+                            Object.values(projects).map((project, idx) => <ProjectListItemnavbar
                                 project={project}
-                                key={project.id}
+                                key={project.id + idx}
                                 projectName={project.project_name}
                                 userId={userId}
                             />)

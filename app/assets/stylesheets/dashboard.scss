@@ -185,13 +185,11 @@
     border-style: inset;
     border-color: initial;
     border-image: initial;
+    border: none;
 }
-
-
 
 .inputbox:focus{
     border: 1px solid #3b99fc;
-    // outline: 2px solid #3b99fc;
 }
 
 .inputbox{
@@ -203,6 +201,8 @@
     border-color: initial;
     border-image: initial;
     padding-left: 25px;
+    border-radius: 3px;
+    outline-width: thin;
 }
 
 .dashboardtab{

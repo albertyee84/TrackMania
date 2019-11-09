@@ -56,7 +56,7 @@ class Projects extends React.Component {
                         
                         <form className="searchbarform"
                             onSubmit={this.handleSubmit}>
-                                <i class="fa fa-search" />  
+                                <i className="fa fa-search" />  
                                 <input
                                     className="inputbox" 
                                     type="text"
@@ -70,18 +70,26 @@ class Projects extends React.Component {
                     </div>
                     <div className="projectpanelbody">
                         <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects <div className="projectpanelseparator">|</div> {Object.values(this.props.projects).length}</div>
-                        <div>
-                            <ul>
+                            <ul className="projecttiles">
                                 {
-                                    Object.values(this.props.projects).map(project => <ProjectListItem 
-                                        project={project}
-                                        key={project.id}
-                                        projectName={project.project_name}
-                                        userId={this.props.userId}
-                                        />)
+                                    Object.values(this.props.projects).map(project => 
+                                    <div key={project.id} className="projecttilebox">
+                                        <div className="projecttileheader">
+                                        <ProjectListItem 
+                                            project={project}
+                                            key={project.id}
+                                            projectName={project.project_name}
+                                            userId={this.props.userId}
+                                            />
+
+                                        </div>
+                                        <div className="projecttilebody"></div>
+                                    </div>
+                                    
+                                        
+                                        )
                                     }
                             </ul>
-                        </div>
                     </div>
                 </div>
             </div>

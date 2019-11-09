@@ -879,7 +879,9 @@ function (_React$Component) {
   _createClass(ProjectListItem, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.projectName);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: this.props.project.id
+      }, this.props.projectName);
     }
   }]);
 
@@ -887,6 +889,62 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectListItem);
+
+/***/ }),
+
+/***/ "./frontend/components/projects/project_list_Item_navbar.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/projects/project_list_Item_navbar.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var ProjectListItemnavbar =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectListItemnavbar, _React$Component);
+
+  function ProjectListItemnavbar() {
+    _classCallCheck(this, ProjectListItemnavbar);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectListItemnavbar).apply(this, arguments));
+  }
+
+  _createClass(ProjectListItemnavbar, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.projectName);
+    }
+  }]);
+
+  return ProjectListItemnavbar;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ProjectListItemnavbar);
 
 /***/ }),
 
@@ -1003,7 +1061,7 @@ function (_React$Component) {
         className: "searchbarform",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-search"
+        className: "fa fa-search"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "inputbox",
         type: "text",
@@ -1020,14 +1078,23 @@ function (_React$Component) {
         className: "fa fa-bars"
       }), "My Projects ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelseparator"
-      }, "|"), " ", Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "|"), " ", Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "projecttiles"
+      }, Object.values(this.props.projects).map(function (project) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: project.id,
+          className: "projecttilebox"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "projecttileheader"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
           projectName: project.project_name,
           userId: _this3.props.userId
-        });
-      }))))));
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "projecttilebody"
+        }));
+      })))));
     }
   }]);
 
@@ -1166,7 +1233,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/dropdownclick_util */ "./frontend/util/dropdownclick_util.js");
-/* harmony import */ var _projects_project_list_Item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../projects/project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
+/* harmony import */ var _projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../projects/project_list_Item_navbar */ "./frontend/components/projects/project_list_Item_navbar.jsx");
 
 
 
@@ -1199,10 +1266,10 @@ __webpack_require__.r(__webpack_exports__);
     onClick: function onClick() {
       return openModal('createproject');
     }
-  }, "Create Project"), Object.values(projects).map(function (project) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Create Project"), Object.values(projects).map(function (project, idx) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
       project: project,
-      key: project.id,
+      key: project.id + idx,
       projectName: project.project_name,
       userId: userId
     });

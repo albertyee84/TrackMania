@@ -1,0 +1,18 @@
+.projecttiles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.projecttilebox{
+    width: 45%;
+    height: 135px;
+    background-color: white;
+    margin: 10px;
+    border: 2px solid #EFEFEF;
+}
+
+.projecttileheader{
+    height: 50px;
+    border-bottom: 2px solid #EFEFEF;
+}
