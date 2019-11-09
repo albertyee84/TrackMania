@@ -694,7 +694,6 @@ function (_React$Component) {
     _classCallCheck(this, ProjectForm);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
-    debugger;
     _this.state = {
       project_name: "",
       user_id: props.userId
@@ -752,15 +751,15 @@ function (_React$Component) {
         className: "accountchooser"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "projectnamelabel"
-      }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "newprojectforminput",
-        list: "users",
-        placeholder: "Select an account"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("datalist", {
-        id: "users"
+      }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        name: "users",
+        id: "users",
+        placeholder: "Select the account holder"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Select Account Holder"
+      }, "Select Account Holder"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.currentUser
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.currentUser)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newprojectformfooter"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancelbutton",
@@ -943,20 +942,26 @@ function (_React$Component) {
 
       var openModal = this.props.openModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboard"
+        className: "dashboardbody"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "buttonrow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "buttoncontainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "Create-Project-btn",
         onClick: function onClick() {
           return openModal('createproject');
         }
-      }, "Create Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
+      }, "Create Project"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
           projectName: project.project_name,
           userId: _this2.props.userId
         });
-      })));
+      }))));
     }
   }]);
 

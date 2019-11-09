@@ -13,18 +13,25 @@ class Projects extends React.Component {
     render() {
         const openModal = this.props.openModal;
         return (
-            <div className="dashboard">
-                <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
-                <ul>
-                    {
-                        Object.values(this.props.projects).map(project => <ProjectListItem 
-                            project={project}
-                            key={project.id}
-                            projectName={project.project_name}
-                            userId={this.props.userId}
-                            />)
-                        }
-                </ul>
+            <div className="dashboardbody">
+                <div className="buttonrow">
+                    <div className="buttoncontainer">
+                        <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
+
+                    </div>
+                </div>
+                <div className="dashboard">
+                    <ul>
+                        {
+                            Object.values(this.props.projects).map(project => <ProjectListItem 
+                                project={project}
+                                key={project.id}
+                                projectName={project.project_name}
+                                userId={this.props.userId}
+                                />)
+                            }
+                    </ul>
+                </div>
             </div>
         );
     }

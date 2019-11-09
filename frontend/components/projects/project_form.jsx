@@ -3,7 +3,6 @@ import React from 'react';
 class ProjectForm extends React.Component {
     constructor(props){
         super(props);
-        debugger;
         this.state = {
             project_name: "",
             user_id: props.userId
@@ -45,14 +44,10 @@ class ProjectForm extends React.Component {
                         </div>
                         <div className="accountchooser">
                             <label className="projectnamelabel">Account</label>
-                            <input 
-                                className="newprojectforminput" 
-                                list="users" 
-                                placeholder="Select an account"
-                            />
-                            <datalist id="users">
-                                <option value={this.props.currentUser} />
-                            </datalist>
+                            <select name="users" id="users" placeholder="Select the account holder">
+                                <option value="Select Account Holder">Select Account Holder</option>
+                                <option value={this.props.currentUser}>{this.props.currentUser}</option>
+                            </select>
                         </div>
                     </div>
                     <div className="newprojectformfooter">
