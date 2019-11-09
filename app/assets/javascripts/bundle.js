@@ -912,9 +912,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -934,7 +934,12 @@ function (_React$Component) {
     _classCallCheck(this, Projects);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Projects).call(this, props));
-    _this.state = {};
+    _this.state = {
+      user_id: _this.props.userId,
+      search: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -944,9 +949,29 @@ function (_React$Component) {
       this.props.requestAllUsersProjects(this.props.userId);
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      var _this2 = this;
+
+      this.setState({
+        search: e.currentTarget.value
+      }, function () {
+        _this2.props.searchProject(_this2.state);
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.searchProject(this.state);
+      this.setState({
+        search: ""
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var openModal = this.props.openModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -968,7 +993,18 @@ function (_React$Component) {
         className: "dashboard"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchbar"
-      }, "Placeholder for search bar"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Placeholder for search bar", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "searchbar",
+        value: this.state.search,
+        onChange: this.handleChange,
+        id: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Search"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelheader"
@@ -981,7 +1017,7 @@ function (_React$Component) {
           project: project,
           key: project.id,
           projectName: project.project_name,
-          userId: _this2.props.userId
+          userId: _this3.props.userId
         });
       }))))));
     }
@@ -1035,6 +1071,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     createAProject: function createAProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["createAProject"])(project));
+    },
+    searchProject: function searchProject(params) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["searchProject"])(params));
     }
   };
 };
