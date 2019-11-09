@@ -23,6 +23,3 @@ class Api::ProjectsController < ApplicationController
         params.require(:project).permit(:project_name, :user_id)
     end
 end
-
-# Project.where("user_id = 1 and project_name like ?", '%' + 'a' + '%')
-#to search for user and project_name containing string

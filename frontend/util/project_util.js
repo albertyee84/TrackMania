@@ -12,3 +12,10 @@ export const createProject = (project) => {
         data: { project }
     });
 };
+
+export const searchProject = (params) => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/users/${params.user_id}/projects/${params.search}`,
+    });
+};

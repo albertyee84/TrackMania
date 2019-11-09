@@ -5,6 +5,7 @@ import { login, logout, signup } from './actions/session_actions';
 import Root from './components/root';
 
 import * as APIUtilProj from './util/project_util';
+import {searchProject} from './actions/project_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,8 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.createProject = APIUtilProj.createProject;
+    window.searchProject = searchProject;
     window.logout = logout;
     window.login = login;
     window.signup = signup;
-//end of TO DELETE
+    //end of TO DELETE
 });

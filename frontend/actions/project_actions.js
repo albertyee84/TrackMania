@@ -17,9 +17,16 @@ export const receiveProject = project => {
 };
 
 export const requestAllUsersProjects = userId => dispatch =>
- APIUtilProjects.getProjects(userId)
-.then(payload => dispatch(receiveAllUsersProjects(payload)));
+    APIUtilProjects.getProjects(userId)
+    .then(payload => dispatch(receiveAllUsersProjects(payload))
+);
 
-export const createAProject = (project) => dispatch => 
+export const createAProject = project => dispatch => 
     APIUtilProjects.createProject(project)
-        .then(payload => dispatch(receiveProject(payload)));
+    .then(payload => dispatch(receiveProject(payload))
+);
+
+export const searchProject = params => dispatch =>
+    APIUtilProjects.searchProject(params)
+    .then(payload => dispatch(receiveAllUsersProjects(payload))
+);

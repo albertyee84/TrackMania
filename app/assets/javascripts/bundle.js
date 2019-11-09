@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/project_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject */
+/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -130,6 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProject", function() { return receiveProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllUsersProjects", function() { return requestAllUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAProject", function() { return createAProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 /* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/project_util */ "./frontend/util/project_util.js");
 
 var RECEIVE_ALL_USERS_PROJECTS = 'RECEIVE_ALL_USERS_PROJECTS';
@@ -157,6 +158,13 @@ var createAProject = function createAProject(project) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["createProject"](project).then(function (payload) {
       return dispatch(receiveProject(payload));
+    });
+  };
+};
+var searchProject = function searchProject(params) {
+  return function (dispatch) {
+    return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["searchProject"](params).then(function (payload) {
+      return dispatch(receiveAllUsersProjects(payload));
     });
   };
 };
@@ -1891,7 +1899,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/project_util */ "./frontend/util/project_util.js");
+/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/project_actions */ "./frontend/actions/project_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1924,6 +1934,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.createProject = _util_project_util__WEBPACK_IMPORTED_MODULE_5__["createProject"];
+  window.searchProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_6__["searchProject"];
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"];
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
@@ -1958,13 +1969,14 @@ function clickDropDown(id) {
 /*!***************************************!*\
   !*** ./frontend/util/project_util.js ***!
   \***************************************/
-/*! exports provided: getProjects, createProject */
+/*! exports provided: getProjects, createProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjects", function() { return getProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 var getProjects = function getProjects(userId) {
   return $.ajax({
     method: "GET",
@@ -1978,6 +1990,12 @@ var createProject = function createProject(project) {
     data: {
       project: project
     }
+  });
+};
+var searchProject = function searchProject(params) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/users/".concat(params.user_id, "/projects/").concat(params.search)
   });
 };
 
