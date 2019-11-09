@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 class Projects extends React.Component {
     constructor(props){
@@ -14,6 +15,10 @@ class Projects extends React.Component {
 
     componentDidMount(){
         this.props.requestAllUsersProjects(this.props.userId);
+    }
+
+    componentDidUpdate(){
+        
     }
 
     handleChange(e){
@@ -48,14 +53,19 @@ class Projects extends React.Component {
                 </div>
                 <div className="dashboard">
                     <div className="searchbar">
-                        Placeholder for search bar
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text"
-                            className="searchbar"
-                            value={this.state.search}
-                            onChange={this.handleChange}
-                            id=""/>
-                            <input type="submit" value="Search"/>
+                        
+                        <form className="searchbarform"
+                            onSubmit={this.handleSubmit}>
+                                <i class="fa fa-search" />  
+                                <input
+                                    className="inputbox" 
+                                    type="text"
+                                    value={this.state.search}
+                                    placeholder="Search Projects"
+                                    onChange={this.handleChange}
+                                    onSubmit={this.handleSubmit}
+                                    id=""
+                                    />
                         </form>
                     </div>
                     <div className="projectpanelbody">
