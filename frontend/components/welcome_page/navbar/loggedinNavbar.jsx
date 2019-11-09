@@ -6,12 +6,13 @@ import ProjectListItem from '../../projects/project_list_Item';
 
 
 export default ({ currentUser, logout, openModal, projects, userId }) => {
+    debugger;
     return (
 
         <header className="loggedinnav-bar">
             <h3 className="dropdown" onClick={() => clickDropDown("clickDropDown")}>
                 <div className="logo-logged-in">
-                    TrackMania<div class="arrow-down"></div>
+                    TrackMania<div className="arrow-down"></div>
                 </div>
                 <ul className="dropdown-content-logged-in" id="clickDropDown">
                     <div className="colorchange">
@@ -30,7 +31,7 @@ export default ({ currentUser, logout, openModal, projects, userId }) => {
             </h3>
             <h3 className="dropdown" onClick={() => clickDropDown("clickDropDown2")}>
                 <div className="logo-logged-in">
-                    {currentUser.username.toUpperCase()}<div class="arrow-down"></div>
+                    {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
                 </div>
                 <ul className="dropdown-content1-logged-in" id="clickDropDown2">
                     <button className="dropDownItem" onClick={logout}>Log Out</button>

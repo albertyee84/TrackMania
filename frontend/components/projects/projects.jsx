@@ -28,7 +28,7 @@ class Projects extends React.Component {
                         Placeholder for search bar
                     </div>
                     <div className="projectpanelbody">
-                        <div className="projectpanelheader"><i class="fa fa-bars"></i>My Projects <div className="projectpanelseparator">|</div> {Object.values(this.props.projects).length}</div>
+                        <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects <div className="projectpanelseparator">|</div> {Object.values(this.props.projects).length}</div>
                         <div>
                             <ul>
                                 {

@@ -432,7 +432,9 @@ function (_React$Component) {
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modalcontents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/splash.png",
+        alt: "",
         className: "modalbg"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formspacing"
@@ -803,6 +805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
+  debugger;
   return {
     userId: state.session.id,
     currentUser: state.entities.users[state.session.id].username
@@ -869,9 +872,7 @@ function (_React$Component) {
   _createClass(ProjectListItem, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        key: this.props.key
-      }, this.props.projectName);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.projectName);
     }
   }]);
 
@@ -965,7 +966,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelheader"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-bars"
+        className: "fa fa-bars"
       }), "My Projects ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelseparator"
       }, "|"), " ", Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, Object.values(this.props.projects).map(function (project) {
@@ -1123,6 +1124,7 @@ __webpack_require__.r(__webpack_exports__);
       openModal = _ref.openModal,
       projects = _ref.projects,
       userId = _ref.userId;
+  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
@@ -1133,7 +1135,7 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-logged-in"
   }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "arrow-down"
+    className: "arrow-down"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-content-logged-in",
     id: "clickDropDown"
@@ -1159,7 +1161,7 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-logged-in"
   }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    "class": "arrow-down"
+    className: "arrow-down"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-content1-logged-in",
     id: "clickDropDown2"
