@@ -15,7 +15,6 @@ export const createProject = (project) => {
 };
 
 export const updateProject = (project) => {
-    debugger
     return $.ajax({
         method: "PATCH",
         url: `api/users/${project.user_id}/projects/${project.id}`,
@@ -23,10 +22,11 @@ export const updateProject = (project) => {
     });
 };
 
-export const searchProject = (params) => {
+export const searchProject = (project) => {
     return $.ajax({
         method: "GET",
-        url: `/api/users/${params.user_id}/projects/${params.search}`,
+        url: `/api/users/${project.user_id}/projects/${project.search}`,
+        data: {project}
     });
 };
 

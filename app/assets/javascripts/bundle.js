@@ -2193,7 +2193,6 @@ var createProject = function createProject(project) {
   });
 };
 var updateProject = function updateProject(project) {
-  debugger;
   return $.ajax({
     method: "PATCH",
     url: "api/users/".concat(project.user_id, "/projects/").concat(project.id),
@@ -2202,10 +2201,13 @@ var updateProject = function updateProject(project) {
     }
   });
 };
-var searchProject = function searchProject(params) {
+var searchProject = function searchProject(project) {
   return $.ajax({
     method: "GET",
-    url: "/api/users/".concat(params.user_id, "/projects/").concat(params.search)
+    url: "/api/users/".concat(project.user_id, "/projects/").concat(project.search),
+    data: {
+      project: project
+    }
   });
 };
 
