@@ -1173,9 +1173,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     searchProject: function searchProject(params) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["searchProject"])(params));
-    },
-    requestLimitedUsersProjects: function requestLimitedUsersProjects(userid) {
-      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["requestLimitedUsersProjects"])(userid));
     }
   };
 };

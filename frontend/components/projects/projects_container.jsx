@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Projects from './projects';
-import { requestAllUsersProjects, createAProject, searchProject, requestLimitedUsersProjects } from '../../actions/project_actions';
+import { requestAllUsersProjects, createAProject, searchProject } from '../../actions/project_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     closeModal: () => dispatch(closeModal()),
     createAProject: project => dispatch(createAProject(project)),
     searchProject: params => dispatch(searchProject(params)),
-    requestLimitedUsersProjects: userid => dispatch(requestLimitedUsersProjects(userid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);
