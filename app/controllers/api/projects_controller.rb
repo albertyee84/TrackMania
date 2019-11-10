@@ -4,6 +4,11 @@ class Api::ProjectsController < ApplicationController
         @projects = Project.where(user_id: params[:user_id])
     end
 
+    def limited
+        @projects = Project.where(user_id: params[:user_id]).limit(4)
+        render :index
+    end
+
     def create
         @project = Project.new(project_params)
         # @project.user_id = current_user.id
@@ -15,8 +20,8 @@ class Api::ProjectsController < ApplicationController
     end
 
     def search
-        @searchedprojects = Project.where("user_id = ? and project_name like ?", params[:user_id], "%" + params[:search] + "%")
-        render :search
+        @projects = Project.where("user_id = ? and project_name like ?", params[:user_id], "%" + params[:search] + "%")
+        render :index
     end
 
     def project_params

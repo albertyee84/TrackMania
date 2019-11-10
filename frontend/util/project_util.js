@@ -5,6 +5,13 @@ export const getProjects = (userId) => {
     });
 };
 
+export const getProjectsLimited = (userId) => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/users/${userId}/projects/limited`
+    });
+};
+
 export const createProject = (project) => {
     return $.ajax({
         method: "POST",
@@ -19,3 +26,4 @@ export const searchProject = (params) => {
         url: `/api/users/${params.user_id}/projects/${params.search}`,
     });
 };
+

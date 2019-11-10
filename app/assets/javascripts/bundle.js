@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/project_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject, searchProject */
+/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, requestLimitedUsersProjects, createAProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -129,6 +129,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsersProjects", function() { return receiveAllUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProject", function() { return receiveProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllUsersProjects", function() { return requestAllUsersProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestLimitedUsersProjects", function() { return requestLimitedUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAProject", function() { return createAProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 /* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/project_util */ "./frontend/util/project_util.js");
@@ -150,6 +151,13 @@ var receiveProject = function receiveProject(project) {
 var requestAllUsersProjects = function requestAllUsersProjects(userId) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["getProjects"](userId).then(function (payload) {
+      return dispatch(receiveAllUsersProjects(payload));
+    });
+  };
+};
+var requestLimitedUsersProjects = function requestLimitedUsersProjects(userId) {
+  return function (dispatch) {
+    return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["getProjectsLimited"](userId).then(function (payload) {
       return dispatch(receiveAllUsersProjects(payload));
     });
   };
@@ -997,10 +1005,12 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Projects).call(this, props));
     _this.state = {
       user_id: _this.props.userId,
-      search: ""
+      search: "",
+      all: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleShowAllProjects = _this.handleShowAllProjects.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1010,9 +1020,6 @@ function (_React$Component) {
       this.props.requestAllUsersProjects(this.props.userId);
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {}
-  }, {
     key: "handleChange",
     value: function handleChange(e) {
       var _this2 = this;
@@ -1021,6 +1028,13 @@ function (_React$Component) {
         search: e.currentTarget.value
       }, function () {
         _this2.props.searchProject(_this2.state);
+      });
+    }
+  }, {
+    key: "handleShowAllProjects",
+    value: function handleShowAllProjects() {
+      this.setState({
+        all: true
       });
     }
   }, {
@@ -1038,6 +1052,19 @@ function (_React$Component) {
       var _this3 = this;
 
       var openModal = this.props.openModal;
+      var showAll;
+      var projectslist = Object.values(this.props.projects);
+      var projectrender;
+      !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
+
+      if (!this.state.all && projectslist.length > 4) {
+        showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: this.handleShowAllProjects
+        }, "Show All");
+      } else {
+        showAll = "";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1076,11 +1103,11 @@ function (_React$Component) {
         className: "projectpanelheader"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-bars"
-      }), "My Projects ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), "My Projects", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelseparator"
-      }, "|"), " ", Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, "|"), Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "projecttiles"
-      }, Object.values(this.props.projects).map(function (project) {
+      }, projectrender.map(function (project) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: project.id,
           className: "projecttilebox"
@@ -1094,7 +1121,7 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "projecttilebody"
         }));
-      })))));
+      }))), showAll));
     }
   }]);
 
@@ -1149,6 +1176,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     searchProject: function searchProject(params) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["searchProject"])(params));
+    },
+    requestLimitedUsersProjects: function requestLimitedUsersProjects(userid) {
+      return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["requestLimitedUsersProjects"])(userid));
     }
   };
 };
@@ -2083,18 +2113,25 @@ function clickDropDown(id) {
 /*!***************************************!*\
   !*** ./frontend/util/project_util.js ***!
   \***************************************/
-/*! exports provided: getProjects, createProject, searchProject */
+/*! exports provided: getProjects, getProjectsLimited, createProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjects", function() { return getProjects; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjectsLimited", function() { return getProjectsLimited; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 var getProjects = function getProjects(userId) {
   return $.ajax({
     method: "GET",
     url: "/api/users/".concat(userId, "/projects")
+  });
+};
+var getProjectsLimited = function getProjectsLimited(userId) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/users/".concat(userId, "/projects/limited")
   });
 };
 var createProject = function createProject(project) {

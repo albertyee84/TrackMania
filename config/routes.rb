@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resource :session, only: [ :create, :destroy ]
   end
+  get '/api/users/:user_id/projects/limited', to: 'api/projects#limited'
   get '/api/users/:user_id/projects/:search', to: 'api/projects#search'
 
 end

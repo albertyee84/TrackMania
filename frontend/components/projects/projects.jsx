@@ -8,17 +8,15 @@ class Projects extends React.Component {
         this.state = {
             user_id: this.props.userId,
             search: "",
+            all: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
     }
 
     componentDidMount(){
         this.props.requestAllUsersProjects(this.props.userId);
-    }
-
-    componentDidUpdate(){
-        
     }
 
     handleChange(e){
@@ -27,6 +25,12 @@ class Projects extends React.Component {
         },
         ()=>{
             this.props.searchProject(this.state);
+        });
+    }
+
+    handleShowAllProjects(){
+        this.setState({
+            all: true
         });
     }
 
@@ -40,6 +44,19 @@ class Projects extends React.Component {
 
     render() {
         const openModal = this.props.openModal;
+        let showAll;
+        let projectslist = Object.values(this.props.projects);
+        let projectrender;
+        
+        !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
+
+        if (!this.state.all && projectslist.length > 4) {
+            showAll = <button onClick={this.handleShowAllProjects}>Show All</button>
+        } else{
+            showAll = "";
+        }
+
+
         return (
             <div className="dashboardbody">
                 <div className="buttonrow">
@@ -69,28 +86,29 @@ class Projects extends React.Component {
                         </form>
                     </div>
                     <div className="projectpanelbody">
-                        <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects <div className="projectpanelseparator">|</div> {Object.values(this.props.projects).length}</div>
-                            <ul className="projecttiles">
-                                {
-                                    Object.values(this.props.projects).map(project => 
-                                    <div key={project.id} className="projecttilebox">
-                                        <div className="projecttileheader">
-                                        <ProjectListItem 
-                                            project={project}
-                                            key={project.id}
-                                            projectName={project.project_name}
-                                            userId={this.props.userId}
-                                            />
-
-                                        </div>
-                                        <div className="projecttilebody"></div>
+                        <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
+                            <div className="projectpanelseparator">|</div> 
+                            {Object.values(this.props.projects).length}
+                        </div>
+                        <ul className="projecttiles">
+                            {
+                                projectrender.map(project => 
+                                <div key={project.id} className="projecttilebox">
+                                    <div className="projecttileheader">
+                                    <ProjectListItem 
+                                        project={project}
+                                        key={project.id}
+                                        projectName={project.project_name}
+                                        userId={this.props.userId}
+                                        />
                                     </div>
-                                    
-                                        
-                                        )
-                                    }
-                            </ul>
+                                    <div className="projecttilebody"></div>
+                                </div>
+                                    )
+                                }
+                        </ul>
                     </div>
+                    {showAll}
                 </div>
             </div>
         );

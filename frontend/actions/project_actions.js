@@ -21,6 +21,12 @@ export const requestAllUsersProjects = userId => dispatch =>
     .then(payload => dispatch(receiveAllUsersProjects(payload))
 );
 
+
+export const requestLimitedUsersProjects = userId => dispatch =>
+    APIUtilProjects.getProjectsLimited(userId)
+    .then(payload => dispatch(receiveAllUsersProjects(payload))
+);
+
 export const createAProject = project => dispatch => 
     APIUtilProjects.createProject(project)
     .then(payload => dispatch(receiveProject(payload))
