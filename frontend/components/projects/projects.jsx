@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import SocialMedia from '../social_media/social_media';
 
 class Projects extends React.Component {
     constructor(props){
@@ -51,64 +52,70 @@ class Projects extends React.Component {
         !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
 
         if (!this.state.all && projectslist.length > 4) {
-            showAll = <button onClick={this.handleShowAllProjects}>Show All</button>
+        showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>Show {projectslist.length-4} more project</button>;
         } else{
             showAll = "";
         }
 
-
         return (
-            <div className="dashboardbody">
-                <div className="buttonrow">
-                    <div className="buttoncontainer">
-                        <div className='dashboardtabcontainer'>
-                            <div className="dashboardtab">Projects</div>
-                        </div>
-                        <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
+            <div>
 
+                <div className="dashboardbody">
+                    <div className="buttonrow">
+                        <div className="buttoncontainer">
+                            <div className='dashboardtabcontainer'>
+                                <div className="dashboardtab">Projects</div>
+                            </div>
+                            <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
+                        </div>
+                    </div>
+                    <div className="dashboard">
+                        <div className="searchbar">
+                            <form className="searchbarform"
+                                onSubmit={this.handleSubmit}>
+                                    <i className="fa fa-search" />  
+                                    <input
+                                        className="inputbox" 
+                                        type="text"
+                                        value={this.state.search}
+                                        placeholder="Search Projects"
+                                        onChange={this.handleChange}
+                                        onSubmit={this.handleSubmit}
+                                        id=""
+                                        />
+                            </form>
+                        </div>
+                        <div className="projectpanelbody">
+                            <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
+                                <div className="projectpanelseparator">|</div> 
+                                {Object.values(this.props.projects).length}
+                            </div>
+                            <ul className="projecttiles">
+                                {
+                                    projectrender.map(project => 
+                                    <div key={project.id} className="projecttilebox">
+                                        <div className="projecttileheader">
+                                            <ProjectListItem 
+                                                project={project}
+                                                key={project.id}
+                                                projectName={project.project_name}
+                                                userId={this.props.userId}
+                                            />
+                                        </div>
+                                        <div className="projecttilebody"></div>
+                                    </div>
+                                        )
+                                    }
+                            </ul>
+                        </div>
+                        <div>
+                            {showAll}
+                        </div>
                     </div>
                 </div>
-                <div className="dashboard">
-                    <div className="searchbar">
-                        
-                        <form className="searchbarform"
-                            onSubmit={this.handleSubmit}>
-                                <i className="fa fa-search" />  
-                                <input
-                                    className="inputbox" 
-                                    type="text"
-                                    value={this.state.search}
-                                    placeholder="Search Projects"
-                                    onChange={this.handleChange}
-                                    onSubmit={this.handleSubmit}
-                                    id=""
-                                    />
-                        </form>
-                    </div>
-                    <div className="projectpanelbody">
-                        <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
-                            <div className="projectpanelseparator">|</div> 
-                            {Object.values(this.props.projects).length}
-                        </div>
-                        <ul className="projecttiles">
-                            {
-                                projectrender.map(project => 
-                                <div key={project.id} className="projecttilebox">
-                                    <div className="projecttileheader">
-                                    <ProjectListItem 
-                                        project={project}
-                                        key={project.id}
-                                        projectName={project.project_name}
-                                        userId={this.props.userId}
-                                        />
-                                    </div>
-                                    <div className="projecttilebody"></div>
-                                </div>
-                                    )
-                                }
-                        </ul>
-                    </div>
-                    {showAll}
+                <div className="dashboardfooter">
+                    About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us
+                    <SocialMedia />
                 </div>
             </div>
         );

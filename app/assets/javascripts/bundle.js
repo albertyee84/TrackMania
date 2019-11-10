@@ -119,7 +119,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/project_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, requestLimitedUsersProjects, createAProject, searchProject */
+/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -129,7 +129,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsersProjects", function() { return receiveAllUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProject", function() { return receiveProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllUsersProjects", function() { return requestAllUsersProjects; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestLimitedUsersProjects", function() { return requestLimitedUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAProject", function() { return createAProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 /* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/project_util */ "./frontend/util/project_util.js");
@@ -151,13 +150,6 @@ var receiveProject = function receiveProject(project) {
 var requestAllUsersProjects = function requestAllUsersProjects(userId) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["getProjects"](userId).then(function (payload) {
-      return dispatch(receiveAllUsersProjects(payload));
-    });
-  };
-};
-var requestLimitedUsersProjects = function requestLimitedUsersProjects(userId) {
-  return function (dispatch) {
-    return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["getProjectsLimited"](userId).then(function (payload) {
       return dispatch(receiveAllUsersProjects(payload));
     });
   };
@@ -970,6 +962,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/index.js");
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_transition_group__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _social_media_social_media__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../social_media/social_media */ "./frontend/components/social_media/social_media.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -987,6 +980,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1059,13 +1053,14 @@ function (_React$Component) {
 
       if (!this.state.all && projectslist.length > 4) {
         showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "showallbtn",
           onClick: this.handleShowAllProjects
-        }, "Show All");
+        }, "Show ", projectslist.length - 4, " more project");
       } else {
         showAll = "";
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "buttonrow"
@@ -1121,7 +1116,9 @@ function (_React$Component) {
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "projecttilebody"
         }));
-      }))), showAll));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardfooter"
+      }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
     }
   }]);
 
@@ -2113,25 +2110,18 @@ function clickDropDown(id) {
 /*!***************************************!*\
   !*** ./frontend/util/project_util.js ***!
   \***************************************/
-/*! exports provided: getProjects, getProjectsLimited, createProject, searchProject */
+/*! exports provided: getProjects, createProject, searchProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjects", function() { return getProjects; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getProjectsLimited", function() { return getProjectsLimited; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createProject", function() { return createProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchProject", function() { return searchProject; });
 var getProjects = function getProjects(userId) {
   return $.ajax({
     method: "GET",
     url: "/api/users/".concat(userId, "/projects")
-  });
-};
-var getProjectsLimited = function getProjectsLimited(userId) {
-  return $.ajax({
-    method: "GET",
-    url: "/api/users/".concat(userId, "/projects/limited")
   });
 };
 var createProject = function createProject(project) {

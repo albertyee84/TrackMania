@@ -5,14 +5,39 @@
 }
 
 .projecttilebox{
-    width: 45%;
+    width: 48%;
     height: 135px;
     background-color: white;
-    margin: 10px;
+    margin-bottom: 20px;
     border: 2px solid #EFEFEF;
 }
 
 .projecttileheader{
     height: 50px;
     border-bottom: 2px solid #EFEFEF;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+
+}
+
+.showallbtn{
+    width: 100%;
+    background-color: #fffffffc;
+    height: 30px;
+    border-radius: 3px;
+    color: #3676c0;
+    font-family: 'Open Sans', open-sans, Helvetica, Arial, EmojiFontFace, sans-serif;
+    font-size: 14px;
+}
+
+.showallbtn:hover{
+    background-color: #f3f4f4;
+    cursor: pointer;
+}
+
+#users{
+    font-family: "Open Sans", open-sans, EmojiFontFace, sans-serif;
+    font-size: 14px;
+    color: #666;
 }

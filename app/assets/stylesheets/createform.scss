@@ -144,8 +144,8 @@
 
 .dashboardbody{
     background-color: #F3F4F4;
-    min-height: 100vh;
-     min-width: 100vw;
+    min-height: 89vh;
+    min-width: 100vw;
 }
 
 select {
@@ -160,4 +160,17 @@ select {
     -webkit-appearance: none;
     background-position-x: 471px;
     background-color: white;
+}
+
+.dashboardfooter{
+    height: 40px;
+    padding-top: 7px;
+    background-color: #F3F4F4;
+    border-top: 1px solid #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #7a7b7f;
+    font-size: 13px;
 }
