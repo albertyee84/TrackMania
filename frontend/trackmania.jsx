@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //test functions--TO DELETE!!
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.createProject = APIUtilProj.createProject;
+    window.updateProject = APIUtilProj.updateProject;
     window.searchProject = searchProject;
     window.logout = logout;
     window.login = login;

@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import SocialMedia from '../social_media/social_media';
 
 class Projects extends React.Component {
@@ -9,15 +8,58 @@ class Projects extends React.Component {
         this.state = {
             user_id: this.props.userId,
             search: "",
-            all: false
+            archived: false,
+            all: false,
+            id: 100000000000,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
+        this.handleArchive = this.handleArchive.bind(this);
+        this.handleActive = this.handleActive.bind(this);
     }
 
     componentDidMount(){
-        this.props.requestAllUsersProjects(this.props.userId);
+        this.props.requestAllUsersProjects(this.state);
+    }
+
+    handleArchiveProject(projectId, archived){
+        let newStatus;
+        archived ? newStatus = false : newStatus = true;
+        this.setState({
+            id: projectId,
+            archived: newStatus,
+        },
+        ()=>{
+            this.props.updateProject(this.state)
+            .then(()=>{
+                this.setState({archived: archived},
+                    ()=>{
+                        this.props.requestAllUsersProjects(this.state);
+                    });
+            });
+        });
+    }
+    
+
+    handleArchive(e){
+        this.setState({
+            archived: true
+        },
+        ()=>{
+            this.props.requestAllUsersProjects(this.state);
+        }
+        );
+    }
+
+    handleActive(e){
+        this.setState({
+            archived: false
+        },
+            () => {
+                this.props.requestAllUsersProjects(this.state);
+            }
+        );
     }
 
     handleChange(e){
@@ -48,18 +90,19 @@ class Projects extends React.Component {
         let showAll;
         let projectslist = Object.values(this.props.projects);
         let projectrender;
+        let status;
+
+        this.state.archived ? status = "Archived" : status = "Active";
         
         !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
 
-        if (!this.state.all && projectslist.length > 4) {
-        showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>Show {projectslist.length-4} more project</button>;
-        } else{
-            showAll = "";
-        }
+        !this.state.all && projectslist.length > 4 ? 
+            showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>Show {projectslist.length-4} more project</button> 
+            : showAll = ""
+
 
         return (
             <div>
-
                 <div className="dashboardbody">
                     <div className="buttonrow">
                         <div className="buttoncontainer">
@@ -78,12 +121,14 @@ class Projects extends React.Component {
                                         className="inputbox" 
                                         type="text"
                                         value={this.state.search}
-                                        placeholder="Search Projects"
+                                        placeholder={`Search ${status} Projects`}
                                         onChange={this.handleChange}
                                         onSubmit={this.handleSubmit}
                                         id=""
-                                        />
+                                    />
                             </form>
+                            <button onClick={this.handleActive}>Active</button>
+                            <button onClick={this.handleArchive}>Archived</button>
                         </div>
                         <div className="projectpanelbody">
                             <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
@@ -94,6 +139,7 @@ class Projects extends React.Component {
                                 {
                                     projectrender.map(project => 
                                     <div key={project.id} className="projecttilebox">
+                                        <button onClick={()=>this.handleArchiveProject(project.id, project.archived)}>Placeholder</button>
                                         <div className="projecttileheader">
                                             <ProjectListItem 
                                                 project={project}
