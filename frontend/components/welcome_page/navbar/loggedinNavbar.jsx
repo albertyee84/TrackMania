@@ -16,6 +16,7 @@ export default class loggedinNavbar extends React.Component{
             projects: {},
         };
         let projectlist = {};
+        this.handleRefresh = this.handleRefresh.bind(this)
     }
 
     componentDidMount(){
@@ -23,8 +24,12 @@ export default class loggedinNavbar extends React.Component{
         .then(response => this.setState({projects: response}));
     }
 
+    handleRefresh(){
+        this.props.getProjects(this.state)
+        .then(response => this.setState({ projects: response }));
+    }
+
     render(){
-        debugger;
         const { currentUser, logout, openModal, projects, userId } = this.props;
         let projectlist = Object.values(this.state.projects).slice(0,6);
         return(
@@ -38,6 +43,7 @@ export default class loggedinNavbar extends React.Component{
                             <div className="colorchange">
                                 <div className="navbarlistheader">Projects</div>
                                 <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
+                                <div className="navbarlistitem refreshlist" onClick={this.handleRefresh}>Refresh List</div>
                                 {
                                     projectlist.map((project, idx) => <ProjectListItemnavbar
                                         project={project}
@@ -47,7 +53,7 @@ export default class loggedinNavbar extends React.Component{
                                     />)
                                 }
                                 <div className="navbarlistfooterwrapper">
-                                    <Link to='/projects' className="navbarlistfooter"><i class="fa fa-home"></i>Dashboard </Link>
+                                    <Link to='/projects' className="navbarlistfooter"><i className="fa fa-home"></i>Dashboard </Link>
                                 </div>
                             </div>
                         </ul>
@@ -66,7 +72,7 @@ export default class loggedinNavbar extends React.Component{
                     </ul>
                 </h3>
             </header>
-        )
+        );
     }
 }
 
