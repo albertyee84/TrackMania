@@ -1320,70 +1320,184 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return loggedinNavbar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util/dropdownclick_util */ "./frontend/util/dropdownclick_util.js");
 /* harmony import */ var _projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../projects/project_list_Item_navbar */ "./frontend/components/projects/project_list_Item_navbar.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
-  var currentUser = _ref.currentUser,
-      logout = _ref.logout,
-      openModal = _ref.openModal,
-      projects = _ref.projects,
-      userId = _ref.userId;
-  var projectlist = Object.values(projects).slice(0, 6);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
-    className: "loggedinnav-bar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown1"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "logo-logged-in"
-  }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "arrow-down"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content1",
-    id: "clickDropDown"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "colorchange"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbarlistheader"
-  }, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbarlistitem",
-    onClick: function onClick() {
-      return openModal('createproject');
+
+
+var loggedinNavbar =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(loggedinNavbar, _React$Component);
+
+  function loggedinNavbar(props) {
+    var _this;
+
+    _classCallCheck(this, loggedinNavbar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(loggedinNavbar).call(this, props));
+    _this.state = {
+      user_id: _this.props.userId,
+      search: "",
+      archived: false,
+      all: false,
+      id: 100000000000,
+      projects: {}
+    };
+    var projectlist = {};
+    return _this;
+  }
+
+  _createClass(loggedinNavbar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.props.getProjects(this.state).then(function (response) {
+        return _this2.setState({
+          projects: response
+        });
+      });
     }
-  }, "Create Project"), projectlist.map(function (project, idx) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      project: project,
-      key: project.id + idx,
-      projectName: project.project_name,
-      userId: userId
-    });
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbarlistfooterwrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "/projects",
-    className: "navbarlistfooter"
-  }, "Dashboard ")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown1"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "logo-logged-in"
-  }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "arrow-down"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content1",
-    id: "clickDropDown2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "dropDownItem1",
-    onClick: logout
-  }, "Log Out"))));
-});
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      var _this$props = this.props,
+          currentUser = _this$props.currentUser,
+          logout = _this$props.logout,
+          openModal = _this$props.openModal,
+          projects = _this$props.projects,
+          userId = _this$props.userId;
+      var projectlist = Object.values(this.state.projects).slice(0, 6);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "loggedinnav-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "dropdown1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logo-logged-in"
+      }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "arrow-down"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "dropdown-content1",
+        id: "clickDropDown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "colorchange"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navbarlistheader"
+      }, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navbarlistitem",
+        onClick: function onClick() {
+          return openModal('createproject');
+        }
+      }, "Create Project"), projectlist.map(function (project, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          project: project,
+          key: project.id + idx,
+          projectName: project.project_name,
+          userId: userId
+        });
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navbarlistfooterwrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/projects",
+        className: "navbarlistfooter"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fa fa-home"
+      }), "Dashboard ")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "dropdown1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "logo-logged-in"
+      }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "arrow-down"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "dropdown-content1",
+        id: "clickDropDown2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "profilelistitme"
+      }, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "profilelistitme"
+      }, "Accounts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "profilelistitme"
+      }, "Reports & Analytics"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdownlogout",
+        onClick: logout
+      }, "Log Out"))));
+    }
+  }]);
+
+  return loggedinNavbar;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default ({ currentUser, logout, openModal, projects, userId }) => {
+//     let projectlist = Object.values(projects).slice(0,6);
+//     return (
+//         <header className="loggedinnav-bar">
+//             <div>
+//                 <h3 className="dropdown1">
+//                     <div className="logo-logged-in">
+//                         TrackMania<div className="arrow-down"></div>
+//                     </div>
+//                     <ul className="dropdown-content1" id="clickDropDown">
+//                         <div className="colorchange">
+//                             <div className="navbarlistheader">Projects</div>
+//                             <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
+//                             {
+//                                 projectlist.map((project, idx) => <ProjectListItemnavbar
+//                                     project={project}
+//                                     key={project.id + idx}
+//                                     projectName={project.project_name}
+//                                     userId={userId}
+//                                 />)
+//                             }
+//                             <div className="navbarlistfooterwrapper">
+//                                 <Link to='/projects' className="navbarlistfooter"><i class="fa fa-home"></i>Dashboard </Link>
+//                             </div>
+//                         </div>
+//                     </ul>
+//                 </h3>
+//             </div>
+//             <h3 className="dropdown1">
+//                 <div className="logo-logged-in">
+//                     {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
+//                 </div>
+//                 <ul className="dropdown-content1" id="clickDropDown2">
+//                     <li className="profilelistitme">Profile</li>
+//                     <li className="profilelistitme">Accounts</li>
+//                     <li className="profilelistitme">Reports & Analytics</li>
+//                     <div className="dropdownlogout" onClick={logout}>Log Out</div>
+//                 </ul>
+//             </h3>
+//         </header>
+//     );
+// };
+
+
+
 
 /***/ }),
 
@@ -1427,6 +1541,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     openModal: function openModal(modal) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
+    },
+    getProjects: function getProjects(project) {
+      return Object(_util_project_util__WEBPACK_IMPORTED_MODULE_6__["getProjects"])(project);
     }
   };
 };

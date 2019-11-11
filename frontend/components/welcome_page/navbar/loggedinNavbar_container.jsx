@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => {
     return ({
         logout: () => dispatch(logout()),
         openModal: modal => dispatch(openModal(modal)),
+        getProjects: project => getProjects(project),
     });
 };
 
