@@ -1341,16 +1341,13 @@ __webpack_require__.r(__webpack_exports__);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown",
-    onClick: function onClick() {
-      return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown");
-    }
+    className: "dropdown1"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-logged-in"
   }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "arrow-down"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content-logged-in",
+    className: "dropdown-content1",
     id: "clickDropDown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "colorchange"
@@ -1374,16 +1371,13 @@ __webpack_require__.r(__webpack_exports__);
     to: "/projects",
     className: "navbarlistfooter"
   }, "Dashboard ")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown",
-    onClick: function onClick() {
-      return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown2");
-    }
+    className: "dropdown1"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-logged-in"
   }, currentUser.username.toUpperCase(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "arrow-down"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content1-logged-in",
+    className: "dropdown-content1",
     id: "clickDropDown2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "dropDownItem1",

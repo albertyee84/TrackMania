@@ -10,11 +10,11 @@ export default ({ currentUser, logout, openModal, projects, userId }) => {
     return (
         <header className="loggedinnav-bar">
             <div>
-                <h3 className="dropdown" onClick={() => clickDropDown("clickDropDown")}>
+                <h3 className="dropdown1">
                     <div className="logo-logged-in">
                         TrackMania<div className="arrow-down"></div>
                     </div>
-                    <ul className="dropdown-content-logged-in" id="clickDropDown">
+                    <ul className="dropdown-content1" id="clickDropDown">
                         <div className="colorchange">
                             <div className="navbarlistheader">Projects</div>
                             <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
@@ -33,11 +33,11 @@ export default ({ currentUser, logout, openModal, projects, userId }) => {
                     </ul>
                 </h3>
             </div>
-            <h3 className="dropdown" onClick={() => clickDropDown("clickDropDown2")}>
+            <h3 className="dropdown1">
                 <div className="logo-logged-in">
                     {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
                 </div>
-                <ul className="dropdown-content1-logged-in" id="clickDropDown2">
+                <ul className="dropdown-content1" id="clickDropDown2">
                     <button className="dropDownItem1" onClick={logout}>Log Out</button>
 
                 </ul>
