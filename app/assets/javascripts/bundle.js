@@ -945,7 +945,9 @@ function (_React$Component) {
   _createClass(ProjectListItemnavbar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.projectName);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navbarlistitem"
+      }, this.props.projectName);
     }
   }]);
 
@@ -1101,7 +1103,9 @@ function (_React$Component) {
       var projectslist = Object.values(this.props.projects);
       var projectrender;
       var status;
+      var archiveword;
       this.state.archived ? status = "Archived" : status = "Active";
+      this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
       !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
       !this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
@@ -1157,13 +1161,19 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: project.id,
           className: "projecttilebox"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "projecttileheader"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           onClick: function onClick() {
             return _this6.handleArchiveProject(project.id, project.archived);
           }
-        }, "Placeholder"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "projecttileheader"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-archive dropdown"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow-down"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "dropdown-contentarchive"
+        }, archiveword))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           project: project,
           key: project.id,
           projectName: project.project_name,
@@ -1327,9 +1337,10 @@ __webpack_require__.r(__webpack_exports__);
       openModal = _ref.openModal,
       projects = _ref.projects,
       userId = _ref.userId;
+  var projectlist = Object.values(projects).slice(0, 6);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "dropdown",
     onClick: function onClick() {
       return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown");
@@ -1343,19 +1354,26 @@ __webpack_require__.r(__webpack_exports__);
     id: "clickDropDown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "colorchange"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "Create-Project-btn",
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbarlistheader"
+  }, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbarlistitem",
     onClick: function onClick() {
       return openModal('createproject');
     }
-  }, "Create Project"), Object.values(projects).map(function (project, idx) {
+  }, "Create Project"), projectlist.map(function (project, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
       project: project,
       key: project.id + idx,
       projectName: project.project_name,
       userId: userId
     });
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbarlistfooterwrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    to: "/projects",
+    className: "navbarlistfooter"
+  }, "Dashboard ")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "dropdown",
     onClick: function onClick() {
       return Object(_util_dropdownclick_util__WEBPACK_IMPORTED_MODULE_3__["default"])("clickDropDown2");
@@ -1368,7 +1386,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "dropdown-content1-logged-in",
     id: "clickDropDown2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "dropDownItem",
+    className: "dropDownItem1",
     onClick: logout
   }, "Log Out"))));
 });
@@ -1391,6 +1409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _loggedinNavbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loggedinNavbar */ "./frontend/components/welcome_page/navbar/loggedinNavbar.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../actions/project_actions */ "./frontend/actions/project_actions.js");
+/* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../util/project_util */ "./frontend/util/project_util.js");
+
 
 
 
@@ -2131,6 +2151,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.dispatch = store.dispatch;
   window.updateProject = _util_project_util__WEBPACK_IMPORTED_MODULE_5__["updateProject"];
   window.searchProject = _actions_project_actions__WEBPACK_IMPORTED_MODULE_6__["searchProject"];
+  window.getProjects = _util_project_util__WEBPACK_IMPORTED_MODULE_5__["getProjects"];
   window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["logout"];
   window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"];
   window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"]; //end of TO DELETE
@@ -2285,7 +2306,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-        to: "/"
+        to: "/projects"
       });
     }
   });
@@ -34715,7 +34736,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

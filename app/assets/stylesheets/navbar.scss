@@ -59,3 +59,46 @@
     color: #5081b2;
     cursor: pointer;
 }
+
+.dropdown-content-logged-in{
+  background-color: #F3F3F3;
+}
+
+.navbarlistheader{
+    height: 32px;
+    background-color: #908674;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 33px;
+    position: relative;
+    cursor: text;
+}
+
+.navbarlistitem{
+  padding: 5px;
+}
+
+.navbarlistitem:hover{
+  background-color: #b2aba1;
+}
+
+.navbarlistfooter{
+  text-decoration: none;
+  width: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.navbarlistfooterwrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-top: 1px solid #dddddd;
+}
+
+.navbarlistfooterwrapper:hover{
+  background: #E3E1DC;
+}

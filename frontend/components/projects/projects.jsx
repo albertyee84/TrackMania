@@ -91,8 +91,10 @@ class Projects extends React.Component {
         let projectslist = Object.values(this.props.projects);
         let projectrender;
         let status;
+        let archiveword;
 
         this.state.archived ? status = "Archived" : status = "Active";
+        this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
         
         !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
 
@@ -138,9 +140,14 @@ class Projects extends React.Component {
                             <ul className="projecttiles">
                                 {
                                     projectrender.map(project => 
-                                    <div key={project.id} className="projecttilebox">
-                                        <button onClick={()=>this.handleArchiveProject(project.id, project.archived)}>Placeholder</button>
+                                        <div key={project.id} className="projecttilebox">
                                         <div className="projecttileheader">
+                                                <div onClick={() => this.handleArchiveProject(project.id, project.archived)}><i className="fa fa-archive dropdown">
+                                                    <div className="arrow-down"></div>
+                                                    <ul className="dropdown-contentarchive">
+                                                        {archiveword}
+                                                    </ul>
+                                                    </i></div>
                                             <ProjectListItem 
                                                 project={project}
                                                 key={project.id}

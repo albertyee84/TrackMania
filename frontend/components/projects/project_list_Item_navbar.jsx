@@ -4,7 +4,7 @@ class ProjectListItemnavbar extends React.Component{
 
     render() {
         return(
-                <div>{this.props.projectName}</div>
+                <div className="navbarlistitem">{this.props.projectName}</div>
         );
     }
 }

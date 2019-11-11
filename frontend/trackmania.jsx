@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import { login, logout, signup } from './actions/session_actions';
 import Root from './components/root';
-
 import * as APIUtilProj from './util/project_util';
 import {searchProject} from './actions/project_actions';
 
@@ -31,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
     window.updateProject = APIUtilProj.updateProject;
     window.searchProject = searchProject;
+    window.getProjects = APIUtilProj.getProjects;
     window.logout = logout;
     window.login = login;
     window.signup = signup;
