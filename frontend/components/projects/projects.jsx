@@ -18,6 +18,7 @@ class Projects extends React.Component {
         this.handleArchive = this.handleArchive.bind(this);
         this.handleActive = this.handleActive.bind(this);
         this.handleClear = this.handleClear.bind(this);
+        this.handlehideProjects = this.handlehideProjects.bind(this);
     }
 
     componentDidMount(){
@@ -86,6 +87,11 @@ class Projects extends React.Component {
             all: true
         });
     }
+    handlehideProjects() {
+        this.setState({
+            all: false
+        });
+    }
 
     handleSubmit(e){
         e.preventDefault();
@@ -109,9 +115,10 @@ class Projects extends React.Component {
         
         !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
 
-        !this.state.all && projectslist.length > 4 ? 
+        !this.state.all && projectslist.length > 4? 
             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>Show {projectslist.length-4} more project</button> 
-            : showAll = "";
+            : this.state.all && projectslist.length > 4 ?
+            showAll = <button className="showallbtn" onClick={this.handlehideProjects}>Hide {projectslist.length - 4} projects</button> : "" ;
 
         this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
         return (

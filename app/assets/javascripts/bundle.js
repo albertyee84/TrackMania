@@ -1017,6 +1017,7 @@ function (_React$Component) {
     _this.handleArchive = _this.handleArchive.bind(_assertThisInitialized(_this));
     _this.handleActive = _this.handleActive.bind(_assertThisInitialized(_this));
     _this.handleClear = _this.handleClear.bind(_assertThisInitialized(_this));
+    _this.handlehideProjects = _this.handlehideProjects.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1097,6 +1098,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handlehideProjects",
+    value: function handlehideProjects() {
+      this.setState({
+        all: false
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
@@ -1123,7 +1131,10 @@ function (_React$Component) {
       !this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
         onClick: this.handleShowAllProjects
-      }, "Show ", projectslist.length - 4, " more project") : showAll = "";
+      }, "Show ", projectslist.length - 4, " more project") : this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "showallbtn",
+        onClick: this.handlehideProjects
+      }, "Hide ", projectslist.length - 4, " projects") : "";
       this.state.search.length > 0 ? clear = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clear",
         onClick: this.handleClear
