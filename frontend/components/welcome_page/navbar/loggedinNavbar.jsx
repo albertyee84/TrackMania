@@ -41,9 +41,9 @@ export default class loggedinNavbar extends React.Component{
                         </div>
                         <ul className="dropdown-content1" id="clickDropDown">
                             <div className="colorchange">
-                                <div className="navbarlistheader">Projects</div>
-                                <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
-                                <div className="navbarlistitem refreshlist" onClick={this.handleRefresh}>Refresh List</div>
+                                <div className="navbarlistheader" id="projectstitle">Projects</div>
+                                <div className="navbarlistitem" id="createproject" onClick={() => openModal('createproject')}>Create Project <i className="fa fa-plus"></i></div>
+                                <div className="navbarlistitem refreshlist" id="refresh" onClick={this.handleRefresh}>Refresh List <i className="fa fa-refresh" aria-hidden="true"></i></div>
                                 {
                                     projectlist.map((project, idx) => <ProjectListItemnavbar
                                         project={project}

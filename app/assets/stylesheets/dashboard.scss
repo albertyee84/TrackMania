@@ -252,3 +252,29 @@
     cursor: pointer;
     padding-right: 15px;
 }
+
+.searchbarinput{
+    width: 95%;
+}
+
+.clear{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    cursor: pointer;
+    color: #3b99fc;
+}
+
+.activearchivebuttons{
+    height: 37px;   
+    border-radius: 3px;
+    width: 100px;
+    cursor: pointer;
+    // padding-left: 10px;
+    outline: none;
+}
+
+.activearchivebuttons:hover{
+    background-color: #ddd;
+}

@@ -17,6 +17,7 @@ class Projects extends React.Component {
         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
         this.handleArchive = this.handleArchive.bind(this);
         this.handleActive = this.handleActive.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
 
     componentDidMount(){
@@ -71,6 +72,15 @@ class Projects extends React.Component {
         });
     }
 
+    handleClear(e){
+        this.setState({
+            search: ""
+        },
+            () => {
+                this.props.searchProject(this.state);
+            });
+    }
+
     handleShowAllProjects(){
         this.setState({
             all: true
@@ -92,6 +102,7 @@ class Projects extends React.Component {
         let projectrender;
         let status;
         let archiveword;
+        let clear;
 
         this.state.archived ? status = "Archived" : status = "Active";
         this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
@@ -100,9 +111,9 @@ class Projects extends React.Component {
 
         !this.state.all && projectslist.length > 4 ? 
             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>Show {projectslist.length-4} more project</button> 
-            : showAll = ""
+            : showAll = "";
 
-
+        this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
         return (
             <div>
                 <div className="dashboardbody">
@@ -118,19 +129,22 @@ class Projects extends React.Component {
                         <div className="searchbar">
                             <form className="searchbarform"
                                 onSubmit={this.handleSubmit}>
-                                    <i className="fa fa-search" />  
-                                    <input
-                                        className="inputbox" 
-                                        type="text"
-                                        value={this.state.search}
-                                        placeholder={`Search ${status} Projects`}
-                                        onChange={this.handleChange}
-                                        onSubmit={this.handleSubmit}
-                                        id=""
-                                    />
+                                    <div className="searchbarinput">
+                                        <i className="fa fa-search" />  
+                                        <input
+                                            className="inputbox" 
+                                            type="text"
+                                            value={this.state.search}
+                                            placeholder={`Search ${status} Projects`}
+                                            onChange={this.handleChange}
+                                            onSubmit={this.handleSubmit}
+                                            id=""
+                                        />
+                                    </div>
+                                {clear}
                             </form>
-                            <button onClick={this.handleActive}>Active</button>
-                            <button onClick={this.handleArchive}>Archived</button>
+                            <button className="activearchivebuttons" onClick={this.handleActive}>Active</button>
+                            <button className="activearchivebuttons" onClick={this.handleArchive}>Archived</button>
                         </div>
                         <div className="projectpanelbody">
                             <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 

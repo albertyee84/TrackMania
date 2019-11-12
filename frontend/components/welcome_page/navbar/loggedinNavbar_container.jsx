@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { logout } from '../../../actions/session_actions';
 import loggedinNavBar from './loggedinNavbar';
 import { openModal } from '../../../actions/modal_actions';
-import { createAProject } from '../../../actions/project_actions';
 import { getProjects } from '../../../util/project_util';
 
 const mapStateToProps = state => 

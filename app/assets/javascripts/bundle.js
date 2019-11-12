@@ -1016,6 +1016,7 @@ function (_React$Component) {
     _this.handleShowAllProjects = _this.handleShowAllProjects.bind(_assertThisInitialized(_this));
     _this.handleArchive = _this.handleArchive.bind(_assertThisInitialized(_this));
     _this.handleActive = _this.handleActive.bind(_assertThisInitialized(_this));
+    _this.handleClear = _this.handleClear.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1078,6 +1079,17 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleClear",
+    value: function handleClear(e) {
+      var _this6 = this;
+
+      this.setState({
+        search: ""
+      }, function () {
+        _this6.props.searchProject(_this6.state);
+      });
+    }
+  }, {
     key: "handleShowAllProjects",
     value: function handleShowAllProjects() {
       this.setState({
@@ -1096,7 +1108,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       var openModal = this.props.openModal;
       var showAll;
@@ -1104,6 +1116,7 @@ function (_React$Component) {
       var projectrender;
       var status;
       var archiveword;
+      var clear;
       this.state.archived ? status = "Archived" : status = "Active";
       this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
       !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
@@ -1111,6 +1124,10 @@ function (_React$Component) {
         className: "showallbtn",
         onClick: this.handleShowAllProjects
       }, "Show ", projectslist.length - 4, " more project") : showAll = "";
+      this.state.search.length > 0 ? clear = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "clear",
+        onClick: this.handleClear
+      }, "clear") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1133,6 +1150,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "searchbarform",
         onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "searchbarinput"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-search"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1143,9 +1162,11 @@ function (_React$Component) {
         onChange: this.handleChange,
         onSubmit: this.handleSubmit,
         id: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), clear), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "activearchivebuttons",
         onClick: this.handleActive
       }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "activearchivebuttons",
         onClick: this.handleArchive
       }, "Archived")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelbody"
@@ -1165,7 +1186,7 @@ function (_React$Component) {
           className: "projecttileheader"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           onClick: function onClick() {
-            return _this6.handleArchiveProject(project.id, project.archived);
+            return _this7.handleArchiveProject(project.id, project.archived);
           }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fa fa-archive dropdown"
@@ -1177,7 +1198,7 @@ function (_React$Component) {
           project: project,
           key: project.id,
           projectName: project.project_name,
-          userId: _this6.props.userId
+          userId: _this7.props.userId
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "projecttilebody"
         }));
@@ -1421,16 +1442,24 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "colorchange"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbarlistheader"
+        className: "navbarlistheader",
+        id: "projectstitle"
       }, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbarlistitem",
+        id: "createproject",
         onClick: function onClick() {
           return openModal('createproject');
         }
-      }, "Create Project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create Project ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-plus"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbarlistitem refreshlist",
+        id: "refresh",
         onClick: this.handleRefresh
-      }, "Refresh List"), projectlist.map(function (project, idx) {
+      }, "Refresh List ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-refresh",
+        "aria-hidden": "true"
+      })), projectlist.map(function (project, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_4__["default"], {
           project: project,
           key: project.id + idx,
@@ -1530,9 +1559,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _loggedinNavbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./loggedinNavbar */ "./frontend/components/welcome_page/navbar/loggedinNavbar.jsx");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../actions/project_actions */ "./frontend/actions/project_actions.js");
-/* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../util/project_util */ "./frontend/util/project_util.js");
-
+/* harmony import */ var _util_project_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../util/project_util */ "./frontend/util/project_util.js");
 
 
 
@@ -1557,7 +1584,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["openModal"])(modal));
     },
     getProjects: function getProjects(project) {
-      return Object(_util_project_util__WEBPACK_IMPORTED_MODULE_6__["getProjects"])(project);
+      return Object(_util_project_util__WEBPACK_IMPORTED_MODULE_5__["getProjects"])(project);
     }
   };
 };

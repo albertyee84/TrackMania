@@ -154,3 +154,26 @@
   background-color: gray;
   cursor: pointer;
 }
+
+#createproject{
+  color: #7B725E;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0px;
+}
+
+#refresh{
+  border-bottom: 1px solid #7B725E;
+  color: #7B725E;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  justify-content: space-between;
+}
+
+#projectstitle{
+  font-size: 15px;
+}
