@@ -146,8 +146,8 @@
   font-weight: 600;
   text-transform: uppercase;
   cursor: text;
-  padding-left: 10px;
-  padding-right: 10px;
+  // padding-left: 10px;
+  // padding-right: 10px;
 }
 
 .profilelistitme:hover{
@@ -176,4 +176,8 @@
 
 #projectstitle{
   font-size: 15px;
+}
+
+#navbarname{
+  font-size: 18px;
 }

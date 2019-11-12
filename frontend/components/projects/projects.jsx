@@ -188,7 +188,9 @@ class Projects extends React.Component {
                     </div>
                 </div>
                 <div className="dashboardfooter">
-                    About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us
+                    <div className="dashboardfootercontents">
+                        About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us
+                    </div>
                     <SocialMedia />
                 </div>
             </div>

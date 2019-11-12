@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class ProjectForm extends React.Component {
     constructor(props){
         super(props);
@@ -9,11 +10,17 @@ class ProjectForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
     }
     handleChange(e){
         this.setState({
             project_name: e.currentTarget.value
         });
+    }
+
+    handleCloseModal(){
+        this.props.closeModal(),
+        this.props.clearErrors();
     }
 
     handleSubmit(e){
@@ -49,9 +56,12 @@ class ProjectForm extends React.Component {
                                 <option value={this.props.currentUser}>{this.props.currentUser}</option>
                             </select>
                         </div>
+                        <div className="formerrors">
+                            {this.props.errors}
+                        </div>
                     </div>
                     <div className="newprojectformfooter">
-                        <button className="cancelbutton" onClick={()=> this.props.closeModal()}>Cancel</button>
+                        <button className="cancelbutton" onClick={this.handleCloseModal}>Cancel</button>
                         <input className="createformbtn" type="submit" value="Create"/>
                     </div>
                 </form>

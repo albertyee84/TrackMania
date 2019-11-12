@@ -36,7 +36,7 @@ export default class loggedinNavbar extends React.Component{
             <header className="loggedinnav-bar">
                 <div>
                     <h3 className="dropdown1">
-                        <div className="logo-logged-in">
+                        <div className="logo-logged-in" id="navbarname">
                             TrackMania<div className="arrow-down"></div>
                         </div>
                         <ul className="dropdown-content1" id="clickDropDown">

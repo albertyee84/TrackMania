@@ -119,13 +119,14 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/project_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject, searchProject, updateProject */
+/*! exports provided: RECEIVE_ALL_USERS_PROJECTS, RECEIVE_PROJECT, RECEIVE_ERRORS, receiveAllUsersProjects, receiveProject, requestAllUsersProjects, createAProject, searchProject, updateProject */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS_PROJECTS", function() { return RECEIVE_ALL_USERS_PROJECTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PROJECT", function() { return RECEIVE_PROJECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsersProjects", function() { return receiveAllUsersProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveProject", function() { return receiveProject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllUsersProjects", function() { return requestAllUsersProjects; });
@@ -136,6 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_USERS_PROJECTS = 'RECEIVE_ALL_USERS_PROJECTS';
 var RECEIVE_PROJECT = 'RECEIVE_PROJECT';
+var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 var receiveAllUsersProjects = function receiveAllUsersProjects(projects) {
   return {
     type: RECEIVE_ALL_USERS_PROJECTS,
@@ -148,6 +150,14 @@ var receiveProject = function receiveProject(project) {
     project: project
   };
 };
+
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ERRORS,
+    errors: errors.responseJSON
+  };
+};
+
 var requestAllUsersProjects = function requestAllUsersProjects(project) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["getProjects"](project).then(function (payload) {
@@ -159,6 +169,8 @@ var createAProject = function createAProject(project) {
   return function (dispatch) {
     return _util_project_util__WEBPACK_IMPORTED_MODULE_0__["createProject"](project).then(function (payload) {
       return dispatch(receiveProject(payload));
+    }, function (errors) {
+      return dispatch(receiveErrors(errors));
     });
   };
 };
@@ -607,6 +619,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Login/login_form_container */ "./frontend/components/Login/login_form_container.jsx");
 /* harmony import */ var _Login_sign_up_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Login/sign_up_form_container */ "./frontend/components/Login/sign_up_form_container.jsx");
 /* harmony import */ var _components_projects_project_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/projects/project_form_container */ "./frontend/components/projects/project_form_container.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -661,7 +675,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     closeModal: function closeModal() {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])());
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"])(), dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_6__["clearErrors"])()));
     }
   };
 };
@@ -718,6 +732,7 @@ function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleCloseModal = _this.handleCloseModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -727,6 +742,11 @@ function (_React$Component) {
       this.setState({
         project_name: e.currentTarget.value
       });
+    }
+  }, {
+    key: "handleCloseModal",
+    value: function handleCloseModal() {
+      this.props.closeModal(), this.props.clearErrors();
     }
   }, {
     key: "handleSubmit",
@@ -744,8 +764,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "createformbox"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -777,13 +795,13 @@ function (_React$Component) {
         value: "Select Account Holder"
       }, "Select Account Holder"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: this.props.currentUser
-      }, this.props.currentUser)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.currentUser))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "formerrors"
+      }, this.props.errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newprojectformfooter"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "cancelbutton",
-        onClick: function onClick() {
-          return _this3.props.closeModal();
-        }
+        onClick: this.handleCloseModal
       }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "createformbtn",
         type: "submit",
@@ -814,6 +832,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_form */ "./frontend/components/projects/project_form.jsx");
 /* harmony import */ var _actions_project_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/project_actions */ "./frontend/actions/project_actions.js");
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -823,7 +843,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     userId: state.session.id,
-    currentUser: state.entities.users[state.session.id].username
+    currentUser: state.entities.users[state.session.id].username,
+    errors: state.errors.session.errors
   };
 };
 
@@ -834,6 +855,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     closeModal: function closeModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_4__["closeModal"])());
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_5__["clearErrors"])());
     }
   };
 };
@@ -1215,7 +1239,9 @@ function (_React$Component) {
         }));
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardfooter"
-      }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardfootercontents"
+      }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -1444,7 +1470,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "dropdown1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logo-logged-in"
+        className: "logo-logged-in",
+        id: "navbarname"
       }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "arrow-down"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
