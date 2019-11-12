@@ -4,14 +4,7 @@ import ProjectListItem from './project_list_Item';
 export default class ProjectsBody extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            user_id: this.props.userId,
-            search: "",
-            archived: false,
-            all: false,
-            id: 100000000000,
-        };
-        
+        this.state = this.props.state;
     }
 
     handleArchiveProject(projectId, archived) {
@@ -37,7 +30,7 @@ export default class ProjectsBody extends React.Component{
         let projectrender;
         let projectslist = Object.values(this.props.projects);
         this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-        !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
+        !this.props.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
 
         return(
             <div className="projectpanelbody">
@@ -55,7 +48,8 @@ export default class ProjectsBody extends React.Component{
                                         <ul className="dropdown-contentarchive">
                                             {archiveword}
                                         </ul>
-                                    </i></div>
+                                        </i>
+                                    </div>
                                     <ProjectListItem
                                         project={project}
                                         key={project.id}

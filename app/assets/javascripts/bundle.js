@@ -1223,11 +1223,10 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
-/* harmony import */ var _social_media_social_media__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../social_media/social_media */ "./frontend/components/social_media/social_media.jsx");
-/* harmony import */ var _project_dashboard_tab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./project_dashboard_tab */ "./frontend/components/projects/project_dashboard_tab.jsx");
-/* harmony import */ var _project_search_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./project_search_bar */ "./frontend/components/projects/project_search_bar.jsx");
-/* harmony import */ var _projects_body__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./projects_body */ "./frontend/components/projects/projects_body.jsx");
+/* harmony import */ var _project_dashboard_tab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_dashboard_tab */ "./frontend/components/projects/project_dashboard_tab.jsx");
+/* harmony import */ var _project_search_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_search_bar */ "./frontend/components/projects/project_search_bar.jsx");
+/* harmony import */ var _projects_body__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projects_body */ "./frontend/components/projects/projects_body.jsx");
+/* harmony import */ var _projects_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./projects_footer */ "./frontend/components/projects/projects_footer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1245,7 +1244,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1274,12 +1272,7 @@ function (_React$Component) {
     _this.handlehideProjects = _this.handlehideProjects.bind(_assertThisInitialized(_this));
     _this.handleShowAllProjects = _this.handleShowAllProjects.bind(_assertThisInitialized(_this));
     return _this;
-  } // this.handleSubmit = this.handleSubmit.bind(this);
-  // this.handleChange = this.handleChange.bind(this);
-  // this.handleArchive = this.handleArchive.bind(this);
-  // this.handleActive = this.handleActive.bind(this);
-  // this.handleClear = this.handleClear.bind(this);
-
+  }
 
   _createClass(Projects, [{
     key: "componentDidMount",
@@ -1305,44 +1298,7 @@ function (_React$Component) {
           });
         });
       });
-    } // handleArchive(e){
-    //     this.setState({
-    //         archived: true
-    //     },
-    //     ()=>{
-    //         this.props.requestAllUsersProjects(this.state);
-    //     }
-    //     );
-    // }
-    // handleActive(e){
-    //     this.setState({
-    //         archived: false
-    //     },
-    //         () => {
-    //             this.props.requestAllUsersProjects(this.state);
-    //         }
-    //     );
-    // }
-
-  }, {
-    key: "handleChange",
-    value: function handleChange(e) {
-      var _this3 = this;
-
-      this.setState({
-        search: e.currentTarget.value
-      }, function () {
-        _this3.props.searchProject(_this3.state);
-      });
-    } // handleClear(e){
-    //     this.setState({
-    //         search: ""
-    //     },
-    //         () => {
-    //             this.props.searchProject(this.state);
-    //         });
-    // }
-
+    }
   }, {
     key: "handleShowAllProjects",
     value: function handleShowAllProjects() {
@@ -1356,55 +1312,38 @@ function (_React$Component) {
       this.setState({
         all: false
       });
-    } // handleSubmit(e){
-    //     e.preventDefault();
-    //     this.props.searchProject(this.state);
-    //     this.setState({
-    //         search: ""
-    //     });
-    // }
-
+    }
   }, {
     key: "render",
     value: function render() {
       var openModal = this.props.openModal;
       var showAll;
       var projectslist = Object.values(this.props.projects);
-      var projectrender; // let status;
-
-      var archiveword;
-      var clear; // this.state.archived ? status = "Archived" : status = "Active";
-
-      this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-      !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
       !this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
         onClick: this.handleShowAllProjects
       }, "Show ", projectslist.length - 4, " more project") : this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
         onClick: this.handlehideProjects
-      }, "Hide ", projectslist.length - 4, " projects") : ""; // this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
-
+      }, "Hide ", projectslist.length - 4, " projects") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardbody"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_dashboard_tab__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_dashboard_tab__WEBPACK_IMPORTED_MODULE_1__["default"], {
         openModal: openModal
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_search_bar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_search_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         searchProject: this.props.searchProject,
         requestAllUsersProjects: this.props.requestAllUsersProjects,
         userId: this.props.userId
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_body__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_body__WEBPACK_IMPORTED_MODULE_3__["default"], {
         projects: this.props.projects,
         updateProject: this.props.updateProject,
         requestAllUsersProjects: this.props.requestAllUsersProjects,
-        userId: this.props.userId
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboardfooter"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboardfootercontents"
-      }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+        userId: this.props.userId,
+        state: this.state,
+        all: this.state.all
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
     }
   }]);
 
@@ -1460,13 +1399,7 @@ function (_React$Component) {
     _classCallCheck(this, ProjectsBody);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectsBody).call(this, props));
-    _this.state = {
-      user_id: _this.props.userId,
-      search: "",
-      archived: false,
-      all: false,
-      id: 100000000000
-    };
+    _this.state = _this.props.state;
     return _this;
   }
 
@@ -1499,7 +1432,7 @@ function (_React$Component) {
       var projectrender;
       var projectslist = Object.values(this.props.projects);
       this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-      !this.state.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
+      !this.props.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1597,6 +1530,69 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_projects__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/projects/projects_footer.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/projects/projects_footer.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProjectFooter; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _social_media_social_media__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../social_media/social_media */ "./frontend/components/social_media/social_media.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ProjectFooter =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ProjectFooter, _React$Component);
+
+  function ProjectFooter() {
+    _classCallCheck(this, ProjectFooter);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ProjectFooter).apply(this, arguments));
+  }
+
+  _createClass(ProjectFooter, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardfooter"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboardfootercontents"
+      }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+    }
+  }]);
+
+  return ProjectFooter;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
 
 /***/ }),
 
