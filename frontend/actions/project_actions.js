@@ -35,10 +35,16 @@ export const createAProject = project => dispatch =>
         errors => dispatch(receiveErrors(errors))
         );
 
-export const searchProject = params => dispatch =>
-    APIUtilProjects.searchProject(params)
+export const searchProject = params => dispatch =>{
+    debugger;
+    return(
+            APIUtilProjects.searchProject(params)
     .then(payload => dispatch(receiveAllUsersProjects(payload))
-);
+    ));
+};
+//     APIUtilProjects.searchProject(params)
+//     .then(payload => dispatch(receiveAllUsersProjects(payload))
+// );
 
 export const updateProject = project => dispatch => 
     APIUtilProjects.updateProject(project)

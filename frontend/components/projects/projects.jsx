@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectListItem from './project_list_Item';
 import SocialMedia from '../social_media/social_media';
 import ProjectDashboardTab from './project_dashboard_tab';
+import ProjectSearchBar from './project_search_bar';
 
 class Projects extends React.Component {
     constructor(props){
@@ -13,12 +14,12 @@ class Projects extends React.Component {
             all: false,
             id: 100000000000,
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
-        this.handleArchive = this.handleArchive.bind(this);
-        this.handleActive = this.handleActive.bind(this);
-        this.handleClear = this.handleClear.bind(this);
+        // this.handleArchive = this.handleArchive.bind(this);
+        // this.handleActive = this.handleActive.bind(this);
+        // this.handleClear = this.handleClear.bind(this);
         this.handlehideProjects = this.handlehideProjects.bind(this);
     }
 
@@ -45,25 +46,25 @@ class Projects extends React.Component {
     }
     
 
-    handleArchive(e){
-        this.setState({
-            archived: true
-        },
-        ()=>{
-            this.props.requestAllUsersProjects(this.state);
-        }
-        );
-    }
+    // handleArchive(e){
+    //     this.setState({
+    //         archived: true
+    //     },
+    //     ()=>{
+    //         this.props.requestAllUsersProjects(this.state);
+    //     }
+    //     );
+    // }
 
-    handleActive(e){
-        this.setState({
-            archived: false
-        },
-            () => {
-                this.props.requestAllUsersProjects(this.state);
-            }
-        );
-    }
+    // handleActive(e){
+    //     this.setState({
+    //         archived: false
+    //     },
+    //         () => {
+    //             this.props.requestAllUsersProjects(this.state);
+    //         }
+    //     );
+    // }
 
     handleChange(e){
         this.setState({
@@ -74,14 +75,14 @@ class Projects extends React.Component {
         });
     }
 
-    handleClear(e){
-        this.setState({
-            search: ""
-        },
-            () => {
-                this.props.searchProject(this.state);
-            });
-    }
+    // handleClear(e){
+    //     this.setState({
+    //         search: ""
+    //     },
+    //         () => {
+    //             this.props.searchProject(this.state);
+    //         });
+    // }
 
     handleShowAllProjects(){
         this.setState({
@@ -94,24 +95,24 @@ class Projects extends React.Component {
         });
     }
 
-    handleSubmit(e){
-        e.preventDefault();
-        this.props.searchProject(this.state);
-        this.setState({
-            search: ""
-        });
-    }
+    // handleSubmit(e){
+    //     e.preventDefault();
+    //     this.props.searchProject(this.state);
+    //     this.setState({
+    //         search: ""
+    //     });
+    // }
 
     render() {
         const openModal = this.props.openModal;
         let showAll;
         let projectslist = Object.values(this.props.projects);
         let projectrender;
-        let status;
+        // let status;
         let archiveword;
         let clear;
 
-        this.state.archived ? status = "Archived" : status = "Active";
+        // this.state.archived ? status = "Archived" : status = "Active";
         this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
         
         !this.state.all ? projectrender = projectslist.slice(0,4) : projectrender = projectslist;
@@ -121,32 +122,16 @@ class Projects extends React.Component {
             : this.state.all && projectslist.length > 4 ?
             showAll = <button className="showallbtn" onClick={this.handlehideProjects}>Hide {projectslist.length - 4} projects</button> : "" ;
 
-        this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
+        // this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
         return (
             <div>
                 <div className="dashboardbody">
                     <ProjectDashboardTab openModal={openModal}/>
                     <div className="dashboard">
-                        <div className="searchbar">
-                            <form className="searchbarform"
-                                onSubmit={this.handleSubmit}>
-                                    <div className="searchbarinput">
-                                        <i className="fa fa-search" />  
-                                        <input
-                                            className="inputbox" 
-                                            type="text"
-                                            value={this.state.search}
-                                            placeholder={`Search ${status} Projects`}
-                                            onChange={this.handleChange}
-                                            onSubmit={this.handleSubmit}
-                                            id=""
-                                        />
-                                    </div>
-                                {clear}
-                            </form>
-                            <button className="activearchivebuttons" onClick={this.handleActive}>Active</button>
-                            <button className="activearchivebuttons" onClick={this.handleArchive}>Archived</button>
-                        </div>
+                        <ProjectSearchBar 
+                        searchProject={this.props.searchProject}
+                        requestAllUsersProjects={this.props.requestAllUsersProjects}
+                        userId={this.props.userId} />
                         <div className="projectpanelbody">
                             <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
                                 <div className="projectpanelseparator">|</div> 
