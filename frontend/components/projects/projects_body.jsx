@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
+import ProjectTiles from './projects_nonfav';
 
 export default class ProjectsBody extends React.Component{
     constructor(props) {
@@ -7,61 +8,63 @@ export default class ProjectsBody extends React.Component{
         this.state = this.props.state;
     }
 
-    handleArchiveProject(projectId, archived) {
-        let newStatus;
-        archived ? newStatus = false : newStatus = true;
-        this.setState({
-            id: projectId,
-            archived: newStatus,
-        },
-            () => {
-                this.props.updateProject(this.state)
-                    .then(() => {
-                        this.setState({ archived: archived },
-                            () => {
-                                this.props.requestAllUsersProjects(this.state);
-                            });
-                    });
-            });
-    }
+    // handleArchiveProject(projectId, archived) {
+    //     let newStatus;
+    //     archived ? newStatus = false : newStatus = true;
+    //     this.setState({
+    //         id: projectId,
+    //         archived: newStatus,
+    //         favorite: false
+    //     },
+    //         () => {
+    //             this.props.updateProject(this.state)
+    //                 .then(() => {
+    //                     this.setState({ archived: archived },
+    //                         () => {
+    //                             this.props.requestAllUsersProjects(this.state);
+    //                         });
+    //                 });
+    //         });
+    // }
 
     render(){
         let archiveword;
-        let projectrender;
         let projectslist = Object.values(this.props.projects);
+        let projectlistnonfav = [];
+        let projectlistfav = [];
+        projectslist.forEach(project => {
+            project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+        });
         this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-        !this.props.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
+
+        !this.props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
+
+        const displayfav = projectlistfav.length > 0 ? (<div>My Favorites
+            <ProjectTiles
+                projectrendernonfav={projectlistfav}
+                state={this.state}
+                updateProject={this.props.updateProject}
+                requestAllUsersProjects={this.props.requestAllUsersProjects}
+                archiveword={archiveword}
+                userId={this.props.userId}
+            />
+        </div> ) : "";
 
         return(
             <div className="projectpanelbody">
+                {displayfav}
                 <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects
                                 <div className="projectpanelseparator">|</div>
-                    {Object.values(this.props.projects).length}
+                    {Object.values(this.props.projects).length - projectlistfav.length}
                 </div>
-                <ul className="projecttiles">
-                    {
-                        projectrender.map(project =>
-                            <div key={project.id} className="projecttilebox">
-                                <div className="projecttileheader">
-                                    <div onClick={() => this.handleArchiveProject(project.id, project.archived)}><i className="fa fa-archive dropdown">
-                                        <div className="arrow-down"></div>
-                                        <ul className="dropdown-contentarchive">
-                                            {archiveword}
-                                        </ul>
-                                        </i>
-                                    </div>
-                                    <ProjectListItem
-                                        project={project}
-                                        key={project.id}
-                                        projectName={project.project_name}
-                                        userId={this.props.userId}
-                                    />
-                                </div>
-                                <div className="projecttilebody"></div>
-                            </div>
-                        )
-                    }
-                </ul>
+                <ProjectTiles 
+                    projectrendernonfav={projectlistnonfav}
+                    state={this.state}
+                    updateProject={this.props.updateProject}
+                    requestAllUsersProjects={this.props.requestAllUsersProjects}
+                    archiveword={archiveword}
+                    userId={this.props.userId}
+                />
             </div>
         );
     }

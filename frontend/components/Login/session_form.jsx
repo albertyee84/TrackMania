@@ -74,7 +74,8 @@ class SessionForm extends React.Component {
 
         return (
             <div className="modalcontents">
-                <img src="/splash.png" alt="" className="modalbg"/>
+                {/* <img src="/splash.png" alt="" className="modalbg"/> */}
+                <div className="modalbg"></div>
                 <div className="formspacing">
                     <div onClick={this.props.closeModal} className="close-x"></div>
                         <form onSubmit={this.handleSubmit} className="formsss">

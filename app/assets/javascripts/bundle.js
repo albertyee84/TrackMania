@@ -464,9 +464,7 @@ function (_React$Component) {
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modalcontents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/splash.png",
-        alt: "",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modalbg"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "formspacing"
@@ -1319,13 +1317,18 @@ function (_React$Component) {
       var openModal = this.props.openModal;
       var showAll;
       var projectslist = Object.values(this.props.projects);
-      !this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      var projectlistnonfav = [];
+      var projectlistfav = [];
+      projectslist.forEach(function (project) {
+        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+      });
+      !this.state.all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
         onClick: this.handleShowAllProjects
-      }, "Show ", projectslist.length - 4, " more project") : this.state.all && projectslist.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Show ", projectlistnonfav.length - 4, " more project") : this.state.all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "showallbtn",
         onClick: this.handlehideProjects
-      }, "Hide ", projectslist.length - 4, " projects") : "";
+      }, "Hide ", projectlistnonfav.length - 4, " projects") : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboardbody"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_dashboard_tab__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -1367,6 +1370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
+/* harmony import */ var _projects_nonfav__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./projects_nonfav */ "./frontend/components/projects/projects_nonfav.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1388,6 +1392,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProjectsBody =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1401,73 +1406,62 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectsBody).call(this, props));
     _this.state = _this.props.state;
     return _this;
-  }
+  } // handleArchiveProject(projectId, archived) {
+  //     let newStatus;
+  //     archived ? newStatus = false : newStatus = true;
+  //     this.setState({
+  //         id: projectId,
+  //         archived: newStatus,
+  //         favorite: false
+  //     },
+  //         () => {
+  //             this.props.updateProject(this.state)
+  //                 .then(() => {
+  //                     this.setState({ archived: archived },
+  //                         () => {
+  //                             this.props.requestAllUsersProjects(this.state);
+  //                         });
+  //                 });
+  //         });
+  // }
+
 
   _createClass(ProjectsBody, [{
-    key: "handleArchiveProject",
-    value: function handleArchiveProject(projectId, archived) {
-      var _this2 = this;
-
-      var newStatus;
-      archived ? newStatus = false : newStatus = true;
-      this.setState({
-        id: projectId,
-        archived: newStatus
-      }, function () {
-        _this2.props.updateProject(_this2.state).then(function () {
-          _this2.setState({
-            archived: archived
-          }, function () {
-            _this2.props.requestAllUsersProjects(_this2.state);
-          });
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       var archiveword;
-      var projectrender;
       var projectslist = Object.values(this.props.projects);
+      var projectlistnonfav = [];
+      var projectlistfav = [];
+      projectslist.forEach(function (project) {
+        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+      });
       this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-      !this.props.all ? projectrender = projectslist.slice(0, 4) : projectrender = projectslist;
+      !this.props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
+      var displayfav = projectlistfav.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "My Favorites", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        projectrendernonfav: projectlistfav,
+        state: this.state,
+        updateProject: this.props.updateProject,
+        requestAllUsersProjects: this.props.requestAllUsersProjects,
+        archiveword: archiveword,
+        userId: this.props.userId
+      })) : "";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelbody"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, displayfav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelheader"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-bars"
       }), "My Projects", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "projectpanelseparator"
-      }, "|"), Object.values(this.props.projects).length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "projecttiles"
-      }, projectrender.map(function (project) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: project.id,
-          className: "projecttilebox"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "projecttileheader"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          onClick: function onClick() {
-            return _this3.handleArchiveProject(project.id, project.archived);
-          }
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-archive dropdown"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "arrow-down"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "dropdown-contentarchive"
-        }, archiveword))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          project: project,
-          key: project.id,
-          projectName: project.project_name,
-          userId: _this3.props.userId
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "projecttilebody"
-        }));
-      })));
+      }, "|"), Object.values(this.props.projects).length - projectlistfav.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        projectrendernonfav: projectlistnonfav,
+        state: this.state,
+        updateProject: this.props.updateProject,
+        requestAllUsersProjects: this.props.requestAllUsersProjects,
+        archiveword: archiveword,
+        userId: this.props.userId
+      }));
     }
   }]);
 
@@ -1590,6 +1584,138 @@ function (_React$Component) {
   }]);
 
   return ProjectFooter;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./frontend/components/projects/projects_nonfav.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/projects/projects_nonfav.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Projectsnonfav; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Projectsnonfav =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Projectsnonfav, _React$Component);
+
+  function Projectsnonfav(props) {
+    var _this;
+
+    _classCallCheck(this, Projectsnonfav);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Projectsnonfav).call(this, props));
+    _this.state = _this.props.state;
+    return _this;
+  }
+
+  _createClass(Projectsnonfav, [{
+    key: "handleArchiveProject",
+    value: function handleArchiveProject(projectId, archived) {
+      var _this2 = this;
+
+      var newStatus;
+      archived ? newStatus = false : newStatus = true;
+      this.setState({
+        id: projectId,
+        archived: newStatus,
+        favorite: false
+      }, function () {
+        _this2.props.updateProject(_this2.state).then(function () {
+          _this2.setState({
+            archived: archived
+          }, function () {
+            _this2.props.requestAllUsersProjects(_this2.state);
+          });
+        });
+      });
+    }
+  }, {
+    key: "handleFavorite",
+    value: function handleFavorite(projectId, favorite) {
+      var _this3 = this;
+
+      var newStatus;
+      favorite ? newStatus = false : newStatus = true;
+      this.setState({
+        id: projectId,
+        favorite: newStatus
+      }, function () {
+        _this3.props.updateProject(_this3.state).then(function () {
+          _this3.props.requestAllUsersProjects(_this3.state);
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "projecttiles"
+      }, this.props.projectrendernonfav.map(function (project) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: project.id,
+          className: "projecttilebox"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "projecttileheader"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: function onClick() {
+            return _this4.handleArchiveProject(project.id, project.archived);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-archive dropdown"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "arrow-down"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "dropdown-contentarchive"
+        }, _this4.props.archiveword))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: function onClick() {
+            return _this4.handleFavorite(project.id, project.favorite);
+          }
+        }, "favorite me!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_list_Item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          project: project,
+          key: project.id,
+          projectName: project.project_name,
+          userId: _this4.props.userId
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "projecttilebody"
+        }));
+      }));
+    }
+  }]);
+
+  return Projectsnonfav;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 

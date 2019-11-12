@@ -29,6 +29,6 @@ class Api::ProjectsController < ApplicationController
     end
 
     def project_params
-        params.require(:project).permit(:project_name, :user_id, :archived)
+        params.require(:project).permit(:project_name, :user_id, :archived, :favorite)
     end
 end

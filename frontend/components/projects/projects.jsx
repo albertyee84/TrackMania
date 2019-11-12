@@ -56,15 +56,20 @@ class Projects extends React.Component {
         const openModal = this.props.openModal;
         let showAll;
         let projectslist = Object.values(this.props.projects);
+        let projectlistnonfav = [];
+        let projectlistfav = [];
+        projectslist.forEach(project => {
+            project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+        });
 
-        !this.state.all && projectslist.length > 4 ?
+        !this.state.all && projectlistnonfav.length > 4 ?
             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>
-                Show {projectslist.length-4} more project
+                Show {projectlistnonfav.length-4} more project
                     </button> 
             : 
-            this.state.all && projectslist.length > 4 ?
+            this.state.all && projectlistnonfav.length > 4 ?
             showAll = <button className="showallbtn" onClick={this.handlehideProjects}>
-                Hide {projectslist.length - 4} projects
+                Hide {projectlistnonfav.length - 4} projects
                 </button> : "" ;
 
         return (
