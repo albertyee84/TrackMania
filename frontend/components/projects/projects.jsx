@@ -3,6 +3,8 @@ import ProjectListItem from './project_list_Item';
 import SocialMedia from '../social_media/social_media';
 import ProjectDashboardTab from './project_dashboard_tab';
 import ProjectSearchBar from './project_search_bar';
+import ProjectsBody from './projects_body';
+
 
 class Projects extends React.Component {
     constructor(props){
@@ -14,14 +16,14 @@ class Projects extends React.Component {
             all: false,
             id: 100000000000,
         };
+        this.handlehideProjects = this.handlehideProjects.bind(this);
+        this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
+    }
         // this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleChange = this.handleChange.bind(this);
-        this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
         // this.handleArchive = this.handleArchive.bind(this);
         // this.handleActive = this.handleActive.bind(this);
         // this.handleClear = this.handleClear.bind(this);
-        this.handlehideProjects = this.handlehideProjects.bind(this);
-    }
 
     componentDidMount(){
         this.props.requestAllUsersProjects(this.state);
@@ -129,10 +131,17 @@ class Projects extends React.Component {
                     <ProjectDashboardTab openModal={openModal}/>
                     <div className="dashboard">
                         <ProjectSearchBar 
-                        searchProject={this.props.searchProject}
-                        requestAllUsersProjects={this.props.requestAllUsersProjects}
-                        userId={this.props.userId} />
-                        <div className="projectpanelbody">
+                            searchProject={this.props.searchProject}
+                            requestAllUsersProjects={this.props.requestAllUsersProjects}
+                            userId={this.props.userId} 
+                        />
+                        <ProjectsBody 
+                            projects={this.props.projects}
+                            updateProject={this.props.updateProject}
+                            requestAllUsersProjects={this.props.requestAllUsersProjects}
+                            userId={this.props.userId}
+                        />
+                        {/* <div className="projectpanelbody">
                             <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects 
                                 <div className="projectpanelseparator">|</div> 
                                 {Object.values(this.props.projects).length}
@@ -160,7 +169,7 @@ class Projects extends React.Component {
                                         )
                                     }
                             </ul>
-                        </div>
+                        </div> */}
                         <div>
                             {showAll}
                         </div>
