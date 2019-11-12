@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectListItem from './project_list_Item';
 import SocialMedia from '../social_media/social_media';
+import ProjectDashboardTab from './project_dashboard_tab';
 
 class Projects extends React.Component {
     constructor(props){
@@ -124,14 +125,7 @@ class Projects extends React.Component {
         return (
             <div>
                 <div className="dashboardbody">
-                    <div className="buttonrow">
-                        <div className="buttoncontainer">
-                            <div className='dashboardtabcontainer'>
-                                <div className="dashboardtab">Projects</div>
-                            </div>
-                            <button className="Create-Project-btn" onClick={() => openModal('createproject')}>Create Project</button>
-                        </div>
-                    </div>
+                    <ProjectDashboardTab openModal={openModal}/>
                     <div className="dashboard">
                         <div className="searchbar">
                             <form className="searchbarform"
