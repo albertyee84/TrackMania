@@ -48,7 +48,6 @@ export default class Projectsnonfav extends React.Component{
                             <div className="projecttileheader">
                                 <div className="archive-title">
                                     <div onClick={() => this.handleArchiveProject(project.id, project.archived)}><i className="fa fa-archive dropdown">
-                                        {/* <div className="arrow-down"></div> */}
                                         <ul className="dropdown-contentarchive">
                                             {this.props.archiveword}
                                         </ul>

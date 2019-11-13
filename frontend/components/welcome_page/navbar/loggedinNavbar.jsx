@@ -16,7 +16,7 @@ export default class loggedinNavbar extends React.Component{
             projects: {},
         };
         let projectlist = {};
-        this.handleRefresh = this.handleRefresh.bind(this)
+        this.handleRefresh = this.handleRefresh.bind(this);
     }
 
     componentDidMount(){
@@ -36,7 +36,7 @@ export default class loggedinNavbar extends React.Component{
             <header className="loggedinnav-bar">
                 <div>
                     <h3 className="dropdown1">
-                        <div className="logo-logged-in" id="navbarname">
+                        <div className="logo-logged-in" id="navbarname" onClick={()=>this.props.history.push('/projects')}>
                             TrackMania<div className="arrow-down"></div>
                         </div>
                         <ul className="dropdown-content1" id="clickDropDown">
@@ -75,48 +75,3 @@ export default class loggedinNavbar extends React.Component{
         );
     }
 }
-
-
-// export default ({ currentUser, logout, openModal, projects, userId }) => {
-//     let projectlist = Object.values(projects).slice(0,6);
-//     return (
-//         <header className="loggedinnav-bar">
-//             <div>
-//                 <h3 className="dropdown1">
-//                     <div className="logo-logged-in">
-//                         TrackMania<div className="arrow-down"></div>
-//                     </div>
-//                     <ul className="dropdown-content1" id="clickDropDown">
-//                         <div className="colorchange">
-//                             <div className="navbarlistheader">Projects</div>
-//                             <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
-//                             {
-//                                 projectlist.map((project, idx) => <ProjectListItemnavbar
-//                                     project={project}
-//                                     key={project.id + idx}
-//                                     projectName={project.project_name}
-//                                     userId={userId}
-//                                 />)
-//                             }
-//                             <div className="navbarlistfooterwrapper">
-//                                 <Link to='/projects' className="navbarlistfooter"><i class="fa fa-home"></i>Dashboard </Link>
-//                             </div>
-//                         </div>
-//                     </ul>
-//                 </h3>
-//             </div>
-//             <h3 className="dropdown1">
-//                 <div className="logo-logged-in">
-//                     {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
-//                 </div>
-//                 <ul className="dropdown-content1" id="clickDropDown2">
-//                     <li className="profilelistitme">Profile</li>
-//                     <li className="profilelistitme">Accounts</li>
-//                     <li className="profilelistitme">Reports & Analytics</li>
-//                     <div className="dropdownlogout" onClick={logout}>Log Out</div>
-
-//                 </ul>
-//             </h3>
-//         </header>
-//     );
-// };

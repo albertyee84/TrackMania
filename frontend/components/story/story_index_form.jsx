@@ -51,7 +51,7 @@ export default class StoryIndexForm extends React.Component{
     render(){
         return(
             this.state.form ? (
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="AddStoryForm">
                     <label>Name
                         <input 
                             type="text" 

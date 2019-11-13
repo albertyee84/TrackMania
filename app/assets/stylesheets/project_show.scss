@@ -1,0 +1,24 @@
+.ProjectShowPage{
+    display: flex;
+}
+.storyCurrent{
+    border: 1px solid black;
+    height: 100vh;
+    width: 300px
+}
+
+.Icebox{
+    border: 1px solid black;
+    height: 100vh;
+    width: 300px
+}
+.AddStoryForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.storycolheader{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}

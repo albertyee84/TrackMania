@@ -1084,7 +1084,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
-        to: "/projects/".concat(this.props.project.id, "/stories")
+        to: "/projects/".concat(this.props.project.id, "/stories"),
+        className: "projectlistitemlink"
       }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: this.props.project.id
       }, this.props.projectName), " "));
@@ -1109,6 +1110,7 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1129,6 +1131,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var ProjectListItemnavbar =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1143,9 +1146,13 @@ function (_React$Component) {
   _createClass(ProjectListItemnavbar, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "projectlistitemlink",
+        to: "/projects/".concat(this.props.project.id, "/stories")
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: this.props.project.id,
         className: "navbarlistitem"
-      }, this.props.projectName);
+      }, this.props.projectName), " ");
     }
   }]);
 
@@ -1964,13 +1971,21 @@ function (_React$Component) {
         return story.project_id === _this2.props.projectId;
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Body"
+        className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storyCurrent",
         onDrop: this.drop,
         onDragOver: this.allowDrop,
         id: "div1"
-      }, "Current", projectStories.map(function (story) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storycolheader"
+      }, "Current", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        createStory: createStory,
+        updateStory: updateStory,
+        deleteStory: deleteStory,
+        projectId: this.props.projectId,
+        requestorId: this.props.requestorId
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), projectStories.map(function (story) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           story: story,
           key: story.id,
@@ -1985,22 +2000,21 @@ function (_React$Component) {
           allowDrop: _this2.allowDrop,
           id: "drag1"
         });
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        createStory: createStory,
-        updateStory: updateStory,
-        deleteStory: deleteStory,
-        projectId: this.props.projectId,
-        requestorId: this.props.requestorId
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Icebox",
         onDrop: this.drop,
         onDragOver: this.allowDrop,
         id: "div2"
-      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        draggable: true,
-        onDragStart: this.drag,
-        id: "drag1"
-      }, "Drag Me")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storycolheader"
+      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        createStory: createStory,
+        updateStory: updateStory,
+        deleteStory: deleteStory,
+        projectId: this.props.projectId,
+        requestorId: this.props.requestorId,
+        status: "Icebox"
+      }))));
     }
   }]);
 
@@ -2162,7 +2176,8 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
+        onSubmit: this.handleSubmit,
+        className: "AddStoryForm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleChange('name'),
@@ -2344,6 +2359,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       var _this$props = this.props,
           currentUser = _this$props.currentUser,
           logout = _this$props.logout,
@@ -2357,7 +2374,10 @@ function (_React$Component) {
         className: "dropdown1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logo-logged-in",
-        id: "navbarname"
+        id: "navbarname",
+        onClick: function onClick() {
+          return _this4.props.history.push('/projects');
+        }
       }, "TrackMania", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "arrow-down"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2420,49 +2440,7 @@ function (_React$Component) {
   }]);
 
   return loggedinNavbar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // export default ({ currentUser, logout, openModal, projects, userId }) => {
-//     let projectlist = Object.values(projects).slice(0,6);
-//     return (
-//         <header className="loggedinnav-bar">
-//             <div>
-//                 <h3 className="dropdown1">
-//                     <div className="logo-logged-in">
-//                         TrackMania<div className="arrow-down"></div>
-//                     </div>
-//                     <ul className="dropdown-content1" id="clickDropDown">
-//                         <div className="colorchange">
-//                             <div className="navbarlistheader">Projects</div>
-//                             <div className="navbarlistitem" onClick={() => openModal('createproject')}>Create Project</div>
-//                             {
-//                                 projectlist.map((project, idx) => <ProjectListItemnavbar
-//                                     project={project}
-//                                     key={project.id + idx}
-//                                     projectName={project.project_name}
-//                                     userId={userId}
-//                                 />)
-//                             }
-//                             <div className="navbarlistfooterwrapper">
-//                                 <Link to='/projects' className="navbarlistfooter"><i class="fa fa-home"></i>Dashboard </Link>
-//                             </div>
-//                         </div>
-//                     </ul>
-//                 </h3>
-//             </div>
-//             <h3 className="dropdown1">
-//                 <div className="logo-logged-in">
-//                     {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
-//                 </div>
-//                 <ul className="dropdown-content1" id="clickDropDown2">
-//                     <li className="profilelistitme">Profile</li>
-//                     <li className="profilelistitme">Accounts</li>
-//                     <li className="profilelistitme">Reports & Analytics</li>
-//                     <div className="dropdownlogout" onClick={logout}>Log Out</div>
-//                 </ul>
-//             </h3>
-//         </header>
-//     );
-// };
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
 

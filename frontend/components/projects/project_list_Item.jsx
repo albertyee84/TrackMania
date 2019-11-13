@@ -8,8 +8,7 @@ class ProjectListItem extends React.Component{
     render() {
         return(
             <div>
-
-                <Link to={`/projects/${this.props.project.id}/stories`}> <li key={this.props.project.id} >{this.props.projectName}</li> </Link>
+                <Link to={`/projects/${this.props.project.id}/stories`} className="projectlistitemlink"> <li key={this.props.project.id} >{this.props.projectName}</li> </Link>
             </div>
         );
     }

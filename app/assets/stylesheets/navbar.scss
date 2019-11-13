@@ -78,6 +78,13 @@
 
 .navbarlistitem{
   padding: 5px;
+  text-decoration: none !important; 
+
+}
+
+.projectlistitemlink{
+  text-decoration: none;
+  color: black;
 }
 
 .navbarlistitem:hover{

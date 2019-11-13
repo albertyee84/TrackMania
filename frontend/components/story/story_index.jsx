@@ -32,9 +32,21 @@ export default class StoryIndex extends React.Component{
         let projectStories = this.props.stories.filter(story => story.project_id === this.props.projectId);
 
         return(
-            <div className="Body">
+            <div className="ProjectShowPage">
                 <div className="storyCurrent" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
-                    Current
+                    <div className="storycolheader">
+                        Current
+                        <StoryForm
+                            createStory={createStory}
+                            updateStory={updateStory}
+                            deleteStory={deleteStory}
+                            projectId={this.props.projectId}
+                            requestorId={this.props.requestorId} 
+                        />
+                    </div>
+                    <div>
+                        {this.props.errors}
+                        <br />
                     {
                     projectStories.map(
                         story =>
@@ -54,20 +66,20 @@ export default class StoryIndex extends React.Component{
                             />
                         )   
                     }
-                    <StoryForm
-                        createStory={createStory}
-                        updateStory={updateStory}
-                        deleteStory={deleteStory}
-                        projectId={this.props.projectId}
-                        requestorId={this.props.requestorId} />
-                    <div>
-                        {this.props.errors}
-                        <br/>
                     </div>
                 </div>
                 <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                    IceBox
-                    <div draggable={true} onDragStart={this.drag} id="drag1">Drag Me</div>
+                    <div className="storycolheader">
+                        IceBox
+                        <StoryForm
+                            createStory={createStory}
+                            updateStory={updateStory}
+                            deleteStory={deleteStory}
+                            projectId={this.props.projectId}
+                            requestorId={this.props.requestorId}
+                            status="Icebox"
+                        />
+                    </div>
                 </div>
             </div>
         );
