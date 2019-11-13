@@ -36,15 +36,11 @@ export const createAProject = project => dispatch =>
         );
 
 export const searchProject = params => dispatch =>{
-    debugger;
     return(
             APIUtilProjects.searchProject(params)
     .then(payload => dispatch(receiveAllUsersProjects(payload))
     ));
 };
-//     APIUtilProjects.searchProject(params)
-//     .then(payload => dispatch(receiveAllUsersProjects(payload))
-// );
 
 export const updateProject = project => dispatch => 
     APIUtilProjects.updateProject(project)

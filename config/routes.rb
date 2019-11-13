@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: [ :index, :create ] do
       resources :projects, only: [ :index, :create, :update]
     end
+    resources :stories, only: [ :index, :create, :update, :destroy]
     resource :session, only: [ :create, :destroy ]
   end
   get '/api/users/:user_id/projects/:search', to: 'api/projects#search'

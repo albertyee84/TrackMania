@@ -52,14 +52,14 @@ class SessionForm extends React.Component {
         const display = (this.props.formType === 'Sign In') ? (
             <div className="Signupbox">
                 <a href="*" className="btn" id="guest-btn" onClick={this.handleGuest}>Guest Sign In</a>
-                <label className="cond">Don't have an account?  </label>
-                {this.props.otherForm}
+                <label className="cond"> {this.props.otherForm} </label>
+                
             </div>
         ) :
             (
                 <div className="Signupbox">
-                    <label className="cond">Have an account?</label>
-                    {this.props.otherForm}
+                    <label className="cond">{this.props.otherForm}</label>
+                    
                 </div>
             );
         const errors = !this.props.errors || Object.values(this.props.errors) === 0 ? (

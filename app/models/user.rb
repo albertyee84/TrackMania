@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   attr_reader :password
   has_many :projects
+  
+  has_many :stories,
+  foreign_key: :requestor_id,
+  class_name: :Story
+
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)

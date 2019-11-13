@@ -62,3 +62,19 @@
   opacity: 1;
   cursor: pointer;
 }
+
+.archive-title{
+    display: flex;
+    align-items: center;
+}
+
+.projects-icons{
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.projecttileheader{
+    justify-content: space-between;
+}

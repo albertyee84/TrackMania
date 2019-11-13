@@ -23,7 +23,6 @@ export const updateProject = (project) => {
 };
 
 export const searchProject = (project) => {
-    debugger;
     return $.ajax({
         method: "GET",
         url: `/api/users/${project.user_id}/projects/${project.search}`,

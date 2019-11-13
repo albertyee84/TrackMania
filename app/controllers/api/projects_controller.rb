@@ -1,4 +1,6 @@
 class Api::ProjectsController < ApplicationController
+    
+    before_action :require_login
 
     def index
         @projects = Project.where("user_id = ? and archived = ?", project_params[:user_id], project_params[:archived])

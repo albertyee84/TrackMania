@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectListItem from './project_list_Item';
+
 import ProjectTiles from './projects_nonfav';
 
 export default class ProjectsBody extends React.Component{
@@ -7,25 +7,6 @@ export default class ProjectsBody extends React.Component{
         super(props);
         this.state = this.props.state;
     }
-
-    // handleArchiveProject(projectId, archived) {
-    //     let newStatus;
-    //     archived ? newStatus = false : newStatus = true;
-    //     this.setState({
-    //         id: projectId,
-    //         archived: newStatus,
-    //         favorite: false
-    //     },
-    //         () => {
-    //             this.props.updateProject(this.state)
-    //                 .then(() => {
-    //                     this.setState({ archived: archived },
-    //                         () => {
-    //                             this.props.requestAllUsersProjects(this.state);
-    //                         });
-    //                 });
-    //         });
-    // }
 
     render(){
         let archiveword;
@@ -49,7 +30,6 @@ export default class ProjectsBody extends React.Component{
                 userId={this.props.userId}
             />
         </div> ) : "";
-
         return(
             <div className="projectpanelbody">
                 {displayfav}

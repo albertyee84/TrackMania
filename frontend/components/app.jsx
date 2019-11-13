@@ -10,6 +10,7 @@ import SplashContainer from './welcome_page/splash_page/splash_container';
 import ProjectsContainer from './projects/projects_container';
 import Modal from './modal/modal';
 import loggedinNavbarContainer from './welcome_page/navbar/loggedinNavbar_container';
+import StoryIndex from './story/story_index_container';
 
 
 const App = () => {
@@ -20,7 +21,8 @@ const App = () => {
                 <AuthRoute exact path="/" component={Navbar} />
                 <AuthRoute exact path="/" component={SplashContainer} />
                 <ProtectedRoute path='/' component={loggedinNavbarContainer} />
-                <ProtectedRoute path='/projects' component={ProjectsContainer} />
+                <ProtectedRoute exact path='/projects' component={ProjectsContainer} />
+                <ProtectedRoute path='/projects/:project_id/stories' component={StoryIndex} />
             </div>
         </div>
     );
