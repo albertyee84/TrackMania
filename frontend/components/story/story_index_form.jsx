@@ -55,18 +55,21 @@ export default class StoryIndexForm extends React.Component{
                     <label>Name
                         <input 
                             type="text" 
+                            className="storyinput"
                             onChange={this.handleChange('name')}
                             value={this.state.name}/>
                     </label>
                     <label>Description
                         <input 
                             type="text" 
+                            className="storyinput"
                             onChange={this.handleChange('description')}
                             value={this.state.description}/>
                     </label>
                     <label>Label
                         <input 
                             type="text" 
+                            className="storyinput"
                             onChange={this.handleChange('labels')}
                             value={this.state.labels}/>
                     </label>
@@ -75,7 +78,7 @@ export default class StoryIndexForm extends React.Component{
                 </form>
             ) : (
                 <div>
-                    <button onClick={this.openForm}>Add Story</button>
+                        <div className="AddStoryFormIcon" onClick={this.openForm}><i class="fa fa-plus"></i> Add Story</div>
                 </div>
             )
         );

@@ -7,8 +7,9 @@ export const storyReducer = (state = {}, action) => {
         case RECEIVE_STORY:
             return Object.assign({}, state, action.story);
         case REMOVE_STORY:
+            debugger;
             let nextState = Object.assign({}, state);
-            delete nextState[action.story.id];
+            delete nextState[Object.values(action.story)[0].id];
             return nextState;
         default:
             return state;

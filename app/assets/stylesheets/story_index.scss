@@ -1,0 +1,53 @@
+.Current, .Icebox, .Done{
+       border: 1px solid black;
+    min-height: 96vh;
+    min-width: 33%;
+    background-color: #484f57;
+    margin-left: 5px
+}
+
+.storyindexitem{
+    margin-bottom: 10px;
+    background-color: #f4f4f4;
+
+}
+
+.storycolheader{
+    min-height: 5%;
+    background-color: rgb(44, 45, 47);
+    color: white;
+    align-items: center;;
+}
+
+.ProjectShowPage{
+    background-color: #212121;
+}
+
+.storyitembox{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-trash{
+    border: none;
+    background-color: #f4f4f4;
+}
+
+.AddStoryFormIcon{
+    display: flex;
+    align-items: center;
+}
+.AddStoryFormIcon:hover{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background-color: orange;
+}
+
+.AddStoryForm{
+    display: flex;
+    flex-direction: column;
+}
+.storyinput{
+    width: -webkit-fill-available;
+}

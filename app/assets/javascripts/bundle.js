@@ -1933,6 +1933,11 @@ function (_React$Component) {
     _this.drag = _this.drag.bind(_assertThisInitialized(_this));
     _this.allowDrop = _this.allowDrop.bind(_assertThisInitialized(_this));
     _this.drop = _this.drop.bind(_assertThisInitialized(_this));
+    _this.state = {
+      id: 100000000000,
+      status: "current"
+    };
+    _this.drop = _this.drop.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1954,26 +1959,39 @@ function (_React$Component) {
   }, {
     key: "drop",
     value: function drop(ev) {
+      var _this2 = this;
+
       ev.preventDefault();
       var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
+      ev.target.appendChild(document.getElementById(data)).then(this.setState({
+        id: parseInt(data),
+        status: ev.target.className
+      }, function () {
+        return _this2.props.updateStory(_this2.state);
+      }));
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$props = this.props,
           createStory = _this$props.createStory,
           updateStory = _this$props.updateStory,
           deleteStory = _this$props.deleteStory;
       var projectStories = this.props.stories.filter(function (story) {
-        return story.project_id === _this2.props.projectId;
+        return story.project_id === _this3.props.projectId;
+      });
+      var currentStories = projectStories.filter(function (story) {
+        return story.status === "Current";
+      });
+      var iceboxStories = projectStories.filter(function (story) {
+        return story.status === "Icebox";
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyCurrent",
+        className: "Current",
         onDrop: this.drop,
         onDragOver: this.allowDrop,
         id: "div1"
@@ -1985,22 +2003,22 @@ function (_React$Component) {
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), projectStories.map(function (story) {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectStories.map(function (story) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           story: story,
           key: story.id,
           createStory: createStory,
           updateStory: updateStory,
           deleteStory: deleteStory,
-          projectId: _this2.props.projectId,
-          requestorId: _this2.props.requestorId,
+          projectId: _this3.props.projectId,
+          requestorId: _this3.props.requestorId,
           draggable: true,
-          drag: _this2.drag,
-          drop: _this2.drop,
-          allowDrop: _this2.allowDrop,
+          drag: _this3.drag,
+          drop: _this3.drop,
+          allowDrop: _this3.allowDrop,
           id: "drag1"
         });
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Icebox",
         onDrop: this.drop,
         onDragOver: this.allowDrop,
@@ -2014,7 +2032,14 @@ function (_React$Component) {
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
         status: "Icebox"
-      }))));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "Done",
+        onDrop: this.drop,
+        onDragOver: this.allowDrop,
+        id: "div2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storycolheader"
+      }, "Done")));
     }
   }]);
 
@@ -2180,14 +2205,17 @@ function (_React$Component) {
         className: "AddStoryForm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        className: "storyinput",
         onChange: this.handleChange('name'),
         value: this.state.name
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        className: "storyinput",
         onChange: this.handleChange('description'),
         value: this.state.description
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        className: "storyinput",
         onChange: this.handleChange('labels'),
         value: this.state.labels
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2195,9 +2223,12 @@ function (_React$Component) {
         value: "Add Story"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.closeForm
-      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "AddStoryFormIcon",
         onClick: this.openForm
-      }, "Add Story"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fa fa-plus"
+      }), " Add Story"));
     }
   }]);
 
@@ -2230,9 +2261,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2245,21 +2276,38 @@ var StoryIndexItem =
 function (_React$Component) {
   _inherits(StoryIndexItem, _React$Component);
 
-  function StoryIndexItem() {
+  function StoryIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, StoryIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(StoryIndexItem).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(StoryIndexItem).call(this, props));
+    _this.state = _this.props.story;
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(StoryIndexItem, [{
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.props.deleteStory(this.state);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storyindexitem",
         onDragStart: this.props.drag,
         draggable: true,
-        id: "".concat(this.props.story.name)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.story.status));
+        id: "".concat(this.props.story.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storyitembox"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", this.props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleDelete
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-trash",
+        "aria-hidden": "true"
+      }))));
     }
   }]);
 
@@ -3105,8 +3153,9 @@ var storyReducer = function storyReducer() {
       return Object.assign({}, state, action.story);
 
     case _actions_story_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_STORY"]:
+      debugger;
       var nextState = Object.assign({}, state);
-      delete nextState[action.story.id];
+      delete nextState[Object.values(action.story)[0].id];
       return nextState;
 
     default:
