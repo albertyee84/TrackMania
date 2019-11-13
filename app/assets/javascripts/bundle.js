@@ -1978,7 +1978,8 @@ function (_React$Component) {
       var _this$props = this.props,
           createStory = _this$props.createStory,
           updateStory = _this$props.updateStory,
-          deleteStory = _this$props.deleteStory;
+          deleteStory = _this$props.deleteStory,
+          clearErrors = _this$props.clearErrors;
       var projectStories = this.props.stories.filter(function (story) {
         return story.project_id === _this3.props.projectId;
       });
@@ -1988,8 +1989,14 @@ function (_React$Component) {
       var iceboxStories = projectStories.filter(function (story) {
         return story.status === "Icebox";
       });
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ProjectShowPageHeader"
+      }, "Project: ", this.props.projectName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": true,
+        className: "ProjectShowPageContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Current",
         onDrop: this.drop,
@@ -2002,8 +2009,11 @@ function (_React$Component) {
         updateStory: updateStory,
         deleteStory: deleteStory,
         projectId: this.props.projectId,
-        requestorId: this.props.requestorId
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectStories.map(function (story) {
+        requestorId: this.props.requestorId,
+        clearErrors: clearErrors
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storyerrors"
+      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectStories.map(function (story) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           story: story,
           key: story.id,
@@ -2039,7 +2049,7 @@ function (_React$Component) {
         id: "div2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storycolheader"
-      }, "Done")));
+      }, "Done"))));
     }
   }]);
 
@@ -2064,6 +2074,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _story_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index */ "./frontend/components/story/story_index.jsx");
 /* harmony import */ var _actions_story_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/story_actions */ "./frontend/actions/story_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -2074,7 +2086,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     stories: Object.values(state.entities.story),
     projectId: parseInt(ownProps.match.params.project_id),
     requestorId: state.session.id,
-    errors: state.errors.session.errors
+    errors: state.errors.session.errors,
+    projectName: state.entities.projects[ownProps.match.params.project_id].project_name
   };
 };
 
@@ -2091,6 +2104,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     },
     deleteStory: function deleteStory(story) {
       return dispatch(Object(_actions_story_actions__WEBPACK_IMPORTED_MODULE_3__["deleteStory"])(story));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["clearErrors"])());
     }
   };
 };
@@ -2189,6 +2205,7 @@ function (_React$Component) {
       this.setState({
         form: true
       });
+      this.props.clearErrors(); // debugger;
     }
   }, {
     key: "closeForm",
@@ -2227,7 +2244,7 @@ function (_React$Component) {
         className: "AddStoryFormIcon",
         onClick: this.openForm
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-plus"
+        className: "fa fa-plus"
       }), " Add Story"));
     }
   }]);

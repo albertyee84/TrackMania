@@ -41,65 +41,73 @@ export default class StoryIndex extends React.Component{
     }
 
     render(){
-        const { createStory, updateStory, deleteStory} = this.props;
+        const { createStory, updateStory, deleteStory, clearErrors } = this.props;
         let projectStories = this.props.stories.filter(story => story.project_id === this.props.projectId);
         let currentStories = projectStories.filter(story => story.status === "Current");
         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
-
+        debugger;
         return(
             <div className="ProjectShowPage">
-                <div className="Current" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
-                    <div className="storycolheader">
-                        Current
-                        <StoryForm
-                            createStory={createStory}
-                            updateStory={updateStory}
-                            deleteStory={deleteStory}
-                            projectId={this.props.projectId}
-                            requestorId={this.props.requestorId} 
-                        />
+                    <div className="ProjectShowPageHeader">
+                        Project: {this.props.projectName}
                     </div>
-                    <div>
-                        {this.props.errors}
+                <div class className="ProjectShowPageContainer">
+                    <div className="Current" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
+                        <div className="storycolheader">
+                            Current
+                            <StoryForm
+                                createStory={createStory}
+                                updateStory={updateStory}
+                                deleteStory={deleteStory}
+                                projectId={this.props.projectId}
+                                requestorId={this.props.requestorId} 
+                                clearErrors={clearErrors}
+                            />
+                        </div>
                         <div>
-                        {
-                            projectStories.map(
-                            story =>
-                                <StoryIndexItem 
-                                    story={story}
-                                    key={story.id}
-                                    createStory={createStory}
-                                    updateStory={updateStory}
-                                    deleteStory={deleteStory}
-                                    projectId={this.props.projectId}
-                                    requestorId={this.props.requestorId}
-                                    draggable={true}
-                                    drag={this.drag}
-                                    drop={this.drop}
-                                    allowDrop={this.allowDrop}
-                                    id="drag1"
-                                />
-                            )   
-                        }
+                            <div className="storyerrors">
+                                {this.props.errors}
+                            </div>
+                            <div>
+                            {
+                                projectStories.map(
+                                story =>
+                                    <StoryIndexItem 
+                                        story={story}
+                                        key={story.id}
+                                        createStory={createStory}
+                                        updateStory={updateStory}
+                                        deleteStory={deleteStory}
+                                        projectId={this.props.projectId}
+                                        requestorId={this.props.requestorId}
+                                        draggable={true}
+                                        drag={this.drag}
+                                        drop={this.drop}
+                                        allowDrop={this.allowDrop}
+                                        id="drag1"
+                                    />
+                                )   
+                            }
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                    <div className="storycolheader">
-                        IceBox
-                        <StoryForm
-                            createStory={createStory}
-                            updateStory={updateStory}
-                            deleteStory={deleteStory}
-                            projectId={this.props.projectId}
-                            requestorId={this.props.requestorId}
-                            status="Icebox"
-                        />
+                    <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
+                        <div className="storycolheader">
+                            IceBox
+                            <StoryForm
+                                createStory={createStory}
+                                updateStory={updateStory}
+                                deleteStory={deleteStory}
+                                projectId={this.props.projectId}
+                                requestorId={this.props.requestorId}
+                                status="Icebox"
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className="Done" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                    <div className="storycolheader">
-                        Done
+                    <div className="Done" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
+                        <div className="storycolheader">
+                            Done
+                        </div>
                     </div>
                 </div>
             </div>

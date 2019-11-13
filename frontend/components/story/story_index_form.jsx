@@ -42,6 +42,8 @@ export default class StoryIndexForm extends React.Component{
         this.setState({
             form: true
         });
+        this.props.clearErrors();
+        // debugger;
     }
     closeForm() {
         this.setState({
@@ -78,7 +80,7 @@ export default class StoryIndexForm extends React.Component{
                 </form>
             ) : (
                 <div>
-                        <div className="AddStoryFormIcon" onClick={this.openForm}><i class="fa fa-plus"></i> Add Story</div>
+                        <div className="AddStoryFormIcon" onClick={this.openForm}><i className="fa fa-plus"></i> Add Story</div>
                 </div>
             )
         );

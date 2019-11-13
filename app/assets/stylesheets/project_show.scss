@@ -1,5 +1,7 @@
 .ProjectShowPage{
     display: flex;
+    flex-direction: column;
+    background-color: #212121;
 }
 .storyCurrent{
     border: 1px solid black;
@@ -17,4 +19,12 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid black;
+}
+
+.storyerrors{
+    color: #530808;
+}
+
+.ProjectShowPageContainer{
+    display: flex;;
 }
