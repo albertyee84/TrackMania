@@ -2235,7 +2235,8 @@ function (_React$Component) {
       formIcebox: false,
       current: true,
       icebox: true,
-      done: true
+      done: true,
+      sidebartext: true
     };
     _this.drop = _this.drop.bind(_assertThisInitialized(_this));
     _this.openForm = _this.openForm.bind(_assertThisInitialized(_this));
@@ -2245,10 +2246,18 @@ function (_React$Component) {
     _this.handleCurrent = _this.handleCurrent.bind(_assertThisInitialized(_this));
     _this.handleIcebox = _this.handleIcebox.bind(_assertThisInitialized(_this));
     _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
+    _this.handleHideText = _this.handleHideText.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(StoryIndex, [{
+    key: "handleHideText",
+    value: function handleHideText() {
+      this.setState({
+        sidebartext: !this.state.sidebartext
+      });
+    }
+  }, {
     key: "handleCurrent",
     value: function handleCurrent() {
       this.setState({
@@ -2320,8 +2329,7 @@ function (_React$Component) {
       var _this2 = this;
 
       ev.preventDefault();
-      var data = ev.dataTransfer.getData("text"); // ev.target.appendChild(document.getElementById(data));
-
+      var data = ev.dataTransfer.getData("text");
       this.setState({
         id: parseInt(data),
         status: ev.target.className
@@ -2411,6 +2419,11 @@ function (_React$Component) {
       } : {
         color: 'inherit'
       };
+      var banana = this.state.sidebartext ? {
+        visibility: 'visibile'
+      } : {
+        visibility: 'hidden'
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2419,7 +2432,8 @@ function (_React$Component) {
         className: "Sidepanel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-bars",
-        "aria-hidden": "true"
+        "aria-hidden": "true",
+        onClick: this.handleHideText
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
         onClick: this.handleCurrent,
@@ -2427,20 +2441,26 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-list",
         "aria-hidden": "true"
-      }), "Current"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: banana
+      }, "Current")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
         onClick: this.handleIcebox,
         style: iceboxstyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-snowflake-o",
         "aria-hidden": "true"
-      }), "Icebox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: banana
+      }, "Icebox")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
         onClick: this.handleDone,
         style: donestyle
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-check"
-      }), "Done")), current, icebox, done));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: banana
+      }, "Done"))), current, icebox, done));
     }
   }]);
 
@@ -2559,7 +2579,6 @@ function (_React$Component) {
       requestor_id: _this.props.requestorId,
       project_id: _this.props.projectId
     };
-    debugger;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }

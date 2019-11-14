@@ -20,6 +20,7 @@ export default class StoryIndex extends React.Component{
             current: true,
             icebox: true,
             done: true,
+            sidebartext: true,
         };
         this.drop = this.drop.bind(this);
         this.openForm = this.openForm.bind(this);
@@ -29,7 +30,15 @@ export default class StoryIndex extends React.Component{
         this.handleCurrent = this.handleCurrent.bind(this);
         this.handleIcebox = this.handleIcebox.bind(this);
         this.handleDone = this.handleDone.bind(this);
+        this.handleHideText = this.handleHideText.bind(this);
     }
+
+    handleHideText(){
+        this.setState({
+            sidebartext: !this.state.sidebartext
+        });
+    }
+
     handleCurrent(){
         this.setState({
             current: !this.state.current
@@ -86,7 +95,6 @@ export default class StoryIndex extends React.Component{
     drop(ev){
         ev.preventDefault();
         let data = ev.dataTransfer.getData("text");
-        // ev.target.appendChild(document.getElementById(data));
 
         this.setState({
             id: parseInt(data),
@@ -102,6 +110,7 @@ export default class StoryIndex extends React.Component{
         let currentStories = projectStories.filter(story => story.status === "Current");
         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
         let doneboxStories = projectStories.filter(story => story.status === "Done");
+        
         const current = this.state.current ? 
         ( <StoryCurrent 
             drop = {this.drop}
@@ -159,22 +168,32 @@ export default class StoryIndex extends React.Component{
         const currentstyle = this.state.current ? { color: '#8ac7ff'} : {color: 'inherit'};
         const iceboxstyle = this.state.icebox ? { color: '#8ac7ff'} : {color: 'inherit'};
         const donestyle = this.state.done ? { color: '#8ac7ff'} : {color: 'inherit'};
+        let banana = this.state.sidebartext ? { visibility: 'visibile' } : {visibility: 'hidden'};
         return(
             <div className="ProjectShowPage">
                 <div className="ProjectShowPageContainer">
                     <div className="Sidepanel">
 
-                        <i className="fa fa-bars" aria-hidden="true"></i>
+                        <i className="fa fa-bars" aria-hidden="true" onClick={this.handleHideText}/>
                         <div className="sidebarhideshow" onClick={this.handleCurrent} style={currentstyle}><i className="fa fa-list" aria-hidden="true"></i>
-Current</div>
+                           <div style={banana}>
+                               Current
+                               </div>
+                            </div>
                         <div className="sidebarhideshow" onClick={this.handleIcebox} style={iceboxstyle}><i className="fa fa-snowflake-o" aria-hidden="true"></i>
-Icebox</div>
-                        <div className="sidebarhideshow" onClick={this.handleDone} style={donestyle}><i className="fa fa-check"></i>Done</div>
+                            <div style={banana}>
+                                Icebox
+                            </div>
+                        </div>
+                        <div className="sidebarhideshow" onClick={this.handleDone} style={donestyle}><i className="fa fa-check"></i>
+                            <div style={banana}>
+                                Done
+                                </div>
+                        </div>
                     </div>
                     {current}
                     {icebox}
                     {done}
-
                 </div>
             </div>
         );

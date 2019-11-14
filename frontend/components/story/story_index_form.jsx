@@ -11,7 +11,6 @@ export default class StoryIndexForm extends React.Component{
             requestor_id: this.props.requestorId,
             project_id: this.props.projectId,
         };
-        debugger;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(type){

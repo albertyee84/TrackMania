@@ -47,6 +47,7 @@
 .AddStoryForm{
     display: flex;
     flex-direction: column;
+    background: #f1f0ea;
 }
 .storyinput{
     width: -webkit-fill-available;
@@ -59,7 +60,11 @@
 }
 
 .Sidepanel{
-    min-width: 10%;
+    min-width: 8%;
     background-color: #2f3337;
     color: white;
+}
+
+.fa-trash{
+    cursor: pointer;
 }
