@@ -1987,6 +1987,106 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/story/story_icebox.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/story/story_icebox.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StoryIcebox; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _story_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_index_item */ "./frontend/components/story/story_index_item.jsx");
+/* harmony import */ var _story_index_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index_form */ "./frontend/components/story/story_index_form.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var StoryIcebox =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(StoryIcebox, _React$Component);
+
+  function StoryIcebox() {
+    _classCallCheck(this, StoryIcebox);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(StoryIcebox).apply(this, arguments));
+  }
+
+  _createClass(StoryIcebox, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "Icebox",
+        onDrop: this.props.drop,
+        onDragOver: this.props.allowDrop,
+        id: "div2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storycolheader"
+      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "AddStoryFormIcon",
+        onClick: this.props.openForm1
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-plus"
+      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.formIcebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        createStory: this.props.createStory,
+        updateStory: this.props.updateStory,
+        deleteStory: this.props.deleteStory,
+        projectId: this.props.projectId,
+        requestorId: this.props.requestorId,
+        clearErrors: this.props.clearErrors,
+        status: "Icebox"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.closeForm1
+      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), this.props.iceboxStories.map(function (story) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          story: story,
+          key: story.id,
+          createStory: _this.props.createStory,
+          updateStory: _this.props.updateStory,
+          deleteStory: _this.props.deleteStory,
+          projectId: _this.props.projectId,
+          requestorId: _this.props.requestorId,
+          draggable: true,
+          drag: _this.props.drag,
+          drop: _this.props.drop,
+          allowDrop: _this.props.allowDrop,
+          id: "drag1"
+        });
+      })));
+    }
+  }]);
+
+  return StoryIcebox;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./frontend/components/story/story_index.jsx":
 /*!***************************************************!*\
   !*** ./frontend/components/story/story_index.jsx ***!
@@ -2002,6 +2102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _story_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_index_item */ "./frontend/components/story/story_index_item.jsx");
 /* harmony import */ var _story_index_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index_form */ "./frontend/components/story/story_index_form.jsx");
 /* harmony import */ var _story_current__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./story_current */ "./frontend/components/story/story_current.jsx");
+/* harmony import */ var _story_icebox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./story_icebox */ "./frontend/components/story/story_icebox.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2019,6 +2120,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2154,44 +2256,22 @@ function (_React$Component) {
         currentStories: currentStories,
         drag: this.drag
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      var icebox = this.state.icebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Icebox",
-        onDrop: this.drop,
-        onDragOver: this.allowDrop,
-        id: "div2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storycolheader"
-      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "AddStoryFormIcon",
-        onClick: this.openForm1
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus"
-      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.formIcebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      var icebox = this.state.icebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_icebox__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        drop: this.drop,
+        allowDrop: this.allowDrop,
+        openForm1: this.openForm1,
+        errors: this.props.errors,
+        formIcebox: this.state.formIcebox,
         createStory: createStory,
         updateStory: updateStory,
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
         clearErrors: clearErrors,
-        status: "Icebox"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.closeForm1
-      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), iceboxStories.map(function (story) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          story: story,
-          key: story.id,
-          createStory: createStory,
-          updateStory: updateStory,
-          deleteStory: deleteStory,
-          projectId: _this3.props.projectId,
-          requestorId: _this3.props.requestorId,
-          draggable: true,
-          drag: _this3.drag,
-          drop: _this3.drop,
-          allowDrop: _this3.allowDrop,
-          id: "drag1"
-        });
-      }))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+        closeForm1: this.closeForm1,
+        iceboxStories: iceboxStories,
+        drag: this.drag
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       var done = this.state.done ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Done",
         onDrop: this.drop,

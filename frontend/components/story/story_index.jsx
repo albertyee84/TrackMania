@@ -2,6 +2,7 @@ import React from 'react';
 import StoryIndexItem from './story_index_item';
 import StoryForm from './story_index_form';
 import StoryCurrent from './story_current';
+import StoryIcebox from './story_icebox';
 
 
 export default class StoryIndex extends React.Component{
@@ -101,53 +102,23 @@ export default class StoryIndex extends React.Component{
         ): (<div />);
 
         const icebox = this.state.icebox ? (
-            <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                <div className="storycolheader">
-                    IceBox
-                            <div>
-                        <div className="AddStoryFormIcon" onClick={this.openForm1}><i className="fa fa-plus"></i> Add Story</div>
-                    </div>
-                </div>
-                <div>
-                    {
-                        this.state.formIcebox ?
-                            <div>
-                                <StoryForm
-                                    createStory={createStory}
-                                    updateStory={updateStory}
-                                    deleteStory={deleteStory}
-                                    projectId={this.props.projectId}
-                                    requestorId={this.props.requestorId}
-                                    clearErrors={clearErrors}
-                                    status="Icebox"
-                                />
-                                <button onClick={this.closeForm1}>Cancel</button>
-                            </div>
-                            :
-                            <div></div>
-
-                    }
-                    {
-                        iceboxStories.map(
-                            story =>
-                                <StoryIndexItem
-                                    story={story}
-                                    key={story.id}
-                                    createStory={createStory}
-                                    updateStory={updateStory}
-                                    deleteStory={deleteStory}
-                                    projectId={this.props.projectId}
-                                    requestorId={this.props.requestorId}
-                                    draggable={true}
-                                    drag={this.drag}
-                                    drop={this.drop}
-                                    allowDrop={this.allowDrop}
-                                    id="drag1"
-                                />
-                        )
-                    }
-                </div>
-            </div>
+            <StoryIcebox 
+                drop={this.drop}
+                allowDrop={this.allowDrop}
+                openForm1={this.openForm1}
+                errors={this.props.errors}
+                formIcebox={this.state.formIcebox}
+                createStory={createStory}
+                updateStory={updateStory}
+                deleteStory={deleteStory}
+                projectId={this.props.projectId}
+                requestorId={this.props.requestorId}
+                clearErrors={clearErrors}
+                closeForm1={this.closeForm1}
+                iceboxStories={iceboxStories}
+                drag={this.drag}
+            />
+            
         ) : (<div />);
 
         const done = this.state.done ? (
@@ -174,7 +145,7 @@ export default class StoryIndex extends React.Component{
                     )
                 }
             </div>
-        ) : (<div />)
+        ) : (<div />);
         return(
             <div className="ProjectShowPage">
                 <div className="ProjectShowPageContainer">
