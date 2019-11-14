@@ -17,6 +17,7 @@ export default class StoryIndexItem extends React.Component{
                     <div>
                         <div>Story Name: {this.props.story.name}</div>
                         <div>Description: {this.props.story.description}</div>
+                        <div>Label: {this.props.story.labels}</div>
                         <div>Status: {this.props.story.status}</div>
                     </div>
                     <button onClick={this.handleDelete}><i className="fa fa-trash" aria-hidden="true"></i></button>

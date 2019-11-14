@@ -59,7 +59,6 @@ class SplashContents extends React.Component{
                             </h1>
                             <br/>
                             <br/>
-                            {/* <Link to="/signup" className="Get-Started">Get Started!</Link> */}
                             <button className="Get-Started" onClick={() => openModal('signup')}>Get Started!</button>
                             <br/>
                             <br/>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 import { AuthRoute } from '../util/route_util';
 import {ProtectedRoute} from '../util/protected_util';
@@ -11,6 +11,7 @@ import ProjectsContainer from './projects/projects_container';
 import Modal from './modal/modal';
 import loggedinNavbarContainer from './welcome_page/navbar/loggedinNavbar_container';
 import StoryIndex from './story/story_index_container';
+// import { FadeIn } from 'react-fade-in';
 
 
 const App = () => {
@@ -18,11 +19,14 @@ const App = () => {
         <div>
             <Modal />
             <div>
-                <AuthRoute exact path="/" component={Navbar} />
-                <AuthRoute exact path="/" component={SplashContainer} />
-                <ProtectedRoute path='/' component={loggedinNavbarContainer} />
-                <ProtectedRoute exact path='/projects' component={ProjectsContainer} />
-                <ProtectedRoute path='/projects/:project_id/stories' component={StoryIndex} />
+                    <AuthRoute exact path="/" component={Navbar} />
+                    <AuthRoute exact path="/" component={SplashContainer} />
+                    <ProtectedRoute path="/" component={loggedinNavbarContainer} />
+                <Switch>
+                    <ProtectedRoute path='/projects/:project_id/stories' component={StoryIndex} />
+                    <ProtectedRoute exact path='/projects' component={ProjectsContainer} />
+                    <Redirect to="/" />
+                </Switch>
             </div>
         </div>
     );

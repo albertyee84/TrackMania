@@ -1,8 +1,8 @@
 import React from 'react';
 import { AuthRoute } from '../../../util/route_util';
 import { Link } from 'react-router-dom';
-import clickDropDown  from '../../../util/dropdownclick_util';
 import ProjectListItemnavbar from '../../projects/project_list_Item_navbar';
+
 
 export default class loggedinNavbar extends React.Component{
     constructor(props){

@@ -21,14 +21,14 @@ export default class ProjectsBody extends React.Component{
         !this.props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
 
         const displayfav = projectlistfav.length > 0 ? (<div>My Favorites
-            <ProjectTiles
-                projectrendernonfav={projectlistfav}
-                state={this.state}
-                updateProject={this.props.updateProject}
-                requestAllUsersProjects={this.props.requestAllUsersProjects}
-                archiveword={archiveword}
-                userId={this.props.userId}
-            />
+                <ProjectTiles
+                    projectrendernonfav={projectlistfav}
+                    state={this.state}
+                    updateProject={this.props.updateProject}
+                    requestAllUsersProjects={this.props.requestAllUsersProjects}
+                    archiveword={archiveword}
+                    userId={this.props.userId}
+                />
         </div> ) : "";
         return(
             <div className="projectpanelbody">

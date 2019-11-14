@@ -2,6 +2,7 @@ import React from 'react';
 import StoryIndexItem from './story_index_item';
 import StoryForm from './story_index_form';
 
+
 export default class StoryIndex extends React.Component{
     constructor(props){
         super(props);
@@ -45,13 +46,12 @@ export default class StoryIndex extends React.Component{
         let projectStories = this.props.stories.filter(story => story.project_id === this.props.projectId);
         let currentStories = projectStories.filter(story => story.status === "Current");
         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
-        debugger;
         return(
             <div className="ProjectShowPage">
                     <div className="ProjectShowPageHeader">
                         Project: {this.props.projectName}
                     </div>
-                <div class className="ProjectShowPageContainer">
+                <div className="ProjectShowPageContainer">
                     <div className="Current" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
                         <div className="storycolheader">
                             Current

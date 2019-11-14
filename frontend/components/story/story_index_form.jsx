@@ -43,7 +43,6 @@ export default class StoryIndexForm extends React.Component{
             form: true
         });
         this.props.clearErrors();
-        // debugger;
     }
     closeForm() {
         this.setState({
