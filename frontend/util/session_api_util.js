@@ -20,4 +20,3 @@ export const login = user => {
         data: { user }
     });
 };
-

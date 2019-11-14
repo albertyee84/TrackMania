@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProjectForm  from './project_form';
-import { requestAllUsersProjects, createAProject } from '../../actions/project_actions';
+import { createAProject } from '../../actions/project_actions';
 import { closeModal } from '../../actions/modal_actions';
 import { clearErrors } from '../../actions/session_actions';
 

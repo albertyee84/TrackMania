@@ -10,7 +10,6 @@ const mapStateToProps = (state, ownProps) => {
         projectId: parseInt(ownProps.match.params.project_id),
         requestorId: state.session.id,
         errors: state.errors.session.errors,
-        // projectName: state.entities.projects[ownProps.match.params.project_id].project_name
     });
 };
 

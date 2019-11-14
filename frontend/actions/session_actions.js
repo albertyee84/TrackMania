@@ -43,26 +43,3 @@ export const logout = () => dispatch => APIUtil.logout()
     export const signup = formUser => dispatch => APIUtil.signUp(formUser)
         .then(user => dispatch(receiveCurrentUser(user)),
         errors => dispatch(receiveErrors(errors)));
-
-// export const signup = formUser => {
-//     return (
-//         dispatch =>
-//             APIUtil.signUp(formUser)
-//                 .then(user => {
-
-//                     return (
-//                         dispatch(receiveCurrentUser(user)));
-//                 }
-//                     ,
-//                     errors => {
-
-//                         return (
-//                             dispatch(receiveErrors(errors))
-
-//                         );
-//                     }
-
-//                 ))
-
-//         ;
-// };

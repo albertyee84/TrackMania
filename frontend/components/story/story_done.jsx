@@ -29,6 +29,6 @@ export default class StoryDone extends React.Component {
                     )
                 }
             </div>
-        )
+        );
     }
 }
