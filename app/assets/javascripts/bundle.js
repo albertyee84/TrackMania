@@ -2396,22 +2396,51 @@ function (_React$Component) {
         doneboxStories: doneboxStories,
         drag: this.drag
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var currentstyle = this.state.current ? {
+        color: '#8ac7ff'
+      } : {
+        color: 'inherit'
+      };
+      var iceboxstyle = this.state.icebox ? {
+        color: '#8ac7ff'
+      } : {
+        color: 'inherit'
+      };
+      var donestyle = this.state.done ? {
+        color: '#8ac7ff'
+      } : {
+        color: 'inherit'
+      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPageContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Sidepanel"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-bars",
+        "aria-hidden": "true"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
-        onClick: this.handleCurrent
-      }, "Current"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.handleCurrent,
+        style: currentstyle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-list",
+        "aria-hidden": "true"
+      }), "Current"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
-        onClick: this.handleIcebox
-      }, "Icebox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        onClick: this.handleIcebox,
+        style: iceboxstyle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-snowflake-o",
+        "aria-hidden": "true"
+      }), "Icebox"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
-        onClick: this.handleDone
-      }, "Done")), current, icebox, done));
+        onClick: this.handleDone,
+        style: donestyle
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-check"
+      }), "Done")), current, icebox, done));
     }
   }]);
 

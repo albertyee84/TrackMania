@@ -156,13 +156,20 @@ export default class StoryIndex extends React.Component{
                 drag={this.drag}
             />
         ) : (<div />);
+        const currentstyle = this.state.current ? { color: '#8ac7ff'} : {color: 'inherit'};
+        const iceboxstyle = this.state.icebox ? { color: '#8ac7ff'} : {color: 'inherit'};
+        const donestyle = this.state.done ? { color: '#8ac7ff'} : {color: 'inherit'};
         return(
             <div className="ProjectShowPage">
                 <div className="ProjectShowPageContainer">
                     <div className="Sidepanel">
-                        <div className="sidebarhideshow" onClick={this.handleCurrent}>Current</div>
-                        <div className="sidebarhideshow" onClick={this.handleIcebox}>Icebox</div>
-                        <div className="sidebarhideshow" onClick={this.handleDone}>Done</div>
+
+                        <i className="fa fa-bars" aria-hidden="true"></i>
+                        <div className="sidebarhideshow" onClick={this.handleCurrent} style={currentstyle}><i className="fa fa-list" aria-hidden="true"></i>
+Current</div>
+                        <div className="sidebarhideshow" onClick={this.handleIcebox} style={iceboxstyle}><i className="fa fa-snowflake-o" aria-hidden="true"></i>
+Icebox</div>
+                        <div className="sidebarhideshow" onClick={this.handleDone} style={donestyle}><i className="fa fa-check"></i>Done</div>
                     </div>
                     {current}
                     {icebox}
