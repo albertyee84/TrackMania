@@ -1901,6 +1901,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _story_index_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index_form */ "./frontend/components/story/story_index_form.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1937,13 +1939,30 @@ function (_React$Component) {
     _this.drop = _this.drop.bind(_assertThisInitialized(_this));
     _this.state = {
       id: 100000000000,
-      status: "current"
+      status: "Current",
+      form: false,
+      formIcebox: false
     };
     _this.drop = _this.drop.bind(_assertThisInitialized(_this));
+    _this.openForm = _this.openForm.bind(_assertThisInitialized(_this));
+    _this.closeForm = _this.closeForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(StoryIndex, [{
+    key: "openForm",
+    value: function openForm(type) {
+      this.setState({
+        form: true
+      });
+      this.props.clearErrors();
+    }
+  }, {
+    key: "closeForm",
+    value: function closeForm(type) {
+      this.setState(_defineProperty({}, type, true));
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.requestAllStories();
@@ -1964,13 +1983,14 @@ function (_React$Component) {
       var _this2 = this;
 
       ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data)).then(this.setState({
+      var data = ev.dataTransfer.getData("text"); // ev.target.appendChild(document.getElementById(data));
+
+      this.setState({
         id: parseInt(data),
         status: ev.target.className
       }, function () {
         return _this2.props.updateStory(_this2.state);
-      }));
+      });
     }
   }, {
     key: "render",
@@ -1991,11 +2011,12 @@ function (_React$Component) {
       var iceboxStories = projectStories.filter(function (story) {
         return story.status === "Icebox";
       });
+      var doneboxStories = projectStories.filter(function (story) {
+        return story.status === "Done";
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ProjectShowPageHeader"
-      }, "Project: ", this.props.projectName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPageContainer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Current",
@@ -2004,16 +2025,23 @@ function (_React$Component) {
         id: "div1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storycolheader"
-      }, "Current", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Current", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "AddStoryFormIcon",
+        onClick: this.openForm
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-plus"
+      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storyerrors"
+      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         createStory: createStory,
         updateStory: updateStory,
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
         clearErrors: clearErrors
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyerrors"
-      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, projectStories.map(function (story) {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.closeForm
+      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), currentStories.map(function (story) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           story: story,
           key: story.id,
@@ -2035,13 +2063,35 @@ function (_React$Component) {
         id: "div2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storycolheader"
-      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "AddStoryFormIcon",
+        onClick: this.openForm
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-plus"
+      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         createStory: createStory,
         updateStory: updateStory,
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
-        status: "Icebox"
+        clearErrors: clearErrors
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.closeForm
+      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), iceboxStories.map(function (story) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          story: story,
+          key: story.id,
+          createStory: createStory,
+          updateStory: updateStory,
+          deleteStory: deleteStory,
+          projectId: _this3.props.projectId,
+          requestorId: _this3.props.requestorId,
+          draggable: true,
+          drag: _this3.drag,
+          drop: _this3.drop,
+          allowDrop: _this3.allowDrop,
+          id: "drag1"
+        });
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "Done",
         onDrop: this.drop,
@@ -2049,7 +2099,22 @@ function (_React$Component) {
         id: "div2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storycolheader"
-      }, "Done"))));
+      }, "Done"), doneboxStories.map(function (story) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          story: story,
+          key: story.id,
+          createStory: createStory,
+          updateStory: updateStory,
+          deleteStory: deleteStory,
+          projectId: _this3.props.projectId,
+          requestorId: _this3.props.requestorId,
+          draggable: true,
+          drag: _this3.drag,
+          drop: _this3.drop,
+          allowDrop: _this3.allowDrop,
+          id: "drag1"
+        });
+      }))));
     }
   }]);
 
@@ -2086,8 +2151,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
     stories: Object.values(state.entities.story),
     projectId: parseInt(ownProps.match.params.project_id),
     requestorId: state.session.id,
-    errors: state.errors.session.errors,
-    projectName: state.entities.projects[ownProps.match.params.project_id].project_name
+    errors: state.errors.session.errors // projectName: state.entities.projects[ownProps.match.params.project_id].project_name
+
   };
 };
 
@@ -2164,13 +2229,12 @@ function (_React$Component) {
       name: "",
       description: "",
       labels: "",
-      status: "current",
+      status: "Current",
       requestor_id: _this.props.requestorId,
       project_id: _this.props.projectId,
       form: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.openForm = _this.openForm.bind(_assertThisInitialized(_this));
     _this.closeForm = _this.closeForm.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -2193,19 +2257,11 @@ function (_React$Component) {
         name: "",
         description: "",
         labels: "",
-        status: "current",
+        status: "Current",
         requestor_id: this.props.requestorId,
         project_id: this.props.projectId,
         form: false
       });
-    }
-  }, {
-    key: "openForm",
-    value: function openForm() {
-      this.setState({
-        form: true
-      });
-      this.props.clearErrors();
     }
   }, {
     key: "closeForm",
@@ -2217,7 +2273,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
         className: "AddStoryForm"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2238,14 +2294,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Add Story"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.closeForm
-      }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "AddStoryFormIcon",
-        onClick: this.openForm
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-plus"
-      }), " Add Story"));
+      }));
     }
   }]);
 

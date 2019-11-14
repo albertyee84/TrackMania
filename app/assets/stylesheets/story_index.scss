@@ -17,13 +17,14 @@
     min-height: 5%;
     background-color: rgb(44, 45, 47);
     color: white;
-    align-items: center;;
+    align-items: center;
 }
 
 
 .storyitembox{
     display: flex;
     justify-content: space-between;
+    cursor: all-scroll;
 }
 
 .fa-trash{
