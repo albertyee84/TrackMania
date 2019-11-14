@@ -3,6 +3,7 @@ import StoryIndexItem from './story_index_item';
 import StoryForm from './story_index_form';
 import StoryCurrent from './story_current';
 import StoryIcebox from './story_icebox';
+import StoryDone from './story_done';
 
 
 export default class StoryIndex extends React.Component{
@@ -25,8 +26,27 @@ export default class StoryIndex extends React.Component{
         this.closeForm = this.closeForm.bind(this);
         this.openForm1 = this.openForm1.bind(this);
         this.closeForm1 = this.closeForm1.bind(this);
+        this.handleCurrent = this.handleCurrent.bind(this);
+        this.handleIcebox = this.handleIcebox.bind(this);
+        this.handleDone = this.handleDone.bind(this);
+    }
+    handleCurrent(){
+        this.setState({
+            current: !this.state.current
+        });
     }
 
+    handleIcebox(){
+        this.setState({
+            icebox: !this.state.icebox
+        });
+    }
+    handleDone(){
+        this.setState({
+            done: !this.state.done
+        });
+    }
+    
     openForm() {
         this.setState({
             formcurrent: true
@@ -122,41 +142,32 @@ export default class StoryIndex extends React.Component{
         ) : (<div />);
 
         const done = this.state.done ? (
-            <div className="Done" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                <div className="storycolheader">
-                    Done
-                        </div>
-                {
-                    doneboxStories.map(story =>
-                        <StoryIndexItem
-                            story={story}
-                            key={story.id}
-                            createStory={createStory}
-                            updateStory={updateStory}
-                            deleteStory={deleteStory}
-                            projectId={this.props.projectId}
-                            requestorId={this.props.requestorId}
-                            draggable={true}
-                            drag={this.drag}
-                            drop={this.drop}
-                            allowDrop={this.allowDrop}
-                            id="drag1"
-                        />
-                    )
-                }
-            </div>
+            <StoryDone 
+                drop={this.drop}
+                allowDrop={this.allowDrop}
+                formIcebox={this.state.formIcebox}
+                createStory={createStory}
+                updateStory={updateStory}
+                deleteStory={deleteStory}
+                projectId={this.props.projectId}
+                requestorId={this.props.requestorId}
+                clearErrors={clearErrors}
+                doneboxStories={doneboxStories}
+                drag={this.drag}
+            />
         ) : (<div />);
         return(
             <div className="ProjectShowPage">
                 <div className="ProjectShowPageContainer">
                     <div className="Sidepanel">
-                        <div>Current</div>
-                        <div>Icebox</div>
-                        <div>Done</div>
+                        <div className="sidebarhideshow" onClick={this.handleCurrent}>Current</div>
+                        <div className="sidebarhideshow" onClick={this.handleIcebox}>Icebox</div>
+                        <div className="sidebarhideshow" onClick={this.handleDone}>Done</div>
                     </div>
                     {current}
                     {icebox}
                     {done}
+
                 </div>
             </div>
         );
