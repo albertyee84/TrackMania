@@ -1,6 +1,7 @@
 import React from 'react';
 import StoryIndexItem from './story_index_item';
 import StoryForm from './story_index_form';
+import StoryCurrent from './story_current';
 
 
 export default class StoryIndex extends React.Component{
@@ -14,6 +15,9 @@ export default class StoryIndex extends React.Component{
             status: "Current",
             formcurrent: false,
             formIcebox: false,
+            current: true,
+            icebox: true,
+            done: true,
         };
         this.drop = this.drop.bind(this);
         this.openForm = this.openForm.bind(this);
@@ -77,114 +81,39 @@ export default class StoryIndex extends React.Component{
         let currentStories = projectStories.filter(story => story.status === "Current");
         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
         let doneboxStories = projectStories.filter(story => story.status === "Done");
-        return(
-            <div className="ProjectShowPage">
-                <div className="ProjectShowPageContainer">
-                    <div className="Current" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
-                        <div className="storycolheader">
-                            Current
-                            <div>
-                                <div className="AddStoryFormIcon" onClick={this.openForm}><i className="fa fa-plus"></i> Add Story</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="storyerrors">
-                                {this.props.errors}
-                            </div>
-                            <div>
-                            {
-                                this.state.formcurrent?
-                                <div>
-                                    <StoryForm
-                                        createStory={createStory}
-                                        updateStory={updateStory}
-                                        deleteStory={deleteStory}
-                                        projectId={this.props.projectId}
-                                        requestorId={this.props.requestorId}
-                                        clearErrors={clearErrors}
-                                        status="Current"
-                                            /> 
-                                        <button onClick={this.closeForm}>Cancel</button>
-                                </div> 
-                                : 
-                                <div></div>
+        const current = this.state.current ? (
+            : (<div />);
 
-                            }
-                            {
-                                currentStories.map(
-                                story =>
-                                    <StoryIndexItem 
-                                        story={story}
-                                        key={story.id}
-                                        createStory={createStory}
-                                        updateStory={updateStory}
-                                        deleteStory={deleteStory}
-                                        projectId={this.props.projectId}
-                                        requestorId={this.props.requestorId}
-                                        draggable={true}
-                                        drag={this.drag}
-                                        drop={this.drop}
-                                        allowDrop={this.allowDrop}
-                                        id="drag1"
-                                    />
-                                )   
-                            }
-                            </div>
-                        </div>
-                    </div>
-                    <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                        <div className="storycolheader">
-                            IceBox
+        const icebox = this.state.icebox ? (
+            <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
+                <div className="storycolheader">
+                    IceBox
                             <div>
-                                <div className="AddStoryFormIcon" onClick={this.openForm1}><i className="fa fa-plus"></i> Add Story</div>
-                            </div>
-                        </div>
-                        <div>
-                            {
-                                this.state.formIcebox ?
-                                    <div>
-                                        <StoryForm
-                                            createStory={createStory}
-                                            updateStory={updateStory}
-                                            deleteStory={deleteStory}
-                                            projectId={this.props.projectId}
-                                            requestorId={this.props.requestorId}
-                                            clearErrors={clearErrors}
-                                            status="Icebox"
-                                        />
-                                        <button onClick={this.closeForm1}>Cancel</button>
-                                    </div>
-                                    :
-                                    <div></div>
-
-                            }
-                            {
-                                iceboxStories.map(
-                                    story =>
-                                        <StoryIndexItem
-                                            story={story}
-                                            key={story.id}
-                                            createStory={createStory}
-                                            updateStory={updateStory}
-                                            deleteStory={deleteStory}
-                                            projectId={this.props.projectId}
-                                            requestorId={this.props.requestorId}
-                                            draggable={true}
-                                            drag={this.drag}
-                                            drop={this.drop}
-                                            allowDrop={this.allowDrop}
-                                            id="drag1"
-                                        />
-                                )
-                            }
-                        </div>
+                        <div className="AddStoryFormIcon" onClick={this.openForm1}><i className="fa fa-plus"></i> Add Story</div>
                     </div>
-                    <div className="Done" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
-                        <div className="storycolheader">
-                            Done
-                        </div>
-                        {
-                            doneboxStories.map(story =>
+                </div>
+                <div>
+                    {
+                        this.state.formIcebox ?
+                            <div>
+                                <StoryForm
+                                    createStory={createStory}
+                                    updateStory={updateStory}
+                                    deleteStory={deleteStory}
+                                    projectId={this.props.projectId}
+                                    requestorId={this.props.requestorId}
+                                    clearErrors={clearErrors}
+                                    status="Icebox"
+                                />
+                                <button onClick={this.closeForm1}>Cancel</button>
+                            </div>
+                            :
+                            <div></div>
+
+                    }
+                    {
+                        iceboxStories.map(
+                            story =>
                                 <StoryIndexItem
                                     story={story}
                                     key={story.id}
@@ -199,9 +128,48 @@ export default class StoryIndex extends React.Component{
                                     allowDrop={this.allowDrop}
                                     id="drag1"
                                 />
-                            )
-                        }
+                        )
+                    }
+                </div>
+            </div>
+        ) : (<div />);
+
+        const done = this.state.done ? (
+            <div className="Done" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">
+                <div className="storycolheader">
+                    Done
+                        </div>
+                {
+                    doneboxStories.map(story =>
+                        <StoryIndexItem
+                            story={story}
+                            key={story.id}
+                            createStory={createStory}
+                            updateStory={updateStory}
+                            deleteStory={deleteStory}
+                            projectId={this.props.projectId}
+                            requestorId={this.props.requestorId}
+                            draggable={true}
+                            drag={this.drag}
+                            drop={this.drop}
+                            allowDrop={this.allowDrop}
+                            id="drag1"
+                        />
+                    )
+                }
+            </div>
+        ) : (<div />)
+        return(
+            <div className="ProjectShowPage">
+                <div className="ProjectShowPageContainer">
+                    <div className="Sidepanel">
+                        <div>Current</div>
+                        <div>Icebox</div>
+                        <div>Done</div>
                     </div>
+                    {current}
+                    {icebox}
+                    {done}
                 </div>
             </div>
         );
