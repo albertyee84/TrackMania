@@ -1,8 +1,7 @@
 .Current, .Icebox, .Done{
-       border: 1px solid black;
+    border: 1px solid black;
     min-height: 96vh;
-    min-width: 30%;
-    max-width: 100%;
+    flex-grow: 100;
     background-color: #484f57;
     margin-left: 5px;
     margin-right: 5px;
