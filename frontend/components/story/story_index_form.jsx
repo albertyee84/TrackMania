@@ -7,10 +7,11 @@ export default class StoryIndexForm extends React.Component{
             name: "",
             description: "",
             labels: "",
-            status: "Current",
+            status: this.props.status,
             requestor_id: this.props.requestorId,
             project_id: this.props.projectId,
         };
+        debugger;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(type){
@@ -30,7 +31,6 @@ export default class StoryIndexForm extends React.Component{
             status: "Current",
             requestor_id: this.props.requestorId,
             project_id: this.props.projectId,
-            form: false
         });
     }
     render(){

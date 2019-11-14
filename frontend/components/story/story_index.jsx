@@ -102,6 +102,7 @@ export default class StoryIndex extends React.Component{
                                         projectId={this.props.projectId}
                                         requestorId={this.props.requestorId}
                                         clearErrors={clearErrors}
+                                        status="Current"
                                             /> 
                                         <button onClick={this.closeForm}>Cancel</button>
                                 </div> 
@@ -149,6 +150,7 @@ export default class StoryIndex extends React.Component{
                                             projectId={this.props.projectId}
                                             requestorId={this.props.requestorId}
                                             clearErrors={clearErrors}
+                                            status="Icebox"
                                         />
                                         <button onClick={this.closeForm1}>Cancel</button>
                                     </div>

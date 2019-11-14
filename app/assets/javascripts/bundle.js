@@ -2055,7 +2055,8 @@ function (_React$Component) {
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
-        clearErrors: clearErrors
+        clearErrors: clearErrors,
+        status: "Current"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.closeForm
       }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), currentStories.map(function (story) {
@@ -2091,7 +2092,8 @@ function (_React$Component) {
         deleteStory: deleteStory,
         projectId: this.props.projectId,
         requestorId: this.props.requestorId,
-        clearErrors: clearErrors
+        clearErrors: clearErrors,
+        status: "Icebox"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.closeForm1
       }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), iceboxStories.map(function (story) {
@@ -2246,10 +2248,11 @@ function (_React$Component) {
       name: "",
       description: "",
       labels: "",
-      status: "Current",
+      status: _this.props.status,
       requestor_id: _this.props.requestorId,
       project_id: _this.props.projectId
     };
+    debugger;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -2274,8 +2277,7 @@ function (_React$Component) {
         labels: "",
         status: "Current",
         requestor_id: this.props.requestorId,
-        project_id: this.props.projectId,
-        form: false
+        project_id: this.props.projectId
       });
     }
   }, {
