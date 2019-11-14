@@ -10,10 +10,8 @@ export default class StoryIndexForm extends React.Component{
             status: "Current",
             requestor_id: this.props.requestorId,
             project_id: this.props.projectId,
-            form: false
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.closeForm = this.closeForm.bind(this);
     }
     handleChange(type){
         return(e) =>{
@@ -23,7 +21,6 @@ export default class StoryIndexForm extends React.Component{
         };
     }
     handleSubmit(e){
-
         e.preventDefault();
         this.props.createStory(this.state);
         this.setState({
@@ -33,11 +30,6 @@ export default class StoryIndexForm extends React.Component{
             status: "Current",
             requestor_id: this.props.requestorId,
             project_id: this.props.projectId,
-            form: false
-        });
-    }
-    closeForm() {
-        this.setState({
             form: false
         });
     }

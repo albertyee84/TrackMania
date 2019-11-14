@@ -12,24 +12,38 @@ export default class StoryIndex extends React.Component{
         this.state={
             id: 100000000000,
             status: "Current",
-            form: false,
+            formcurrent: false,
             formIcebox: false,
         };
         this.drop = this.drop.bind(this);
         this.openForm = this.openForm.bind(this);
         this.closeForm = this.closeForm.bind(this);
+        this.openForm1 = this.openForm1.bind(this);
+        this.closeForm1 = this.closeForm1.bind(this);
     }
 
-    openForm(type) {
+    openForm() {
         this.setState({
-            form: true
+            formcurrent: true
         });
         this.props.clearErrors();
     }
 
-    closeForm(type) {
+    closeForm() {
         this.setState({
-            [type]: true
+            formcurrent: false
+        });
+    }
+    openForm1() {
+        this.setState({
+            formIcebox: true
+        });
+        this.props.clearErrors();
+    }
+
+    closeForm1() {
+        this.setState({
+            formIcebox: false
         });
     }
 
@@ -79,7 +93,7 @@ export default class StoryIndex extends React.Component{
                             </div>
                             <div>
                             {
-                                this.state.form ?
+                                this.state.formcurrent?
                                 <div>
                                     <StoryForm
                                         createStory={createStory}
@@ -121,12 +135,12 @@ export default class StoryIndex extends React.Component{
                         <div className="storycolheader">
                             IceBox
                             <div>
-                                <div className="AddStoryFormIcon" onClick={this.openForm}><i className="fa fa-plus"></i> Add Story</div>
+                                <div className="AddStoryFormIcon" onClick={this.openForm1}><i className="fa fa-plus"></i> Add Story</div>
                             </div>
                         </div>
                         <div>
                             {
-                                this.state.form ?
+                                this.state.formIcebox ?
                                     <div>
                                         <StoryForm
                                             createStory={createStory}
@@ -136,7 +150,7 @@ export default class StoryIndex extends React.Component{
                                             requestorId={this.props.requestorId}
                                             clearErrors={clearErrors}
                                         />
-                                        <button onClick={this.closeForm}>Cancel</button>
+                                        <button onClick={this.closeForm1}>Cancel</button>
                                     </div>
                                     :
                                     <div></div>

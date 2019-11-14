@@ -1901,8 +1901,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _story_index_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index_form */ "./frontend/components/story/story_index_form.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1940,27 +1938,46 @@ function (_React$Component) {
     _this.state = {
       id: 100000000000,
       status: "Current",
-      form: false,
+      formcurrent: false,
       formIcebox: false
     };
     _this.drop = _this.drop.bind(_assertThisInitialized(_this));
     _this.openForm = _this.openForm.bind(_assertThisInitialized(_this));
     _this.closeForm = _this.closeForm.bind(_assertThisInitialized(_this));
+    _this.openForm1 = _this.openForm1.bind(_assertThisInitialized(_this));
+    _this.closeForm1 = _this.closeForm1.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(StoryIndex, [{
     key: "openForm",
-    value: function openForm(type) {
+    value: function openForm() {
       this.setState({
-        form: true
+        formcurrent: true
       });
       this.props.clearErrors();
     }
   }, {
     key: "closeForm",
-    value: function closeForm(type) {
-      this.setState(_defineProperty({}, type, true));
+    value: function closeForm() {
+      this.setState({
+        formcurrent: false
+      });
+    }
+  }, {
+    key: "openForm1",
+    value: function openForm1() {
+      this.setState({
+        formIcebox: true
+      });
+      this.props.clearErrors();
+    }
+  }, {
+    key: "closeForm1",
+    value: function closeForm1() {
+      this.setState({
+        formIcebox: false
+      });
     }
   }, {
     key: "componentDidMount",
@@ -2032,7 +2049,7 @@ function (_React$Component) {
         className: "fa fa-plus"
       }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storyerrors"
-      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, this.props.errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.formcurrent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         createStory: createStory,
         updateStory: updateStory,
         deleteStory: deleteStory,
@@ -2065,10 +2082,10 @@ function (_React$Component) {
         className: "storycolheader"
       }, "IceBox", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "AddStoryFormIcon",
-        onClick: this.openForm
+        onClick: this.openForm1
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-plus"
-      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.form ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), " Add Story"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.formIcebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
         createStory: createStory,
         updateStory: updateStory,
         deleteStory: deleteStory,
@@ -2076,7 +2093,7 @@ function (_React$Component) {
         requestorId: this.props.requestorId,
         clearErrors: clearErrors
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.closeForm
+        onClick: this.closeForm1
       }, "Cancel")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), iceboxStories.map(function (story) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           story: story,
@@ -2231,11 +2248,9 @@ function (_React$Component) {
       labels: "",
       status: "Current",
       requestor_id: _this.props.requestorId,
-      project_id: _this.props.projectId,
-      form: false
+      project_id: _this.props.projectId
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.closeForm = _this.closeForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2260,13 +2275,6 @@ function (_React$Component) {
         status: "Current",
         requestor_id: this.props.requestorId,
         project_id: this.props.projectId,
-        form: false
-      });
-    }
-  }, {
-    key: "closeForm",
-    value: function closeForm() {
-      this.setState({
         form: false
       });
     }
