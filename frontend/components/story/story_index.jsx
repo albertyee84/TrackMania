@@ -81,8 +81,24 @@ export default class StoryIndex extends React.Component{
         let currentStories = projectStories.filter(story => story.status === "Current");
         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
         let doneboxStories = projectStories.filter(story => story.status === "Done");
-        const current = this.state.current ? (
-            : (<div />);
+        const current = this.state.current ? 
+        ( <StoryCurrent 
+            drop = {this.drop}
+            allowDrop={this.allowDrop}
+            openForm={this.openForm}
+            errors={this.props.errors}
+            formcurrent={this.state.formcurrent}
+            createStory={createStory}
+            updateStory={updateStory}
+            deleteStory={deleteStory}
+            projectId={this.props.projectId}
+            requestorId={this.props.requestorId}
+            clearErrors={clearErrors}
+            closeForm={this.closeForm}
+            currentStories={currentStories}
+            drag={this.drag}
+            />
+        ): (<div />);
 
         const icebox = this.state.icebox ? (
             <div className="Icebox" onDrop={this.drop} onDragOver={this.allowDrop} id="div2">

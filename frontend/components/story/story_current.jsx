@@ -1,14 +1,16 @@
 import React from 'react';
+import StoryIndexItem from './story_index_item';
+import StoryForm from './story_index_form';
 
 export default class StoryCurrent extends React.Component{
 
     render(){
         return(
-            <div className="Current" onDrop={this.drop} onDragOver={this.allowDrop} id="div1">
+            <div className="Current" onDrop={this.props.drop} onDragOver={this.props.allowDrop} id="div1">
                 <div className="storycolheader">
                     Current
                             <div>
-                        <div className="AddStoryFormIcon" onClick={this.openForm}><i className="fa fa-plus"></i> Add Story</div>
+                        <div className="AddStoryFormIcon" onClick={this.props.openForm}><i className="fa fa-plus"></i> Add Story</div>
                     </div>
                 </div>
                 <div>
@@ -17,38 +19,38 @@ export default class StoryCurrent extends React.Component{
                     </div>
                     <div>
                         {
-                            this.state.formcurrent ?
+                            this.props.formcurrent ?
                                 <div>
                                     <StoryForm
-                                        createStory={createStory}
-                                        updateStory={updateStory}
-                                        deleteStory={deleteStory}
+                                        createStory={this.props.createStory}
+                                        updateStory={this.props.updateStory}
+                                        deleteStory={this.props.deleteStory}
                                         projectId={this.props.projectId}
                                         requestorId={this.props.requestorId}
-                                        clearErrors={clearErrors}
+                                        clearErrors={this.props.clearErrors}
                                         status="Current"
                                     />
-                                    <button onClick={this.closeForm}>Cancel</button>
+                                    <button onClick={this.props.closeForm}>Cancel</button>
                                 </div>
                                 :
                                 <div></div>
 
                         }
                         {
-                            currentStories.map(
+                            this.props.currentStories.map(
                                 story =>
                                     <StoryIndexItem
                                         story={story}
                                         key={story.id}
-                                        createStory={createStory}
-                                        updateStory={updateStory}
-                                        deleteStory={deleteStory}
+                                        createStory={this.props.createStory}
+                                        updateStory={this.props.updateStory}
+                                        deleteStory={this.props.deleteStory}
                                         projectId={this.props.projectId}
                                         requestorId={this.props.requestorId}
                                         draggable={true}
-                                        drag={this.drag}
-                                        drop={this.drop}
-                                        allowDrop={this.allowDrop}
+                                        drag={this.props.drag}
+                                        drop={this.props.drop}
+                                        allowDrop={this.props.allowDrop}
                                         id="drag1"
                                     />
                             )
@@ -56,7 +58,6 @@ export default class StoryCurrent extends React.Component{
                     </div>
                 </div>
             </div>
-        ) 
         );
     }
 }
