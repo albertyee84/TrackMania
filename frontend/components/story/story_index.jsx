@@ -166,7 +166,6 @@ export default class StoryIndex extends React.Component{
         const currentstyle = this.state.current ? { color: '#8ac7ff'} : {color: 'inherit'};
         const iceboxstyle = this.state.icebox ? { color: '#8ac7ff'} : {color: 'inherit'};
         const donestyle = this.state.done ? { color: '#8ac7ff'} : {color: 'inherit'};
-        let banana = this.state.sidebartext ? { visibility: 'visibile' } : {visibility: 'hidden'};
         return(
             <div className="ProjectShowPage">
                 <div className="ProjectShowPageContainer">

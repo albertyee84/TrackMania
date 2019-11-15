@@ -12,7 +12,6 @@ export default class StoryIndexItem extends React.Component{
         $(".AddStoryFormUpdate").hide();
     }
     handleDoubleClick(e){
-        debugger;
         $(".AddStoryFormUpdate").toggle();
     }
     handleDelete(){

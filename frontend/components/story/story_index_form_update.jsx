@@ -16,9 +16,7 @@ export default class StoryIndexFormUpdate extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.updateStory(this.state).then(()=>
-            // $(".AddStoryFormUpdate").hide(),
-            $(".AddStoryFormUpdate").parent().show());
-            // $(".storyitembox").show());
+            $(".AddStoryFormUpdate").hide());
     }
     render() {
         return (

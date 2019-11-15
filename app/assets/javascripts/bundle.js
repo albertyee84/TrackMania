@@ -2397,11 +2397,6 @@ function (_React$Component) {
       } : {
         color: 'inherit'
       };
-      var banana = this.state.sidebartext ? {
-        visibility: 'visibile'
-      } : {
-        visibility: 'hidden'
-      };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "ProjectShowPage"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2682,10 +2677,8 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateStory(this.state).then(function () {
-        return (// $(".AddStoryFormUpdate").hide(),
-          $(".AddStoryFormUpdate").parent().show()
-        );
-      }); // $(".storyitembox").show());
+        return $(".AddStoryFormUpdate").hide();
+      });
     }
   }, {
     key: "render",
@@ -2782,7 +2775,6 @@ function (_React$Component) {
   }, {
     key: "handleDoubleClick",
     value: function handleDoubleClick(e) {
-      debugger;
       $(".AddStoryFormUpdate").toggle();
     }
   }, {
