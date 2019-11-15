@@ -28,7 +28,7 @@ export default class StoryIndexItem extends React.Component{
                             <div>Label: {this.props.story.labels}</div>
                             <div>Status: {this.props.story.status}</div>
                         </div>
-                        <button onClick={this.handleDelete}><i className="fa fa-trash" aria-hidden="true"></i></button>
+                        <button onClick={this.handleDelete} id="trash"><i className="fa fa-trash"  aria-hidden="true"></i></button>
                         <StoryIndexFormUpdate 
                             story={this.state}
                             updateStory={this.props.updateStory}
