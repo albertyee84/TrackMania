@@ -1,24 +1,33 @@
-# README
+# TrackMania
+[TrackMania Live](https://trackmania.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is TrackMania, a PivotalTracker clone that provides you basic functionalities that PivotalTracker provides such as creating new projects, creating stories for each project, etc.
 
-Things you may want to cover:
+## Table of Contents
+* Features
+* Technologies
+* Challenges
+<a href='#installation-guide' id='installation-guide' class='anchor' aria-hidden='true'>Installation guide</a>
 
-* Ruby version
+## Features
 
-* System dependencies
+* User Authentication
+* Project Creation
+* Story Creation
+* Story Update and Deletion
+* Search by Project Name
+* Favorite a Project
+* Other features coming soon!
 
-* Configuration
+## Technologies
 
-* Database creation
+* Ruby on Rails 5.2.3
+* JavaScript
+* React
 
-* Database initialization
+## Challenges
 
-* How to run the test suite
+* Implementing a search bar was a challenging task as it involved a custom backend route and implementing an active record query.  This involved figuring out how to send the correct information from the front end to the back end. Additionally, how to parse the front end information in order to create a valid query in order to send the payload back was especially challenging.
+* Another challenging task was how to favorite a project and make it a sticky on the top of the project index page. This involved updating the project's backend information which then updates the state. Lastly, to render the correct information, slicing the state was involed with conditionals on which project is favorited and which wasn't.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Read our installation guide (#installation-guide)
