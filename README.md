@@ -7,7 +7,6 @@ This is TrackMania, a PivotalTracker clone that provides you basic functionaliti
 * Features
 * Technologies
 * Challenges
-<a href='#installation-guide' id='installation-guide' class='anchor' aria-hidden='true'>Installation guide</a>
 
 ## Features
 
@@ -22,12 +21,14 @@ This is TrackMania, a PivotalTracker clone that provides you basic functionaliti
 ## Technologies
 
 * Ruby on Rails 5.2.3
+  Primary Backend for CRUD routes
+* Postgresql
+  Database server for localtesting and rendering
 * JavaScript
-* React
+  Primary frontend language
+* React/Redux
 
 ## Challenges
 
 * Implementing a search bar was a challenging task as it involved a custom backend route and implementing an active record query.  This involved figuring out how to send the correct information from the front end to the back end. Additionally, how to parse the front end information in order to create a valid query in order to send the payload back was especially challenging.
 * Another challenging task was how to favorite a project and make it a sticky on the top of the project index page. This involved updating the project's backend information which then updates the state. Lastly, to render the correct information, slicing the state was involed with conditionals on which project is favorited and which wasn't.
-
-Read our installation guide (#installation-guide)
