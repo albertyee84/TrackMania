@@ -2677,6 +2677,8 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateStory(this.state).then(function () {
+        return $(".storyitems").show();
+      }).then(function () {
         return $(".AddStoryFormUpdate").hide();
       });
     }
@@ -2775,7 +2777,7 @@ function (_React$Component) {
   }, {
     key: "handleDoubleClick",
     value: function handleDoubleClick(e) {
-      $(".AddStoryFormUpdate").toggle();
+      $(e.target).children().toggle();
     }
   }, {
     key: "handleDelete",
@@ -2794,15 +2796,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "storyitembox",
         id: this.props.story.id
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", this.props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", this.props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "storyitems"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", this.props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", this.props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDelete
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-trash",
         "aria-hidden": "true"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
         story: this.state,
         updateStory: this.props.updateStory
-      })));
+      }))));
     }
   }]);
 

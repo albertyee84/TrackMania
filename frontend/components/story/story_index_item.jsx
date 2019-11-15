@@ -12,7 +12,7 @@ export default class StoryIndexItem extends React.Component{
         $(".AddStoryFormUpdate").hide();
     }
     handleDoubleClick(e){
-        $(".AddStoryFormUpdate").toggle();
+        $(e.target).children().toggle();
     }
     handleDelete(){
         this.props.deleteStory(this.state);
@@ -22,18 +22,18 @@ export default class StoryIndexItem extends React.Component{
             <div className="storyindexitem" onDragStart={this.props.drag} draggable={true} id={`${this.props.story.id}`} onDoubleClick={this.handleDoubleClick}>
                 <div>
                     <div className="storyitembox" id={this.props.story.id}>
-                        <div>
+                        <div className="storyitems">
                             <div>Story Name: {this.props.story.name}</div>
                             <div>Description: {this.props.story.description}</div>
                             <div>Label: {this.props.story.labels}</div>
                             <div>Status: {this.props.story.status}</div>
                         </div>
                         <button onClick={this.handleDelete}><i className="fa fa-trash" aria-hidden="true"></i></button>
+                        <StoryIndexFormUpdate 
+                            story={this.state}
+                            updateStory={this.props.updateStory}
+                        />
                 </div>
-                    <StoryIndexFormUpdate 
-                        story={this.state}
-                        updateStory={this.props.updateStory}
-                    />
                 </div>
             </div>
         );
