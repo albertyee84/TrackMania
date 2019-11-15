@@ -2233,9 +2233,7 @@ function (_React$Component) {
   _createClass(StoryIndex, [{
     key: "handleHideText",
     value: function handleHideText() {
-      this.setState({
-        sidebartext: !this.state.sidebartext
-      });
+      $(".sidebartext").toggle();
     }
   }, {
     key: "handleCurrent",
@@ -2422,7 +2420,7 @@ function (_React$Component) {
         className: "fa fa-list",
         "aria-hidden": "true"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: banana
+        className: "sidebartext"
       }, "Current")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
         onClick: this.handleIcebox,
@@ -2431,7 +2429,7 @@ function (_React$Component) {
         className: "fa fa-snowflake-o",
         "aria-hidden": "true"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: banana
+        className: "sidebartext"
       }, "Icebox")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebarhideshow",
         onClick: this.handleDone,
@@ -2439,7 +2437,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-check"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: banana
+        className: "sidebartext"
       }, "Done"))), current, icebox, done));
     }
   }]);
@@ -2684,13 +2682,16 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       this.props.updateStory(this.state).then(function () {
-        return $(".AddStoryFormUpdate").hide();
-      });
+        return (// $(".AddStoryFormUpdate").hide(),
+          $(".AddStoryFormUpdate").parent().show()
+        );
+      }); // $(".storyitembox").show());
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: this.state.id,
         onSubmit: this.handleSubmit,
         className: "AddStoryFormUpdate"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2780,8 +2781,9 @@ function (_React$Component) {
     }
   }, {
     key: "handleDoubleClick",
-    value: function handleDoubleClick() {
-      $(".AddStoryFormUpdate").show();
+    value: function handleDoubleClick(e) {
+      debugger;
+      $(".AddStoryFormUpdate").toggle();
     }
   }, {
     key: "handleDelete",
@@ -2798,7 +2800,8 @@ function (_React$Component) {
         id: "".concat(this.props.story.id),
         onDoubleClick: this.handleDoubleClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyitembox"
+        className: "storyitembox",
+        id: this.props.story.id
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", this.props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", this.props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleDelete
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

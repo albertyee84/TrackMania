@@ -34,9 +34,7 @@ export default class StoryIndex extends React.Component{
     }
 
     handleHideText(){
-        this.setState({
-            sidebartext: !this.state.sidebartext
-        });
+        $(".sidebartext").toggle();
     }
 
     handleCurrent(){
@@ -176,17 +174,17 @@ export default class StoryIndex extends React.Component{
 
                         <i className="fa fa-bars" aria-hidden="true" onClick={this.handleHideText}/>
                         <div className="sidebarhideshow" onClick={this.handleCurrent} style={currentstyle}><i className="fa fa-list" aria-hidden="true"></i>
-                           <div style={banana}>
+                           <div className="sidebartext">
                                Current
                                </div>
                             </div>
                         <div className="sidebarhideshow" onClick={this.handleIcebox} style={iceboxstyle}><i className="fa fa-snowflake-o" aria-hidden="true"></i>
-                            <div style={banana}>
+                            <div className="sidebartext">
                                 Icebox
                             </div>
                         </div>
                         <div className="sidebarhideshow" onClick={this.handleDone} style={donestyle}><i className="fa fa-check"></i>
-                            <div style={banana}>
+                            <div className="sidebartext">
                                 Done
                                 </div>
                         </div>

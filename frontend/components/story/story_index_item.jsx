@@ -11,8 +11,9 @@ export default class StoryIndexItem extends React.Component{
     componentDidMount(){
         $(".AddStoryFormUpdate").hide();
     }
-    handleDoubleClick(){
-        $(".AddStoryFormUpdate").show();
+    handleDoubleClick(e){
+        debugger;
+        $(".AddStoryFormUpdate").toggle();
     }
     handleDelete(){
         this.props.deleteStory(this.state);
@@ -21,7 +22,7 @@ export default class StoryIndexItem extends React.Component{
         return(
             <div className="storyindexitem" onDragStart={this.props.drag} draggable={true} id={`${this.props.story.id}`} onDoubleClick={this.handleDoubleClick}>
                 <div>
-                    <div className="storyitembox">
+                    <div className="storyitembox" id={this.props.story.id}>
                         <div>
                             <div>Story Name: {this.props.story.name}</div>
                             <div>Description: {this.props.story.description}</div>
