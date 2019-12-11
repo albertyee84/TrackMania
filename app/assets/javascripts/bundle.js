@@ -451,6 +451,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var i = 0;
+var j = 0;
+var usernametext = "";
+var passwordtext = "";
 
 var SessionForm =
 /*#__PURE__*/
@@ -470,6 +474,7 @@ function (_React$Component) {
     _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleGuest = _this.handleGuest.bind(_assertThisInitialized(_this));
+    _this.typeWriter = _this.typeWriter.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -506,10 +511,41 @@ function (_React$Component) {
     key: "handleGuest",
     value: function handleGuest(e) {
       e.preventDefault();
-      this.setState({
-        username: "guest",
-        password: "password"
-      });
+      this.typeWriter();
+    }
+  }, {
+    key: "typeWriter",
+    value: function typeWriter() {
+      var username = "guest";
+      var password = "password";
+      var speed = 150;
+
+      if (i < username.length) {
+        usernametext = usernametext + username.charAt(i);
+        this.setState({
+          username: usernametext
+        });
+        i++;
+        setTimeout(this.typeWriter, speed);
+      } else if (j < password.length) {
+        passwordtext = passwordtext + password.charAt(j);
+        this.setState({
+          password: passwordtext
+        });
+        j++;
+        setTimeout(this.typeWriter, speed);
+      } else {
+        var user = Object.assign({}, this.state);
+        this.props.processForm(user).then(this.props.closeModal);
+        this.setState({
+          username: "",
+          password: ""
+        });
+        usernametext = "";
+        passwordtext = "";
+        i = 0;
+        j = 0;
+      }
     }
   }, {
     key: "render",
@@ -36383,7 +36419,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

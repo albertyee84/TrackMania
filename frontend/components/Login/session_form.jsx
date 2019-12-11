@@ -2,6 +2,11 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SocialMedia from '../social_media/social_media';
 
+let i = 0;
+let j = 0;
+let usernametext = "";
+let passwordtext ="";
+
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +17,8 @@ class SessionForm extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGuest = this.handleGuest.bind(this);
+        this.typeWriter = this.typeWriter.bind(this);
+
     }
 
     componentDidMount(){
@@ -41,11 +48,38 @@ class SessionForm extends React.Component {
     
     handleGuest(e){
         e.preventDefault();
-        this.setState({
-            username: "guest",
-            password: "password"
-        });
+        this.typeWriter();
+    }
+  
+    typeWriter() {
+        let username = "guest";
+        let password = "password";
+        let speed = 150;
         
+
+        if (i < username.length) {
+            usernametext = usernametext + username.charAt(i);
+            this.setState({ username: usernametext});
+            i++;
+            setTimeout(this.typeWriter, speed);
+        } else if ( j < password.length) {
+            passwordtext = passwordtext + password.charAt(j);
+            this.setState({ password: passwordtext});
+            j++;
+            setTimeout(this.typeWriter, speed);
+        } else {
+            const user = Object.assign({}, this.state);
+            this.props.processForm(user)
+            .then(this.props.closeModal);
+            this.setState({
+                username: "",
+                password: "",
+            });
+            usernametext = "";
+            passwordtext = "";
+            i = 0;
+            j = 0;
+        }
     }
 
     render() {
