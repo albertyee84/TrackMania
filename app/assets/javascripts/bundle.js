@@ -847,123 +847,91 @@ var ProjectDashboardTab = function ProjectDashboardTab(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ProjectForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ProjectForm, _React$Component);
+var ProjectForm = function ProjectForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      projectName = _useState2[0],
+      setProjectName = _useState2[1];
 
-  function ProjectForm(props) {
-    var _this;
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
+      _useState4 = _slicedToArray(_useState3, 2),
+      userId = _useState4[0],
+      setUserId = _useState4[1];
 
-    _classCallCheck(this, ProjectForm);
+  var handleChange = function handleChange(e) {
+    setProjectName(e.currentTarget.value);
+  };
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectForm).call(this, props));
-    _this.state = {
-      project_name: "",
-      user_id: props.userId
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleCloseModal = _this.handleCloseModal.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var handleCloseModal = function handleCloseModal() {
+    props.closeModal();
+    props.clearErrors();
+  };
 
-  _createClass(ProjectForm, [{
-    key: "handleChange",
-    value: function handleChange(e) {
-      this.setState({
-        project_name: e.currentTarget.value
-      });
-    }
-  }, {
-    key: "handleCloseModal",
-    value: function handleCloseModal() {
-      this.props.closeModal(), this.props.clearErrors();
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this2 = this;
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    props.createAProject({
+      project_name: projectName,
+      user_id: userId
+    }).then(function () {
+      return props.closeModal();
+    });
+    setProjectName("");
+  };
 
-      e.preventDefault();
-      this.props.createAProject(this.state).then(function () {
-        return _this2.props.closeModal();
-      });
-      this.setState({
-        project_name: ""
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "createformbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "newprojectformheader"
-      }, "Create a new project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "newprojectform",
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "newprojectformbody"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "projectnameinput"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "projectnamelabel"
-      }, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "newprojectforminput",
-        type: "text",
-        onChange: this.handleChange,
-        value: this.state.project_name,
-        placeholder: "Enter a neame for your project"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "accountchooser"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "projectnamelabel"
-      }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        name: "users",
-        id: "users",
-        placeholder: "Select the account holder"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: "Select Account Holder"
-      }, "Select Account Holder"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        value: this.props.currentUser
-      }, this.props.currentUser))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "formerrors"
-      }, this.props.errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "newprojectformfooter"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "cancelbutton",
-        onClick: this.handleCloseModal
-      }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "createformbtn",
-        type: "submit",
-        value: "Create"
-      }))));
-    }
-  }]);
-
-  return ProjectForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "createformbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "newprojectformheader"
+  }, "Create a new project"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "newprojectform",
+    onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "newprojectformbody"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "projectnameinput"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "projectnamelabel"
+  }, "Project Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "newprojectforminput",
+    type: "text",
+    onChange: handleChange,
+    value: projectName,
+    placeholder: "Enter a neame for your project"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "accountchooser"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "projectnamelabel"
+  }, "Account"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "users",
+    id: "users",
+    placeholder: "Select the account holder"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Select Account Holder"
+  }, "Select Account Holder"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: props.currentUser
+  }, props.currentUser))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "formerrors"
+  }, props.errors)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "newprojectformfooter"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "cancelbutton",
+    onClick: handleCloseModal
+  }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "createformbtn",
+    type: "submit",
+    value: "Create"
+  }))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectForm);
 
