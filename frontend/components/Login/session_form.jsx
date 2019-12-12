@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import SocialMedia from '../social_media/social_media';
 
@@ -22,7 +22,6 @@ class SessionForm extends React.Component {
     }
 
     componentDidMount(){
-
         this.props.clearErrors();
     }
     
@@ -55,7 +54,6 @@ class SessionForm extends React.Component {
         let username = "guest";
         let password = "password";
         let speed = 150;
-        
 
         if (i < username.length) {
             usernametext = usernametext + username.charAt(i);
@@ -95,7 +93,8 @@ class SessionForm extends React.Component {
                     <label className="cond">{this.props.otherForm}</label>
                     
                 </div>
-            );
+        );
+
         const errors = !this.props.errors || Object.values(this.props.errors) === 0 ? (
             ""
         ) : <div>
@@ -104,7 +103,7 @@ class SessionForm extends React.Component {
                         return (<li key={i}>{error}</li>);
                     })}
                 </ul>
-            </div>;
+        </div>;
 
         return (
             <div className="modalcontents">
