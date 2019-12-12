@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class ProjectListItem extends React.Component{
+let ProjectListItem = props => {
+    return (
+        <div>
+            <Link to={`/projects/${props.project.id}/stories`} className="projectlistitemlink"> 
+                <li key={props.project.id} >{props.projectName}</li> 
+            </Link>
+        </div>
+    );
+};
 
-    render() {
-        return(
-            <div>
-                <Link to={`/projects/${this.props.project.id}/stories`} className="projectlistitemlink"> <li key={this.props.project.id} >{this.props.projectName}</li> </Link>
-            </div>
-        );
-    }
-}
 export default ProjectListItem;
