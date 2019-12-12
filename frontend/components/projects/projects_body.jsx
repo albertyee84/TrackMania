@@ -1,51 +1,48 @@
 import React from 'react';
-
 import ProjectTiles from './projects_nonfav';
 
-export default class ProjectsBody extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = this.props.state;
-    }
+const ProjectsBody = props => {
+    let state = props.state;
+    let archiveword;
+    let projectslist = Object.values(props.projects);
+    let projectlistnonfav = [];
+    let projectlistfav = [];
+    
+    projectslist.forEach(project => {
+        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+    });
+    state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
 
-    render(){
-        let archiveword;
-        let projectslist = Object.values(this.props.projects);
-        let projectlistnonfav = [];
-        let projectlistfav = [];
-        projectslist.forEach(project => {
-            project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-        });
-        this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
+    !props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
 
-        !this.props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
-
-        const displayfav = projectlistfav.length > 0 ? (<div>My Favorites
+    const displayfav = projectlistfav.length > 0 ? (<div>My Favorites
                 <ProjectTiles
-                    projectrendernonfav={projectlistfav}
-                    state={this.state}
-                    updateProject={this.props.updateProject}
-                    requestAllUsersProjects={this.props.requestAllUsersProjects}
-                    archiveword={archiveword}
-                    userId={this.props.userId}
-                />
-        </div> ) : "";
-        return(
-            <div className="projectpanelbody">
-                {displayfav}
-                <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects
+            projectrendernonfav={projectlistfav}
+            state={state}
+            updateProject={props.updateProject}
+            requestAllUsersProjects={props.requestAllUsersProjects}
+            archiveword={archiveword}
+            userId={props.userId}
+        />
+    </div>) : "";
+
+    return (
+        <div className="projectpanelbody">
+            {displayfav}
+            <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects
                                 <div className="projectpanelseparator">|</div>
-                    {Object.values(this.props.projects).length - projectlistfav.length}
-                </div>
-                <ProjectTiles 
-                    projectrendernonfav={projectlistnonfav}
-                    state={this.state}
-                    updateProject={this.props.updateProject}
-                    requestAllUsersProjects={this.props.requestAllUsersProjects}
-                    archiveword={archiveword}
-                    userId={this.props.userId}
-                />
+                {Object.values(props.projects).length - projectlistfav.length}
             </div>
-        );
-    }
+            <ProjectTiles
+                projectrendernonfav={projectlistnonfav}
+                state={state}
+                updateProject={props.updateProject}
+                requestAllUsersProjects={props.requestAllUsersProjects}
+                archiveword={archiveword}
+                userId={props.userId}
+            />
+        </div>
+    );
 }
+
+export default ProjectsBody;

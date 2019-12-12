@@ -1052,7 +1052,6 @@ var ProjectListItemnavbar = function ProjectListItemnavbar(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProjectSearchBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1192,9 +1191,63 @@ function (_React$Component) {
   }]);
 
   return ProjectSearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // let ProjectSearchBar = props => {
+//     let [userId, setUserId] = useState(props.userId);
+//     let [search, setSearch] = useState("");
+//     let [archived, setArchived] = useState(false);
+//     let [all, setAll] = useState(false);
+//     let [id, setId] = 10000000000;
+//     const handleSubmit = e => {
+//         e.preventDefault();
+//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id});
+//         setSearch("");
+//     };
+//     const handleChange = e => {
+//         setSearch(e.currentTarget.value);
+//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
+//     };
+//     const handleClear = e => {
+//         setSearch("");
+//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
+//     };
+//     const handleArchive = e => {
+//         setArchived(true);
+//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
+//     };
+//     const handleActive = e => {
+//         setArchived(false);
+//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
+//     };
+//     let status;
+//     let clear;
+//     archived ? status = "Archived" : status = "Active";
+//     search.length > 0 ? clear = (<div className="clear" onClick={handleClear}>clear</div>) : "";
+//     return(
+//         <div className="searchbar">
+//             <form className="searchbarform"
+//                 onSubmit={handleSubmit}>
+//                 <div className="searchbarinput">
+//                     <i className="fa fa-search" />
+//                     <input
+//                         className="inputbox"
+//                         type="text"
+//                         value={search}
+//                         placeholder={`Search ${status} Projects`}
+//                         onChange={handleChange}
+//                         onSubmit={handleSubmit}
+//                         id=""
+//                     />
+//                 </div>
+//                 {clear}
+//             </form>
+//             <button className="activearchivebuttons" onClick={handleActive}>Active</button>
+//             <button className="activearchivebuttons" onClick={handleArchive}>Archived</button>
+//         </div>
+//     );
+// }
 
 
+/* harmony default export */ __webpack_exports__["default"] = (ProjectSearchBar);
 
 /***/ }),
 
@@ -1354,89 +1407,50 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ProjectsBody; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _projects_nonfav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projects_nonfav */ "./frontend/components/projects/projects_nonfav.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
+var ProjectsBody = function ProjectsBody(props) {
+  var state = props.state;
+  var archiveword;
+  var projectslist = Object.values(props.projects);
+  var projectlistnonfav = [];
+  var projectlistfav = [];
+  projectslist.forEach(function (project) {
+    project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+  });
+  state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
+  !props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
+  var displayfav = projectlistfav.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "My Favorites", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    projectrendernonfav: projectlistfav,
+    state: state,
+    updateProject: props.updateProject,
+    requestAllUsersProjects: props.requestAllUsersProjects,
+    archiveword: archiveword,
+    userId: props.userId
+  })) : "";
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "projectpanelbody"
+  }, displayfav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "projectpanelheader"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-bars"
+  }), "My Projects", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "projectpanelseparator"
+  }, "|"), Object.values(props.projects).length - projectlistfav.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    projectrendernonfav: projectlistnonfav,
+    state: state,
+    updateProject: props.updateProject,
+    requestAllUsersProjects: props.requestAllUsersProjects,
+    archiveword: archiveword,
+    userId: props.userId
+  }));
+};
 
-var ProjectsBody =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ProjectsBody, _React$Component);
-
-  function ProjectsBody(props) {
-    var _this;
-
-    _classCallCheck(this, ProjectsBody);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectsBody).call(this, props));
-    _this.state = _this.props.state;
-    return _this;
-  }
-
-  _createClass(ProjectsBody, [{
-    key: "render",
-    value: function render() {
-      var archiveword;
-      var projectslist = Object.values(this.props.projects);
-      var projectlistnonfav = [];
-      var projectlistfav = [];
-      projectslist.forEach(function (project) {
-        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-      });
-      this.state.archived ? archiveword = "UnArchive" : archiveword = "Archive";
-      !this.props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
-      var displayfav = projectlistfav.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "My Favorites", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        projectrendernonfav: projectlistfav,
-        state: this.state,
-        updateProject: this.props.updateProject,
-        requestAllUsersProjects: this.props.requestAllUsersProjects,
-        archiveword: archiveword,
-        userId: this.props.userId
-      })) : "";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "projectpanelbody"
-      }, displayfav, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "projectpanelheader"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bars"
-      }), "My Projects", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "projectpanelseparator"
-      }, "|"), Object.values(this.props.projects).length - projectlistfav.length), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_nonfav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        projectrendernonfav: projectlistnonfav,
-        state: this.state,
-        updateProject: this.props.updateProject,
-        requestAllUsersProjects: this.props.requestAllUsersProjects,
-        archiveword: archiveword,
-        userId: this.props.userId
-      }));
-    }
-  }]);
-
-  return ProjectsBody;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
+/* harmony default export */ __webpack_exports__["default"] = (ProjectsBody);
 
 /***/ }),
 
