@@ -7,7 +7,7 @@ const ProjectsBody = props => {
     let projectslist = Object.values(props.projects);
     let projectlistnonfav = [];
     let projectlistfav = [];
-    
+
     projectslist.forEach(project => {
         project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
     });
@@ -16,7 +16,7 @@ const ProjectsBody = props => {
     !props.all ? projectlistnonfav = projectlistnonfav.slice(0, 4) : projectlistnonfav;
 
     const displayfav = projectlistfav.length > 0 ? (<div>My Favorites
-                <ProjectTiles
+        <ProjectTiles
             projectrendernonfav={projectlistfav}
             state={state}
             updateProject={props.updateProject}
@@ -29,8 +29,11 @@ const ProjectsBody = props => {
     return (
         <div className="projectpanelbody">
             {displayfav}
-            <div className="projectpanelheader"><i className="fa fa-bars"></i>My Projects
-                                <div className="projectpanelseparator">|</div>
+            <div className="projectpanelheader">
+                <i className="fa fa-bars"></i>My Projects
+                <div className="projectpanelseparator">
+                 |
+                </div>
                 {Object.values(props.projects).length - projectlistfav.length}
             </div>
             <ProjectTiles
@@ -43,6 +46,6 @@ const ProjectsBody = props => {
             />
         </div>
     );
-}
+};
 
 export default ProjectsBody;
