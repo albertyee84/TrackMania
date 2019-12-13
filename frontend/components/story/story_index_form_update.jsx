@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default class StoryIndexFormUpdate extends React.Component {
     constructor(props) {
@@ -19,9 +19,7 @@ export default class StoryIndexFormUpdate extends React.Component {
             $(".storyitems").show();
             $(".AddStoryFormUpdate").hide();
             $("#trash").toggle();
-        })
-            // .then(() => $(".AddStoryFormUpdate").hide());
-            
+        });
     }
     render() {
         return (

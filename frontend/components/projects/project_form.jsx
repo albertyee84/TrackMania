@@ -55,6 +55,6 @@ const ProjectForm = props => {
             </form>
         </div>
     );
-}
+};
 
 export default ProjectForm;

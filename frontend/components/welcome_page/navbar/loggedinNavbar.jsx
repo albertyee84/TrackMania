@@ -1,5 +1,4 @@
-import React from 'react';
-import { AuthRoute } from '../../../util/route_util';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ProjectListItemnavbar from '../../projects/project_list_Item_navbar';
 
@@ -15,7 +14,6 @@ export default class loggedinNavbar extends React.Component{
             id: 100000000000,
             projects: {},
         };
-        let projectlist = {};
         this.handleRefresh = this.handleRefresh.bind(this);
     }
 
