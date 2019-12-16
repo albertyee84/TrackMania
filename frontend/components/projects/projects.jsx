@@ -4,6 +4,89 @@ import ProjectSearchBar from './project_search_bar';
 import ProjectsBody from './projects_body';
 import ProjectFooter from './projects_footer';
 
+const Projects = props => {
+    let [userId, setUserId] = useState(props.userId);
+    let [search, setSearch] = useState("");
+    let [archived, setArchived] = useState(false);
+    let [all, setAll] = useState(false);
+    let [id, setId] = useState(10000000000000);
+
+    let state = {user_id: userId, search: search, archived: archived, all: all, id: id};
+
+    useEffect(() => {
+        props.requestAllUsersProjects(state);
+    }, [])
+
+    const handleArchiveProject = (projectId, archived) => {
+        let newStatus;
+        archived ? newStatus = false : newStatus = true;
+        setId(projectId)
+        setArchived(newStatus)
+        .then(()=>{
+            props.updateProject(state)
+            .then(() => {
+                props.requestAllUsersProjects(state)
+            })
+        })
+    }
+
+    const handleShowAllProjects = () => {
+        setAll(true)
+    }
+
+    const handlehideProjects = () => {
+        setAll(false)
+    }
+
+    const openModal = props.openModal;
+    let showAll;
+    let projectslist = Object.values(props.projects);
+    let projectlistnonfav = [];
+    let projectlistfav = [];
+    projectslist.forEach(project => {
+        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+    });
+
+    !all && projectlistnonfav.length > 4 ?
+        showAll = <button className="showallbtn" onClick={handleShowAllProjects}>
+            Show {projectlistnonfav.length - 4} more project
+                </button>
+        :
+        all && projectlistnonfav.length > 4 ?
+            showAll = <button className="showallbtn" onClick={handlehideProjects}>
+                Hide {projectlistnonfav.length - 4} projects
+            </button> : "";
+
+    return (
+        <div>
+            <div className="dashboardbody">
+                <ProjectDashboardTab openModal={openModal} />
+                <div className="dashboard">
+                    <ProjectSearchBar
+                        searchProject={props.searchProject}
+                        requestAllUsersProjects={props.requestAllUsersProjects}
+                        userId={props.userId}
+                    />
+                    <ProjectsBody
+                        projects={props.projects}
+                        updateProject={props.updateProject}
+                        requestAllUsersProjects={props.requestAllUsersProjects}
+                        userId={props.userId}
+                        state={state}
+                        all={state.all}
+                    />
+                    <div>
+                        {showAll}
+                    </div>
+                </div>
+            </div>
+            <ProjectFooter />
+        </div>
+    );
+
+}
+
+export default Projects;
 
 // class Projects extends React.Component {
 //     constructor(props){
@@ -100,87 +183,3 @@ import ProjectFooter from './projects_footer';
 //         );
 //     }
 // }
-
-const Projects = props => {
-    let [userId, setUserId] = useState(props.userId)
-    let [search, setSearch] = useState("")
-    let [archived, setArchived] = useState(false);
-    let [all, setAll] = useState(false);
-    let [id, setId] = useState(10000000000000)
-
-    let state = {user_id: userId, search: search, archived: archived, all: all, id: id}
-
-    useEffect(() => {
-        props.requestAllUsersProjects(state)
-    }, [])
-
-    const handleArchiveProject = (projectId, archived) => {
-        let newStatus;
-        archived ? newStatus = false : newStatus = true;
-        setId(projectId)
-        setArchived(newStatus)
-        .then(()=>{
-            props.updateProject(state)
-            .then(() => {
-                props.requestAllUsersProjects(state)
-            })
-        })
-    }
-
-    const handleShowAllProjects = () => {
-        setAll(true)
-    }
-
-    const handlehideProjects = () => {
-        setAll(false)
-    }
-
-    const openModal = props.openModal;
-    let showAll;
-    let projectslist = Object.values(props.projects);
-    let projectlistnonfav = [];
-    let projectlistfav = [];
-    projectslist.forEach(project => {
-        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-    });
-
-    !all && projectlistnonfav.length > 4 ?
-        showAll = <button className="showallbtn" onClick={handleShowAllProjects}>
-            Show {projectlistnonfav.length - 4} more project
-                </button>
-        :
-        all && projectlistnonfav.length > 4 ?
-            showAll = <button className="showallbtn" onClick={handlehideProjects}>
-                Hide {projectlistnonfav.length - 4} projects
-            </button> : "";
-
-    return (
-        <div>
-            <div className="dashboardbody">
-                <ProjectDashboardTab openModal={openModal} />
-                <div className="dashboard">
-                    <ProjectSearchBar
-                        searchProject={props.searchProject}
-                        requestAllUsersProjects={props.requestAllUsersProjects}
-                        userId={props.userId}
-                    />
-                    <ProjectsBody
-                        projects={props.projects}
-                        updateProject={props.updateProject}
-                        requestAllUsersProjects={props.requestAllUsersProjects}
-                        userId={props.userId}
-                        state={state}
-                        all={state.all}
-                    />
-                    <div>
-                        {showAll}
-                    </div>
-                </div>
-            </div>
-            <ProjectFooter />
-        </div>
-    );
-
-}
-
-export default Projects;

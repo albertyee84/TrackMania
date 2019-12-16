@@ -1278,61 +1278,7 @@ function (_React$Component) {
   }]);
 
   return ProjectSearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // let ProjectSearchBar = props => {
-//     let [userId, setUserId] = useState(props.userId);
-//     let [search, setSearch] = useState("");
-//     let [archived, setArchived] = useState(false);
-//     let [all, setAll] = useState(false);
-//     let [id, setId] = 10000000000;
-//     const handleSubmit = e => {
-//         e.preventDefault();
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id});
-//         setSearch("");
-//     };
-//     const handleChange = e => {
-//         setSearch(e.currentTarget.value);
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-//     const handleClear = e => {
-//         setSearch("");
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-//     const handleArchive = e => {
-//         setArchived(true);
-//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-//     const handleActive = e => {
-//         setArchived(false);
-//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-//     let status;
-//     let clear;
-//     archived ? status = "Archived" : status = "Active";
-//     search.length > 0 ? clear = (<div className="clear" onClick={handleClear}>clear</div>) : "";
-//     return(
-//         <div className="searchbar">
-//             <form className="searchbarform"
-//                 onSubmit={handleSubmit}>
-//                 <div className="searchbarinput">
-//                     <i className="fa fa-search" />
-//                     <input
-//                         className="inputbox"
-//                         type="text"
-//                         value={search}
-//                         placeholder={`Search ${status} Projects`}
-//                         onChange={handleChange}
-//                         onSubmit={handleSubmit}
-//                         id=""
-//                     />
-//                 </div>
-//                 {clear}
-//             </form>
-//             <button className="activearchivebuttons" onClick={handleActive}>Active</button>
-//             <button className="activearchivebuttons" onClick={handleArchive}>Archived</button>
-//         </div>
-//     );
-// }
-
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectSearchBar);
 
@@ -1365,95 +1311,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // class Projects extends React.Component {
-//     constructor(props){
-//         super(props);
-//         this.state = {
-//             user_id: this.props.userId,
-//             search: "",
-//             archived: false,
-//             all: false,
-//             id: 100000000000,
-//         };
-//         this.handlehideProjects = this.handlehideProjects.bind(this);
-//         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
-//     }
-//     componentDidMount(){
-//         this.props.requestAllUsersProjects(this.state);
-//     }
-//     handleArchiveProject(projectId, archived){
-//         let newStatus;
-//         archived ? newStatus = false : newStatus = true;
-//         this.setState({
-//             id: projectId,
-//             archived: newStatus,
-//         },
-//         ()=>{
-//             this.props.updateProject(this.state)
-//             .then(()=>{
-//                 this.setState({archived: archived},
-//                     ()=>{
-//                         this.props.requestAllUsersProjects(this.state);
-//                     });
-//             });
-//         });
-//     }
-//     handleShowAllProjects(){
-//         this.setState({
-//             all: true
-//         });
-//     }
-//     handlehideProjects() {
-//         this.setState({
-//             all: false
-//         });
-//     }
-//     render() {
-//         const openModal = this.props.openModal;
-//         let showAll;
-//         let projectslist = Object.values(this.props.projects);
-//         let projectlistnonfav = [];
-//         let projectlistfav = [];
-//         projectslist.forEach(project => {
-//             project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-//         });
-//         !this.state.all && projectlistnonfav.length > 4 ?
-//             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>
-//                 Show {projectlistnonfav.length-4} more project
-//                     </button> 
-//             : 
-//             this.state.all && projectlistnonfav.length > 4 ?
-//             showAll = <button className="showallbtn" onClick={this.handlehideProjects}>
-//                 Hide {projectlistnonfav.length - 4} projects
-//                 </button> : "" ;
-//         return (
-//             <div>
-//                 <div className="dashboardbody">
-//                     <ProjectDashboardTab openModal={openModal}/>
-//                     <div className="dashboard">
-//                         <ProjectSearchBar 
-//                             searchProject={this.props.searchProject}
-//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
-//                             userId={this.props.userId} 
-//                         />
-//                         <ProjectsBody 
-//                             projects={this.props.projects}
-//                             updateProject={this.props.updateProject}
-//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
-//                             userId={this.props.userId}
-//                             state={this.state}
-//                             all={this.state.all}
-//                         />
-//                         <div>
-//                             {showAll}
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <ProjectFooter />
-//             </div>
-//         );
-//     }
-// }
+
 
 var Projects = function Projects(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
@@ -1546,7 +1404,95 @@ var Projects = function Projects(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Projects);
+/* harmony default export */ __webpack_exports__["default"] = (Projects); // class Projects extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             user_id: this.props.userId,
+//             search: "",
+//             archived: false,
+//             all: false,
+//             id: 100000000000,
+//         };
+//         this.handlehideProjects = this.handlehideProjects.bind(this);
+//         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
+//     }
+//     componentDidMount(){
+//         this.props.requestAllUsersProjects(this.state);
+//     }
+//     handleArchiveProject(projectId, archived){
+//         let newStatus;
+//         archived ? newStatus = false : newStatus = true;
+//         this.setState({
+//             id: projectId,
+//             archived: newStatus,
+//         },
+//         ()=>{
+//             this.props.updateProject(this.state)
+//             .then(()=>{
+//                 this.setState({archived: archived},
+//                     ()=>{
+//                         this.props.requestAllUsersProjects(this.state);
+//                     });
+//             });
+//         });
+//     }
+//     handleShowAllProjects(){
+//         this.setState({
+//             all: true
+//         });
+//     }
+//     handlehideProjects() {
+//         this.setState({
+//             all: false
+//         });
+//     }
+//     render() {
+//         const openModal = this.props.openModal;
+//         let showAll;
+//         let projectslist = Object.values(this.props.projects);
+//         let projectlistnonfav = [];
+//         let projectlistfav = [];
+//         projectslist.forEach(project => {
+//             project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+//         });
+//         !this.state.all && projectlistnonfav.length > 4 ?
+//             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>
+//                 Show {projectlistnonfav.length-4} more project
+//                     </button> 
+//             : 
+//             this.state.all && projectlistnonfav.length > 4 ?
+//             showAll = <button className="showallbtn" onClick={this.handlehideProjects}>
+//                 Hide {projectlistnonfav.length - 4} projects
+//                 </button> : "" ;
+//         return (
+//             <div>
+//                 <div className="dashboardbody">
+//                     <ProjectDashboardTab openModal={openModal}/>
+//                     <div className="dashboard">
+//                         <ProjectSearchBar 
+//                             searchProject={this.props.searchProject}
+//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
+//                             userId={this.props.userId} 
+//                         />
+//                         <ProjectsBody 
+//                             projects={this.props.projects}
+//                             updateProject={this.props.updateProject}
+//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
+//                             userId={this.props.userId}
+//                             state={this.state}
+//                             all={this.state.all}
+//                         />
+//                         <div>
+//                             {showAll}
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <ProjectFooter />
+//             </div>
+//         );
+//     }
+// }
 
 /***/ }),
 

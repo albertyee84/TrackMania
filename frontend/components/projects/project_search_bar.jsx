@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 class ProjectSearchBar extends React.Component{
     constructor(props) {
@@ -95,70 +95,5 @@ class ProjectSearchBar extends React.Component{
         );
     }
 }
-
-// let ProjectSearchBar = props => {
-//     let [userId, setUserId] = useState(props.userId);
-//     let [search, setSearch] = useState("");
-//     let [archived, setArchived] = useState(false);
-//     let [all, setAll] = useState(false);
-//     let [id, setId] = 10000000000;
-
-//     const handleSubmit = e => {
-//         e.preventDefault();
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id});
-//         setSearch("");
-//     };
-
-//     const handleChange = e => {
-//         setSearch(e.currentTarget.value);
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-
-//     const handleClear = e => {
-//         setSearch("");
-//         props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-
-//     const handleArchive = e => {
-//         setArchived(true);
-//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-
-//     const handleActive = e => {
-//         setArchived(false);
-//         props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
-//     };
-
-//     let status;
-
-//     let clear;
-
-//     archived ? status = "Archived" : status = "Active";
-
-//     search.length > 0 ? clear = (<div className="clear" onClick={handleClear}>clear</div>) : "";
-
-//     return(
-//         <div className="searchbar">
-//             <form className="searchbarform"
-//                 onSubmit={handleSubmit}>
-//                 <div className="searchbarinput">
-//                     <i className="fa fa-search" />
-//                     <input
-//                         className="inputbox"
-//                         type="text"
-//                         value={search}
-//                         placeholder={`Search ${status} Projects`}
-//                         onChange={handleChange}
-//                         onSubmit={handleSubmit}
-//                         id=""
-//                     />
-//                 </div>
-//                 {clear}
-//             </form>
-//             <button className="activearchivebuttons" onClick={handleActive}>Active</button>
-//             <button className="activearchivebuttons" onClick={handleArchive}>Archived</button>
-//         </div>
-//     );
-// }
 
 export default ProjectSearchBar;
