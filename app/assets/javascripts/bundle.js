@@ -428,25 +428,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _social_media_social_media__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../social_media/social_media */ "./frontend/components/social_media/social_media.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -454,154 +442,249 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var i = 0;
 var j = 0;
 var usernametext = "";
-var passwordtext = "";
+var passwordtext = ""; // class SessionForm extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             username: "",
+//             password: "",
+//         };
+//         this.handleInput = this.handleInput.bind(this);
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.handleGuest = this.handleGuest.bind(this);
+//         this.typeWriter = this.typeWriter.bind(this);
+//     }
+//     componentDidMount(){
+//         this.props.clearErrors();
+//     }
+//     handleInput(type) {
+//         return (e) => {
+//             this.setState({ [type]: e.target.value });
+//         };
+//     }
+//     handleSubmit(e) { 
+//         e.preventDefault();
+//         const user = Object.assign({}, this.state);
+//         this.props.processForm(user)
+//         .then(this.props.closeModal)
+//         .then(() => {
+//             this.props.history.push('/projects');
+//         });
+//         this.setState({
+//             username: "",
+//             password: "",
+//         });
+//     }
+//     handleGuest(e){
+//         e.preventDefault();
+//         this.typeWriter();
+//     }
+//     typeWriter() {
+//         let username = "guest";
+//         let password = "password";
+//         let speed = 150;
+//         if (i < username.length) {
+//             usernametext = usernametext + username.charAt(i);
+//             this.setState({ username: usernametext});
+//             i++;
+//             setTimeout(this.typeWriter, speed);
+//         } else if ( j < password.length) {
+//             passwordtext = passwordtext + password.charAt(j);
+//             this.setState({ password: passwordtext});
+//             j++;
+//             setTimeout(this.typeWriter, speed);
+//         } else {
+//             const user = Object.assign({}, this.state);
+//             this.props.processForm(user)
+//             .then(this.props.closeModal);
+//             this.setState({
+//                 username: "",
+//                 password: "",
+//             });
+//             usernametext = "";
+//             passwordtext = "";
+//             i = 0;
+//             j = 0;
+//         }
+//     }
+//     render() {
+//         const display = (this.props.formType === 'Sign In') ? (
+//             <div className="Signupbox">
+//                 <a href="*" className="btn" id="guest-btn" onClick={this.handleGuest}>Guest Sign In</a>
+//                 <label className="cond"> {this.props.otherForm} </label>
+//             </div>
+//         ) :
+//             (
+//                 <div className="Signupbox">
+//                     <label className="cond">{this.props.otherForm}</label>
+//                 </div>
+//         );
+//         const errors = !this.props.errors || Object.values(this.props.errors) === 0 ? (
+//             ""
+//         ) : <div>
+//                 <ul>
+//                     {this.props.errors.map((error, i) => {
+//                         return (<li key={i}>{error}</li>);
+//                     })}
+//                 </ul>
+//         </div>;
+//         return (
+//             <div className="modalcontents">
+//                 <div className="modalbg"></div>
+//                 <div className="formspacing">
+//                     <div onClick={this.props.closeModal} className="close-x"></div>
+//                         <form onSubmit={this.handleSubmit} className="formsss">
+//                             <h2 className="Form-Title">{this.props.formType} to continue to TrackMania</h2>
+//                             <br/>
+//                             <label>Enter Username
+//                                 <input
+//                                     className="user-pw"
+//                                     type="text"
+//                                     value={this.state.username}
+//                                     onChange={this.handleInput('username')}
+//                                 />
+//                             </label>
+//                             <label>Enter Password
+//                                 <input
+//                                     className="user-pw"
+//                                     type="password"
+//                                     value={this.state.password}
+//                                     onChange={this.handleInput('password')}
+//                                 />
+//                             </label>
+//                             <button className="btn" id="sign-btn">{this.props.formType}</button>
+//                             <div>
+//                                 {display}
+//                                 {errors}
+//                             </div>
+//                             <SocialMedia />
+//                         </form>
+//                     </div>
+//             </div>
+//         );
+//     }
+// }
 
-var SessionForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(SessionForm, _React$Component);
+var SessionForm = function SessionForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
 
-  function SessionForm(props) {
-    var _this;
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
 
-    _classCallCheck(this, SessionForm);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.clearErrors();
+  }, []);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
-    _this.state = {
-      username: "",
-      password: ""
-    };
-    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleGuest = _this.handleGuest.bind(_assertThisInitialized(_this));
-    _this.typeWriter = _this.typeWriter.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(SessionForm, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.clearErrors();
-    }
-  }, {
-    key: "handleInput",
-    value: function handleInput(type) {
-      var _this2 = this;
-
-      return function (e) {
-        _this2.setState(_defineProperty({}, type, e.target.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this3 = this;
-
-      e.preventDefault();
-      var user = Object.assign({}, this.state);
-      this.props.processForm(user).then(this.props.closeModal).then(function () {
-        _this3.props.history.push('/projects');
-      });
-      this.setState({
-        username: "",
-        password: ""
-      });
-    }
-  }, {
-    key: "handleGuest",
-    value: function handleGuest(e) {
-      e.preventDefault();
-      this.typeWriter();
-    }
-  }, {
-    key: "typeWriter",
-    value: function typeWriter() {
-      var username = "guest";
-      var password = "password";
-      var speed = 150;
-
-      if (i < username.length) {
-        usernametext = usernametext + username.charAt(i);
-        this.setState({
-          username: usernametext
-        });
-        i++;
-        setTimeout(this.typeWriter, speed);
-      } else if (j < password.length) {
-        passwordtext = passwordtext + password.charAt(j);
-        this.setState({
-          password: passwordtext
-        });
-        j++;
-        setTimeout(this.typeWriter, speed);
+  var handleInput = function handleInput(type) {
+    return function (e) {
+      if (type === 'username') {
+        setUsername(event.target.value);
       } else {
-        var user = Object.assign({}, this.state);
-        this.props.processForm(user).then(this.props.closeModal);
-        this.setState({
-          username: "",
-          password: ""
-        });
-        usernametext = "";
-        passwordtext = "";
-        i = 0;
-        j = 0;
+        setPassword(event.target.value);
       }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var display = this.props.formType === 'Sign In' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Signupbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "*",
-        className: "btn",
-        id: "guest-btn",
-        onClick: this.handleGuest
-      }, "Guest Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "cond"
-      }, " ", this.props.otherForm, " ")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Signupbox"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "cond"
-      }, this.props.otherForm));
-      var errors = !this.props.errors || Object.values(this.props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, error);
-      })));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modalcontents"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "modalbg"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "formspacing"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this.props.closeModal,
-        className: "close-x"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "formsss"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "Form-Title"
-      }, this.props.formType, " to continue to TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "user-pw",
-        type: "text",
-        value: this.state.username,
-        onChange: this.handleInput('username')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "user-pw",
-        type: "password",
-        value: this.state.password,
-        onChange: this.handleInput('password')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "btn",
-        id: "sign-btn"
-      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
-    }
-  }]);
+    };
+  };
 
-  return SessionForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    props.processForm({
+      username: username,
+      password: password
+    }).then(props.closeModal()).then(function () {
+      props.history.push('./projects');
+    });
+    setUsername("");
+    setPassword("");
+  };
+
+  var handleGuest = function handleGuest(e) {
+    e.preventDefault();
+    typeWriter(username, password);
+  };
+
+  var typeWriter = function typeWriter(user1, pw) {
+    var username1 = "guest";
+    var password1 = "password";
+    var speed = 150;
+
+    if (i < username1.length) {
+      usernametext = usernametext + username1.charAt(i);
+      setUsername(usernametext);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else if (j < password1.length) {
+      passwordtext = passwordtext + password1.charAt(j);
+      setPassword(passwordtext);
+      j++;
+      setTimeout(typeWriter, speed);
+    } else {
+      var user = Object.assign({}, {
+        username: username1,
+        password: password1
+      });
+      props.processForm(user).then(props.closeModal);
+      setUsername("");
+      setPassword("");
+      usernametext = "";
+      passwordtext = "";
+      i = 0;
+      j = 0;
+    }
+  };
+
+  var display = props.formType === 'Sign In' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Signupbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "*",
+    className: "btn",
+    id: "guest-btn",
+    onClick: handleGuest
+  }, "Guest Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "cond"
+  }, " ", props.otherForm, " ")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Signupbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "cond"
+  }, props.otherForm));
+  var errors = !props.errors || Object.values(props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, props.errors.map(function (error, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: i
+    }, error);
+  })));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modalcontents"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modalbg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "formspacing"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: props.closeModal,
+    className: "close-x"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
+    className: "formsss"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "Form-Title"
+  }, props.formType, " to continue to TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "user-pw",
+    type: "text",
+    value: username,
+    onChange: handleInput('username')
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "user-pw",
+    type: "password",
+    value: password,
+    onChange: handleInput('password')
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn",
+    id: "sign-btn"
+  }, props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SessionForm));
 
