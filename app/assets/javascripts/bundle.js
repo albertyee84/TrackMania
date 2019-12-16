@@ -442,7 +442,134 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var i = 0;
 var j = 0;
 var usernametext = "";
-var passwordtext = ""; // class SessionForm extends React.Component {
+var passwordtext = "";
+
+var SessionForm = function SessionForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.clearErrors();
+  }, []);
+
+  var handleInput = function handleInput(type) {
+    return function (e) {
+      if (type === 'username') {
+        setUsername(event.target.value);
+      } else {
+        setPassword(event.target.value);
+      }
+    };
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    props.processForm({
+      username: username,
+      password: password
+    }).then(function () {
+      if (!props.errors) {
+        props.closeModal();
+      }
+    }).then(function () {
+      props.history.push('./projects');
+    });
+    setUsername("");
+    setPassword("");
+  };
+
+  var handleGuest = function handleGuest(e) {
+    e.preventDefault();
+    typeWriter(username, password);
+  };
+
+  var typeWriter = function typeWriter(user1, pw) {
+    var username1 = "guest";
+    var password1 = "password";
+    var speed = 150;
+
+    if (i < username1.length) {
+      usernametext = usernametext + username1.charAt(i);
+      setUsername(usernametext);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else if (j < password1.length) {
+      passwordtext = passwordtext + password1.charAt(j);
+      setPassword(passwordtext);
+      j++;
+      setTimeout(typeWriter, speed);
+    } else {
+      var user = Object.assign({}, {
+        username: username1,
+        password: password1
+      });
+      props.processForm(user).then(props.closeModal);
+      setUsername("");
+      setPassword("");
+      usernametext = "";
+      passwordtext = "";
+      i = 0;
+      j = 0;
+    }
+  };
+
+  var display = props.formType === 'Sign In' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Signupbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "*",
+    className: "btn",
+    id: "guest-btn",
+    onClick: handleGuest
+  }, "Guest Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "cond"
+  }, " ", props.otherForm, " ")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Signupbox"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "cond"
+  }, props.otherForm));
+  var errors = !props.errors || Object.values(props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, props.errors.map(function (error, i) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: i
+    }, error);
+  })));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modalcontents"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modalbg"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "formspacing"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: props.closeModal,
+    className: "close-x"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
+    className: "formsss"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "Form-Title"
+  }, props.formType, " to continue to TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "user-pw",
+    type: "text",
+    value: username,
+    onChange: handleInput('username')
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "user-pw",
+    type: "password",
+    value: password,
+    onChange: handleInput('password')
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn",
+    id: "sign-btn"
+  }, props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SessionForm)); // class SessionForm extends React.Component {
 //     constructor(props) {
 //         super(props);
 //         this.state = {
@@ -564,129 +691,6 @@ var passwordtext = ""; // class SessionForm extends React.Component {
 //         );
 //     }
 // }
-
-var SessionForm = function SessionForm(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    props.clearErrors();
-  }, []);
-
-  var handleInput = function handleInput(type) {
-    return function (e) {
-      if (type === 'username') {
-        setUsername(event.target.value);
-      } else {
-        setPassword(event.target.value);
-      }
-    };
-  };
-
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
-    props.processForm({
-      username: username,
-      password: password
-    }).then(props.closeModal()).then(function () {
-      props.history.push('./projects');
-    });
-    setUsername("");
-    setPassword("");
-  };
-
-  var handleGuest = function handleGuest(e) {
-    e.preventDefault();
-    typeWriter(username, password);
-  };
-
-  var typeWriter = function typeWriter(user1, pw) {
-    var username1 = "guest";
-    var password1 = "password";
-    var speed = 150;
-
-    if (i < username1.length) {
-      usernametext = usernametext + username1.charAt(i);
-      setUsername(usernametext);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else if (j < password1.length) {
-      passwordtext = passwordtext + password1.charAt(j);
-      setPassword(passwordtext);
-      j++;
-      setTimeout(typeWriter, speed);
-    } else {
-      var user = Object.assign({}, {
-        username: username1,
-        password: password1
-      });
-      props.processForm(user).then(props.closeModal);
-      setUsername("");
-      setPassword("");
-      usernametext = "";
-      passwordtext = "";
-      i = 0;
-      j = 0;
-    }
-  };
-
-  var display = props.formType === 'Sign In' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Signupbox"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "*",
-    className: "btn",
-    id: "guest-btn",
-    onClick: handleGuest
-  }, "Guest Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "cond"
-  }, " ", props.otherForm, " ")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Signupbox"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "cond"
-  }, props.otherForm));
-  var errors = !props.errors || Object.values(props.errors) === 0 ? "" : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, props.errors.map(function (error, i) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      key: i
-    }, error);
-  })));
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modalcontents"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "modalbg"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "formspacing"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    onClick: props.closeModal,
-    className: "close-x"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: handleSubmit,
-    className: "formsss"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    className: "Form-Title"
-  }, props.formType, " to continue to TrackMania"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "user-pw",
-    type: "text",
-    value: username,
-    onChange: handleInput('username')
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Enter Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "user-pw",
-    type: "password",
-    value: password,
-    onChange: handleInput('password')
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn",
-    id: "sign-btn"
-  }, props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, display, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(SessionForm));
 
 /***/ }),
 
@@ -1349,133 +1353,198 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project_search_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./project_search_bar */ "./frontend/components/projects/project_search_bar.jsx");
 /* harmony import */ var _projects_body__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./projects_body */ "./frontend/components/projects/projects_body.jsx");
 /* harmony import */ var _projects_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./projects_footer */ "./frontend/components/projects/projects_footer.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
+ // class Projects extends React.Component {
+//     constructor(props){
+//         super(props);
+//         this.state = {
+//             user_id: this.props.userId,
+//             search: "",
+//             archived: false,
+//             all: false,
+//             id: 100000000000,
+//         };
+//         this.handlehideProjects = this.handlehideProjects.bind(this);
+//         this.handleShowAllProjects = this.handleShowAllProjects.bind(this);
+//     }
+//     componentDidMount(){
+//         this.props.requestAllUsersProjects(this.state);
+//     }
+//     handleArchiveProject(projectId, archived){
+//         let newStatus;
+//         archived ? newStatus = false : newStatus = true;
+//         this.setState({
+//             id: projectId,
+//             archived: newStatus,
+//         },
+//         ()=>{
+//             this.props.updateProject(this.state)
+//             .then(()=>{
+//                 this.setState({archived: archived},
+//                     ()=>{
+//                         this.props.requestAllUsersProjects(this.state);
+//                     });
+//             });
+//         });
+//     }
+//     handleShowAllProjects(){
+//         this.setState({
+//             all: true
+//         });
+//     }
+//     handlehideProjects() {
+//         this.setState({
+//             all: false
+//         });
+//     }
+//     render() {
+//         const openModal = this.props.openModal;
+//         let showAll;
+//         let projectslist = Object.values(this.props.projects);
+//         let projectlistnonfav = [];
+//         let projectlistfav = [];
+//         projectslist.forEach(project => {
+//             project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+//         });
+//         !this.state.all && projectlistnonfav.length > 4 ?
+//             showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>
+//                 Show {projectlistnonfav.length-4} more project
+//                     </button> 
+//             : 
+//             this.state.all && projectlistnonfav.length > 4 ?
+//             showAll = <button className="showallbtn" onClick={this.handlehideProjects}>
+//                 Hide {projectlistnonfav.length - 4} projects
+//                 </button> : "" ;
+//         return (
+//             <div>
+//                 <div className="dashboardbody">
+//                     <ProjectDashboardTab openModal={openModal}/>
+//                     <div className="dashboard">
+//                         <ProjectSearchBar 
+//                             searchProject={this.props.searchProject}
+//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
+//                             userId={this.props.userId} 
+//                         />
+//                         <ProjectsBody 
+//                             projects={this.props.projects}
+//                             updateProject={this.props.updateProject}
+//                             requestAllUsersProjects={this.props.requestAllUsersProjects}
+//                             userId={this.props.userId}
+//                             state={this.state}
+//                             all={this.state.all}
+//                         />
+//                         <div>
+//                             {showAll}
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <ProjectFooter />
+//             </div>
+//         );
+//     }
+// }
 
+var Projects = function Projects(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
+      _useState2 = _slicedToArray(_useState, 2),
+      userId = _useState2[0],
+      setUserId = _useState2[1];
 
-var Projects =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Projects, _React$Component);
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      search = _useState4[0],
+      setSearch = _useState4[1];
 
-  function Projects(props) {
-    var _this;
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      archived = _useState6[0],
+      setArchived = _useState6[1];
 
-    _classCallCheck(this, Projects);
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      all = _useState8[0],
+      setAll = _useState8[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Projects).call(this, props));
-    _this.state = {
-      user_id: _this.props.userId,
-      search: "",
-      archived: false,
-      all: false,
-      id: 100000000000
-    };
-    _this.handlehideProjects = _this.handlehideProjects.bind(_assertThisInitialized(_this));
-    _this.handleShowAllProjects = _this.handleShowAllProjects.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(10000000000000),
+      _useState10 = _slicedToArray(_useState9, 2),
+      id = _useState10[0],
+      setId = _useState10[1];
 
-  _createClass(Projects, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestAllUsersProjects(this.state);
-    }
-  }, {
-    key: "handleArchiveProject",
-    value: function handleArchiveProject(projectId, archived) {
-      var _this2 = this;
+  var state = {
+    user_id: userId,
+    search: search,
+    archived: archived,
+    all: all,
+    id: id
+  };
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.requestAllUsersProjects(state);
+  }, []);
 
-      var newStatus;
-      archived ? newStatus = false : newStatus = true;
-      this.setState({
-        id: projectId,
-        archived: newStatus
-      }, function () {
-        _this2.props.updateProject(_this2.state).then(function () {
-          _this2.setState({
-            archived: archived
-          }, function () {
-            _this2.props.requestAllUsersProjects(_this2.state);
-          });
-        });
+  var handleArchiveProject = function handleArchiveProject(projectId, archived) {
+    var newStatus;
+    archived ? newStatus = false : newStatus = true;
+    setId(projectId);
+    setArchived(newStatus).then(function () {
+      props.updateProject(state).then(function () {
+        props.requestAllUsersProjects(state);
       });
-    }
-  }, {
-    key: "handleShowAllProjects",
-    value: function handleShowAllProjects() {
-      this.setState({
-        all: true
-      });
-    }
-  }, {
-    key: "handlehideProjects",
-    value: function handlehideProjects() {
-      this.setState({
-        all: false
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var openModal = this.props.openModal;
-      var showAll;
-      var projectslist = Object.values(this.props.projects);
-      var projectlistnonfav = [];
-      var projectlistfav = [];
-      projectslist.forEach(function (project) {
-        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-      });
-      !this.state.all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "showallbtn",
-        onClick: this.handleShowAllProjects
-      }, "Show ", projectlistnonfav.length - 4, " more project") : this.state.all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "showallbtn",
-        onClick: this.handlehideProjects
-      }, "Hide ", projectlistnonfav.length - 4, " projects") : "";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboardbody"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_dashboard_tab__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        openModal: openModal
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboard"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_search_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        searchProject: this.props.searchProject,
-        requestAllUsersProjects: this.props.requestAllUsersProjects,
-        userId: this.props.userId
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_body__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        projects: this.props.projects,
-        updateProject: this.props.updateProject,
-        requestAllUsersProjects: this.props.requestAllUsersProjects,
-        userId: this.props.userId,
-        state: this.state,
-        all: this.state.all
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
-    }
-  }]);
+    });
+  };
 
-  return Projects;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var handleShowAllProjects = function handleShowAllProjects() {
+    setAll(true);
+  };
+
+  var handlehideProjects = function handlehideProjects() {
+    setAll(false);
+  };
+
+  var openModal = props.openModal;
+  var showAll;
+  var projectslist = Object.values(props.projects);
+  var projectlistnonfav = [];
+  var projectlistfav = [];
+  projectslist.forEach(function (project) {
+    project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
+  });
+  !all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "showallbtn",
+    onClick: handleShowAllProjects
+  }, "Show ", projectlistnonfav.length - 4, " more project") : all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "showallbtn",
+    onClick: handlehideProjects
+  }, "Hide ", projectlistnonfav.length - 4, " projects") : "";
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboardbody"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_dashboard_tab__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    openModal: openModal
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_project_search_bar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    searchProject: props.searchProject,
+    requestAllUsersProjects: props.requestAllUsersProjects,
+    userId: props.userId
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_body__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    projects: props.projects,
+    updateProject: props.updateProject,
+    requestAllUsersProjects: props.requestAllUsersProjects,
+    userId: props.userId,
+    state: state,
+    all: state.all
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, showAll))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Projects);
 
