@@ -67,3 +67,11 @@
 .fa-trash{
     cursor: pointer;
 }
+
+.buckets{
+    width: 100%;
+    display: flex;
+}
+.Current, .Icebox, .Done{
+    width: 33%;
+}

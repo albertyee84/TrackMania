@@ -188,9 +188,11 @@ export default class StoryIndex extends React.Component{
                                 </div>
                         </div>
                     </div>
-                    {current}
-                    {icebox}
-                    {done}
+                    <div className="buckets">
+                        {current}
+                        {icebox}
+                        {done}
+                    </div>
                 </div>
             </div>
         );
