@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProjectListItem from './project_list_Item';
 
-export default class Projectsnonfav extends React.Component{
+class Projectsnonfav extends React.Component{
     constructor(props) {
         super(props);
         this.state = this.props.state;
@@ -83,3 +83,6 @@ export default class Projectsnonfav extends React.Component{
         );
     }
 }
+
+
+export default Projectsnonfav;

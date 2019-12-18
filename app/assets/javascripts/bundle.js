@@ -1643,7 +1643,6 @@ var ProjectFooter = function ProjectFooter() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Projectsnonfav; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _project_list_Item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project_list_Item */ "./frontend/components/projects/project_list_Item.jsx");
@@ -1773,7 +1772,7 @@ function (_React$Component) {
   return Projectsnonfav;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-
+/* harmony default export */ __webpack_exports__["default"] = (Projectsnonfav);
 
 /***/ }),
 
@@ -2019,288 +2018,247 @@ var StoryIcebox = function StoryIcebox(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StoryIndex; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _story_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_index_item */ "./frontend/components/story/story_index_item.jsx");
-/* harmony import */ var _story_index_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_index_form */ "./frontend/components/story/story_index_form.jsx");
-/* harmony import */ var _story_current__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./story_current */ "./frontend/components/story/story_current.jsx");
-/* harmony import */ var _story_icebox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./story_icebox */ "./frontend/components/story/story_icebox.jsx");
-/* harmony import */ var _story_done__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./story_done */ "./frontend/components/story/story_done.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _story_current__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_current */ "./frontend/components/story/story_current.jsx");
+/* harmony import */ var _story_icebox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./story_icebox */ "./frontend/components/story/story_icebox.jsx");
+/* harmony import */ var _story_done__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./story_done */ "./frontend/components/story/story_done.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
 
 
+var StoryIndex = function StoryIndex(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1000000000000),
+      _useState2 = _slicedToArray(_useState, 2),
+      id = _useState2[0],
+      setId = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("Current"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      status = _useState4[0],
+      setStatus = _useState4[1];
 
-var StoryIndex =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(StoryIndex, _React$Component);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      formcurrent = _useState6[0],
+      setFormcurrent = _useState6[1];
 
-  function StoryIndex(props) {
-    var _this;
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      formIcebox = _useState8[0],
+      setFormIcebox = _useState8[1];
 
-    _classCallCheck(this, StoryIndex);
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState10 = _slicedToArray(_useState9, 2),
+      current = _useState10[0],
+      setCurrent = _useState10[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(StoryIndex).call(this, props));
-    _this.drag = _this.drag.bind(_assertThisInitialized(_this));
-    _this.allowDrop = _this.allowDrop.bind(_assertThisInitialized(_this));
-    _this.drop = _this.drop.bind(_assertThisInitialized(_this));
-    _this.state = {
-      id: 100000000000,
-      status: "Current",
-      formcurrent: false,
-      formIcebox: false,
-      current: true,
-      icebox: true,
-      done: true,
-      sidebartext: true
-    };
-    _this.drop = _this.drop.bind(_assertThisInitialized(_this));
-    _this.openForm = _this.openForm.bind(_assertThisInitialized(_this));
-    _this.closeForm = _this.closeForm.bind(_assertThisInitialized(_this));
-    _this.openForm1 = _this.openForm1.bind(_assertThisInitialized(_this));
-    _this.closeForm1 = _this.closeForm1.bind(_assertThisInitialized(_this));
-    _this.handleCurrent = _this.handleCurrent.bind(_assertThisInitialized(_this));
-    _this.handleIcebox = _this.handleIcebox.bind(_assertThisInitialized(_this));
-    _this.handleDone = _this.handleDone.bind(_assertThisInitialized(_this));
-    _this.handleHideText = _this.handleHideText.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState12 = _slicedToArray(_useState11, 2),
+      icebox = _useState12[0],
+      setIcebox = _useState12[1];
 
-  _createClass(StoryIndex, [{
-    key: "handleHideText",
-    value: function handleHideText() {
-      $(".sidebartext").toggle();
-    }
-  }, {
-    key: "handleCurrent",
-    value: function handleCurrent() {
-      this.setState({
-        current: !this.state.current
-      });
-    }
-  }, {
-    key: "handleIcebox",
-    value: function handleIcebox() {
-      this.setState({
-        icebox: !this.state.icebox
-      });
-    }
-  }, {
-    key: "handleDone",
-    value: function handleDone() {
-      this.setState({
-        done: !this.state.done
-      });
-    }
-  }, {
-    key: "openForm",
-    value: function openForm() {
-      this.setState({
-        formcurrent: true
-      });
-      this.props.clearErrors();
-    }
-  }, {
-    key: "closeForm",
-    value: function closeForm() {
-      this.setState({
-        formcurrent: false
-      });
-    }
-  }, {
-    key: "openForm1",
-    value: function openForm1() {
-      this.setState({
-        formIcebox: true
-      });
-      this.props.clearErrors();
-    }
-  }, {
-    key: "closeForm1",
-    value: function closeForm1() {
-      this.setState({
-        formIcebox: false
-      });
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.requestAllStories();
-    }
-  }, {
-    key: "allowDrop",
-    value: function allowDrop(ev) {
-      ev.preventDefault();
-    }
-  }, {
-    key: "drag",
-    value: function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-  }, {
-    key: "drop",
-    value: function drop(ev) {
-      var _this2 = this;
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState14 = _slicedToArray(_useState13, 2),
+      done = _useState14[0],
+      setDone = _useState14[1];
 
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      this.setState({
-        id: parseInt(data),
-        status: ev.target.className
-      }, function () {
-        return _this2.props.updateStory(_this2.state);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState16 = _slicedToArray(_useState15, 2),
+      sidebartext = _useState16[0],
+      setSidebartext = _useState16[1];
 
-      var _this$props = this.props,
-          createStory = _this$props.createStory,
-          updateStory = _this$props.updateStory,
-          deleteStory = _this$props.deleteStory,
-          clearErrors = _this$props.clearErrors;
-      var projectStories = this.props.stories.filter(function (story) {
-        return story.project_id === _this3.props.projectId;
-      });
-      var currentStories = projectStories.filter(function (story) {
-        return story.status === "Current";
-      });
-      var iceboxStories = projectStories.filter(function (story) {
-        return story.status === "Icebox";
-      });
-      var doneboxStories = projectStories.filter(function (story) {
-        return story.status === "Done";
-      });
-      var current = this.state.current ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_current__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        drop: this.drop,
-        allowDrop: this.allowDrop,
-        openForm: this.openForm,
-        errors: this.props.errors,
-        formcurrent: this.state.formcurrent,
-        createStory: createStory,
-        updateStory: updateStory,
-        deleteStory: deleteStory,
-        projectId: this.props.projectId,
-        requestorId: this.props.requestorId,
-        clearErrors: clearErrors,
-        closeForm: this.closeForm,
-        currentStories: currentStories,
-        drag: this.drag
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      var icebox = this.state.icebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_icebox__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        drop: this.drop,
-        allowDrop: this.allowDrop,
-        openForm1: this.openForm1,
-        errors: this.props.errors,
-        formIcebox: this.state.formIcebox,
-        createStory: createStory,
-        updateStory: updateStory,
-        deleteStory: deleteStory,
-        projectId: this.props.projectId,
-        requestorId: this.props.requestorId,
-        clearErrors: clearErrors,
-        closeForm1: this.closeForm1,
-        iceboxStories: iceboxStories,
-        drag: this.drag
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      var done = this.state.done ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_done__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        drop: this.drop,
-        allowDrop: this.allowDrop,
-        formIcebox: this.state.formIcebox,
-        createStory: createStory,
-        updateStory: updateStory,
-        deleteStory: deleteStory,
-        projectId: this.props.projectId,
-        requestorId: this.props.requestorId,
-        clearErrors: clearErrors,
-        doneboxStories: doneboxStories,
-        drag: this.drag
-      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      var currentstyle = this.state.current ? {
-        color: '#8ac7ff'
-      } : {
-        color: 'inherit'
-      };
-      var iceboxstyle = this.state.icebox ? {
-        color: '#8ac7ff'
-      } : {
-        color: 'inherit'
-      };
-      var donestyle = this.state.done ? {
-        color: '#8ac7ff'
-      } : {
-        color: 'inherit'
-      };
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ProjectShowPage"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "ProjectShowPageContainer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "Sidepanel"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-bars",
-        "aria-hidden": "true",
-        onClick: this.handleHideText
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebarhideshow",
-        onClick: this.handleCurrent,
-        style: currentstyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-list",
-        "aria-hidden": "true"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebartext"
-      }, "Current")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebarhideshow",
-        onClick: this.handleIcebox,
-        style: iceboxstyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-snowflake-o",
-        "aria-hidden": "true"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebartext"
-      }, "Icebox")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebarhideshow",
-        onClick: this.handleDone,
-        style: donestyle
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-check"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "sidebartext"
-      }, "Done"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "buckets"
-      }, current, icebox, done)));
-    }
-  }]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.requestAllStories();
+  }, []);
 
-  return StoryIndex;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var handleHideText = function handleHideText() {
+    $(".sidebartext").toggle();
+  };
 
+  var handleCurrent = function handleCurrent() {
+    setCurrent(!current);
+  };
 
+  var handleIcebox = function handleIcebox() {
+    setIcebox(!icebox);
+  };
+
+  var handleDone = function handleDone() {
+    setDone(!done);
+  };
+
+  var openForm = function openForm() {
+    setFormcurrent(true);
+    props.clearErrors();
+  };
+
+  var closeForm = function closeForm() {
+    setFormcurrent(false);
+  };
+
+  var openForm1 = function openForm1() {
+    setFormIcebox(true);
+    props.clearErrors();
+  };
+
+  var closeForm1 = function closeForm1() {
+    setFormIcebox(false);
+  };
+
+  var allowDrop = function allowDrop(ev) {
+    ev.preventDefault();
+  };
+
+  var drag = function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  };
+
+  var drop = function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    setId(parseInt(data));
+    setStatus(ev.target.className);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.updateStory({
+      id: id,
+      status: status,
+      formcurrent: formcurrent,
+      current: current,
+      icebox: icebox,
+      done: done,
+      sidebartext: sidebartext
+    });
+  });
+  var createStory = props.createStory,
+      updateStory = props.updateStory,
+      deleteStory = props.deleteStory,
+      clearErrors = props.clearErrors;
+  var projectStories = props.stories.filter(function (story) {
+    return story.project_id === props.projectId;
+  });
+  var currentStories = projectStories.filter(function (story) {
+    return story.status === "Current";
+  });
+  var iceboxStories = projectStories.filter(function (story) {
+    return story.status === "Icebox";
+  });
+  var doneboxStories = projectStories.filter(function (story) {
+    return story.status === "Done";
+  });
+  var current1 = current ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_current__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    drop: drop,
+    allowDrop: allowDrop,
+    openForm: openForm,
+    errors: props.errors,
+    formcurrent: formcurrent,
+    createStory: createStory,
+    updateStory: updateStory,
+    deleteStory: deleteStory,
+    projectId: props.projectId,
+    requestorId: props.requestorId,
+    clearErrors: clearErrors,
+    closeForm: closeForm,
+    currentStories: currentStories,
+    drag: drag
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  var icebox1 = icebox ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_icebox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    drop: drop,
+    allowDrop: allowDrop,
+    openForm1: openForm1,
+    errors: props.errors,
+    formIcebox: formIcebox,
+    createStory: createStory,
+    updateStory: updateStory,
+    deleteStory: deleteStory,
+    projectId: props.projectId,
+    requestorId: props.requestorId,
+    clearErrors: clearErrors,
+    closeForm1: closeForm1,
+    iceboxStories: iceboxStories,
+    drag: drag
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  var done1 = done ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_done__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    drop: drop,
+    allowDrop: allowDrop,
+    formIcebox: formIcebox,
+    createStory: createStory,
+    updateStory: updateStory,
+    deleteStory: deleteStory,
+    projectId: props.projectId,
+    requestorId: props.requestorId,
+    clearErrors: clearErrors,
+    doneboxStories: doneboxStories,
+    drag: drag
+  }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+  var currentstyle = current ? {
+    color: '#8ac7ff'
+  } : {
+    color: 'inherit'
+  };
+  var iceboxstyle = icebox ? {
+    color: '#8ac7ff'
+  } : {
+    color: 'inherit'
+  };
+  var donestyle = done ? {
+    color: '#8ac7ff'
+  } : {
+    color: 'inherit'
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ProjectShowPage"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ProjectShowPageContainer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Sidepanel"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-bars",
+    "aria-hidden": "true",
+    onClick: handleHideText
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebarhideshow",
+    onClick: handleCurrent,
+    style: currentstyle
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-list",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebartext"
+  }, "Current")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebarhideshow",
+    onClick: handleIcebox,
+    style: iceboxstyle
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-snowflake-o",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebartext"
+  }, "Icebox")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebarhideshow",
+    onClick: handleDone,
+    style: donestyle
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-check"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "sidebartext"
+  }, "Done"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "buckets"
+  }, current1, icebox1, done1)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (StoryIndex);
 
 /***/ }),
 

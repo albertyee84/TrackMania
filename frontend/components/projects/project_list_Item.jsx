@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-let ProjectListItem = props => {
+const ProjectListItem = props => {
     return (
         <div>
             <Link to={`/projects/${props.project.id}/stories`} className="projectlistitemlink"> 
