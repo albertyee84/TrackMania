@@ -37,7 +37,7 @@ const StoryIndexFormUpdate = props => {
         $(".storyitems").show();
         $(".AddStoryFormUpdate").hide();
         $("#trash").toggle();
-    }
+    };
 
     return (
         <form id={id} onSubmit={handleSubmit} className="AddStoryFormUpdate">
@@ -65,7 +65,7 @@ const StoryIndexFormUpdate = props => {
             <input type="submit" value="Update Story/Close" />
         </form>
     );
-}
+};
 
 export default StoryIndexFormUpdate;
 

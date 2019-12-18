@@ -8,8 +8,8 @@ let usernametext = "";
 let passwordtext ="";
 
 const SessionForm = props => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     useEffect(()=> {
         props.clearErrors();
