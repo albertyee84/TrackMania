@@ -2502,170 +2502,161 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StoryIndexForm; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var StoryIndexForm =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(StoryIndexForm, _React$Component);
+var StoryIndexForm = function StoryIndexForm(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      name = _useState2[0],
+      setName = _useState2[1];
 
-  function StoryIndexForm(props) {
-    var _this;
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      description = _useState4[0],
+      setDescription = _useState4[1];
 
-    _classCallCheck(this, StoryIndexForm);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      labels = _useState6[0],
+      setLabels = _useState6[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(StoryIndexForm).call(this, props));
-    _this.state = {
-      name: "",
-      description: "",
-      labels: "",
-      status: _this.props.status,
-      requestor_id: _this.props.requestorId,
-      project_id: _this.props.projectId
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.status),
+      _useState8 = _slicedToArray(_useState7, 2),
+      status = _useState8[0],
+      setStatus = _useState8[1];
 
-  _createClass(StoryIndexForm, [{
-    key: "handleChange",
-    value: function handleChange(type) {
-      var _this2 = this;
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.requestorId),
+      _useState10 = _slicedToArray(_useState9, 2),
+      requestor_id = _useState10[0],
+      setRequestorId = _useState10[1];
 
-      return function (e) {
-        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.createStory(this.state);
-      this.setState({
-        name: "",
-        description: "",
-        labels: "",
-        status: "Current",
-        requestor_id: this.props.requestorId,
-        project_id: this.props.projectId
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit,
-        className: "AddStoryForm"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('name'),
-        value: this.state.name
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('description'),
-        value: this.state.description
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('labels'),
-        value: this.state.labels
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Add Story"
-      }));
-    }
-  }]);
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.projectId),
+      _useState12 = _slicedToArray(_useState11, 2),
+      project_id = _useState12[0],
+      setProjectId = _useState12[1];
 
-  return StoryIndexForm;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const StoryIndexForm = props => {
-//     let [name, setName] = useState("")
-//     let [description, setDescription] = useState("")
-//     let [labels, setLabels] = useState("")
-//     let [status, setStatus] = useState(props.status)
-//     let [requestor_id, setRequestorId] = useState(props.requestorId)
-//     let [project_id, setProjectId] = useState(props.projectId)
-//     const handleChange = type => {
-//         switch(type) {
-//             case "name":
-//                 setName(event.currentTarget.value)
-//             case "description":
-//                 setDescription(event.currentTarget.value)
-//             case "labels":
-//                 setLabels(event.currentTarget.value)
-//             default:
-//                 null;
-//         }
-//     };
-//     const handleSubmit = e => {
+  var handleChangeName = function handleChangeName(event) {
+    setName(event.target.value);
+  };
+
+  var handleChangeDescription = function handleChangeDescription(event) {
+    setDescription(event.target.value);
+  };
+
+  var handleChangeLabel = function handleChangeLabel(event) {
+    setLabels(event.target.value);
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    props.createStory({
+      name: name,
+      description: description,
+      labels: labels,
+      status: status,
+      requestor_id: requestor_id,
+      project_id: project_id
+    });
+    setName("");
+    setDescription("");
+    setLabels("");
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
+    className: "AddStoryForm"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeName,
+    value: name
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeDescription,
+    value: description
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeLabel,
+    value: labels
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Add Story"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (StoryIndexForm); // export default class StoryIndexForm extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state={
+//             name: "",
+//             description: "",
+//             labels: "",
+//             status: this.props.status,
+//             requestor_id: this.props.requestorId,
+//             project_id: this.props.projectId,
+//         };
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleChange(type){
+//         return(e) =>{
+//             this.setState({
+//                 [type]: e.currentTarget.value
+//             });
+//         };
+//     }
+//     handleSubmit(e){
 //         e.preventDefault();
-//         props.createStory({
-//             name: name,
-//             description: description,
-//             labels: labels,
-//             status: status,
-//             requestor_id: requestor_id,
-//             project_id: project_id
-//         })
-//             setName("")
-//             setDescription("")
-//             setLabels("")
-//     };
-//     return (
-//         <form onSubmit={handleSubmit} className="AddStoryForm">
-//             <label>Name
-//                     <input
-//                     type="text"
-//                     className="storyinput"
-//                     onChange={handleChange('name')}
-//                     value={name} />
-//             </label>
-//             <label>Description
-//                     <input
-//                     type="text"
-//                     className="storyinput"
-//                     onChange={handleChange('description')}
-//                     value={description} />
-//             </label>
-//             <label>Label
-//                     <input
-//                     type="text"
-//                     className="storyinput"
-//                     onChange={handleChange('labels')}
-//                     value={labels} />
-//             </label>
-//             <input type="submit" value="Add Story" />
-//         </form>
-//     );
-// };
-// export default StoryIndexForm;
-
-
-
+//         this.props.createStory(this.state);
+//         this.setState({
+//             name: "",
+//             description: "",
+//             labels: "",
+//             status: "Current",
+//             requestor_id: this.props.requestorId,
+//             project_id: this.props.projectId,
+//         });
+//     }
+//     render(){
+//         return(
+//                 <form onSubmit={this.handleSubmit} className="AddStoryForm">
+//                     <label>Name
+//                         <input 
+//                             type="text" 
+//                             className="storyinput"
+//                             onChange={this.handleChange('name')}
+//                             value={this.state.name}/>
+//                     </label>
+//                     <label>Description
+//                         <input 
+//                             type="text" 
+//                             className="storyinput"
+//                             onChange={this.handleChange('description')}
+//                             value={this.state.description}/>
+//                     </label>
+//                     <label>Label
+//                         <input 
+//                             type="text" 
+//                             className="storyinput"
+//                             onChange={this.handleChange('labels')}
+//                             value={this.state.labels}/>
+//                     </label>
+//                     <input type="submit" value="Add Story"/>
+//                 </form>
+//         );
+//     }
+// }
 
 /***/ }),
 
@@ -2678,99 +2669,160 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StoryIndexFormUpdate; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var StoryIndexFormUpdate =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(StoryIndexFormUpdate, _React$Component);
+var StoryIndexFormUpdate = function StoryIndexFormUpdate(props) {
+  var story = props.story;
 
-  function StoryIndexFormUpdate(props) {
-    var _this;
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.id),
+      _useState2 = _slicedToArray(_useState, 2),
+      id = _useState2[0],
+      setId = _useState2[1];
 
-    _classCallCheck(this, StoryIndexFormUpdate);
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.project_id),
+      _useState4 = _slicedToArray(_useState3, 2),
+      project_id = _useState4[0],
+      setProjectId = _useState4[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(StoryIndexFormUpdate).call(this, props));
-    _this.state = _this.props.story;
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.name),
+      _useState6 = _slicedToArray(_useState5, 2),
+      name = _useState6[0],
+      setName = _useState6[1];
 
-  _createClass(StoryIndexFormUpdate, [{
-    key: "handleChange",
-    value: function handleChange(type) {
-      var _this2 = this;
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.status),
+      _useState8 = _slicedToArray(_useState7, 2),
+      status = _useState8[0],
+      setStatus = _useState8[1];
 
-      return function (e) {
-        _this2.setState(_defineProperty({}, type, e.currentTarget.value));
-      };
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.updateStory(this.state).then(function () {
-        $(".storyitems").show();
-        $(".AddStoryFormUpdate").hide();
-        $("#trash").toggle();
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        id: this.state.id,
-        onSubmit: this.handleSubmit,
-        className: "AddStoryFormUpdate"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('name'),
-        value: this.state.name
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('description'),
-        value: this.state.description
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "storyinput",
-        onChange: this.handleChange('labels'),
-        value: this.state.labels
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Update Story/Close"
-      }));
-    }
-  }]);
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.description),
+      _useState10 = _slicedToArray(_useState9, 2),
+      description = _useState10[0],
+      setDescription = _useState10[1];
 
-  return StoryIndexFormUpdate;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.labels),
+      _useState12 = _slicedToArray(_useState11, 2),
+      labels = _useState12[0],
+      setLabels = _useState12[1];
 
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(story.requestor_id),
+      _useState14 = _slicedToArray(_useState13, 2),
+      requestor_id = _useState14[0],
+      setRequestorId = _useState14[1];
 
+  var handleChangeName = function handleChangeName(event) {
+    setName(event.target.value);
+  };
+
+  var handleChangeDescription = function handleChangeDescription(event) {
+    setDescription(event.target.value);
+  };
+
+  var handleChangeLabel = function handleChangeLabel(event) {
+    setLabels(event.target.value);
+  };
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    debugger;
+    props.updateStory({
+      id: id,
+      name: name,
+      description: description,
+      labels: labels,
+      status: status,
+      requestor_id: requestor_id,
+      project_id: project_id
+    });
+    $(".storyitems").show();
+    $(".AddStoryFormUpdate").hide();
+    $("#trash").toggle();
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    id: id,
+    onSubmit: handleSubmit,
+    className: "AddStoryFormUpdate"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeName,
+    value: name
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeDescription,
+    value: description
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "storyinput",
+    onChange: handleChangeLabel,
+    value: labels
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Update Story/Close"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (StoryIndexFormUpdate); // export default class StoryIndexFormUpdate extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = this.props.story;
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+//     handleChange(type) {
+//         return (e) => {
+//             this.setState({
+//                 [type]: e.currentTarget.value
+//             });
+//         };
+//     }
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         this.props.updateStory(this.state).then(()=>{
+//             $(".storyitems").show();
+//             $(".AddStoryFormUpdate").hide();
+//             $("#trash").toggle();
+//         });
+//     }
+//     render() {
+//         return (
+//             <form id={this.state.id} onSubmit={this.handleSubmit} className="AddStoryFormUpdate">
+//                 <label>Name
+//                         <input
+//                         type="text"
+//                         className="storyinput"
+//                         onChange={this.handleChange('name')}
+//                         value={this.state.name} />
+//                 </label>
+//                 <label>Description
+//                         <input
+//                         type="text"
+//                         className="storyinput"
+//                         onChange={this.handleChange('description')}
+//                         value={this.state.description} />
+//                 </label>
+//                 <label>Label
+//                         <input
+//                         type="text"
+//                         className="storyinput"
+//                         onChange={this.handleChange('labels')}
+//                         value={this.state.labels} />
+//                 </label>
+//                 <input type="submit" value="Update Story/Close"/>
+//             </form>
+//         );
+//     }
+// }
 
 /***/ }),
 
