@@ -63,11 +63,13 @@ const StoryIndex = props => {
         ev.preventDefault();
         let data = ev.dataTransfer.getData("text");
         setId(parseInt(data));
-        setStatus(ev.target.className)
+        setStatus(ev.target.className);
         
     };
     useEffect(()=>{
-        props.updateStory({id: id, status: status, formcurrent: formcurrent, current: current, icebox: icebox, done: done, sidebartext: sidebartext});
+        if (id !== 1000000000000){
+            props.updateStory({id: id, status: status, formcurrent: formcurrent, current: current, icebox: icebox, done: done, sidebartext: sidebartext});
+        }
     });
 
     const { createStory, updateStory, deleteStory, clearErrors } = props;

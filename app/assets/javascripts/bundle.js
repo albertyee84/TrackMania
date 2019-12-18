@@ -2131,15 +2131,17 @@ var StoryIndex = function StoryIndex(props) {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    props.updateStory({
-      id: id,
-      status: status,
-      formcurrent: formcurrent,
-      current: current,
-      icebox: icebox,
-      done: done,
-      sidebartext: sidebartext
-    });
+    if (id !== 1000000000000) {
+      props.updateStory({
+        id: id,
+        status: status,
+        formcurrent: formcurrent,
+        current: current,
+        icebox: icebox,
+        done: done,
+        sidebartext: sidebartext
+      });
+    }
   });
   var createStory = props.createStory,
       updateStory = props.updateStory,
@@ -2258,7 +2260,182 @@ var StoryIndex = function StoryIndex(props) {
   }, current1, icebox1, done1)));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (StoryIndex);
+/* harmony default export */ __webpack_exports__["default"] = (StoryIndex); // export default class StoryIndex extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.drag = this.drag.bind(this);
+//         this.allowDrop = this.allowDrop.bind(this);
+//         this.drop = this.drop.bind(this);
+//         this.state={
+//             id: 100000000000,
+//             status: "Current",
+//             formcurrent: false,
+//             formIcebox: false,
+//             current: true,
+//             icebox: true,
+//             done: true,
+//             sidebartext: true,
+//         };
+//         this.drop = this.drop.bind(this);
+//         this.openForm = this.openForm.bind(this);
+//         this.closeForm = this.closeForm.bind(this);
+//         this.openForm1 = this.openForm1.bind(this);
+//         this.closeForm1 = this.closeForm1.bind(this);
+//         this.handleCurrent = this.handleCurrent.bind(this);
+//         this.handleIcebox = this.handleIcebox.bind(this);
+//         this.handleDone = this.handleDone.bind(this);
+//         this.handleHideText = this.handleHideText.bind(this);
+//     }
+//     handleHideText(){
+//         $(".sidebartext").toggle();
+//     }
+//     handleCurrent(){
+//         this.setState({
+//             current: !this.state.current
+//         });
+//     }
+//     handleIcebox(){
+//         this.setState({
+//             icebox: !this.state.icebox
+//         });
+//     }
+//     handleDone(){
+//         this.setState({
+//             done: !this.state.done
+//         });
+//     }
+//     openForm() {
+//         this.setState({
+//             formcurrent: true
+//         });
+//         this.props.clearErrors();
+//     }
+//     closeForm() {
+//         this.setState({
+//             formcurrent: false
+//         });
+//     }
+//     openForm1() {
+//         this.setState({
+//             formIcebox: true
+//         });
+//         this.props.clearErrors();
+//     }
+//     closeForm1() {
+//         this.setState({
+//             formIcebox: false
+//         });
+//     }
+//     componentDidMount(){
+//         this.props.requestAllStories();
+//     }
+//     allowDrop(ev){
+//         ev.preventDefault();
+//     }
+//     drag(ev){
+//         ev.dataTransfer.setData("text", ev.target.id);
+//     }
+//     drop(ev){
+//         ev.preventDefault();
+//         let data = ev.dataTransfer.getData("text");
+//         this.setState({
+//             id: parseInt(data),
+//             status: ev.target.className,
+//         },
+//         ()=> this.props.updateStory(this.state))
+//         ;
+//     }
+//     render(){
+//         const { createStory, updateStory, deleteStory, clearErrors } = this.props;
+//         let projectStories = this.props.stories.filter(story => story.project_id === this.props.projectId);
+//         let currentStories = projectStories.filter(story => story.status === "Current");
+//         let iceboxStories = projectStories.filter(story => story.status === "Icebox");
+//         let doneboxStories = projectStories.filter(story => story.status === "Done");
+//         const current = this.state.current ? 
+//         ( <StoryCurrent 
+//             drop = {this.drop}
+//             allowDrop={this.allowDrop}
+//             openForm={this.openForm}
+//             errors={this.props.errors}
+//             formcurrent={this.state.formcurrent}
+//             createStory={createStory}
+//             updateStory={updateStory}
+//             deleteStory={deleteStory}
+//             projectId={this.props.projectId}
+//             requestorId={this.props.requestorId}
+//             clearErrors={clearErrors}
+//             closeForm={this.closeForm}
+//             currentStories={currentStories}
+//             drag={this.drag}
+//             />
+//         ): (<div />);
+//         const icebox = this.state.icebox ? (
+//             <StoryIcebox 
+//                 drop={this.drop}
+//                 allowDrop={this.allowDrop}
+//                 openForm1={this.openForm1}
+//                 errors={this.props.errors}
+//                 formIcebox={this.state.formIcebox}
+//                 createStory={createStory}
+//                 updateStory={updateStory}
+//                 deleteStory={deleteStory}
+//                 projectId={this.props.projectId}
+//                 requestorId={this.props.requestorId}
+//                 clearErrors={clearErrors}
+//                 closeForm1={this.closeForm1}
+//                 iceboxStories={iceboxStories}
+//                 drag={this.drag}
+//             />
+//         ) : (<div />);
+//         const done = this.state.done ? (
+//             <StoryDone 
+//                 drop={this.drop}
+//                 allowDrop={this.allowDrop}
+//                 formIcebox={this.state.formIcebox}
+//                 createStory={createStory}
+//                 updateStory={updateStory}
+//                 deleteStory={deleteStory}
+//                 projectId={this.props.projectId}
+//                 requestorId={this.props.requestorId}
+//                 clearErrors={clearErrors}
+//                 doneboxStories={doneboxStories}
+//                 drag={this.drag}
+//             />
+//         ) : (<div />);
+//         const currentstyle = this.state.current ? { color: '#8ac7ff'} : {color: 'inherit'};
+//         const iceboxstyle = this.state.icebox ? { color: '#8ac7ff'} : {color: 'inherit'};
+//         const donestyle = this.state.done ? { color: '#8ac7ff'} : {color: 'inherit'};
+//         return(
+//             <div className="ProjectShowPage">
+//                 <div className="ProjectShowPageContainer">
+//                     <div className="Sidepanel">
+//                         <i className="fa fa-bars" aria-hidden="true" onClick={this.handleHideText}/>
+//                         <div className="sidebarhideshow" onClick={this.handleCurrent} style={currentstyle}><i className="fa fa-list" aria-hidden="true"></i>
+//                            <div className="sidebartext">
+//                                Current
+//                                </div>
+//                             </div>
+//                         <div className="sidebarhideshow" onClick={this.handleIcebox} style={iceboxstyle}><i className="fa fa-snowflake-o" aria-hidden="true"></i>
+//                             <div className="sidebartext">
+//                                 Icebox
+//                             </div>
+//                         </div>
+//                         <div className="sidebarhideshow" onClick={this.handleDone} style={donestyle}><i className="fa fa-check"></i>
+//                             <div className="sidebartext">
+//                                 Done
+//                                 </div>
+//                         </div>
+//                     </div>
+//                     <div className="buckets">
+//                         {current}
+//                         {icebox}
+//                         {done}
+//                     </div>
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
 
 /***/ }),
 
@@ -2545,94 +2722,99 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return StoryIndexItem; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _story_index_form_update__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./story_index_form_update */ "./frontend/components/story/story_index_form_update.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
 
-var StoryIndexItem =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(StoryIndexItem, _React$Component);
+var StoryIndexItem = function StoryIndexItem(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.story),
+      _useState2 = _slicedToArray(_useState, 2),
+      story = _useState2[0],
+      setStory = _useState2[1];
 
-  function StoryIndexItem(props) {
-    var _this;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    $('.AddStoryFormUpdate').hide();
+  }, []);
 
-    _classCallCheck(this, StoryIndexItem);
+  var handleDoubleClick = function handleDoubleClick(e) {
+    $(e.target).children().toggle();
+  };
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(StoryIndexItem).call(this, props));
-    _this.state = _this.props.story;
-    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
-    _this.handleDoubleClick = _this.handleDoubleClick.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var handleDelete = function handleDelete() {
+    props.deleteStory(story);
+  };
 
-  _createClass(StoryIndexItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      $(".AddStoryFormUpdate").hide();
-    }
-  }, {
-    key: "handleDoubleClick",
-    value: function handleDoubleClick(e) {
-      $(e.target).children().toggle();
-    }
-  }, {
-    key: "handleDelete",
-    value: function handleDelete() {
-      this.props.deleteStory(this.state);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyindexitem",
-        onDragStart: this.props.drag,
-        draggable: true,
-        id: "".concat(this.props.story.id),
-        onDoubleClick: this.handleDoubleClick
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyitembox",
-        id: this.props.story.id
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "storyitems"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", this.props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", this.props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", this.props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", this.props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleDelete,
-        id: "trash"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-trash",
-        "aria-hidden": "true"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        story: this.state,
-        updateStory: this.props.updateStory
-      }))));
-    }
-  }]);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "storyindexitem",
+    onDragStart: props.drag,
+    draggable: true,
+    id: "".concat(props.story.id),
+    onDoubleClick: handleDoubleClick
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "storyitembox",
+    id: props.story.id
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "storyitems"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: handleDelete,
+    id: "trash"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-trash",
+    "aria-hidden": "true"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    story: story,
+    updateStory: props.updateStory
+  }))));
+};
 
-  return StoryIndexItem;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
+/* harmony default export */ __webpack_exports__["default"] = (StoryIndexItem); // export default class StoryIndexItem extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state=this.props.story;
+//         this.handleDelete = this.handleDelete.bind(this);
+//         this.handleDoubleClick = this.handleDoubleClick.bind(this);
+//     }
+//     componentDidMount(){
+//         $(".AddStoryFormUpdate").hide();
+//     }
+//     handleDoubleClick(e){
+//         $(e.target).children().toggle();
+//     }
+//     handleDelete(){
+//         this.props.deleteStory(this.state);
+//     }
+//     render(){
+//         return(
+//             <div className="storyindexitem" onDragStart={this.props.drag} draggable={true} id={`${this.props.story.id}`} onDoubleClick={this.handleDoubleClick}>
+//                 <div>
+//                     <div className="storyitembox" id={this.props.story.id}>
+//                         <div className="storyitems">
+//                             <div>Story Name: {this.props.story.name}</div>
+//                             <div>Description: {this.props.story.description}</div>
+//                             <div>Label: {this.props.story.labels}</div>
+//                             <div>Status: {this.props.story.status}</div>
+//                         </div>
+//                         <button onClick={this.handleDelete} id="trash"><i className="fa fa-trash"  aria-hidden="true"></i></button>
+//                         <StoryIndexFormUpdate 
+//                             story={this.state}
+//                             updateStory={this.props.updateStory}
+//                         />
+//                 </div>
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
 
 /***/ }),
 
