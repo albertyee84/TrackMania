@@ -24,7 +24,6 @@ const StoryIndexFormUpdate = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        debugger;
         props.updateStory({
             id: id,
             name: name,

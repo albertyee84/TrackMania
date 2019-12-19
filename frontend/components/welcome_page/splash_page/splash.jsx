@@ -2,15 +2,22 @@ import React from 'react';
 import SplashContents from './splash_contents';
 import { Redirect } from 'react-router-dom';
 
-class Splash extends React.Component{
+const Splash = props => {
+    const display = !props.currentUser ? (<SplashContents openModal={props.openModal} />) : (<Redirect to='/projects' />);
+    return (
+        display
+    );
+};
 
-    render(){
-        const display = !this.props.currentUser ? ( <SplashContents openModal={this.props.openModal}/> ) : (<Redirect to='/projects'/>);
+// class Splash extends React.Component{
 
-        return(
-            display
-        );
-    }
-}
+//     render(){
+//         const display = !this.props.currentUser ? ( <SplashContents openModal={this.props.openModal}/> ) : (<Redirect to='/projects'/>);
+
+//         return(
+//             display
+//         );
+//     }
+// }
 
 export default Splash;
