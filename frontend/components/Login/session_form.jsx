@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import SocialMedia from '../social_media/social_media';
 
-let i = 0;
-let j = 0;
-let usernametext = "";
-let passwordtext ="";
 
 const SessionForm = props => {
+    let i = 0;
+    let j = 0;
+    let usernametext = "";
+    let passwordtext ="";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -18,9 +18,9 @@ const SessionForm = props => {
     const handleInput = (type) => {
         return e => {
             if (type === 'username'){
-                setUsername(event.target.value)
+                setUsername(event.target.value);
             } else {
-                setPassword(event.target.value)
+                setPassword(event.target.value);
             }
         };
     };
@@ -71,7 +71,7 @@ const SessionForm = props => {
             i = 0;
             j = 0;
         }
-    }
+    };
 
     const display = (props.formType === 'Sign In') ? (
         <div className="Signupbox">

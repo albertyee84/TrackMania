@@ -4,14 +4,14 @@ import Projects from './projects';
 import { requestAllUsersProjects, createAProject, searchProject, updateProject } from '../../actions/project_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return ({
         projects: state.entities.projects,
         userId: state.session.id,
 });
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
     requestAllUsersProjects: project => dispatch(requestAllUsersProjects(project)),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),

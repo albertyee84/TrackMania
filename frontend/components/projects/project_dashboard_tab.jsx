@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 let ProjectDashboardTab = props => {
     const openModal = props.openModal;

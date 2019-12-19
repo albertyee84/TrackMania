@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 const ProjectSearchBar = props => {
-    let [ user_id, setUserId] = useState(props.userId);
-    let [ search, setSearch] = useState('');
+    let [userId] = useState(props.userId);
+    let [search, setSearch] = useState('');
     let [archived, setArchived] = useState(false);
-    let [all, setAll] = useState(false);
-    let [id, setId] = useState(1000000000000);
+    let [all] = useState(false);
+    let [id] = useState(1000000000000);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -28,20 +28,16 @@ const ProjectSearchBar = props => {
     };
 
     useEffect(() => {
-        props.searchProject({ user_id: user_id, search: search, archived: archived, all: all, id: id });
+        props.searchProject({ user_id: userId, search: search, archived: archived, all: all, id: id });
     }, [search]);
 
     useEffect(() => {
-        props.requestAllUsersProjects({ user_id: user_id, search: search, archived: archived, all: all, id: id });
+        props.requestAllUsersProjects({ user_id: userId, search: search, archived: archived, all: all, id: id });
     }, [archived]);
 
-    let status;
+    let status = archived ? "Archived" : "Active";
 
-    let clear;
-
-    archived ? status = "Archived" : status = "Active";
-
-    search.length > 0 ? clear = (<div className="clear" onClick={handleClear}>clear</div>) : "";
+    let clear = search.length > 0 ? (<div className="clear" onClick={handleClear}>clear</div>) : null;
 
     return (
         <div className="searchbar">

@@ -5,7 +5,7 @@ import { createAProject } from '../../actions/project_actions';
 import { closeModal } from '../../actions/modal_actions';
 import { clearErrors } from '../../actions/session_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return ({
         userId: state.session.id,
         currentUser: state.entities.users[state.session.id].username,
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     });
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
     createAProject: project => dispatch(createAProject(project)),
     closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors()),

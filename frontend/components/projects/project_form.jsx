@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 const ProjectForm = props => {
     let [projectName, setProjectName] = useState("");
-    let [userId, setUserId] = useState(props.userId);
+    let [userId] = useState(props.userId);
 
     const handleChange = e => {
         setProjectName(e.currentTarget.value);

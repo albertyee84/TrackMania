@@ -439,12 +439,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var i = 0;
-var j = 0;
-var usernametext = "";
-var passwordtext = "";
 
 var SessionForm = function SessionForm(props) {
+  var i = 0;
+  var j = 0;
+  var usernametext = "";
+  var passwordtext = "";
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
@@ -833,8 +834,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Modal(_ref) {
-  var modal = _ref.modal,
-      closeModal = _ref.closeModal;
+  var modal = _ref.modal;
 
   if (!modal) {
     return null;
@@ -861,7 +861,7 @@ function Modal(_ref) {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-background",
-    onClick: closeModal
+    onClick: _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["closeModal"]
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "modal-child",
     onClick: function onClick(e) {
@@ -951,9 +951,8 @@ var ProjectForm = function ProjectForm(props) {
       setProjectName = _useState2[1];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
-      _useState4 = _slicedToArray(_useState3, 2),
-      userId = _useState4[0],
-      setUserId = _useState4[1];
+      _useState4 = _slicedToArray(_useState3, 1),
+      userId = _useState4[0];
 
   var handleChange = function handleChange(e) {
     setProjectName(e.currentTarget.value);
@@ -1047,7 +1046,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     userId: state.session.id,
     currentUser: state.entities.users[state.session.id].username,
@@ -1055,7 +1054,7 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     createAProject: function createAProject(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["createAProject"])(project));
@@ -1153,9 +1152,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var ProjectSearchBar = function ProjectSearchBar(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
-      _useState2 = _slicedToArray(_useState, 2),
-      user_id = _useState2[0],
-      setUserId = _useState2[1];
+      _useState2 = _slicedToArray(_useState, 1),
+      userId = _useState2[0];
 
   var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -1168,14 +1166,12 @@ var ProjectSearchBar = function ProjectSearchBar(props) {
       setArchived = _useState6[1];
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      all = _useState8[0],
-      setAll = _useState8[1];
+      _useState8 = _slicedToArray(_useState7, 1),
+      all = _useState8[0];
 
   var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1000000000000),
-      _useState10 = _slicedToArray(_useState9, 2),
-      id = _useState10[0],
-      setId = _useState10[1];
+      _useState10 = _slicedToArray(_useState9, 1),
+      id = _useState10[0];
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
@@ -1199,7 +1195,7 @@ var ProjectSearchBar = function ProjectSearchBar(props) {
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     props.searchProject({
-      user_id: user_id,
+      user_id: userId,
       search: search,
       archived: archived,
       all: all,
@@ -1208,20 +1204,18 @@ var ProjectSearchBar = function ProjectSearchBar(props) {
   }, [search]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     props.requestAllUsersProjects({
-      user_id: user_id,
+      user_id: userId,
       search: search,
       archived: archived,
       all: all,
       id: id
     });
   }, [archived]);
-  var status;
-  var clear;
-  archived ? status = "Archived" : status = "Active";
-  search.length > 0 ? clear = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var status = archived ? "Archived" : "Active";
+  var clear = search.length > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "clear",
     onClick: handleClear
-  }, "clear") : "";
+  }, "clear") : null;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "searchbar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1627,14 +1621,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state, ownProps) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     projects: state.entities.projects,
     userId: state.session.id
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     requestAllUsersProjects: function requestAllUsersProjects(project) {
       return dispatch(Object(_actions_project_actions__WEBPACK_IMPORTED_MODULE_3__["requestAllUsersProjects"])(project));
@@ -1824,7 +1818,77 @@ function (_React$Component) {
   }]);
 
   return Projectsnonfav;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const Projectsnonfav = props => {
+//     let state = props.state;
+//     let [userId, setUserId] = useState(state.user_id);
+//     let [search, setSearch] = useState(state.search);
+//     let [archived, setArchived] = useState(state.archived);
+//     let [all, setAll] = useState(state.all);
+//     let [id, setId] = useState(state.id);
+//     let [favorite, setFavorite] = useState(true)
+//     const handleArchiveProject = (projectId, arch) => {
+//         let newStatus = arch ? false : true ;
+//         setId(projectId)
+//         setArchived(newStatus)
+//         setFavorite(false)
+//     }
+//     const handleFavorite = (projectId, fav) => {
+//         let newStatus = fav ? false : true ;
+//         setId(projectId);
+//         setFavorite(newStatus)
+//     }
+//     useEffect(() => {
+//         props.updateProject({user_id: userId, search, archived, all, id, favorite})
+//         .then(() => {
+//             setArchived(archived)
+//         })
+//     }, [id])
+//     useEffect(() => {
+//         props.requestAllUsersProjects({ user_id: userId, search, archived, all, id, favorite })
+//     }, [archived, favorite])
+//     return (
+//         <ul className="projecttiles">
+//             {
+//                 props.projectrendernonfav.map(project =>
+//                     <div key={project.id} className="projecttilebox">
+//                         <div className="projecttileheader">
+//                             <div className="archive-title">
+//                                 <div onClick={() => handleArchiveProject(project.id, project.archived)}><i className="fa fa-archive dropdown">
+//                                     <ul className="dropdown-contentarchive">
+//                                         {props.archiveword}
+//                                     </ul>
+//                                 </i>
+//                                 </div>
+//                                 <ProjectListItem
+//                                     project={project}
+//                                     key={project.id}
+//                                     projectName={project.project_name}
+//                                     userId={props.userId}
+//                                 />
+//                             </div>
+//                             <div className="projects-icons">
+//                                 {
+//                                     !Object.values(props.projectrendernonfav)[0].archived ? <div onClick={() => handleFavorite(project.id, project.favorite)}>
+//                                         <i className="fa fa-heart dropdown">
+//                                             <ul className="dropdown-contentarchive">
+//                                                 <div className="favoritedropdown">
+//                                                     {!project.favorite ? "Add to Favorites" : "Remove from Favorites"}
+//                                                 </div>
+//                                             </ul>
+//                                         </i>
+//                                     </div> : ""
+//                                 }
+//                                 <i className="fa fa-cog" aria-hidden="true"></i>
+//                             </div>
+//                         </div>
+//                         <div className="projecttilebody"></div>
+//                     </div>
+//                 )
+//             }
+//         </ul>
+//     );
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Projectsnonfav);
 

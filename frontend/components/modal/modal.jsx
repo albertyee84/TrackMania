@@ -6,7 +6,7 @@ import SignupFormContainer from '../Login/sign_up_form_container';
 import ProjectFormContainer from '../../components/projects/project_form_container';
 import { clearErrors } from '../../actions/session_actions';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal }) {
     if (!modal) {
         return null;
     }
