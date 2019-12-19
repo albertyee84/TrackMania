@@ -1,99 +1,167 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-class ProjectSearchBar extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            user_id: this.props.userId,
-            search: "",
-            archived: false,
-            all: false,
-            id: 100000000000,
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClear = this.handleClear.bind(this);
-        this.handleArchive = this.handleArchive.bind(this);
-        this.handleActive = this.handleActive.bind(this);
-    }
+const ProjectSearchBar = props => {
+    let [ user_id, setUserId] = useState(props.userId);
+    let [ search, setSearch] = useState('');
+    let [archived, setArchived] = useState(false);
+    let [all, setAll] = useState(false);
+    let [id, setId] = useState(1000000000000);
 
-    handleSubmit(e) {
+    const handleSubmit = e => {
         e.preventDefault();
-        this.props.searchProject(this.state);
-        this.setState({
-            search: ""
-        });
-    }
+    };
 
-    handleChange(e) {
-        this.setState({
-            search: e.currentTarget.value
-        },
-            () => {
-                this.props.searchProject(this.state);
-        });
-    }
+    const handleChange = e => {
+        setSearch(e.currentTarget.value);
+    };
 
-    handleClear(e) {
-        this.setState({
-            search: ""
-        },
-            () => {
-                this.props.searchProject(this.state);
-            });
-    }
+    const handleClear = e => {
+        setSearch('');
+    };
 
-    handleArchive(e) {
-        this.setState({
-            archived: true
-        },
-            () => {
-                this.props.requestAllUsersProjects(this.state);
-            }
-        );
-    }
+    const handleArchive = e => {
+        setArchived(true);
+    };
 
-    handleActive(e) {
-        this.setState({
-            archived: false
-        },
-            () => {
-                this.props.requestAllUsersProjects(this.state);
-            }
-        );
-    }
+    const handleActive = e => {
+        setArchived(false);
+    };
 
-    render(){
-        let status;
+    useEffect(() => {
+        props.searchProject({ user_id: user_id, search: search, archived: archived, all: all, id: id });
+    }, [search]);
 
-        let clear;
+    useEffect(() => {
+        props.requestAllUsersProjects({ user_id: user_id, search: search, archived: archived, all: all, id: id });
+    }, [archived]);
 
-        this.state.archived ? status = "Archived" : status = "Active";
+    let status;
 
-        this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
-        return(
-            <div className="searchbar">
-                <form className="searchbarform"
-                    onSubmit={this.handleSubmit}>
-                    <div className="searchbarinput">
-                        <i className="fa fa-search" />
-                        <input
-                            className="inputbox"
-                            type="text"
-                            value={this.state.search}
-                            placeholder={`Search ${status} Projects`}
-                            onChange={this.handleChange}
-                            onSubmit={this.handleSubmit}
-                            id=""
-                        />
-                    </div>
-                    {clear}
-                </form>
-                <button className="activearchivebuttons" onClick={this.handleActive}>Active</button>
-                <button className="activearchivebuttons" onClick={this.handleArchive}>Archived</button>
-            </div>
-        );
-    }
-}
+    let clear;
+
+    archived ? status = "Archived" : status = "Active";
+
+    search.length > 0 ? clear = (<div className="clear" onClick={handleClear}>clear</div>) : "";
+
+    return (
+        <div className="searchbar">
+            <form className="searchbarform"
+                onSubmit={handleSubmit}>
+                <div className="searchbarinput">
+                    <i className="fa fa-search" />
+                    <input
+                        className="inputbox"
+                        type="text"
+                        value={search}
+                        placeholder={`Search ${status} Projects`}
+                        onChange={handleChange}
+                        onSubmit={handleSubmit}
+                        id=""
+                    />
+                </div>
+                {clear}
+            </form>
+            <button className="activearchivebuttons" onClick={handleActive}>Active</button>
+            <button className="activearchivebuttons" onClick={handleArchive}>Archived</button>
+        </div>
+    );
+
+};
+
+// class ProjectSearchBar extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             user_id: this.props.userId,
+//             search: "",
+//             archived: false,
+//             all: false,
+//             id: 100000000000,
+//         };
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleClear = this.handleClear.bind(this);
+//         this.handleArchive = this.handleArchive.bind(this);
+//         this.handleActive = this.handleActive.bind(this);
+//     }
+
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         this.props.searchProject(this.state);
+//         this.setState({
+//             search: ""
+//         });
+//     }
+
+//     handleChange(e) {
+//         this.setState({
+//             search: e.currentTarget.value
+//         },
+//             () => {
+//                 this.props.searchProject(this.state);
+//         });
+//     }
+
+//     handleClear(e) {
+//         this.setState({
+//             search: ""
+//         },
+//             () => {
+//                 this.props.searchProject(this.state);
+//             });
+//     }
+
+//     handleArchive(e) {
+//         this.setState({
+//             archived: true
+//         },
+//             () => {
+//                 this.props.requestAllUsersProjects(this.state);
+//             }
+//         );
+//     }
+
+//     handleActive(e) {
+//         this.setState({
+//             archived: false
+//         },
+//             () => {
+//                 this.props.requestAllUsersProjects(this.state);
+//             }
+//         );
+//     }
+
+//     render(){
+//         let status;
+
+//         let clear;
+
+//         this.state.archived ? status = "Archived" : status = "Active";
+
+//         this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
+//         return(
+//             <div className="searchbar">
+//                 <form className="searchbarform"
+//                     onSubmit={this.handleSubmit}>
+//                     <div className="searchbarinput">
+//                         <i className="fa fa-search" />
+//                         <input
+//                             className="inputbox"
+//                             type="text"
+//                             value={this.state.search}
+//                             placeholder={`Search ${status} Projects`}
+//                             onChange={this.handleChange}
+//                             onSubmit={this.handleSubmit}
+//                             id=""
+//                         />
+//                     </div>
+//                     {clear}
+//                 </form>
+//                 <button className="activearchivebuttons" onClick={this.handleActive}>Active</button>
+//                 <button className="activearchivebuttons" onClick={this.handleArchive}>Archived</button>
+//             </div>
+//         );
+//     }
+// }
 
 export default ProjectSearchBar;

@@ -1141,144 +1141,198 @@ var ProjectListItemnavbar = function ProjectListItemnavbar(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var ProjectSearchBar =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ProjectSearchBar, _React$Component);
+var ProjectSearchBar = function ProjectSearchBar(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.userId),
+      _useState2 = _slicedToArray(_useState, 2),
+      user_id = _useState2[0],
+      setUserId = _useState2[1];
 
-  function ProjectSearchBar(props) {
-    var _this;
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      search = _useState4[0],
+      setSearch = _useState4[1];
 
-    _classCallCheck(this, ProjectSearchBar);
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      archived = _useState6[0],
+      setArchived = _useState6[1];
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ProjectSearchBar).call(this, props));
-    _this.state = {
-      user_id: _this.props.userId,
-      search: "",
-      archived: false,
-      all: false,
-      id: 100000000000
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleClear = _this.handleClear.bind(_assertThisInitialized(_this));
-    _this.handleArchive = _this.handleArchive.bind(_assertThisInitialized(_this));
-    _this.handleActive = _this.handleActive.bind(_assertThisInitialized(_this));
-    return _this;
-  }
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      all = _useState8[0],
+      setAll = _useState8[1];
 
-  _createClass(ProjectSearchBar, [{
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      e.preventDefault();
-      this.props.searchProject(this.state);
-      this.setState({
-        search: ""
-      });
-    }
-  }, {
-    key: "handleChange",
-    value: function handleChange(e) {
-      var _this2 = this;
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1000000000000),
+      _useState10 = _slicedToArray(_useState9, 2),
+      id = _useState10[0],
+      setId = _useState10[1];
 
-      this.setState({
-        search: e.currentTarget.value
-      }, function () {
-        _this2.props.searchProject(_this2.state);
-      });
-    }
-  }, {
-    key: "handleClear",
-    value: function handleClear(e) {
-      var _this3 = this;
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+  };
 
-      this.setState({
-        search: ""
-      }, function () {
-        _this3.props.searchProject(_this3.state);
-      });
-    }
-  }, {
-    key: "handleArchive",
-    value: function handleArchive(e) {
-      var _this4 = this;
+  var handleChange = function handleChange(e) {
+    setSearch(e.currentTarget.value);
+  };
 
-      this.setState({
-        archived: true
-      }, function () {
-        _this4.props.requestAllUsersProjects(_this4.state);
-      });
-    }
-  }, {
-    key: "handleActive",
-    value: function handleActive(e) {
-      var _this5 = this;
+  var handleClear = function handleClear(e) {
+    setSearch('');
+  };
 
-      this.setState({
-        archived: false
-      }, function () {
-        _this5.props.requestAllUsersProjects(_this5.state);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var status;
-      var clear;
-      this.state.archived ? status = "Archived" : status = "Active";
-      this.state.search.length > 0 ? clear = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "clear",
-        onClick: this.handleClear
-      }, "clear") : "";
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchbar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "searchbarform",
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchbarinput"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-search"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "inputbox",
-        type: "text",
-        value: this.state.search,
-        placeholder: "Search ".concat(status, " Projects"),
-        onChange: this.handleChange,
-        onSubmit: this.handleSubmit,
-        id: ""
-      })), clear), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "activearchivebuttons",
-        onClick: this.handleActive
-      }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "activearchivebuttons",
-        onClick: this.handleArchive
-      }, "Archived"));
-    }
-  }]);
+  var handleArchive = function handleArchive(e) {
+    setArchived(true);
+  };
 
-  return ProjectSearchBar;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  var handleActive = function handleActive(e) {
+    setArchived(false);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.searchProject({
+      user_id: user_id,
+      search: search,
+      archived: archived,
+      all: all,
+      id: id
+    });
+  }, [search]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    props.requestAllUsersProjects({
+      user_id: user_id,
+      search: search,
+      archived: archived,
+      all: all,
+      id: id
+    });
+  }, [archived]);
+  var status;
+  var clear;
+  archived ? status = "Archived" : status = "Active";
+  search.length > 0 ? clear = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "clear",
+    onClick: handleClear
+  }, "clear") : "";
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "searchbar"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "searchbarform",
+    onSubmit: handleSubmit
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "searchbarinput"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-search"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "inputbox",
+    type: "text",
+    value: search,
+    placeholder: "Search ".concat(status, " Projects"),
+    onChange: handleChange,
+    onSubmit: handleSubmit,
+    id: ""
+  })), clear), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "activearchivebuttons",
+    onClick: handleActive
+  }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "activearchivebuttons",
+    onClick: handleArchive
+  }, "Archived"));
+}; // class ProjectSearchBar extends React.Component{
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             user_id: this.props.userId,
+//             search: "",
+//             archived: false,
+//             all: false,
+//             id: 100000000000,
+//         };
+//         this.handleSubmit = this.handleSubmit.bind(this);
+//         this.handleChange = this.handleChange.bind(this);
+//         this.handleClear = this.handleClear.bind(this);
+//         this.handleArchive = this.handleArchive.bind(this);
+//         this.handleActive = this.handleActive.bind(this);
+//     }
+//     handleSubmit(e) {
+//         e.preventDefault();
+//         this.props.searchProject(this.state);
+//         this.setState({
+//             search: ""
+//         });
+//     }
+//     handleChange(e) {
+//         this.setState({
+//             search: e.currentTarget.value
+//         },
+//             () => {
+//                 this.props.searchProject(this.state);
+//         });
+//     }
+//     handleClear(e) {
+//         this.setState({
+//             search: ""
+//         },
+//             () => {
+//                 this.props.searchProject(this.state);
+//             });
+//     }
+//     handleArchive(e) {
+//         this.setState({
+//             archived: true
+//         },
+//             () => {
+//                 this.props.requestAllUsersProjects(this.state);
+//             }
+//         );
+//     }
+//     handleActive(e) {
+//         this.setState({
+//             archived: false
+//         },
+//             () => {
+//                 this.props.requestAllUsersProjects(this.state);
+//             }
+//         );
+//     }
+//     render(){
+//         let status;
+//         let clear;
+//         this.state.archived ? status = "Archived" : status = "Active";
+//         this.state.search.length > 0 ? clear = (<div className="clear" onClick={this.handleClear}>clear</div>) : "";
+//         return(
+//             <div className="searchbar">
+//                 <form className="searchbarform"
+//                     onSubmit={this.handleSubmit}>
+//                     <div className="searchbarinput">
+//                         <i className="fa fa-search" />
+//                         <input
+//                             className="inputbox"
+//                             type="text"
+//                             value={this.state.search}
+//                             placeholder={`Search ${status} Projects`}
+//                             onChange={this.handleChange}
+//                             onSubmit={this.handleSubmit}
+//                             id=""
+//                         />
+//                     </div>
+//                     {clear}
+//                 </form>
+//                 <button className="activearchivebuttons" onClick={this.handleActive}>Active</button>
+//                 <button className="activearchivebuttons" onClick={this.handleArchive}>Archived</button>
+//             </div>
+//         );
+//     }
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectSearchBar);
 
