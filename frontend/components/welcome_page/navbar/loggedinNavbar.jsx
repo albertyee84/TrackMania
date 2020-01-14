@@ -59,9 +59,9 @@ const loggedinNavbar = props => {
                     {currentUser.username.toUpperCase()}<div className="arrow-down"></div>
                 </div>
                 <ul className="dropdown-content1" id="clickDropDown2">
-                    <li className="profilelistitme">Profile</li>
+                    {/* <li className="profilelistitme">Profile</li>
                     <li className="profilelistitme">Accounts</li>
-                    <li className="profilelistitme">Reports & Analytics</li>
+                    <li className="profilelistitme">Reports & Analytics</li> */}
                     <div className="dropdownlogout" onClick={logout}>Log Out</div>
 
                 </ul>

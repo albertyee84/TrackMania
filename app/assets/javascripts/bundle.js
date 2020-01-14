@@ -1807,10 +1807,7 @@ function (_React$Component) {
           className: "dropdown-contentarchive"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "favoritedropdown"
-        }, !project.favorite ? "Add to Favorites" : "Remove from Favorites")))) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fa fa-cog",
-          "aria-hidden": "true"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, !project.favorite ? "Add to Favorites" : "Remove from Favorites")))) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "projecttilebody"
         }));
       }));
@@ -3193,13 +3190,7 @@ var loggedinNavbar = function loggedinNavbar(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "dropdown-content1",
     id: "clickDropDown2"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "profilelistitme"
-  }, "Profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "profilelistitme"
-  }, "Accounts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "profilelistitme"
-  }, "Reports & Analytics"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dropdownlogout",
     onClick: logout
   }, "Log Out"))));
@@ -36599,7 +36590,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

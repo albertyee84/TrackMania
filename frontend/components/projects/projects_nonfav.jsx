@@ -72,7 +72,7 @@ class Projectsnonfav extends React.Component{
                                             </i>
                                         </div> : ""
                                     }
-                                    <i className="fa fa-cog" aria-hidden="true"></i>
+                                    {/* <i className="fa fa-cog" aria-hidden="true"></i> */}
                                 </div>
                             </div>
                             <div className="projecttilebody"></div>

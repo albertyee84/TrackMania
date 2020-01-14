@@ -26,7 +26,7 @@ class Api::ProjectsController < ApplicationController
     end
 
     def search
-        @projects = Project.where("user_id = ? and archived = ? and project_name like ?", params[:user_id], params[:project][:archived], "%" + params[:search] + "%")
+        @projects = Project.where("user_id = ? and archived = ? and lower(project_name) like ?", params[:user_id], params[:project][:archived], "%" + params[:search] + "%")
         render :index
     end
 

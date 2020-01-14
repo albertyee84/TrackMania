@@ -82,6 +82,8 @@
 }
 
 .logo-logged-in{
+    justify-content: flex-end;
+    min-width: 145px;
     display: flex;
     align-items: center;   
     font-size: 13px;
@@ -280,6 +282,6 @@
     background-color: #ddd;
 }
 
-.dashboardfootercontents{
-    cursor: pointer;
-}
+// .dashboardfootercontents{
+//     cursor: pointer;
+// }
