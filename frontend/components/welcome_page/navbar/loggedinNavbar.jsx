@@ -22,6 +22,13 @@ const loggedinNavbar = props => {
             user_id, search, archived, all, id, projects
         })
             .then(res => setProjects(res))
+    };
+    const handleClick = (e) => {
+        e.currentTarget.lastChild.style.display='none';
+    };
+
+    const handleMouseenter = e => {
+        e.currentTarget.lastChild.style.display='';
     }
 
     const { currentUser, logout, openModal, userId } = props;
@@ -30,15 +37,15 @@ const loggedinNavbar = props => {
     return (
         <header className="loggedinnav-bar">
             <div>
-                <h3 className="dropdown1">
+                <h3 className="dropdown1" onClick={handleClick} onMouseEnter={handleMouseenter}>
                     <div className="logo-logged-in" id="navbarname" onClick={() => props.history.push('/projects')}>
                         TrackMania<div className="arrow-down"></div>
                     </div>
                     <ul className="dropdown-content1" id="clickDropDown">
                         <div className="colorchange">
                             <div className="navbarlistheader" id="projectstitle">Projects</div>
-                            <div className="navbarlistitem" id="createproject" onClick={() => openModal('createproject')}>Create Project <i className="fa fa-plus"></i></div>
-                            <div className="navbarlistitem refreshlist" id="refresh" onClick={handleRefresh}>Refresh List <i className="fa fa-refresh" aria-hidden="true"></i></div>
+                            <div className="navbarlistitem " id="createproject" onClick={() => openModal('createproject')}>Create Project <i className="fa fa-plus"></i></div>
+                            {/* <div className="navbarlistitem refreshlist" id="refresh" onClick={handleRefresh}>Refresh List <i className="fa fa-refresh" aria-hidden="true"></i></div> */}
                             {
                                 projectlist.map((project, idx) => <ProjectListItemnavbar
                                     project={project}

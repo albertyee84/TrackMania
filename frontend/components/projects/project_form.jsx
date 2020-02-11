@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 const ProjectForm = props => {
@@ -17,8 +18,10 @@ const ProjectForm = props => {
     const handleSubmit = e => {
         e.preventDefault();
         props.createAProject({project_name: projectName, user_id: userId})
+        .then(res => props.history.push(`/projects/${Object.keys(res.project)[0]}/stories`))
         .then(() => props.closeModal());
         setProjectName("");
+        console.log(props.history);
     };
 
     return (
@@ -57,4 +60,4 @@ const ProjectForm = props => {
     );
 };
 
-export default ProjectForm;
+export default withRouter(ProjectForm);

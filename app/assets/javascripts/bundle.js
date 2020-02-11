@@ -934,6 +934,7 @@ var ProjectDashboardTab = function ProjectDashboardTab(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -941,6 +942,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -968,10 +970,13 @@ var ProjectForm = function ProjectForm(props) {
     props.createAProject({
       project_name: projectName,
       user_id: userId
+    }).then(function (res) {
+      return props.history.push("/projects/".concat(Object.keys(res.project)[0], "/stories"));
     }).then(function () {
       return props.closeModal();
     });
     setProjectName("");
+    console.log(props.history);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1019,7 +1024,7 @@ var ProjectForm = function ProjectForm(props) {
   }))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ProjectForm);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ProjectForm));
 
 /***/ }),
 
@@ -1428,7 +1433,7 @@ var Projects = function Projects(props) {
   !all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "showallbtn",
     onClick: handleShowAllProjects
-  }, "Show ", projectlistnonfav.length - 4, " more project") : all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, "Show ", projectlistnonfav.length - 4, " more projects") : all && projectlistnonfav.length > 4 ? showAll = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "showallbtn",
     onClick: handlehideProjects
   }, "Hide ", projectlistnonfav.length - 4, " projects") : "";
@@ -3127,6 +3132,14 @@ var loggedinNavbar = function loggedinNavbar(props) {
     });
   };
 
+  var handleClick = function handleClick(e) {
+    e.currentTarget.lastChild.style.display = 'none';
+  };
+
+  var handleMouseenter = function handleMouseenter(e) {
+    e.currentTarget.lastChild.style.display = '';
+  };
+
   var currentUser = props.currentUser,
       logout = props.logout,
       openModal = props.openModal,
@@ -3135,7 +3148,9 @@ var loggedinNavbar = function loggedinNavbar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "loggedinnav-bar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "dropdown1"
+    className: "dropdown1",
+    onClick: handleClick,
+    onMouseEnter: handleMouseenter
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "logo-logged-in",
     id: "navbarname",
@@ -3153,20 +3168,13 @@ var loggedinNavbar = function loggedinNavbar(props) {
     className: "navbarlistheader",
     id: "projectstitle"
   }, "Projects"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbarlistitem",
+    className: "navbarlistitem ",
     id: "createproject",
     onClick: function onClick() {
       return openModal('createproject');
     }
   }, "Create Project ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-plus"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbarlistitem refreshlist",
-    id: "refresh",
-    onClick: handleRefresh
-  }, "Refresh List ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-refresh",
-    "aria-hidden": "true"
   })), projectlist.map(function (project, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_projects_project_list_Item_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {
       project: project,

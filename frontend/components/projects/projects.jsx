@@ -49,7 +49,7 @@ const Projects = props => {
 
     !all && projectlistnonfav.length > 4 ?
         showAll = <button className="showallbtn" onClick={handleShowAllProjects}>
-            Show {projectlistnonfav.length - 4} more project
+            Show {projectlistnonfav.length - 4} more projects
                 </button>
         :
         all && projectlistnonfav.length > 4 ?
