@@ -2862,9 +2862,7 @@ var StoryIndexFormUpdate = function StoryIndexFormUpdate(props) {
       requestor_id: requestor_id,
       project_id: project_id
     });
-    $(".storyitems").show();
-    $(".AddStoryFormUpdate").hide();
-    $("#trash").toggle();
+    console.log($(e.target).parent().children().toggle());
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2980,6 +2978,7 @@ var StoryIndexItem = function StoryIndexItem(props) {
 
   var handleDoubleClick = function handleDoubleClick(e) {
     $(e.target).children().toggle();
+    console.log($(e.target).children());
   };
 
   var handleDelete = function handleDelete() {

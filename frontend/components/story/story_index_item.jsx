@@ -10,6 +10,7 @@ const StoryIndexItem = props => {
 
     const handleDoubleClick = e => {
         $(e.target).children().toggle();
+        console.log($(e.target).children());
     }
 
     const handleDelete = () => {

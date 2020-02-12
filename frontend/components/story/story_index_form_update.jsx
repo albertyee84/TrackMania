@@ -33,9 +33,7 @@ const StoryIndexFormUpdate = props => {
             requestor_id: requestor_id,
             project_id: project_id
         });
-        $(".storyitems").show();
-        $(".AddStoryFormUpdate").hide();
-        $("#trash").toggle();
+        console.log($(e.target).parent().children().toggle());
     };
 
     return (
