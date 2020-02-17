@@ -1997,6 +1997,7 @@ var StoryCurrent = function StoryCurrent(props) {
     projectId: props.projectId,
     requestorId: props.requestorId,
     clearErrors: props.clearErrors,
+    closeForm: props.closeForm,
     status: "Current"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.closeForm
@@ -2013,6 +2014,7 @@ var StoryCurrent = function StoryCurrent(props) {
       drag: props.drag,
       drop: props.drop,
       allowDrop: props.allowDrop,
+      closeForm: props.closeForm,
       id: "drag1"
     });
   }))));
@@ -2104,6 +2106,7 @@ var StoryIcebox = function StoryIcebox(props) {
     projectId: props.projectId,
     requestorId: props.requestorId,
     clearErrors: props.clearErrors,
+    closeForm1: props.closeForm1,
     status: "Icebox"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: props.closeForm1
@@ -2120,6 +2123,7 @@ var StoryIcebox = function StoryIcebox(props) {
       drag: props.drag,
       drop: props.drop,
       allowDrop: props.allowDrop,
+      closeForm1: props.closeForm1,
       id: "drag1"
     });
   })));
@@ -2237,6 +2241,7 @@ var StoryIndex = function StoryIndex(props) {
 
   var allowDrop = function allowDrop(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
   };
 
   var drag = function drag(ev) {
@@ -2261,6 +2266,7 @@ var StoryIndex = function StoryIndex(props) {
         done: done,
         sidebartext: sidebartext
       });
+      setId(1000000000000);
     }
   });
   var createStory = props.createStory,
@@ -2690,22 +2696,31 @@ var StoryIndexForm = function StoryIndexForm(props) {
     setName("");
     setDescription("");
     setLabels("");
+
+    if (e.target.parentElement.parentElement.parentElement.parentElement.classList.value === "Current") {
+      props.closeForm();
+    } else {
+      props.closeForm1();
+    }
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: handleSubmit,
     className: "AddStoryForm"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name*", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Enter new Story Name",
     type: "text",
     className: "storyinput",
     onChange: handleChangeName,
     value: name
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description*", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Enter new Story Description",
     type: "text",
     className: "storyinput",
     onChange: handleChangeDescription,
     value: description
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Label", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    placeholder: "Enter your label, ex #Label",
     type: "text",
     className: "storyinput",
     onChange: handleChangeLabel,
@@ -2862,7 +2877,7 @@ var StoryIndexFormUpdate = function StoryIndexFormUpdate(props) {
       requestor_id: requestor_id,
       project_id: project_id
     });
-    console.log($(e.target).parent().children().toggle());
+    $(e.target).parent().children().toggle();
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2977,12 +2992,15 @@ var StoryIndexItem = function StoryIndexItem(props) {
   }, []);
 
   var handleDoubleClick = function handleDoubleClick(e) {
-    $(e.target).children().toggle();
-    console.log($(e.target).children());
+    $(e.currentTarget).children().children().children().toggle();
   };
 
   var handleDelete = function handleDelete() {
     props.deleteStory(story);
+  };
+
+  var handleUpdate = function handleUpdate(e) {
+    $(e.target).parent().parent().parent().children().toggle();
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2996,15 +3014,26 @@ var StoryIndexItem = function StoryIndexItem(props) {
     id: props.story.id
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "storyitems"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Story Name: ", props.story.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Description: ", props.story.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Label: ", props.story.labels), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Status: ", props.story.status)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "story-item-buttons"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: handleUpdate,
+    id: "edit",
+    title: "Update Story"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fa fa-edit"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: handleDelete,
-    id: "trash"
+    id: "trash",
+    title: "Delete Story"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-trash",
     "aria-hidden": "true"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_story_index_form_update__WEBPACK_IMPORTED_MODULE_1__["default"], {
     story: story,
-    updateStory: props.updateStory
+    updateStory: props.updateStory,
+    closeForm: props.closeForm,
+    closeForm1: props.closeForm1
   }))));
 };
 
