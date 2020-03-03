@@ -1680,7 +1680,7 @@ var ProjectFooter = function ProjectFooter() {
     className: "dashboardfooter"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboardfootercontents"
-  }, "About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "Trackmania Labs 2020"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectFooter);
@@ -3443,37 +3443,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Navbar-dropdown"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown"
-  }, "Product ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "down"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Features"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Pricing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Integration"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Enterprise"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown"
-  }, "Community ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "down"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dropdown-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Events"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "BuildTV"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Customer Stories"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dropDownItem"
-  }, "Consultancy Directory"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Blog"));
+  return null // <div className="Navbar-dropdown">
+  //     <div className="dropdown">Product <i className="down"></i>
+  //         <ul className="dropdown-content">
+  //             <p className="dropDownItem">Features</p>
+  //             <p className="dropDownItem">Pricing</p>
+  //             <p className="dropDownItem">Integration</p>
+  //             <p className="dropDownItem">Enterprise</p>
+  //         </ul>
+  //     </div>
+  //     <div className="dropdown">Community <i className="down"></i>
+  //         <ul className="dropdown-content">
+  //             <p className="dropDownItem">Events</p>
+  //             <p className="dropDownItem">BuildTV</p>
+  //             <p className="dropDownItem">Customer Stories</p>
+  //             <p className="dropDownItem">Consultancy Directory</p>
+  //         </ul>
+  //     </div>
+  //     <div>Blog</div>
+  // </div>
+  ;
 });
 
 /***/ }),

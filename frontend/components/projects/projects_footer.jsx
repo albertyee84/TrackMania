@@ -5,7 +5,7 @@ const ProjectFooter = () => {
     return (
         <div className="dashboardfooter">
             <div className="dashboardfootercontents">
-                About TrackMania Labs | Help & Support | Status | Blog | Privacy & Cookie Policy | Tracker Agreement | Contact Us
+                Trackmania Labs 2020
                     </div>
             <SocialMedia />
         </div>
