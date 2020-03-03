@@ -9,36 +9,28 @@ const StoryIndexItem = props => {
     }, []);
 
     const handleDoubleClick = e => {
-        $(e.currentTarget).children().children().children().toggle();
+        $(e.target).children().toggle();
+        console.log($(e.target).children());
     }
 
     const handleDelete = () => {
         props.deleteStory(story);
     }
 
-    const handleUpdate = (e) => {
-        $(e.target).parent().parent().parent().children().toggle();
-    }
-
     return (
         <div className="storyindexitem" onDragStart={props.drag} draggable={true} id={`${props.story.id}`} onDoubleClick={handleDoubleClick}>
             <div>
                 <div className="storyitembox" id={props.story.id}>
-                    <div className="storyitems" >
+                    <div className="storyitems">
                         <div>Story Name: {props.story.name}</div>
                         <div>Description: {props.story.description}</div>
                         <div>Label: {props.story.labels}</div>
                         <div>Status: {props.story.status}</div>
                     </div>
-                    <div className="story-item-buttons">
-                        <button onClick={handleUpdate} id="edit" title="Update Story"><i className="fa fa-edit"></i></button>
-                        <button onClick={handleDelete} id="trash" title="Delete Story"><i className="fa fa-trash" aria-hidden="true"></i></button>
-                    </div>
+                    <button onClick={handleDelete} id="trash"><i className="fa fa-trash" aria-hidden="true"></i></button>
                     <StoryIndexFormUpdate
                         story={story}
                         updateStory={props.updateStory}
-                        closeForm={props.closeForm}
-                        closeForm1={props.closeForm1}
                     />
                 </div>
             </div>

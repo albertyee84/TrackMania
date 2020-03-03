@@ -5,8 +5,8 @@ const StoryIndexForm = props => {
     let [description, setDescription] = useState("")
     let [labels, setLabels] = useState("")
     let [status, setStatus] = useState(props.status)
-    let [requestor_id, setRequestorId] = useState(props.requestorId);
-    let [project_id, setProjectId] = useState(props.projectId);
+    let [requestor_id, setRequestorId] = useState(props.requestorId)
+    let [project_id, setProjectId] = useState(props.projectId)
 
     const handleChangeName = event => {
         setName(event.target.value);
@@ -34,27 +34,19 @@ const StoryIndexForm = props => {
             setName("");
             setDescription("");
             setLabels("");
-        if (e.target.parentElement.parentElement.parentElement.parentElement.classList.value === "Current") {
-            props.closeForm();
-
-        } else {
-            props.closeForm1();
-        }
     };
 
     return (
         <form onSubmit={handleSubmit} className="AddStoryForm">
-            <label>Name*
+            <label>Name
                     <input
-                    placeholder="Enter new Story Name"
                     type="text"
                     className="storyinput"
                     onChange={handleChangeName}
                     value={name} />
             </label>
-            <label>Description*
+            <label>Description
                     <input
-                    placeholder="Enter new Story Description"
                     type="text"
                     className="storyinput"
                     onChange={handleChangeDescription}
@@ -62,7 +54,6 @@ const StoryIndexForm = props => {
             </label>
             <label>Label
                     <input
-                    placeholder="Enter your label, ex #Label"
                     type="text"
                     className="storyinput"
                     onChange={handleChangeLabel}

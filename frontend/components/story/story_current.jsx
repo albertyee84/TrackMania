@@ -26,7 +26,6 @@ const StoryCurrent = props => {
                                     projectId={props.projectId}
                                     requestorId={props.requestorId}
                                     clearErrors={props.clearErrors}
-                                    closeForm={props.closeForm}
                                     status="Current"
                                 />
                                 <button onClick={props.closeForm}>Cancel</button>
@@ -50,7 +49,6 @@ const StoryCurrent = props => {
                                     drag={props.drag}
                                     drop={props.drop}
                                     allowDrop={props.allowDrop}
-                                    closeForm={props.closeForm}
                                     id="drag1"
                                 />
                         )

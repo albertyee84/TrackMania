@@ -53,7 +53,6 @@ const StoryIndex = props => {
 
     const allowDrop = ev => {
         ev.preventDefault();
-        ev.stopPropagation();
     }
 
     const drag = ev => {
@@ -70,7 +69,6 @@ const StoryIndex = props => {
     useEffect(()=>{
         if (id !== 1000000000000){
             props.updateStory({id: id, status: status, formcurrent: formcurrent, current: current, icebox: icebox, done: done, sidebartext: sidebartext});
-            setId(1000000000000);
         }
     });
 

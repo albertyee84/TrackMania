@@ -22,7 +22,6 @@ const StoryIcebox = props => {
                                 projectId={props.projectId}
                                 requestorId={props.requestorId}
                                 clearErrors={props.clearErrors}
-                                closeForm1={props.closeForm1}
                                 status="Icebox"
                             />
                             <button onClick={props.closeForm1}>Cancel</button>
@@ -46,7 +45,6 @@ const StoryIcebox = props => {
                                 drag={props.drag}
                                 drop={props.drop}
                                 allowDrop={props.allowDrop}
-                                closeForm1={props.closeForm1}
                                 id="drag1"
                             />
                     )
