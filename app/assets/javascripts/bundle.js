@@ -796,8 +796,7 @@ var App = function App() {
     path: "/projects/:project_id/stories",
     component: _story_story_index_container__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_protected_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
-    exact: true,
-    path: "/projects",
+    path: "/",
     component: _projects_projects_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
     to: "/"

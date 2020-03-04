@@ -21,7 +21,7 @@ const App = () => {
                     <ProtectedRoute path="/" component={loggedinNavbarContainer} />
                 <Switch>
                     <ProtectedRoute path='/projects/:project_id/stories' component={StoryIndex} />
-                    <ProtectedRoute exact path='/projects' component={ProjectsContainer} />
+                    <ProtectedRoute path='/' component={ProjectsContainer} />
                     <Redirect to="/" />
                 </Switch>
             </div>
