@@ -5,7 +5,7 @@ const ProjectFooter = () => {
     return (
         <div className="dashboardfooter">
             <div className="dashboardfootercontents">
-                Trackmania Labs 2020
+                TrackMania Labs 2020
                     </div>
             <SocialMedia />
         </div>

@@ -1680,7 +1680,7 @@ var ProjectFooter = function ProjectFooter() {
     className: "dashboardfooter"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboardfootercontents"
-  }, "Trackmania Labs 2020"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "TrackMania Labs 2020"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_social_media_social_media__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProjectFooter);
