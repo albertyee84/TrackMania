@@ -1,0 +1,26 @@
+.project {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  header {
+    background-color: #3E7293;
+    p {
+      font-weight: normal;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #212121;
+
+    .panel {
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      margin-left: 5px;
+    }
+  }
+}

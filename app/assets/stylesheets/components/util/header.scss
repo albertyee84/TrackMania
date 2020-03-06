@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #214254;
+  padding: 10px;
+
+  .contact a {
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+  }
+
+  .greeting {
+    display: flex;
+    align-items: center;
+
+    .name {
+      display: block;
+      font-size: 10pt;
+      text-transform: uppercase;
+      padding: 8px 10px 5px 0;
+      vertical-align: bottom;
+      color: lightgrey;
+    }
+
+    button.guest {
+      background-color: orange;
+      &:hover {
+        background-color: darkorange;
+      }
+    }
+  }
+}

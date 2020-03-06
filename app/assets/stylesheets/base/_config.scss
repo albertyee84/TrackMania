@@ -1,0 +1,13 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body, main, main > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

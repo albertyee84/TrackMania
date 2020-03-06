@@ -1,0 +1,17 @@
+logo {
+  display: flex;
+  align-items: center;
+  font-size: 16pt;
+  font-weight: bold;
+  color: white;
+
+  .logo-image {
+    display: block;
+    height: 40px;
+    width: 40px;
+  }
+
+  p {
+    color:white;
+  }
+}

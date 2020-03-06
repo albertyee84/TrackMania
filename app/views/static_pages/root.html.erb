@@ -1,0 +1,14 @@
+<script>
+  <% if logged_in? %>
+    window.currentUser = <%= render(
+      'users/user.json.jbuilder',
+      user: current_user
+    ).html_safe %>
+  <% end %>
+  window.images = {
+    logo: "<%= image_path('logo.svg') %>",
+    hero: "<%= image_path('hero.jpg') %>",
+  };
+  // window.appVersion = "<%= version %>"
+</script>
+<main id="root"></main>

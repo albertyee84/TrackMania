@@ -1,32 +1,32 @@
 import React from 'react';
-import { Link, Switch, Redirect } from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
-import {ProtectedRoute} from '../util/protected_util';
-import Navbar from './welcome_page/navbar/navbar_container';
-import SplashContainer from './welcome_page/splash_page/splash_container';
-import ProjectsContainer from './projects/projects_container';
-import Modal from './modal/modal';
-import loggedinNavbarContainer from './welcome_page/navbar/loggedinNavbar_container';
-import StoryIndex from './story/story_index_container';
+import { Route } from 'react-router-dom';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import Home from './home';
+import Dashboard from './dashboard/dashboard';
+import Project from './project/project';
+import Login from './session/login';
+import SignUp from './session/signup';
+import LogOut from './session/logout';
+import Analytics from './util/analytics';
+// import Modal from './modal/modal';
 
 
+const App = () => (
+  <div>
+    {/* <Modal /> */}
+    <Analytics/>
+    <Route exact path='/' component={Home} />
+    <AuthRoute path='/login' component={Login} />
+    <AuthRoute path='/signup' component={SignUp} />
+    <AuthRoute path='/logout' component={LogOut} />
+    <ProtectedRoute path='/projects' component={Dashboard} />
+    <ProtectedRoute path='/project/:id' component={Project} />
+  </div>
+);
 
-const App = () => {
-    return (
-        <div>
-            <Modal />
-            <div>
-                    <AuthRoute exact path="/" component={Navbar} />
-                    <AuthRoute exact path="/" component={SplashContainer} />
-                    <ProtectedRoute path="/" component={loggedinNavbarContainer} />
-                <Switch>
-                    <ProtectedRoute path='/projects/:project_id/stories' component={StoryIndex} />
-                    <ProtectedRoute path='/' component={ProjectsContainer} />
-                    <Redirect to="/" />
-                </Switch>
-            </div>
-        </div>
-    );
-};
-
-export default App;
+export default DragDropContext(
+  HTML5Backend
+)(App);

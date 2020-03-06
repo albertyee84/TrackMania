@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="shortcut icon" href="/favicon.ico?v=2" />
     <title>TrackMania</title>
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script src="https://use.fontawesome.com/d33deb2b75.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <%= yield %>
   </body>
 </html>
