@@ -1,8 +1,14 @@
-import { combineReducers } from 'redux';
-import sessionErrorsReducer from './session_errors_reducer';
+import { RECEIVE_ERRORS } from '../actions/error_actions';
 
-const errorsReducer = combineReducers({
-    session: sessionErrorsReducer
-});
+const defaultState = [];
 
-export default errorsReducer;
+const ErrorsReducer = (state = defaultState, action) => {
+  switch (action.type) {
+    case RECEIVE_ERRORS:
+      return action.errors;
+    default:
+      return state;
+  }
+};
+
+export default ErrorsReducer;

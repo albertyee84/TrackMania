@@ -1,48 +1,53 @@
-import * as APIUtilProjects from '../util/project_util';
+import * as APIUtil from '../util/project_api_util';
+import { receiveErrors } from './error_actions';
 
-export const RECEIVE_ALL_USERS_PROJECTS = 'RECEIVE_ALL_USERS_PROJECTS';
+export const RECEIVE_ALL_PROJECTS = 'RECEIVE_ALL_PROJECTS';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_DELETE_PROJECT = 'RECEIVE_DELETE_PROJECT';
 
-export const receiveAllUsersProjects = projects => {
-    return({type: RECEIVE_ALL_USERS_PROJECTS,
-        projects
-    });
-};
+const receiveProjects = projects => ({
+  type: RECEIVE_ALL_PROJECTS,
+  projects
+});
 
-export const receiveProject = project => {
-    return({
-        type: RECEIVE_PROJECT,
-        project
-    });
-};
+const receiveProject = ({project, stories, members}) => ({
+  type: RECEIVE_PROJECT,
+  project,
+  stories,
+  members,
+});
 
-const receiveErrors = errors => {
-    return ({
-        type: RECEIVE_ERRORS,
-        errors: errors.responseJSON
-    });
-};
+const receiveDeleteProject = project => ({
+  type: RECEIVE_DELETE_PROJECT,
+  project
+});
 
-export const requestAllUsersProjects = project => dispatch =>
-    APIUtilProjects.getProjects(project)
-    .then(payload => dispatch(receiveAllUsersProjects(payload))
+export const fetchProjects = () => dispatch => (
+  APIUtil.fetchProjects()
+    .done(projects => dispatch(receiveProjects(projects)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const createAProject = project => dispatch => 
-    APIUtilProjects.createProject(project)
-        .then(payload => dispatch(receiveProject(payload)),
-        errors => dispatch(receiveErrors(errors))
-        );
+export const fetchProject = (id) => dispatch => (
+  APIUtil.fetchProject(id)
+    .done(project => dispatch(receiveProject(project)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+);
 
-export const searchProject = params => dispatch =>{
-    return(
-            APIUtilProjects.searchProject(params)
-    .then(payload => dispatch(receiveAllUsersProjects(payload))
-    ));
-};
+export const createProject = project => dispatch => (
+  APIUtil.createProject(project)
+    .done(project => dispatch(receiveProject(project)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+);
 
-export const updateProject = project => dispatch => 
-    APIUtilProjects.updateProject(project)
-    .then(payload => dispatch(receiveProject(payload))
+export const updateProject = project => dispatch => (
+  APIUtil.updateProject(project)
+    .done(project => dispatch(receiveProject(project)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+);
+
+export const deleteProject = project => dispatch => (
+  APIUtil.deleteProject(project)
+    .done(() => dispatch(receiveDeleteProject(project)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );

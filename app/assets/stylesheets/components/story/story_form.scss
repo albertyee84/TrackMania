@@ -1,0 +1,104 @@
+.story-form {
+  display: flex;
+  flex-direction: column;
+  background: #f1f0ea;
+  border-top: 1px solid white;
+  border-bottom: 1px solid lightgrey;
+  padding: 10px;
+  font-size: 12px;
+
+  section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 10px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  textarea,
+  input[type=text] {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    background-color: white;
+    padding: 3px;
+    width: 100%;
+    resize: none;
+  }
+
+  i {
+    padding-right: 8px;
+    font-size: 14px;
+  }
+
+  .caret {
+    color: grey;
+    cursor: pointer;
+  }
+
+  .story-section-caption {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: grey;
+  }
+
+  .story-actions-section {
+    margin-top: 5px;
+    justify-content: flex-end;
+    button {
+      font-size: 10px;
+      background-color: darken(grey, 10%);
+      border-radius: 2px;
+      margin-right: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .story-options-section {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    margin-top: 10px;
+
+    > section {
+      padding: 5px;
+      margin-top: 0;
+      border-bottom: 1px solid lightgrey;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .story-section-content {
+    display: flex;
+  }
+
+  .story-description-section,
+  .story-tasks-section {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .story-section-caption {
+      font-weight: bold;
+      color: black;
+      margin-bottom: 5px;
+    }
+  }
+
+  .story-requester-section {
+    .story-section-content {
+      font-size: 10px;
+    }
+  }
+
+  .story-tasks-section {
+    .story-section-content {
+      width: 100%;
+    }
+  }
+}

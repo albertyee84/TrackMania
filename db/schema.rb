@@ -10,41 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_220744) do
+ActiveRecord::Schema.define(version: 20170630111940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "projects", force: :cascade do |t|
+  create_table "memberships", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "project_name", null: false
-    t.boolean "archived", default: false
-    t.boolean "favorite", default: false
-    t.index ["archived"], name: "index_projects_on_archived"
-    t.index ["favorite"], name: "index_projects_on_favorite"
-    t.index ["project_name"], name: "index_projects_on_project_name"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.integer "project_id", null: false
+    t.string "role", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "project_id"], name: "index_memberships_on_user_id_and_project_id", unique: true
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "session_token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "session_token"], name: "index_sessions_on_user_id_and_session_token", unique: true
   end
 
   create_table "stories", force: :cascade do |t|
     t.integer "project_id", null: false
-    t.string "name", null: false
-    t.string "status", default: "Current", null: false
-    t.string "description", null: false
-    t.string "labels", null: false
-    t.integer "requestor_id", null: false
+    t.integer "author_id", null: false
+    t.integer "owner_id", null: false
+    t.string "title", null: false
+    t.text "description"
+    t.integer "state", default: 0, null: false
+    t.integer "points", default: 0, null: false
+    t.integer "priority", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind", default: 0, null: false
+    t.integer "assignee_id"
+    t.index ["assignee_id"], name: "index_stories_on_assignee_id"
+    t.index ["author_id"], name: "index_stories_on_author_id"
+    t.index ["priority"], name: "index_stories_on_priority"
     t.index ["project_id"], name: "index_stories_on_project_id"
-    t.index ["requestor_id"], name: "index_stories_on_requestor_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "story_id", null: false
+    t.integer "author_id", null: false
+    t.string "title", null: false
+    t.boolean "done", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "password_digest"
-    t.string "session_token"
+    t.string "password_digest", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "initials", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

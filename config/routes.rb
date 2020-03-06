@@ -1,15 +1,30 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'root#root'
+  root to: 'static_pages#root'
 
-  namespace :api, defaults: { format: :json } do
-    resources :users, only: [ :index, :create ] do
-      resources :projects, only: [ :index, :create, :update]
+  post 'pusher/auth', to: 'pusher#auth'
+
+  scope :api, defaults: { format: :json } do
+    resources :users, only: [:create, :update]
+
+    resource :session, only: [:create, :destroy]
+
+    resources :projects, only: [:index, :show, :create, :update, :destroy] do
+      resources :stories, only: [:create, :index]
     end
-    resources :stories, only: [ :index, :create, :update, :destroy]
-    resource :session, only: [ :create, :destroy ]
-  end
-  get '/api/users/:user_id/projects/:search', to: 'api/projects#search'
 
+    resources :memberships, only: [:create, :index]
+
+    resources :stories, only: [:show, :update, :destroy] do
+      resources :comments, only: [:create, :index]
+      resources :tasks, only: [:create, :index]
+      patch '/prioritize', to: 'stories#prioritize'
+    end
+
+    resources :comments, only: [:update, :destroy]
+
+    resources :tasks, only: [:update, :destroy]
+
+  end
 end

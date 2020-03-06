@@ -6,40 +6,429 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
-Project.delete_all
-Story.delete_all
+guest1 = User.find_or_create_by(email: 'guest1@dsealy.com') do |user|
+  user.name =  "Guest"
+  user.initials = 'GU'
+  user.password = 'password'
+end
 
-User.create(username: "guest", password: "password")
+guest2 = User.find_or_create_by(email: 'guest2@dsealy.com') do |user|
+  user.name =  "Guest One"
+  user.initials = 'GUO'
+  user.password = 'password'
+end
 
-Project.create(user_id:1,project_name:'Hello World',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'MERN Stack',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'Sew Sew Sew',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'To the point',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'Handy Help',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'Yesoro',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'Thogh',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'mixabl',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'wundering',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'figgi',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'unworkabli',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'answir',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'forgetterz',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'agerer',archived:false,favorite:false)
-Project.create(user_id:1,project_name:'yesstage',archived:false,favorite:false)
+demo_project_title = "Demo Project (Start Here)"
+project = Project.find_or_create_by!(title: demo_project_title)
+project.stories.destroy_all
 
-Story.create(project_id:1,name:'Applicable Assortment',description:'Randomness',labels:'Closet Of Choices',requestor_id:1)
-Story.create(project_id:2,name:'Assorted Assets',description:'Random Repair',labels:'Et Cetera',requestor_id:1)
-Story.create(project_id:3,name:'Clever Counts',description:'Random Report',labels:'Et Cetera Solutions',requestor_id:1)
-Story.create(project_id:1,name:'Complete Collection',description:'Random Resource',labels:'Et Cetera Systems',requestor_id:1)
-Story.create(project_id:2,name:'Complete Competition',description:'Random Riders',labels:'Etc.',requestor_id:1)
-Story.create(project_id:3,name:'Content Construct',description:'Random Row',labels:'Handy Help',requestor_id:1)
-Story.create(project_id:1,name:'Count Your Blessings',description:'Random Warehouse',labels:'Here And There And Everywhere',requestor_id:1)
-Story.create(project_id:2,name:'Counted Moments',description:'Resource Refresh',labels:'Knick Knacks',requestor_id:1)
-Story.create(project_id:3,name:'Creative Content',description:'Sporadic Systems',labels:'Nick’S Knacks',requestor_id:1)
-Story.create(project_id:1,name:'Forge Ahead',description:'Sufficient Support',labels:'Odds And Ends',requestor_id:1)
-Story.create(project_id:2,name:'Full Force',description:'The Source',labels:'Random Reasoning',requestor_id:1)
-Story.create(project_id:3,name:'Make It Count',description:'Trusted Assortment',labels:'Tbd',requestor_id:1)
-Story.create(project_id:1,name:'Random Assortment',description:'Wanted Warehouse',labels:'Knick Knack Patty Wack',requestor_id:1)
-Story.create(project_id:2,name:'Random Reason',description:'Forge Ahead',labels:'ontribution Collection',requestor_id:1)
-Story.create(project_id:3,name:'Random Refresh',description:'Complete Collection',labels:'Race To Random',requestor_id:1)
+Membership.find_or_create_by!({user: guest1, project: project, role: 'member' })
+Membership.find_or_create_by!({user: guest2, project: project, role: 'owner' })
+
+
+
+
+stories = [
+  { state: :started,
+    title: "Current iteration/backlog shows all work in progress" },
+  { state: :started,
+    title: "** Double-click to expand a story",
+    description: "Stories can have long, detailed descriptions, and sub-tasks",
+    tasks: [
+      {title: "A completed task", done: true},
+      {title: "An incomplete task", done: false}
+    ],
+  },
+  { state: :started, assignee: guest1,
+    title: '"My Work" shows your assigned stories' },
+  { state: :started, assignee: guest1,
+    title: "** Click Finish to move a story to the next step in the workflow" },
+  { state: :finished, assignee: guest1,
+    title: "** Click Deliver to submit a finished story for approval" },
+  { state: :delivered, owner: guest1,
+    title: "When a story is Delivered, the owner (you in this case) Accepts or Rejects it" },
+  { state: :rejected, kind: :chore,
+    title: "Rejected stories are flagged for Restart" },
+
+  { state: :unstarted, kind: :release,
+    title: "The Icebox holds unscheduled stories" },
+  { state: :unstarted,
+    title: "There are four kinds: Feature, Bug, Chore and Release" },
+  { state: :unstarted,
+    title: "**Click Start to claim a story", },
+  { state: :unstarted,
+    title: "**Click + or 'Add Story' to create a new, unscheduled story" },
+  { state: :unstarted,
+    title: "**Drag and drop stories up/down in the Icebox or Current/backlog to prioritize them" },
+  { state: :unstarted,
+    title: "**Click 'Done' on the far left to show/hide completed tasks"},
+
+  { state: :accepted,
+    title: "Accepted stories move to Done",
+    tasks: [
+      {title: "Design sign up page", done: true},
+      {title: "Build user model", done: false},
+      {title: "Build session model", done: false},
+    ],
+  },
+  { state: :accepted,
+    title: "**To reopen one, expand it and change the state" },
+]
+
+
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+demo_project_title2 = "Demo Project 2"
+project3 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project3, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project3, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project3, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+
+demo_project_title2 = "Demo Project 3"
+project3 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project3, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project3, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project3, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+demo_project_title2 = "Demo Project 4"
+project4 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project4, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project4, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project4, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+demo_project_title2 = "Demo Project 5"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+
+
+demo_project_title2 = "Demo Project 6"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+demo_project_title2 = "Demo Project 7"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+
+demo_project_title2 = "Demo Project 8"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+demo_project_title2 = "Demo Project 9"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+
+demo_project_title2 = "Demo Project 10"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+demo_project_title2 = "Demo Project 11"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end
+demo_project_title2 = "Demo Project 12"
+project5 = Project.find_or_create_by!(title: demo_project_title2)
+Membership.find_or_create_by!({user: guest1, project: project5, role: 'owner' })
+Membership.find_or_create_by!({user: guest2, project: project5, role: 'member' })
+
+Story.transaction do
+  priority = Story.maximum(:priority)
+  stories.each do |story|
+    priority = priority ? priority += 1 : priority = 1
+    assignee = story[:assignee] || guest2
+    owner = story[:owner] || guest2
+    description = story[:description] || ''
+    storyObj = Story.find_or_create_by({ project: project5, title: story[:title] })
+    storyObj.update!({
+      author: owner, owner: owner, assignee_id: assignee.id,
+      state: story[:state], kind: story[:kind] || :feature, priority: priority,
+      description: description.gsub(/\s+/, " ").strip,
+    })
+
+    if story[:tasks]
+      story[:tasks].each do |task|
+        taskObj = Task.find_or_create_by({
+          story: storyObj, author: storyObj.author, title: task[:title]
+          })
+        taskObj.update!(done: true) if task[:done]
+      end
+    end
+  end
+end

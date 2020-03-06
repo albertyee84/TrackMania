@@ -1,37 +1,62 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  password_digest :string           not null
+#  name            :string           not null
+#  email           :string           not null
+#  initials        :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
-  validates :password, length: { minimum: 6 }, allow_nil: true
-  validates :username, :password_digest, presence: true, uniqueness: true
- 
-  before_validation :ensure_token
+  validates :password_digest, :name, :email, :initials, presence: true
+  validates :password, length: {minimum: 6, allow_nil: true}
+  validates_uniqueness_of :email
 
-  attr_reader :password
-  has_many :projects
-  
-  has_many :stories,
-  foreign_key: :requestor_id,
-  class_name: :Story
+  has_many :sessions, dependent: :destroy
 
+  has_many :memberships, dependent: :destroy
+  has_many :projects, through: :memberships
 
-  def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
-    @password = password
+  has_many :ownerships, -> { owned }, class_name: 'Membership'
+  has_many :owned_projects, through: :ownerships, source: :project
+
+  has_many :assignments,
+    class_name: 'Story',
+    foreign_key: :assignee_id
+
+  attr_accessor :password
+
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+    return user && user.is_password?(password) ? user : nil
+  end
+
+  def self.find_by_session_token(session_token)
+    session = Session.includes(:user).find_by(session_token: session_token)
+    session ? session.user : nil
+  end
+
+  def reset_session!
+    @session = Session.create(user: self, session_token: Session.generate_token)
+    @session.session_token
+  end
+
+  def end_session!(session_token)
+    session = Session.find_by(session_token: session_token)
+    session.destroy if session
   end
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def self.find_by_creds(username, password)
-    @user = User.find_by(username: username)
-    @user && @user.is_password?(password) ? @user : nil
-  end
-
-  def ensure_token
-     self.session_token ||= SecureRandom.urlsafe_base64
-  end 
-
-  def reset_token
-    self.session_token = SecureRandom.urlsafe_base64
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
 end

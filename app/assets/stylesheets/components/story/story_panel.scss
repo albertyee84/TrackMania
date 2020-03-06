@@ -1,0 +1,83 @@
+.story {
+  &.panel {
+    display: flex;
+    flex-direction: column;
+    background-color: #484F57;
+    flex: 1 1 0px;
+
+    .index {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .fa-star {
+      color: #e0c85e;
+    }
+
+    .fa-bug {
+      color: #d7724f;
+    }
+
+    .fa-cog {
+      color: grey;
+    }
+
+    p i {
+      padding-left: 5px;
+      padding-right: 10px;
+    }
+
+    .story-workflow-actions {
+      display: flex;
+      align-items: flex-start;
+
+      button {
+        font-size: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 2px;
+        margin-right: 5px;
+
+        &.start, &.restart {
+          background: #e0e2e5;
+          color: black;
+          border: 1px solid lightgrey;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          &:hover:not(:disabled) {
+            background: darken(#e0e2e5, 5%);
+          }
+        }
+        &.finish {
+          background: #203e64;
+          &:hover:not(:disabled) {
+            background: darken(#203e64, 5%);
+          }
+        }
+        &.deliver {
+          background: #f39300;
+          &:hover:not(:disabled) {
+            background: darken(#f39300, 5%);
+          }
+        }
+        &.accept {
+          background: #629200;
+          &:hover:not(:disabled) {
+            background: darken(#629200, 5%);
+          }
+        }
+        &.reject {
+          background: #a71f39;
+          &:hover:not(:disabled) {
+            background: darken(#a71f39, 5%);
+          }
+        }
+        &:disabled {
+          background: transparent;
+          border: 1px solid lightgrey;
+          color: grey;
+        }
+      }
+    }
+  }
+}

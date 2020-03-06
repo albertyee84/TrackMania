@@ -1,0 +1,57 @@
+body.auth {
+  background-color: #f3f4f4
+}
+
+.auth-form {
+  width: 50%;
+  margin: 40px auto;
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+
+  h2 {
+    margin-top: 20px;
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  form {
+    margin: 20px;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 2px;
+    color: grey;
+  }
+
+  input {
+    width: 100%;
+    font-size: 16pt;
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+  }
+
+  button, .button {
+    margin: 15px auto;
+  }
+
+  .redirect {
+    display: flex;
+    margin: 20px;
+  }
+
+  .redirect span {
+    display: block;
+    padding-right: 5px;
+  }
+
+  a {
+    color: blue;
+    text-decoration: underline;
+  }
+
+}

@@ -1,59 +1,75 @@
-import * as APIUtilStories from '../util/story_util';
+import * as APIUtil from '../util/story_api_util';
+import { receiveErrors } from './error_actions';
 
-export const RECEIVE_ALL_STORIES = "RECEIVE_ALL_STORIES";
-export const RECEIVE_STORY = "RECEIVE_STORY";
-export const REMOVE_STORY = "REMOVE_STORY";
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_STORY = 'RECEIVE_STORY';
+export const RECEIVE_DELETE_STORY = 'RECEIVE_DELETE_STORY';
+export const RECEIVE_STORY_CHANGES = 'RECEIVE_STORY_CHANGES';
+export const RECEIVE_PRIORITIZE_STORIES = 'RECEIVE_PRIORITIZE_STORIES'
 
-const receiveAllStories = stories => {
-    return({
-        type: RECEIVE_ALL_STORIES,
-        stories
-    });
-};
+export const receiveStory = story => ({
+  type: RECEIVE_STORY,
+  story
+});
 
-const receiveStory = story => {
-    return({
-        type: RECEIVE_STORY,
-        story
-    });
-};
+export const receiveDeleteStory = story => ({
+  type: RECEIVE_DELETE_STORY,
+  story
+});
 
-const removeStory = story => {
-    return({
-        type: REMOVE_STORY,
-        story
-    });
-};
+export const receiveStoryChanges = changes => ({
+  type: RECEIVE_STORY_CHANGES,
+  changes
+});
 
-const receiveErrors = errors => {
-    return ({
-        type: RECEIVE_ERRORS,
-        errors: errors.responseJSON
-    });
-};
+export const receivePrioritizeStories = payload => ({
+  type: RECEIVE_PRIORITIZE_STORIES,
+  payload
+});
 
-export const requestAllStories = () => dispatch => 
-    APIUtilStories.getStories( )
-        .then(stories => dispatch(receiveAllStories(stories)),
-        errors => dispatch(receiveErrors(errors))
+export const fetchStory = id => dispatch => (
+  APIUtil.fetchStory(id)
+    .done(story => dispatch(receiveStory(story)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const createStory = story => dispatch => 
-    APIUtilStories.createStory(story)
-        .then(story => dispatch(receiveStory(story)),
-        errors => dispatch(receiveErrors(errors))
+export const createStory = story => dispatch => (
+  APIUtil.createStory(story)
+    .done(story => dispatch(receiveStory(story)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-
-export const updateStory = story => dispatch =>
-    APIUtilStories.updateStory(story)
-        .then(story => dispatch(receiveStory(story)),
-        errors => dispatch(receiveErrors(errors))
+export const updateStory = story => dispatch => (
+  APIUtil.updateStory(story)
+    .done(story => dispatch(receiveStory(story)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const deleteStory = story => dispatch =>
-    APIUtilStories.deleteStory(story)
-        .then(story => dispatch(removeStory(story)),
-            errors => dispatch(receiveErrors(errors))
+export const deleteStory = story => dispatch => (
+  APIUtil.deleteStory(story)
+    .done(() => dispatch(receiveDeleteStory(story)))
+    .fail(errors => dispatch(receiveErrors(errors)))
 );
+
+export const prioritizeStory = (story, priority) => dispatch => (
+  APIUtil.prioritizeStory(story, priority)
+    .done(changes => dispatch(receiveStoryChanges(changes)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+)
+
+export const addStory = story => dispatch => {
+  return new Promise((resolve, reject) => {
+    resolve(dispatch(receiveStory(story)))
+  });
+};
+
+export const removeStory = story => dispatch => {
+  return new Promise((resolve, reject) => {
+    resolve(dispatch(receiveDeleteStory(story)))
+  });
+};
+
+export const prioritizeStories = payload => dispatch => {
+  return new Promise((resolve, reject) => {
+    resolve(dispatch(receivePrioritizeStories(payload)))
+  });
+};
