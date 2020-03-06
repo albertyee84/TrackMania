@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 # Rake 11.0.1 removes the last_comment method which rspec-core (< 3.4.4) uses
-gem 'rake', '< 11.0'
+gem 'rake', '< 13.0'
 
 # Use Capistrano for deploysment
 # gem 'capistrano-rails', group: :development
