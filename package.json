@@ -36,8 +36,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "4.2.6",
-    "mpm": "3.5.2"
+    "node": "12.5.0",
+    "npm": "6.9.0"
   },
   "repository": {
     "type": "git",
