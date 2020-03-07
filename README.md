@@ -3,16 +3,16 @@
 
 TrackMania is a full stack application highly inspiried by the agile development app, PivotalTracker.  TrackMania provides you basic functionalities that PivotalTracker provides such as creating new projects, creating stories for each project, etc.
 
-![ezgif com-optimize](https://user-images.githubusercontent.com/52211990/71867142-c2994c00-30bd-11ea-856c-eefee00a400d.gif)
+![full-screen](https://user-images.githubusercontent.com/52211990/76136323-01c41a80-5fe5-11ea-90fa-afbdec2eda71.png)
 
 ## Technologies
 
 * Ruby on Rails 5.2.3
 * Postgresql
 * JavaScript
-* React/Redux
+* React / Redux
 * Heroku
-* jQuery/Json/Jbuilder
+* jQuery / Json / Jbuilder
 * Webpack
 
 ## Challenges
@@ -134,20 +134,16 @@ const Projects = props => {
 
 export default Projects;
 ```
-
-![Screen Shot 2019-11-15 at 12 20 27 PM](https://user-images.githubusercontent.com/52211990/68973356-eec1dc00-07a2-11ea-9c93-4297805c5a12.png)
+![drag-and-drop](https://user-images.githubusercontent.com/52211990/76136348-5798c280-5fe5-11ea-9ec6-2a97378e25ef.gif)
 
 ## Projects Show Page
 The Projects Show page allows users to create new stories for their particular project they are currently on.  This particular page was implemeneted with a drag and drop feature where users can drag a story from a bucket(Current/Icebox/Done) into another bucket with the user's experience in mind.  In addition, on the left side panel, the user can toggle each bucket to show or hide.
-
-![Screen Shot 2019-11-15 at 12 31 45 PM](https://user-images.githubusercontent.com/52211990/68973759-f1710100-07a3-11ea-9b18-f6226aca9881.png)
+![simultanenous-edits](https://user-images.githubusercontent.com/52211990/76136349-58315900-5fe5-11ea-8fa1-d5799b59d666.gif)
 
 ## Features
 
 * User Authentication
 * Project Creation
-* Story Creation
-* Story Update and Deletion
 * Search by Project Name
-* Favorite a Project
-* Other features coming soon!
+* Story Creation
+* Story Workflow
