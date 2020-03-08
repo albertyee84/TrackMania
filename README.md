@@ -83,7 +83,7 @@ The application interface consists of a real-time project dashboard, where you c
 
 ![simultanenous-edits](https://user-images.githubusercontent.com/52211990/76136349-58315900-5fe5-11ea-8fa1-d5799b59d666.gif)
 
-## Features
+## Features Summary
 
 * User Authentication
 * Project Creation
