@@ -1,7 +1,5 @@
 # TrackMania
-[TrackMania Live](https://trackmania.herokuapp.com/)
-
-TrackMania is a full stack application highly inspiried by the agile development app, PivotalTracker.  TrackMania provides you basic functionalities that PivotalTracker provides such as creating new projects, creating stories for each project, etc.
+TrackMania ([Live](https://trackmania.herokuapp.com/)) is a full stack web application that keeps teams coordinated. It's highly inspired after [Pivotal Tracker](https://www.pivotaltracker.com/). The backend framework uses Ruby on Rails and PostgreSQL. The front end framework uses React / Redux.
 
 ![full-screen](https://user-images.githubusercontent.com/52211990/76136323-01c41a80-5fe5-11ea-90fa-afbdec2eda71.png)
 
@@ -15,129 +13,74 @@ TrackMania is a full stack application highly inspiried by the agile development
 * jQuery / Json / Jbuilder
 * Webpack
 
-## Challenges
+## Frameworks
+### Front-end
+TrackMania uses JavaScript, React, and Redux for it's main framework.
 
-* Implementing a search bar was a challenging task as it involved a custom backend route and implementing an active record query.  This involved figuring out how to query the correct information from the front end to the back end. Additionally, how to parse the front end information in order to create a valid query in order to send the payload back was especially challenging.
-
-``` javascript
-  def search
-        @projects = Project.where("user_id = ? and archived = ? and project_name like ?", params[:user_id], params[:project][:archived], "%" + params[:search] + "%")
-        render :index
-    end
-
-```
-
-* Another challenging task was how to favorite a project and make it a sticky on the top of the project index page. This involved updating the project's backend information which then updates the state. Lastly, to render the correct information, slicing the state was involed with conditionals on which project is favorited and which wasn't.
-
-``` javascript
-     !this.state.all && projectlistnonfav.length > 4 ?
-            showAll = <button className="showallbtn" onClick={this.handleShowAllProjects}>
-                Show {projectlistnonfav.length-4} more project
-                    </button> 
-            : 
-            this.state.all && projectlistnonfav.length > 4 ?
-            showAll = <button className="showallbtn" onClick={this.handlehideProjects}>
-                Hide {projectlistnonfav.length - 4} projects
-                </button> : "" ;
-```
-
-* Lastly, in the beginning the code was written using react class components but after learning about React Hooks, I took on the challenge of refactoring the code for the use of hooks and functiontional components, including, useState and useEffect.
-
-``` javascript
-import React, {useState, useEffect } from 'react';
-import ProjectDashboardTab from './project_dashboard_tab';
-import ProjectSearchBar from './project_search_bar';
-import ProjectsBody from './projects_body';
-import ProjectFooter from './projects_footer';
-
-const Projects = props => {
-    let [userId, setUserId] = useState(props.userId);
-    let [search, setSearch] = useState("");
-    let [archived, setArchived] = useState(false);
-    let [all, setAll] = useState(false);
-    let [id, setId] = useState(10000000000000);
-
-    let state = {user_id: userId, search: search, archived: archived, all: all, id: id};
-
-    useEffect(() => {
-        props.requestAllUsersProjects(state);
-    }, [])
-
-    const handleArchiveProject = (projectId, archived) => {
-        let newStatus;
-        archived ? newStatus = false : newStatus = true;
-        setId(projectId)
-        setArchived(newStatus)
-        .then(()=>{
-            props.updateProject(state)
-            .then(() => {
-                props.requestAllUsersProjects(state)
-            })
-        })
-    }
-
-    const handleShowAllProjects = () => {
-        setAll(true)
-    }
-
-    const handlehideProjects = () => {
-        setAll(false)
-    }
-
-    const openModal = props.openModal;
-    let showAll;
-    let projectslist = Object.values(props.projects);
-    let projectlistnonfav = [];
-    let projectlistfav = [];
-    projectslist.forEach(project => {
-        project.favorite ? projectlistfav.push(project) : projectlistnonfav.push(project);
-    });
-
-    !all && projectlistnonfav.length > 4 ?
-        showAll = <button className="showallbtn" onClick={handleShowAllProjects}>
-            Show {projectlistnonfav.length - 4} more project
-                </button>
-        :
-        all && projectlistnonfav.length > 4 ?
-            showAll = <button className="showallbtn" onClick={handlehideProjects}>
-                Hide {projectlistnonfav.length - 4} projects
-            </button> : "";
-
-    return (
-        <div>
-            <div className="dashboardbody">
-                <ProjectDashboardTab openModal={openModal} />
-                <div className="dashboard">
-                    <ProjectSearchBar
-                        searchProject={props.searchProject}
-                        requestAllUsersProjects={props.requestAllUsersProjects}
-                        userId={props.userId}
-                    />
-                    <ProjectsBody
-                        projects={props.projects}
-                        updateProject={props.updateProject}
-                        requestAllUsersProjects={props.requestAllUsersProjects}
-                        userId={props.userId}
-                        state={state}
-                        all={state.all}
-                    />
-                    <div>
-                        {showAll}
-                    </div>
-                </div>
-            </div>
-            <ProjectFooter />
-        </div>
+#### Components and State
+ During development, the React components are structured in a manner that is easily read and with the Single Responsibility Principle in mind.
+ 
+ ``` javascript
+ class StoryIndex extends React.Component {
+  render() {
+    return this.props.connectDropTarget(
+      <div className='index'>
+        {this.renderItems(this.props.stories)}
+      </div>
     );
+  }
 
+  renderItems(stories) {
+    return stories && stories.map(story => (
+      <StoryItem
+        key={story.id}
+        story={story}
+        handleEdit={this.props.handleEdit}
+        canDrag={this.props.canDrag}
+        />
+    ));
+  }
 }
+ ```
 
-export default Projects;
+### Back-end
+TrackMania's back end is written in Ruby with Rails'framework. The data is stored in PostgreSQL, a relational database management system. The Rails controllers implement a RESTful API with many of the controllers implemented with CRUD (Create, Read, Update, and Delete) actions.
+
+#### ActiveRecord Models
+Each table of the Schema has associations to other tables within the database. We use ActiveRecord to facilitate the creation and use of data in our database.
+
+``` ruby
+  class Task < ApplicationRecord
+  validates :story, :author, :title, presence: true
+  validates :done, inclusion: { in: [true, false] }
+
+  belongs_to :author,
+    class_name: 'User',
+    foreign_key: :author_id
+
+  belongs_to :story
+
+  has_one :project,
+    through: :story
+end
 ```
-![drag-and-drop](https://user-images.githubusercontent.com/52211990/76136348-5798c280-5fe5-11ea-9ec6-2a97378e25ef.gif)
 
-## Projects Show Page
-The Projects Show page allows users to create new stories for their particular project they are currently on.  This particular page was implemeneted with a drag and drop feature where users can drag a story from a bucket(Current/Icebox/Done) into another bucket with the user's experience in mind.  In addition, on the left side panel, the user can toggle each bucket to show or hide.
+* users: stores user profiles and passwor digests
+* stories: the ```projet_id``` column is the foreign key that ActiveRecord uses to assciate with the projects table.
+* tasks: contains a similar foreign key ```story_id``` column linking tasks to stories.
+
+
+## Features
+### Projects, Stories, and Tasks
+TrackMania consists of three major features, Projects, Stories, and Tasks. A story is a project deliverable. It can range from a new feature implementation, bug fix, or realse milestone. A project is a collection of stories that are worked on collaboratively by the project's members. Stories can have tasks that represents steps to complete towards the story's goal.
+
+The application interface consists of a real-time project dashboard, where you create new projects.  Within each project is the project story dashboard where uses can create, edit, and track stories through the pipeline. The story has four buckets:
+
+* Icebox, where new stories starts off with tasks.
+* When work on a story commences, it is moved to Current/Backlog
+* Done is when a story is finished and accepted
+* My Work lists the current user's deliverables.
+
 ![simultanenous-edits](https://user-images.githubusercontent.com/52211990/76136349-58315900-5fe5-11ea-8fa1-d5799b59d666.gif)
 
 ## Features
