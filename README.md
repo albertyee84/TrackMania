@@ -90,3 +90,4 @@ The application interface consists of a real-time project dashboard, where you c
 * Search by Project Name
 * Story Creation
 * Story Workflow
+* Tasks
